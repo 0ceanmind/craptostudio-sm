@@ -406,7 +406,7 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 
 1. On dark: White for main text, Slate for secondary text, Sky or Spark for accents.
 2. On light: Ink for text, Cobalt only for big headlines or the accent word. Orange is never text on light; use it as an underline or a small shape. For secondary text on light, use a muted ink such as `#3E5470` (6.02 : 1 on Mist).
-3. On the blue gradient: white text, large and bold. Put small text (labels, body) on the darker Cobalt side (top-left at 135°), or on a Navy card. Keep the Sky corner for the icon or the watermark, not text. White at 80% opacity reaches only 4.20 : 1 even on Cobalt, so use it for large text only.
+3. On the blue gradient: white text, large and bold. Put small text (labels, body) on the darker Cobalt side (top-left at 135°), or on a Navy card. Keep the Sky corner for the icon or the watermark, not text. White at 80% opacity reaches only 4.08 : 1 even on Cobalt, so use it for large text only.
 4. Orange buttons and highlights always get Ink or Midnight text, never white.
 
 <details>
