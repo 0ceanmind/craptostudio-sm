@@ -20,9 +20,9 @@ Work through it top to bottom, then tick off the [launch checklist](#11-launch-c
 | Profile picture | [`../exports/profile/profile-picture.png`](../exports/profile/profile-picture.png) |
 | Profile picture (dark version, backup) | [`../exports/profile/profile-picture-dark.png`](../exports/profile/profile-picture-dark.png) |
 | Highlight covers (10) | `../exports/highlights/01-start.png` … `10-reviews.png` |
-| Launch posts (9) | `../exports/posts/01-support/` … `09-intro/` |
+| Launch posts (9) | `../exports/posts/01-support/` … `09-intro/` (in each folder: `01.png` = cover, then `02.png`, `03.png`, …) |
 
-All of these are made from your own logo files in `brand/logo/source/`. The profile picture uses the symbol-only logo (`Crapto Studio-09.png`).
+All of these are made from your own logo files in [`../brand/logo/source/`](../brand/logo/source/). The profile picture uses the symbol-only logo ([`Crapto Studio-09.png`](../brand/logo/source/Crapto%20Studio-09.png)).
 
 ### Information to prepare
 
@@ -55,14 +55,14 @@ These are placeholders in this guide. Fill them in with real details. Leave out 
 
 Good to know:
 
-- Professional accounts are always public.
+- A Business account is always public. You can't set it to private.
 - Business accounts may get a smaller music library for Reels (mostly royalty-free tracks). For a studio this is fine: use your own audio or the free library.
 
-**Facebook Page (optional):** during setup, Instagram may ask you to connect a Facebook Page. You can skip this. Connect one later if you want:
+**Facebook Page (optional):** during setup, Instagram may ask you to connect a Facebook Page. You can skip this. Connect one later if you want to:
 
-- one inbox and post scheduling in Meta Business Suite,
-- to run ads later,
-- a third-party tool that asks for a linked Page.
+- manage messages and schedule posts from Meta Business Suite on a computer (some features work best with a linked Page),
+- run ads later,
+- use a third-party tool that asks for a linked Page.
 
 If you create a Page, use the same name ("Crapto Studio"), the same profile picture and the same bio wording.
 
@@ -74,6 +74,8 @@ Instagram has two different fields:
 
 - **Username** = your @handle and profile link (instagram.com/craptostudio).
 - **Name** = the bold text on your profile. It is **searchable**, so it should include keywords people actually search for.
+
+All lengths in this section are counted with Node (Unicode code points, spaces included).
 
 ### Username options (max 30 characters)
 
@@ -96,11 +98,15 @@ Usernames can use letters, numbers, full stops (periods) and underscores only.
 | Crapto Studio \| Software & AI | 29 | For a more business/B2B focus. |
 | Crapto Studio \| Unity·Apps·AI | 29 | "Unity" helps game-dev searches. |
 
-The "·" is a middle dot. Copy and paste it from here.
+The "·" is a middle dot, not a full stop. Copy the recommended Name from here:
+
+```
+Crapto Studio | Games·Apps·AI
+```
 
 Why keywords in the Name: they help people find you in search, and they show in one glance that Crapto Studio builds games, apps and AI.
 
-> **Pick once.** Instagram limits how often you can change the Name field (currently about 2 changes in 14 days). Choose carefully before you save.
+> **Pick once.** Instagram limits how often you can change the Name field (at the time of writing: 2 changes within 14 days). Choose carefully before you save.
 
 ---
 
@@ -151,7 +157,7 @@ Ideas, compiled. ↓
 ### Why A is recommended
 
 - **Tagline first.** "Ideas, compiled." is the brand line. It also appears on the launch posts, so people remember it.
-- **Every main service in plain words.** No emoji to decode. Visitors see "games", "apps", "software" and "AI" right away, so nobody mistakes what Crapto Studio does.
+- **Every main service in plain words.** The services are written as words, not emoji. Visitors see "games", "apps", "software" and "AI" right away, so nobody mistakes what Crapto Studio does.
 - **One clear action.** "DM START" is the same keyword used in the posts and in your DM replies.
 - **Room to spare.** 135 of 150 characters.
 
@@ -201,7 +207,7 @@ The **first link** shows on your profile; the others are one tap away. Put the m
 
 Tips:
 
-- If you don't have a brief form yet, link 1 can be your email or a contact page. Update it later.
+- If you don't have a brief form yet, link 1 can point to the contact page on your website. Update it later. (People can still email you with the Email button, see [section 7](#7-contact-options-and-action-buttons).)
 - If you have no portfolio yet, skip link 2. Don't link to an empty page.
 - After saving, tap each link from a different phone to check it opens the right page.
 
@@ -239,24 +245,32 @@ Highlights sit under your bio and work like a menu. Use the 10 covers in this or
 | 7 | Interactive | `../exports/highlights/07-interactive.png` | 4th |
 | 8 | Upgrades | `../exports/highlights/08-upgrades.png` | 3rd |
 | 9 | Support | `../exports/highlights/09-support.png` | 2nd |
-| 10 | Reviews | `../exports/highlights/10-reviews.png` | 1st |
+| 10 | Reviews | `../exports/highlights/10-reviews.png` | 1st (or skip for now, see [No reviews yet?](#what-to-put-in-each-highlight)) |
 
 ### Important: create them in reverse order
 
-New highlights appear at the **front** (left). So create **Reviews first** and **Start last**. Then Start ends up first in the row.
+New highlights appear at the **front** (left). So create **Reviews first** (or **Support** first if you skip Reviews) and **Start last**. Then Start ends up first in the row.
 
-Adding a new story to an existing highlight may also move it to the front. After each update, check the order. If one has moved, add a new story to the highlights in reverse order again, or accept the new order.
+Adding a new story to an existing highlight usually moves it to the front too. After each update, check the order. If one has moved, add a new story to the highlights in reverse order again, or accept the new order.
+
+### When to create them
+
+Create the highlights **after all 9 launch posts are live** and shared to your story. Don't create each highlight on the day you share its post: the posting order is different from the highlight order, so the row would end up mixed.
+
+Your stories stay in your story archive after 24 hours, so you can add them to highlights later.
 
 ### How to create each highlight
 
 1. Make sure Story archive is on (Settings → **Archiving and downloading**). It is on by default.
-2. Post a story (for example, share a launch post to your story).
-3. On your profile, tap **New** (the + circle under the bio) → pick the story → type the name.
-4. Tap **Edit cover** → choose the cover image from your camera roll → zoom so the icon sits in the middle of the circle.
+2. Save the 10 cover images from `../exports/highlights/` to your phone.
+3. Post the stories (for example, share each launch post to your story).
+4. On your profile, tap **New** (the + circle under the bio) → pick the story from your archive → type the name.
+5. Tap **Edit cover** → choose the cover image from your camera roll → zoom so the icon sits in the middle of the circle.
+6. Repeat in the "Create in this order" column order, then check the row on your profile.
 
 ### What to put in each highlight
 
-At launch, share each launch post to your story (paper plane icon → **Add to story**) and save it to its highlight. Add real stories over time.
+At launch, share each launch post to your story (paper plane icon → **Add to story**) on the day you publish it. When all 9 are live, add them to their highlights (see [When to create them](#when-to-create-them)). Add real stories over time.
 
 **1. Start** — how to work with Crapto Studio.
 - Share launch post `07-start` (the 4 steps).
@@ -264,7 +278,7 @@ At launch, share each launch post to your story (paper plane icon → **Add to s
 - A link sticker to `[your project brief form link]`.
 
 **2. Work** — real finished projects.
-- Share launch post `09-intro` (who we are).
+- At launch, before you have project posts: share launch post `09-intro` (who we are and what we build). Replace it once you have real work.
 - Screen recordings or screenshots of real projects (with the client's permission).
 - A link sticker to `[your portfolio link]`.
 
@@ -309,8 +323,9 @@ At launch, share each launch post to your story (paper plane icon → **Add to s
 - A video from a client about their project (if they agree).
 
 > **No reviews yet?** Don't fake one. Two honest options:
-> 1. **Recommended:** skip Reviews at launch. Create it when you get the first real review. It will appear at the front, so then add a new story to Start to move Start back to the front.
-> 2. Create it with one honest story, for example: "First projects in progress. Real client reviews will appear here."
+>
+> 1. **Recommended:** skip Reviews at launch. Create it when you get the first real review. It will appear at the **front**. To move it to the end, add one new story (a short update or a re-shared post) to each of the other highlights in reverse order: Support first, Start last.
+> 2. Create it at launch with one honest story, for example: "First projects in progress. Real client reviews will appear here." This keeps the order right from day one.
 
 ---
 
@@ -319,6 +334,8 @@ At launch, share each launch post to your story (paper plane icon → **Add to s
 ### Saved replies
 
 Find **Saved replies** (Settings → **Business tools and controls** → Saved replies, or search "saved replies" in Settings). Each reply has a short **shortcut** word. When you type the shortcut in a chat, Instagram suggests the full reply.
+
+Saved replies don't send by themselves. When someone DMs "START", open the chat, type `start` and tap the suggested reply. (To answer automatically, see [comment-to-DM automation](#optional-comment-to-dm-automation) below.)
 
 Edit the replies to sound like you. Don't promise response times or prices you can't keep.
 
@@ -362,8 +379,9 @@ What's your deadline? Tell us and we'll say honestly if it's realistic.
 
 ```
 Happy to help with your project or competition!
-We offer mentoring, debugging, code review and competition/hackathon prep.
-We guide you and explain the "why", so you can present the work with confidence. The work stays yours and follows your school or competition rules.
+We offer mentoring, debugging and code review sessions, and competition/hackathon prep.
+We guide you and explain the "why", so you can present the work with confidence.
+We don't do the work for you: it stays yours and follows your school or competition rules.
 Send us:
 • the project or competition
 • your deadline
@@ -376,7 +394,7 @@ Send us:
 
 ```
 Thanks for asking! [the thing they asked about] isn't something we do at Crapto Studio.
-What we do: Unity games, iOS & Android apps, software, custom AI, interactive content and presentations, upgrades to existing projects, and mentoring for programming projects.
+What we do: Unity games, iOS & Android apps, software, custom AI, interactive content and presentations, upgrades to existing projects, and mentoring for programming projects and competitions.
 If your idea touches any of these, we'd be happy to talk.
 ```
 
@@ -384,7 +402,9 @@ Use reply 5 also when someone misunderstands the name (for example, thinks it's 
 
 ### FAQ questions (ice breakers)
 
-Instagram lets professional accounts show up to 4 questions when someone opens a new chat with you. Find **Frequently asked questions** in the same business tools area.
+Professional accounts can show a few questions (up to 4 at the time of writing) when someone opens a new chat with you. People tap a question instead of typing. Find **Frequently asked questions** in the same business tools area.
+
+If your app lets you add an automatic answer to each question, paste the reply text there. If not, answer by hand with the saved reply shortcut.
 
 | # | Question people tap | Answer with |
 |---|---|---|
@@ -402,7 +422,7 @@ Send us a link or a short description, what's not working, and what you'd like t
 
 ### Optional: comment-to-DM automation
 
-Some posts end with "DM START". You can also invite people to **comment** "START" and send them the reply automatically. Instagram's own app doesn't do this by itself; third-party tools that connect to Instagram do.
+Some posts end with "DM START". You can also invite people to **comment** "START" and send them the reply automatically. Third-party tools that connect to Instagram can do this. Meta's own tools may also offer some automations: check what your account has before you pay for a tool.
 
 If you use one:
 
@@ -420,15 +440,17 @@ You can pin up to 3 posts to the top of your grid.
 
 ### At launch: pin the top row
 
-Pin these 3 launch posts:
+Pin these 3 launch posts. They should end up in this order, left to right:
 
-| Pin | Post | Why |
+| Position | Post | Why |
 |---|---|---|
-| 1 | `09-intro` — "Ideas, compiled." | Who Crapto Studio is and what you build |
-| 2 | `08-games` — "Games people want to replay." | The newest service post; keeps the grid pattern |
-| 3 | `07-start` — "Got an idea? Here's how we build it." | How to start + what to send |
+| 1 (left) | `09-intro` — "Ideas, compiled." | Who Crapto Studio is and what you build |
+| 2 (middle) | `08-games` — "Games people want to replay." | The newest service post; keeps the grid pattern |
+| 3 (right) | `07-start` — "Got an idea? Here's how we build it." | How to start + what to send |
 
-These are the last 3 posts you publish (the top row). Pinning them keeps the launch grid exactly as designed (see [`../exports/preview/grid.png`](../exports/preview/grid.png)) and keeps them on top when you post new content.
+These are the last 3 posts you publish (the top row). Pinning them keeps the launch grid as designed (see [`../exports/preview/grid.png`](../exports/preview/grid.png)) and keeps them on top when you post new content.
+
+**Pin order:** pin `07-start` first, then `08-games`, then `09-intro` last. The most recently pinned post usually shows first (top-left), so this gives the order above.
 
 After pinning, check the top row. If the order looks wrong, unpin and pin again in a different order.
 
@@ -457,7 +479,7 @@ Review your pins about every 3 months, or each time you publish a project you're
 ### Profile
 
 - [ ] Bio pasted (Option A), counter checked: under 150 characters, line breaks correct
-- [ ] Profile picture uploaded: `exports/profile/profile-picture.png`
+- [ ] Profile picture uploaded: `../exports/profile/profile-picture.png`
 - [ ] Profile picture checked in the circle, in comments and in stories
 - [ ] Links added in order, all tested from another phone
 - [ ] All placeholders replaced with real links and details (or removed)
@@ -467,20 +489,20 @@ Review your pins about every 3 months, or each time you publish a project you're
 
 - [ ] 5 saved replies added with shortcuts: `start`, `price`, `time`, `mentor`, `scope`
 - [ ] 4 FAQ questions added
-- [ ] Sent "START" from a second account and checked the reply
+- [ ] Tested from a second account: sent "START", then replied with the `start` shortcut and checked the message looks right
 - [ ] Comment-to-DM automation set up and tested (optional)
 
 ### Posts and highlights
 
 - [ ] Launch posts published in order: `01-support` first … `09-intro` last
 - [ ] Each launch post shared to stories
-- [ ] Highlights created in reverse order (Support → … → Start), each with its cover from `exports/highlights/`
-- [ ] Reviews highlight: skipped until a real review exists, or created with an honest placeholder story
-- [ ] Highlight order checked on the profile: Start, Work, Games, Apps, AI, Software, Interactive, Upgrades, Support (, Reviews)
-- [ ] Top 3 posts pinned: `09-intro`, `08-games`, `07-start`
+- [ ] Reviews highlight: skipped until a real review exists, or created first with an honest placeholder story
+- [ ] Highlights created after all 9 posts are live, in reverse order (Reviews if used → Support → … → Start last), each with its cover from `../exports/highlights/`
+- [ ] Highlight order checked on the profile: Start, Work, Games, Apps, AI, Software, Interactive, Upgrades, Support, then Reviews (if created)
+- [ ] Top 3 posts pinned in this order: `07-start`, `08-games`, `09-intro` → row shows `09-intro`, `08-games`, `07-start`
 
 ### Final check
 
-- [ ] Looked at the full profile on a phone and compared it with `exports/preview/profile-mockup.png`
-- [ ] Checked the grid against `exports/preview/grid.png`
+- [ ] Looked at the full profile on a phone and compared it with `../exports/preview/profile-mockup.png`
+- [ ] Checked the grid against `../exports/preview/grid.png`
 - [ ] Asked a friend to open the profile and say in one sentence what Crapto Studio does
