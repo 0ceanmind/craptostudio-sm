@@ -3,13 +3,13 @@
 How Crapto Studio looks, sounds and shows up, on Instagram and everywhere else.
 Use this guide when you write a caption, design a post, reply to a DM, or send the logo to someone.
 
-> **Handle:** this guide assumes the Instagram handle is **@craptostudio**. If yours is different, change it here and in `design/tokens.mjs`.
+> **Handle:** this guide assumes the Instagram handle is **@craptostudio**. If yours is different, change it here, in the `instagram/` docs and in `design/tokens.mjs` (then rebuild the images, see [section 9](#9-instagram-template-system)).
 
 ![Crapto Studio brand board](../exports/brand/brand-board.png)
 
 ## Quick reference
 
-| | |
+| Item | Rule |
 |---|---|
 | Name | **Crapto Studio** (always in full) |
 | Handle | @craptostudio |
@@ -19,7 +19,7 @@ Use this guide when you write a caption, design a post, reply to a DM, or send t
 | Accent | Spark `#F28D19`, small amounts only |
 | Fonts | Plus Jakarta Sans (headlines and body), JetBrains Mono (labels and numbers) |
 | Icons | Lucide line icons |
-| Main logo file | `logo/source/Crapto Studio-08.png` |
+| Main logo file | [`logo/source/Crapto Studio-08.png`](logo/source/Crapto%20Studio-08.png) |
 | DM keyword | **START** |
 
 ## Contents
@@ -58,7 +58,7 @@ What it means:
 
 How to write it: always **"Ideas, compiled."**, with a capital I, a comma, a lowercase c and a full stop. Do not translate it, change it ("Ideas compiled!", "Your ideas, compiled") or add to it.
 
-Where to use it: the first slide of the intro post, the bio, the end of a presentation, email signatures, and under the logo on large layouts. Do not use it more than once per post.
+Where to use it: the first slide of the intro post, the bio (if the version you pick includes it), the end of a presentation, email signatures, and under the logo on large layouts. Do not use it more than once per post.
 
 ---
 
@@ -134,7 +134,7 @@ The message: *"How much for an app?"*
 > Price depends. Send details.
 
 ✗ Also bad
-> Apps from just $499!! Best price guaranteed 💯
+> Cheapest apps in town!! Best price guaranteed 💯
 
 ✓ Good
 > Hi [name], thanks for asking! Honest answer: the price depends on what we build, so we quote every project separately. To send you a clear quote and timeline, can you tell us:
@@ -143,7 +143,7 @@ The message: *"How much for an app?"*
 > 3. Your deadline
 > 4. Your budget range
 >
-> If there's a simpler or cheaper way to get there, we'll tell you.
+> If there's a simpler way to get there that costs less, we'll tell you.
 
 Why: friendly, honest, and it moves the conversation forward. Never post a price you haven't decided on. If you set starting prices later, add them here: [your starting prices, if any].
 
@@ -173,7 +173,7 @@ The message: *"hi can u do my final year project for me? its due next week"*
 > Hi! We can't do the project for you. It needs to be your work, and you need to be able to explain it. But we can help you get it done: in a mentoring session we review your code, help you debug, and explain the "why" so you can present it with confidence.
 > Send us your topic, your deadline and where you're stuck, and we'll tell you honestly how we can help.
 
-Why: it keeps our support about mentoring and guidance, protects the student, and still offers real help. Do not promise to finish by their deadline before you know the scope.
+Why: it keeps our support about mentoring and guidance, protects the student (the work stays theirs, within their school's or competition's rules), and still offers real help. Don't promise anything about their deadline before you know where they are stuck.
 
 ---
 
@@ -184,7 +184,7 @@ Why: it keeps our support about mentoring and guidance, protects the student, an
 | ✓ Correct | ✗ Incorrect |
 |---|---|
 | Crapto Studio | Crapto |
-| Crapto Studio's new app | CraptoStudio (only OK in the handle or a web address) |
+| Crapto Studio's new app | CraptoStudio, craptostudio (one word only in the handle or a web address) |
 | | Crapto Studios, Crypto Studio, Crapto studio, crapto studio |
 | | CS, C.S., Crapto St. |
 
@@ -196,12 +196,12 @@ Why: it keeps our support about mentoring and guidance, protects the student, an
 
 "Crapto" can be misread as "crypto" at a glance. Every touchpoint should make it obvious that we build **games, apps, software and AI**.
 
-- **Say what we do right next to the name.** The first line of the bio, the Name field and the first slide of a post should say "games", "apps", "software" or "AI".
-- **Name field example:** `Crapto Studio · Games & Apps` (28 characters; keep the Name field at 30 or fewer).
+- **Say what we do right next to the name.** The Name field, the top of the bio and the cover of each post should make it clear that this is tech: games, apps, software, AI or programming.
+- **Name field example:** `Crapto Studio | Games·Apps·AI` (29 characters; keep the Name field at 30 or fewer). Other options are in [the profile setup guide](../instagram/01-profile-setup.md).
 - **Never use crypto words,** even as a joke: coin, token, blockchain, NFT, Web3, mint, wallet, trading, "to the moon", HODL.
 - **Never use crypto hashtags:** no #crypto, #bitcoin, #nft, #web3, #blockchain, #trading. Instagram limits posts to 5 hashtags, so use topic tags only, for example #gamedev, #unity3d, #appdevelopment, #softwaredevelopment, #aiautomation (pick the ones that match the post).
 - **Avoid crypto-looking visuals and emoji:** no coins, candlestick charts, gold-on-black "trading" looks, 🚀🌕💎📈🪙💰.
-- **Don't follow or engage with crypto accounts.** Delete crypto spam comments. We recommend adding common crypto spam words to Instagram's Hidden Words filter in your privacy settings.
+- **Don't follow or engage with crypto accounts.** Delete crypto spam comments. We recommend adding common crypto spam words to Instagram's Hidden Words filter, in the app's settings.
 
 **Ready reply** for *"Is this a crypto thing?"*
 
@@ -211,7 +211,7 @@ Why: it keeps our support about mentoring and guidance, protects the student, an
 
 ## 5. Logo
 
-![Crapto Studio full logo](<logo/source/Crapto Studio-08.png>)
+<img src="logo/source/Crapto%20Studio-08.png" alt="Crapto Studio full logo: blue node symbol with four orange petals above the Crapto Studio wordmark" width="360">
 
 The logo has two parts:
 
@@ -220,35 +220,37 @@ The logo has two parts:
 
 ### 5.1 Logo files
 
-**Original files** (from the designer, 4168 × 4167 px, transparent PNG with a lot of empty space around the logo). Paths are relative to this guide.
+**Original files** in `brand/logo/source/` (4168 × 4167 px PNG, with a lot of empty space around the logo). Never edit or overwrite these. Paths are relative to this guide.
 
 | File | What it is | Use it for |
 |---|---|---|
-| `logo/source/Crapto Studio-08.png` | Full logo (symbol + wordmark), colour | **The main logo.** Light backgrounds (White, Mist) and dark navy backgrounds (Midnight, Navy) |
-| `logo/source/Crapto Studio-09.png` | Symbol only, colour | Profile picture, app icon, small spaces, watermark |
-| `logo/source/Crapto Studio-10.png` | Full logo, all white | Photos, video, the blue gradient, dark backgrounds |
-| `logo/source/Crapto Studio-11.png` | Full logo, all black | One-colour printing, stamps, light backgrounds when colour isn't possible |
-| `logo/source/Crapto Studio 1-08.png` | Full colour logo on a Mist (`#D4E5F2`) square | Places that don't support transparency, or where you want a ready-made light-blue tile |
-| `logo/source/Crapto Studio 2-08.png` | Full colour logo on a white square | Places that don't support transparency (some forms, documents, marketplaces) |
+| [`logo/source/Crapto Studio-08.png`](logo/source/Crapto%20Studio-08.png) | Full logo (symbol + wordmark), colour, transparent | **The main logo.** Light backgrounds (White, Mist) and dark navy backgrounds (Midnight, Navy) |
+| [`logo/source/Crapto Studio-09.png`](logo/source/Crapto%20Studio-09.png) | Symbol only, colour, transparent | Profile picture, app icon, small spaces, watermark |
+| [`logo/source/Crapto Studio-10.png`](logo/source/Crapto%20Studio-10.png) | Full logo, all white, transparent | Photos, video, the blue gradient, dark backgrounds |
+| [`logo/source/Crapto Studio-11.png`](logo/source/Crapto%20Studio-11.png) | Full logo, all black, transparent | One-colour printing, stamps, light backgrounds when colour isn't possible |
+| [`logo/source/Crapto Studio 1-08.png`](logo/source/Crapto%20Studio%201-08.png) | Full colour logo on a Mist (`#D4E5F2`) square | Places that don't support transparency, or where you want a ready-made light-blue tile |
+| [`logo/source/Crapto Studio 2-08.png`](logo/source/Crapto%20Studio%202-08.png) | Full colour logo on a white square | Places that don't support transparency (some forms, documents, marketplaces) |
 
-**Trimmed files for everyday use** (empty space removed, so they are easier to place and size). Generated by `npm run build`.
+**Trimmed files for everyday use** (empty space removed, so they are easier to place and size). They are cut from `-08`, `-10` and `-11` by `npm run build`.
 
 | File | What it is |
 |---|---|
-| `../exports/logo/logo-color.png` | Full logo, colour |
-| `../exports/logo/logo-white.png` | Full logo, white |
-| `../exports/logo/logo-black.png` | Full logo, black |
-| `../exports/logo/symbol-color.png` | Symbol only, colour |
-| `../exports/logo/symbol-white.png` | Symbol only, white |
-| `../exports/logo/symbol-black.png` | Symbol only, black |
+| [`../exports/logo/logo-color.png`](../exports/logo/logo-color.png) | Full logo, colour |
+| [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) | Full logo, white |
+| [`../exports/logo/logo-black.png`](../exports/logo/logo-black.png) | Full logo, black |
+| [`../exports/logo/symbol-color.png`](../exports/logo/symbol-color.png) | Symbol only, colour |
+| [`../exports/logo/symbol-white.png`](../exports/logo/symbol-white.png) | Symbol only, white |
+| [`../exports/logo/symbol-black.png`](../exports/logo/symbol-black.png) | Symbol only, black |
 
-Instagram profile pictures: `../exports/profile/profile-picture.png` (main) and `../exports/profile/profile-picture-dark.png` (dark alternative).
+The same folder also has `wordmark-*.png` crops. Don't use the wordmark on its own as a logo; the stacked lockup and the symbol are the only official versions.
+
+Instagram profile pictures (colour symbol, 1080 × 1080): [`../exports/profile/profile-picture.png`](../exports/profile/profile-picture.png) (white background, main) and [`../exports/profile/profile-picture-dark.png`](../exports/profile/profile-picture-dark.png) (Midnight background, alternative).
 
 ### 5.2 Full logo or symbol?
 
 | Use the **full logo** when… | Use the **symbol only** when… |
 |---|---|
-| There is enough room (see minimum sizes) | The space is small or square: profile picture, app icon, favicon, highlight covers |
+| There is enough room (see minimum sizes) | The space is small or square: profile picture, app icon, favicon |
 | People may not know the name yet: intro post, brand board, presentation title slide, documents | The name is already visible nearby (for example, the "@craptostudio" or "CRAPTO STUDIO" text label in a post header) |
 | It is the main brand moment on the page | You need a subtle watermark |
 
@@ -258,7 +260,7 @@ Do not build new lockups (for example, the symbol to the left of the wordmark). 
 
 The unit is **P = the height of one orange petal**.
 
-- In the full logo, P is about **1/8 of the logo's height** (291 px in the 2367 px-tall logo inside the source file).
+- In the full logo, P is about **1/8 of the logo's height** (291 px in the 2369 px-tall logo inside the source file).
 - In the symbol alone, P is about **1/6 of the symbol's height**.
 
 Rule: keep **at least 1 P of empty space on every side**. Nothing (text, icons, image edges, other logos) goes inside it. On posts and covers, give it **2 P** when you can.
@@ -280,7 +282,7 @@ Example: a full logo placed 600 px wide needs about 54 px of clear space on each
 | Full logo | 120 px wide | 30 mm wide |
 | Symbol only | 32 px wide | 10 mm wide |
 
-At 120 px wide, the capital letters of the wordmark are only about 13 px tall. Below that, use the symbol only.
+At 120 px wide, the capital letters of the wordmark are only about 14 px tall. Below that, use the symbol only.
 
 ### 5.5 Which logo on which background
 
@@ -303,15 +305,17 @@ At 120 px wide, the capital letters of the wordmark are only about 13 px tall. B
 - ✗ Don't retype the wordmark in another font.
 - ✗ Don't remove, move or add petals or circles.
 - ✗ Don't crop the logo or let it touch the edge of the canvas.
-- ✗ Don't lower its opacity. The only exception is the large, faint symbol watermark used as decoration in post backgrounds.
+- ✗ Don't lower its opacity.
 - ✗ Don't use screenshots or JPG versions (they lose transparency and sharpness). Always start from the PNG files above.
 - ✗ Don't place it next to crypto-looking imagery (coins, charts, "trading" visuals).
 
+**One exception:** the large, faint symbol watermark in post backgrounds (about 5–13% opacity, slightly tilted, running off the corner) may be faded, rotated and cropped. It is decoration behind the content, never the main logo.
+
 ### 5.7 Get the vector source
 
-The repo only has PNG files. They are fine for social media and for small print (the full logo is 3262 px wide inside the source file, which is about 27 cm wide at 300 dpi).
+The repo only has PNG files. They are fine for social media and for small print (the full logo is 3263 px wide inside the source file, which is about 27 cm wide at 300 dpi).
 
-For signs, large prints, merch, embroidery, laser-cutting or a website, you need a **vector file** (SVG, AI, EPS or PDF). Ask whoever designed the logo for the vector source. The numbers in the file names (`-08` … `-11`) look like artboard exports from a design app, so the designer most likely has the original file. While you're asking, also ask for the name of the wordmark typeface and whether it needs a licence. When you get the vectors, add them to `brand/logo/source/`.
+For signs, large prints, merch, embroidery or laser-cutting you need a **vector file** (SVG, AI, EPS or PDF). For a website, an SVG is also better: it stays sharp at any size. Ask whoever designed the logo for the vector source. The numbers in the file names (`-08` … `-11`) look like artboard exports from a design app, so the designer most likely has the original file. While you're asking, also ask for the name of the wordmark typeface and whether it needs a licence. When you get the vectors, add them to `brand/logo/source/`.
 
 ---
 
@@ -319,7 +323,7 @@ For signs, large prints, merch, embroidery, laser-cutting or a website, you need
 
 ### 6.1 Palette
 
-| Swatch | Name | Hex | RGB | Role |
+| Family | Name | Hex | RGB | Role |
 |---|---|---|---|---|
 | Blue | **Cobalt** | `#376BB1` | 55, 107, 177 | Deep end of the brand blue gradient; headings on light backgrounds |
 | Blue | **Crapto Blue** | `#4296D1` | 66, 150, 209 | Primary brand colour (logo core and wordmark ≈ `#3A93D3`) |
@@ -363,7 +367,7 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 - **3 : 1** to 4.5 : 1: **large text only** (big, bold headlines) and icons
 - Below **3 : 1**: don't use for text or important icons
 
-**Instagram note:** a 1080 px post is shown at roughly one third of its size on a phone. So on the 1080 px canvas, treat text as "large" only if it is about **56 px or bigger and bold** (or about 68 px and bigger at regular weight). Everything smaller must reach 4.5 : 1.
+**Instagram note:** a 1080 px post is shown at roughly one third of its size on a phone. So on the 1080 px canvas, treat text as "large" only if it is about **56 px or bigger and bold** (or about 72 px and bigger at regular weight). Everything smaller should reach 4.5 : 1.
 
 **Safe pairings**
 
@@ -406,8 +410,10 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 
 1. On dark: White for main text, Slate for secondary text, Sky or Spark for accents.
 2. On light: Ink for text, Cobalt only for big headlines or the accent word. Orange is never text on light; use it as an underline or a small shape. For secondary text on light, use a muted ink such as `#3E5470` (6.02 : 1 on Mist).
-3. On the blue gradient: white text, large and bold. Put small text (labels, body) on the darker Cobalt side (top-left at 135°), or on a Navy card. Keep the Sky corner for the icon or the watermark, not text. White at 80% opacity reaches only 4.08 : 1 even on Cobalt, so use it for large text only.
+3. On the blue gradient: white text, large and bold. Put small text (labels, body) on the darker Cobalt side (top-left at 135°), or on a Navy card. Keep the Sky corner for the icon or the watermark, not text. White at 82% opacity reaches only 4.20 : 1 even on pure Cobalt, so use see-through white for large text only.
 4. Orange buttons and highlights always get Ink or Midnight text, never white.
+
+> **Known gap in the current blue covers:** the small mono text on blue covers (tag, sub-line, handle, "Swipe →") is 82% white at 21–27 px and measures only about 2.1 to 3.1 : 1 on the gradient. It repeats what the headline and caption already say, so the launch posts are usable as they are. When the template is next edited, put that small text on a Navy chip, or make it 100% white and keep it on the Cobalt side.
 
 <details>
 <summary>Full contrast matrix (text colour × background)</summary>
@@ -436,7 +442,7 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 | Typeface | Weights | Used for | Why |
 |---|---|---|---|
 | **Plus Jakarta Sans** | ExtraBold 800 (headlines), Bold 700 (subheads), Medium 500 (body) | Almost everything: headlines, slide titles, list items, body text | Modern and friendly, with rounded shapes that match the soft, blobby symbol. Very readable on small phone screens. The heavy weights make short headlines strong. |
-| **JetBrains Mono** | Medium 500 | Small labels, tags ("01 / Games"), slide numbers, the handle, numbers, code | It is a programming font. It quietly says "we write code" and makes tags look like code comments ("// who we are"). Use it in small doses. |
+| **JetBrains Mono** | Medium 500 (the templates also use Bold 700 for a few short labels and numbers) | Small labels, tags ("01 / Games"), slide numbers, the handle, numbers, code | It is a programming font. It quietly says "we write code" and makes tags look like code comments ("// who we are"). Use it in small doses. |
 
 Both are free on Google Fonts under the SIL Open Font License, so you can use them for commercial work:
 
@@ -447,23 +453,23 @@ The render pipeline already includes both fonts (installed with `npm install`), 
 
 ### 7.2 Type scale for 1080 px-wide Instagram graphics
 
-Sizes are in px on the 1080 px canvas (feed posts 1080 × 1350, stories and reels 1080 × 1920).
+Sizes are in px on the 1080 px canvas (feed posts 1080 × 1350, stories and reels 1080 × 1920). These are the values the templates in `design/templates.mjs` use.
 
 | Style | Font and weight | Size | Line height | Letter spacing | Used for |
 |---|---|---|---|---|---|
-| Display | Plus Jakarta Sans 800 | 140–150 | 1.0 | −4% | Short cover headlines (about 18 characters or fewer) |
-| Headline | Plus Jakarta Sans 800 | 108–124 | 1.02 | −4% | Longer cover headlines |
-| Title | Plus Jakarta Sans 800 | 72–76 | 1.0 | −3.5% | Slide titles ("What we build") |
-| Statement | Plus Jakarta Sans 700 | 64–72 | 1.15 | −3% | The one big sentence on a statement slide |
-| Subhead | Plus Jakarta Sans 700–800 | 38–44 | 1.1–1.2 | −2% | List items, step names, card titles |
-| Body | Plus Jakarta Sans 500 | 30–38 | 1.35–1.4 | 0 | Step descriptions, CTA text |
-| Label | JetBrains Mono 500 | 22–28 | 1.2 | +6% to +20%, often uppercase | Tags, slide numbers, handle, sub-lines |
+| Display | Plus Jakarta Sans 800 | 150 | 1.04 | −2.8% | Short cover headlines (18 characters or fewer) |
+| Headline | Plus Jakarta Sans 800 | 108–124 | 1.04 | −2.8% | Longer cover headlines (124 up to 30 characters, 108 above that), the CTA headline (112) |
+| Title | Plus Jakarta Sans 800 | 76 | 1.0 | −2.5% | Slide titles ("What we build") |
+| Statement | Plus Jakarta Sans 700 | 72 | 1.16 | −2.2% | The one big sentence on a statement slide |
+| Subhead | Plus Jakarta Sans 700–800 | 36–43 | 1.1–1.22 | −1% to −1.5% | List items, step names, service card titles |
+| Body | Plus Jakarta Sans 500 | 29–38 | 1.38 | 0 | Step descriptions, CTA text |
+| Label | JetBrains Mono 500–700 | 20–28 | 1.2–1.3 | +1% to +20%, uppercase for tags | Tags, slide numbers, handle, sub-lines, kickers |
 
-**Minimums:** body text at least **30 px**; labels at least **22 px**, and only for non-essential info (handle, slide numbers). Anything people must read should be 30 px or more.
+**Minimums:** anything people must read should be about **29 px or more**. Smaller labels (20–28 px) are only for short extras: the handle, slide numbers, tags and service sub-lines.
 
-**Stories, reels and highlight covers (1080 × 1920):** use the same scale. We recommend keeping text and key content away from the top ~250 px and the bottom ~300 px, where Instagram shows the profile name, buttons and the reply bar.
+**Stories, reels and highlight covers (1080 × 1920):** use the same scale. We recommend keeping text and key content away from the top ~250 px and the bottom ~300 px, where Instagram shows the profile name, buttons and the reply bar. Highlight covers are shown as a small circle, so keep the icon centred and use no text.
 
-**Headlines:** one accent word per headline (see section 9). Sentence case ("Games people want to replay."), not Title Case.
+**Headlines:** one accent word or short phrase per headline (see section 9). Sentence case ("Games people want to replay."), not Title Case.
 
 ### 7.3 The wordmark is artwork, not a font
 
@@ -484,13 +490,24 @@ The "Crapto Studio" letters under the symbol are part of the logo artwork. Don't
 |---|---|---|---|
 | Background | Midnight, with a soft blue glow in a corner | Brand gradient, 135° | Mist, with a soft white glow in a corner |
 | Main text | White | White | Ink |
-| Secondary text | Slate | White (slightly transparent), large text only | Muted ink (`#3E5470`) |
+| Secondary text | Slate | White at 82% (see the known gap in 6.4) | Muted ink (`#3E5470`) |
 | Accent word | Spark gradient text | White word with an Amber underline | Cobalt word with a Spark underline |
+| Icon tile | White icon on a brand-gradient tile | Cobalt icon on a white tile | White icon on a brand-gradient tile |
 | Cards | Navy with Line borders | — | — |
-| Symbol / logo | Colour symbol; white symbol as a faint watermark | White symbol / white logo | Colour symbol; faint watermark |
-| Best for | Service posts, most content | Big moments: intro, key services, announcements | "Start here", process, how-to posts |
+| Symbol / logo | Colour symbol; white symbol as a faint watermark | White symbol / white logo | Colour symbol; black symbol as a faint watermark |
+| Best for | Service posts, most content | Big moments: intro, key services, announcements | "Start here", process, how-to and upgrade posts |
 
-**Mixing themes on the grid:** alternate themes so no two neighbours look the same. In the launch grid, the blue posts sit on the diagonal and the light posts sit in the corners, with dark posts in between. Together they form an X. See `../exports/preview/grid.png`.
+The theme is for the **cover** (slide 1). Inner slides (list, steps, statement, services, CTA) always use the dark theme, so every carousel reads the same after the first swipe.
+
+**Mixing themes on the grid:** alternate themes so no two neighbours look the same. In the launch grid, the blue posts sit on one diagonal and the light posts in the other two corners, with dark posts in between. Together they form an X ([grid preview](../exports/preview/grid.png)):
+
+| | Left | Middle | Right |
+|---|---|---|---|
+| **Top** | 09 Intro · blue | 08 Games · dark | 07 Start · light |
+| **Middle** | 06 Apps · dark | 05 AI · blue | 04 Software · dark |
+| **Bottom** | 03 Upgrades · light | 02 Interactive · dark | 01 Support · blue |
+
+Numbers are the posting order: post 01 first, 09 last (Instagram shows the newest post top-left). Pinned posts always sit in the top row, so pin only the three top-row posts at launch, or the X breaks. Details are in [the launch posts guide](../instagram/03-launch-posts.md#pinning-reorders-the-grid).
 
 ### 8.2 The subtle grid background
 
@@ -510,8 +527,8 @@ Every post has a faint square grid behind the content: thin 2 px lines, cells of
 We use [Lucide](https://lucide.dev) (free, ISC licence).
 
 - Outline icons only, with round line ends. Don't mix with filled icons or emoji inside graphics (emoji are fine in captions).
-- One stroke width per design. Keep icons the same visual size within a slide.
-- One colour per icon: Sky or White on dark, White on blue, Cobalt on light, or White inside a brand-gradient tile. Orange only for one small highlighted icon.
+- One stroke width per design (the templates use about 1.7–1.9). Keep icons the same visual size within a slide.
+- One colour per icon: Sky or White on dark, White on blue, Cobalt on light. Inside a tile: White on a brand-gradient tile, Cobalt on a white tile. Orange only for one small highlighted icon.
 
 | Topic | Lucide icon |
 |---|---|
@@ -560,38 +577,39 @@ Show **real screens, real builds, real people**.
 
 ## 9. Instagram template system
 
-All Instagram graphics are generated from code, so they always match this guide. Feed posts are 1080 × 1350 (4:5). The profile grid shows a 3:4 crop, so all content stays inside an 88 px side margin. Stories, reels and highlight covers are 1080 × 1920.
+All Instagram graphics are generated from code, so every post uses the same colours, fonts and layout. Feed posts are 1080 × 1350 (4:5). The profile grid shows a 3:4 crop, so all content stays inside an 88 px side margin. Stories, reels and highlight covers are 1080 × 1920.
 
 ### 9.1 The six templates
 
 | Template | What it is | When to use it |
 |---|---|---|
-| **Cover** | First slide of every carousel: a tag (e.g. "01 / Games"), a big headline with one accent word, a short mono sub-line, and an icon or the logo | Every post starts with one |
+| **Cover** | First slide of every carousel, in the post's theme (dark, blue or light): a tag (e.g. "01 / Games"), a big headline with one accent word or phrase, a short mono sub-line, and an icon tile or the logo | Every post starts with one |
 | **List** | A slide title and up to 5 numbered points | "What we build", "What we do", "Send us this first" |
 | **Steps** | Up to 4 numbered steps, each with a short name and one line of text, on cards | "How we work", "Why work with us" |
 | **Statement** | One big sentence with a small code-comment kicker ("// who we are") | Positioning, a strong opinion, an announcement |
 | **Services** | A grid of the 8 services, each with its Lucide icon and a short sub-line | The intro post, a "what we do" reminder |
-| **CTA** | The last slide: what to do next (DM "START" or link in bio) | Every carousel ends with one |
+| **CTA** | The last slide: "Got an idea? Let's compile it." and what to do next (DM "START" or tap the link in bio) | Every carousel ends with one |
 
 Other generated assets:
 
 | Asset | Path (from this guide) |
 |---|---|
 | Profile picture | `../exports/profile/profile-picture.png`, `../exports/profile/profile-picture-dark.png` |
-| Highlight covers (Start, Work, Games, Apps, AI, Software, Interactive, Upgrades, Support, Reviews) | `../exports/highlights/01-start.png` … `../exports/highlights/10-reviews.png` |
-| Launch posts (9 carousels, folder number = posting order) | `../exports/posts/NN-<slug>/01.png` (cover), `02.png`, … |
+| Highlight covers: a white Lucide icon on the brand gradient, in this order: Start, Work, Games, Apps, AI, Software, Interactive, Upgrades, Support, Reviews | `../exports/highlights/01-start.png` … `../exports/highlights/10-reviews.png` |
+| Launch posts (9 carousels, folder number = posting order): `01-support`, `02-interactive`, `03-upgrades`, `04-software`, `05-ai`, `06-apps`, `07-start`, `08-games`, `09-intro` | `../exports/posts/NN-<slug>/01.png` (cover), `02.png`, … |
 | Profile mockup and grid preview | `../exports/preview/profile-mockup.png`, `../exports/preview/grid.png` |
 | Brand board | `../exports/brand/brand-board.png` |
 
 ### 9.2 Changing text and regenerating
 
-- **Text:** edit `design/content.mjs`. It is the single source of truth for post copy, themes, posting order and highlights. Wrap one word in `*asterisks*` to give it the accent treatment, e.g. `'Games people want to *replay*.'`
+- **Text:** edit `design/content.mjs`. It is the single source of truth for post copy, themes, posting order and highlights. Wrap one word or a short phrase in `*asterisks*` to give it the accent treatment, e.g. `'Games people want to *replay*.'`
 - **Colours and fonts:** edit `design/tokens.mjs`. Keep them in line with sections 6 and 7 of this guide.
 - **Rebuild everything:**
 
 ```bash
-npm install     # first time only
-npm run build   # regenerates logos, posts, highlights and previews into exports/
+npm install                        # first time only
+npx playwright install chromium    # first time only
+npm run build                      # regenerates logos, posts, highlights and previews into exports/
 ```
 
-Full details are in the README at the root of the repo.
+Full details are in the [README](../README.md).
