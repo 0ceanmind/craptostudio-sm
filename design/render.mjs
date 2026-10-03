@@ -17,7 +17,7 @@ const browser = await chromium.launch();
 const page = await browser.newPage();
 let count = 0;
 
-async function shot(html, file, { width, height, scale = 1 }) {
+async function shot(html, file, { width, height, scale = 1, fullPage = false }) {
   if (page.viewportSize()?.width !== width || page.viewportSize()?.height !== height) {
     await page.setViewportSize({ width, height });
   }
@@ -32,7 +32,7 @@ async function shot(html, file, { width, height, scale = 1 }) {
     const p = await ctx.newPage();
     await p.setContent(html, { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);
-    await p.screenshot({ path: file });
+    await p.screenshot({ path: file, fullPage });
     await ctx.close();
   }
   count++;
@@ -58,9 +58,9 @@ for (const post of posts) {
   }
 }
 
-// Previews built from the files rendered above
-await shot(profileMockup(), out('preview/profile-mockup.png'), { width: 430, height: 1082, scale: 2 });
-await shot(gridPreview(), out('preview/grid.png'), { width: 1080, height: 1440 });
+// Previews built from the files rendered above; both grow with the number of posts.
+await shot(profileMockup(), out('preview/profile-mockup.png'), { width: 430, height: 800, scale: 2, fullPage: true });
+await shot(gridPreview(), out('preview/grid.png'), { width: 1080, height: Math.ceil(posts.length / 3) * 480 });
 await shot(brandBoard(), out('brand/brand-board.png'), { width: 1600, height: 1000, scale: 2 });
 
 await browser.close();

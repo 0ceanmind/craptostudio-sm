@@ -80,8 +80,8 @@ ${profileBio.map((l) => `<div>${l}</div>`).join('')}
 export function gridPreview() {
   const tiles = gridOrder().map((p) => `<div class="t" style="background-image:url(${coverOf(p)})"></div>`).join('');
   return doc(`
-body{width:1080px;height:1440px;background:#fff;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.t{background-size:cover;background-position:center}`, tiles);
+body{width:1080px;background:#fff;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.t{aspect-ratio:3/4;background-size:cover;background-position:center}`, tiles);
 }
 
 export function brandBoard() {

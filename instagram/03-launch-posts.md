@@ -134,7 +134,7 @@ Before you publish post 1, make sure the **"START" saved reply** is ready and te
 | Captions | Paste the whole code block. Line breaks usually stay when you paste. If the app removes the empty lines, the caption still reads fine. Every caption is under 1,000 characters (Instagram allows 2,200). |
 | Your own words | The captions describe the way of working from the [brand guide](../brand/brand-guide.md): clear quote, weekly progress, honest advice. If a line doesn't match how you actually work, change it before you post. |
 | Hook | In the feed, Instagram shows only the start of a caption before "more", so each first line works on its own. All hooks are under 125 characters (counted with a script, shown above each caption). |
-| Hashtags | Instagram limits posts to 5 hashtags. Each caption has 5, always including **#craptostudio**, picked for that post. For later posts, use the sets in [02-content-strategy.md](02-content-strategy.md#hashtags-max-5-per-post). Never add crypto tags (see the [brand guide](../brand/brand-guide.md#how-not-to-be-mistaken-for-a-crypto-account)). |
+| Hashtags | Instagram limits posts to 5 hashtags. Each caption has 5, always including **#craptostudio**. The service posts use the set for that service from [02-content-strategy.md](02-content-strategy.md#hashtags-max-5-per-post), the Intro uses the "Studio / general" set, and the Start post has its own set for people planning a project. Use the same sets for later posts. Never add crypto tags (see the [brand guide](../brand/brand-guide.md#how-not-to-be-mistaken-for-a-crypto-account)). |
 | First comment | Not needed. The hashtags fit in the caption. |
 | Music | Optional. Carousels can have a music track. If you add one, pick a quiet instrumental track. Business accounts may only see a smaller, royalty-free library. That's fine. |
 | Location | Optional. Add your real city (`[your city]`) only if you want local clients to find you. |
@@ -182,7 +182,7 @@ Please check your school's or competition's rules on outside help first. We work
 
 DM us "START" with your project, your deadline and where you're stuck.
 
-#craptostudio #programming #hackathon #codingmentor #computerscience
+#craptostudio #hackathon #programming #learntocode #computerscience
 ```
 
 **Alt text** (cover)
@@ -276,7 +276,7 @@ It doesn't matter who wrote the code: you, another studio, or a freelancer who h
 
 DM us "START" with a link to your project and what's bothering you about it.
 
-#craptostudio #appdevelopment #softwaredevelopment #gamedev #codereview
+#craptostudio #codereview #refactoring #bugfix #appdevelopment
 ```
 
 **Alt text** (cover)
@@ -322,7 +322,7 @@ Then we build in small steps, so you can try each part and give feedback while i
 
 DM us "START" and tell us which task takes up the most time in your week.
 
-#craptostudio #softwaredevelopment #customsoftware #webdevelopment #smallbusiness
+#craptostudio #softwaredevelopment #webdevelopment #webapp #businesssoftware
 ```
 
 **Alt text** (cover)
@@ -369,7 +369,7 @@ And we'll explain in plain words where your data goes and who can see it.
 
 Got a task you wish would run by itself? DM us "START" and describe it in one sentence.
 
-#craptostudio #artificialintelligence #aiautomation #aiforbusiness #smallbusiness
+#craptostudio #artificialintelligence #aiautomation #aiforbusiness #chatbot
 ```
 
 **Alt text** (cover)

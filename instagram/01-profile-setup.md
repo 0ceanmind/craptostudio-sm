@@ -22,7 +22,7 @@ Work through it top to bottom, then tick off the [launch checklist](#11-launch-c
 | Highlight covers (10) | `../exports/highlights/01-start.png` … `10-reviews.png` |
 | Launch posts (9) | `../exports/posts/01-support/` … `09-intro/` (in each folder: `01.png` = cover, then `02.png`, `03.png`, …) |
 
-All of these are made from your own logo files in [`../brand/logo/source/`](../brand/logo/source/). The profile picture uses the symbol-only logo ([`Crapto Studio-09.png`](../brand/logo/source/Crapto%20Studio-09.png)).
+All of these are made from your own logo files in [`../brand/logo/source/`](../brand/logo/source/). The profile picture shows the colour symbol only (the same symbol as [`Crapto Studio-09.png`](../brand/logo/source/Crapto%20Studio-09.png)). The build cuts it from your main logo file, [`Crapto Studio-08.png`](../brand/logo/source/Crapto%20Studio-08.png).
 
 ### Information to prepare
 
@@ -398,7 +398,11 @@ What we do: Unity games, iOS & Android apps, software, custom AI, interactive co
 If your idea touches any of these, we'd be happy to talk.
 ```
 
-Use reply 5 also when someone misunderstands the name (for example, thinks it's a finance or trading business). Keep it short and friendly, and point to what you build.
+**Someone thinks the name means crypto?** Don't use reply 5 for this. Use the short ready reply from the [brand guide](../brand/brand-guide.md#how-not-to-be-mistaken-for-a-crypto-account), so every answer is the same:
+
+```
+Fair question! No crypto here 🙂 Crapto Studio is a tech studio: we build games, apps, software and custom AI.
+```
 
 ### FAQ questions (ice breakers)
 

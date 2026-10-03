@@ -54,9 +54,9 @@ npx playwright install chromium   # first time only
 npm run build                     # logo crops + every image in exports/
 ```
 
-`npm run logo` re-cuts the logo PNGs from `brand/logo/source/`, and `npm run render` re-renders the posts, highlights, profile pictures and previews.
+`npm run logo` re-cuts the logo PNGs from `brand/logo/source/`, and `npm run render` re-renders the posts, highlights, profile pictures and previews. `npm run check` measures text contrast on every template against the real rendered background and fails if anything is too faint to read on a phone.
 
-To add a new carousel, add an entry to `posts` in `design/content.mjs`. Slide types are `list`, `steps`, `statement`, `services` and `cta`.
+To add a new carousel, add an entry to `posts` in `design/content.mjs`. Slide types are `list`, `steps`, `statement`, `services`, `image` (a screenshot or photo, for case studies) and `cta`. A post with no slides is a single image, and its cover drops the "Swipe →" hint.
 
 ## Credits
 

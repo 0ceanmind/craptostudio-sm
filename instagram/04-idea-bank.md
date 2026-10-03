@@ -427,7 +427,7 @@ TEACH and case-study carousels work best with 5–10 slides; OFFER carousels can
 | 6 | `statement` | Kicker `// our honest take`. The summary line |
 | 7 | `cta` | DM "START" |
 
-**Ready to paste into `posts` in `design/content.mjs`** (change `order` to the next free number; the slides render to `exports/posts/10-ai-myths/`):
+**Ready to paste into `posts` in `design/content.mjs`** (change `order` to the next free number; the slides render to `exports/posts/10-ai-myths/`, and the post is also added to the grid previews in `exports/preview/`):
 
 ```js
 {
@@ -458,7 +458,7 @@ TEACH and case-study carousels work best with 5–10 slides; OFFER carousels can
 | Slide | Template | Content |
 |---|---|---|
 | 1 | `cover` | The question: "How much does an *app* cost?" |
-| 2 | `statement` | Kicker `// honest answer`. "It depends. Here's on what." |
+| 2 | `statement` | Kicker `// honest answer`. "It depends. Here's what it depends on." |
 | 3 | `list` | What it depends on (items 1–3 or 1–5) |
 | 4 | `list` | More factors, or "How to keep it smaller" (start with one platform, cut nice-to-haves, reuse existing tools) |
 | 5 | `statement` | Kicker `// next step`. "Send us the idea, and we'll give you a real quote." |

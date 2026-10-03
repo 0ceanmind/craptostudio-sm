@@ -171,7 +171,7 @@ Stories carry most of the OFFER work (a short DM "START" reminder once a week). 
 | One idea per Reel | Explain three services in one video |
 | Keep demos short (about 7–30 seconds). Step-by-step Reels, like the scripts in the idea bank, can run about 40 seconds | Add slow intros to fill time |
 
-**Example hooks** (counted; all under 60 characters, so they stay readable on screen and in the caption's first line). Use a hook only if the video really shows it:
+**Example hooks** (counted; all under 60 characters, so they stay readable as on-screen text). Use a hook only if the video really shows it:
 
 - "This used to be a spreadsheet. Now it's a real system." (54)
 - "Do you actually need AI? 3 honest signs." (40)
@@ -276,9 +276,9 @@ Built for a small team. The days are an example; move them to fit your week.
 
 | Day | Feed | Stories | Engagement |
 |---|---|---|---|
-| Mon | — (plan and batch-produce the week) | WIP clip + poll | 15–20 min |
+| Mon | — (plan and batch-produce the week) | Poll (*This or that*, or *What should we post next?*) | 15–20 min |
 | Tue | **Reel 1**: SHOW | Share the Reel | 15–20 min |
-| Wed | — | Question sticker or quick tip | 15–20 min |
+| Wed | — | *WIP Wednesday* clip, or a question sticker | 15–20 min |
 | Thu | **Carousel**: TEACH or OFFER (alternate weeks) | Share the carousel + quiz | 15–20 min |
 | Fri | — | Behind the scenes / DM "START" reminder | 15–20 min |
 | Sat | **Reel 2**: BUILD (or TEACH once a month) | Optional | Reply to comments and DMs only |
@@ -328,7 +328,7 @@ Instagram search uses the words in your caption. Clear on-screen text helps peop
 
 **Caption structure**
 
-1. **Hook line** with a keyword (this shows before "… more").
+1. **Hook line** with a keyword (this shows before "… more"). Keep it under 125 characters, like the launch captions, with the keyword in the first few words.
 2. **2–4 short lines** of value or context.
 3. **One action**: DM "START", save it, or share it with someone.
 4. **Hashtags** (max 5) at the end.
@@ -354,7 +354,7 @@ For photo and carousel posts, add alt text (Advanced settings → Accessibility 
 
 Example: the alt text for launch post `08-games` (from [`03-launch-posts.md`](03-launch-posts.md)):
 
-> Crapto Studio post on a dark navy background with a game controller icon and the headline "Games people want to replay." The line below reads: Unity, 2D and 3D, mobile, PC and web.
+> Dark slide, game controller icon: "Games people want to replay." Unity games for mobile, PC and web.
 
 ### Hashtags: max 5 per post
 
@@ -493,7 +493,7 @@ Your strongest SHOW content (idea S8). Post one as soon as you finish a project 
 | 6. Client quote | `statement` | `[add a real client quote]`, only with permission. No quote? Skip this slide |
 | 7. CTA | `cta` | DM "START" |
 
-The templates make text slides only. Add real screenshots (1080 × 1350) in the Instagram app when you build the post. Also post a short Reel version (screen recording + 3 lines of on-screen text) and invite the client as a Collab if they agree.
+The templates make text slides only. You can add real screenshots (1080 × 1350) in the Instagram app, but each template slide shows a page number (for example `02 / 07`) that counts template slides only, so added screenshots make those numbers wrong. Show the screens in the Reel version instead, or see the options under [Formula 5](04-idea-bank.md#formula-5-before--after) in the idea bank. Also post a short Reel version (screen recording + 3 lines of on-screen text) and invite the client as a Collab if they agree.
 
 ### Social proof, once you have it
 
@@ -599,7 +599,7 @@ Publish the 9 launch posts from [`03-launch-posts.md`](03-launch-posts.md) **in 
 
 | Day | Feed | Stories / profile | Engagement |
 |---|---|---|---|
-| 1 | Launch posts **01 Support**, **02 Interactive**, **03 Upgrades** | Share each post to your story right after you publish it | Reply to comments. Don't follow accounts or share the profile yet: the grid isn't finished ([why](03-launch-posts.md#publish-all-9-before-you-promote-the-account)) |
+| 1 | Launch posts **01 Support**, **02 Interactive**, **03 Upgrades** | Share each post to your story right after you publish it | Reply to comments. Don't share the profile link or run ads yet: the grid isn't finished ([why](03-launch-posts.md#publish-all-9-before-you-promote-the-account)). Following a few accounts in your niche is fine |
 | 2 | Launch posts **04 Software**, **05 AI**, **06 Apps** | Share each post to your story | Reply to comments and DMs |
 | 3 | Launch posts **07 Start**, **08 Games**, **09 Intro** | Share each post to your story. After 09 is live: pin the top row (`07-start` first, then `08-games`, then `09-intro`, see [`01-profile-setup.md` section 10](01-profile-setup.md#10-pinned-posts)), create the highlights in reverse order ([section 8](01-profile-setup.md#8-story-highlights); skip Reviews until you have a real review), and check the grid against [`../exports/preview/grid.png`](../exports/preview/grid.png) | Start the daily routine. Follow 10–20 accounts in your target niches |
 | 4 | — | "We're live" story + link sticker. Tell your own network: personal profiles, WhatsApp, LinkedIn, email signature | Routine |

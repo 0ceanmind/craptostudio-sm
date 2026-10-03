@@ -1,5 +1,10 @@
 // Content for every rendered asset. Edit text here and run `npm run render`.
-// In headlines, wrap a word in *asterisks* to give it the accent treatment.
+// In headlines, wrap a word or phrase in *asterisks* to give it the accent treatment.
+//
+// Slide types: list, steps, statement, services, cta, and image for screenshots/photos:
+//   { type: 'image', src: 'photos/dashboard.png', title: 'The *after*', caption: 'Load time: 9s → 1.2s', fit: 'contain' }
+// `src` is relative to the repo root (png, jpg or webp); fit is 'contain' (default) or 'cover'.
+// A post with `slides: []` is a single image: its cover drops the "Swipe →" hint.
 
 export const services = [
   { icon: 'gamepad-2', title: 'Games', sub: 'Unity · 2D & 3D' },

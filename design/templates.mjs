@@ -51,11 +51,13 @@ const themes = {
     tile: gradient.brand, tileIcon: color.white,
     em: sparkText,
   },
+  // Cobalt, only shaded darker, so small white text stays above 4.5:1 everywhere.
+  // (White on the lighter blues is too weak: 3.2:1 on Crapto Blue, 2.3:1 on Sky.)
   blue: {
-    bg: gradient.brand,
-    text: color.white, sub: 'rgba(255,255,255,0.82)', line: 'rgba(255,255,255,0.28)',
-    symbol: 'symbol-white', watermark: 'symbol-white', watermarkOpacity: 0.13,
-    grid: 'rgba(255,255,255,0.08)',
+    bg: `linear-gradient(160deg, rgba(255,255,255,.05) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.2) 100%), ${color.cobalt}`,
+    text: color.white, sub: color.white, line: 'rgba(255,255,255,0.28)',
+    symbol: 'symbol-white', watermark: 'symbol-white', watermarkOpacity: 0.07,
+    grid: 'rgba(255,255,255,0.055)',
     tile: color.white, tileIcon: color.cobalt,
     em: underline(color.amber),
   },
@@ -97,12 +99,12 @@ body{background:${t.bg};color:${t.text};position:relative}
 .wm{position:absolute;width:980px;right:-300px;bottom:-170px;opacity:${t.watermarkOpacity};transform:rotate(-8deg)}
 .frame{position:absolute;inset:${PAD}px;display:flex;flex-direction:column}
 .top{display:flex;justify-content:space-between;align-items:center;height:56px}
-.brand{display:flex;align-items:center;gap:18px;font-family:${font.mono};font-size:21px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.brand{display:flex;align-items:center;gap:18px;font-family:${font.mono};font-size:23px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 .brand img{height:50px;display:block}
-.tag{font-family:${font.mono};font-size:21px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:${t.sub}}
+.tag{font-family:${font.mono};font-size:23px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:${t.sub}}
 .tag b{color:${t.text};font-weight:700}
 em{font-style:normal;${t.em}}
-.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-family:${font.mono};font-size:23px;font-weight:500;letter-spacing:.06em;color:${t.sub}}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-family:${font.mono};font-size:24px;font-weight:500;letter-spacing:.05em;color:${t.sub}}
 `;
 }
 
@@ -127,14 +129,14 @@ export function cover(post) {
 .tile{margin-top:150px;width:128px;height:128px;border-radius:36px;background:${t.tile};color:${t.tileIcon};display:grid;place-items:center;box-shadow:0 18px 40px rgba(11,22,40,.22)}
 .lead-logo{margin-top:120px;height:240px;align-self:flex-start}
 h1{margin-top:56px;font-size:${size}px;line-height:1.04;letter-spacing:-.028em;word-spacing:.04em;font-weight:800;max-width:900px}
-.sub{margin-top:40px;font-family:${font.mono};font-size:27px;font-weight:500;color:${t.sub};letter-spacing:.01em}
+.sub{margin-top:40px;font-family:${font.mono};font-size:28px;font-weight:500;color:${t.sub};letter-spacing:.01em}
 `;
   const body = `<div class="grid"></div><img class="wm" src="${logo(t.watermark)}"><div class="frame">
 ${brandRow(t, `<div class="tag">[ <b>${post.tag}</b> ]</div>`)}
 ${lead}
 <h1>${accent(post.headline)}</h1>
 <div class="sub">${post.sub}</div>
-<div class="foot"><span>${handle}</span><span>Swipe →</span></div>
+<div class="foot"><span>${handle}</span><span>${post.slides?.length ? 'Swipe →' : ''}</span></div>
 </div>`;
   return page({ width: POST_W, height: POST_H, css, body });
 }
@@ -172,9 +174,9 @@ export function stepsSlide(slide, n, total) {
   const css = `${h2Css}
 ol{list-style:none;margin-top:56px;display:flex;flex-direction:column;gap:20px}
 li{display:grid;grid-template-columns:84px 1fr;column-gap:30px;padding:30px 34px;background:${color.navy};border:2px solid ${inner.line};border-radius:28px}
-li .n{grid-row:span 2;font-family:${font.mono};font-size:28px;font-weight:700;color:${color.white};background:${gradient.brand};height:64px;border-radius:18px;display:grid;place-items:center}
+li .n{grid-row:span 2;font-family:${font.mono};font-size:28px;font-weight:700;color:${color.white};background:${color.cobalt};height:64px;border-radius:18px;display:grid;place-items:center}
 li .h{font-size:42px;font-weight:800;letter-spacing:-.015em;word-spacing:.03em;line-height:1.1}
-li .d{margin-top:10px;font-size:29px;font-weight:500;line-height:1.38;color:${inner.sub}}
+li .d{margin-top:10px;font-size:30px;font-weight:500;line-height:1.36;color:${inner.sub}}
 `;
   const items = slide.items.map(([h, d], i) =>
     `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="h">${h}</span><span class="d">${d}</span></li>`).join('');
@@ -195,11 +197,26 @@ export function servicesSlide(slide, n, total) {
 .card{background:${color.navy};border:2px solid ${inner.line};border-radius:28px;padding:36px 26px;display:flex;align-items:center;gap:22px}
 .card .i{flex:none;width:84px;height:84px;border-radius:24px;background:${gradient.brand};color:${color.white};display:grid;place-items:center}
 .card .h{color:${inner.text};font-size:36px;font-weight:800;letter-spacing:-.015em;line-height:1.1}
-.card .s{margin-top:8px;color:${inner.sub};font-family:${font.mono};font-size:20px;font-weight:500;line-height:1.3}
+.card .s{margin-top:8px;color:${inner.sub};font-family:${font.mono};font-size:22px;font-weight:500;line-height:1.3}
 `;
   const cards = services.map((s) =>
     `<div class="card"><div class="i">${icon(s.icon, { size: 44, stroke: 1.9 })}</div><div><div class="h">${s.title}</div><div class="s">${s.sub}</div></div></div>`).join('');
   return innerFrame(n, total, `<h2>${slide.title}</h2><div class="cards">${cards}</div>`, css);
+}
+
+// A screenshot or photo, e.g. for case studies. `src` is relative to the repo root.
+export function imageSlide(slide, n, total) {
+  const ext = path.extname(slide.src).slice(1).toLowerCase();
+  const type = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp' }[ext];
+  if (!type) throw new Error(`image slide: unsupported file type .${ext} (${slide.src})`);
+  const src = dataUri(path.join(root, slide.src), type);
+  const css = `${h2Css}
+h2{margin-top:72px}
+.shot{flex:1;min-height:0;margin:${slide.title ? 44 : 64}px 0 ${slide.caption ? 0 : 40}px;border-radius:28px;border:2px solid ${inner.line};background:${color.navy} url(${src}) center/${slide.fit === 'cover' ? 'cover' : 'contain'} no-repeat}
+.cap{margin:28px 0 40px;font-size:32px;font-weight:500;line-height:1.35;color:${inner.sub}}
+`;
+  const content = `${slide.title ? `<h2>${accent(slide.title)}</h2>` : ''}<div class="shot"></div>${slide.caption ? `<div class="cap">${accent(slide.caption)}</div>` : ''}`;
+  return innerFrame(n, total, content, css);
 }
 
 export function ctaSlide(n, total) {
@@ -210,7 +227,7 @@ p{margin-top:44px;font-size:38px;font-weight:500;line-height:1.38;color:${inner.
 p b{color:${inner.text};font-weight:800}
 .pills{margin-top:56px;display:flex;gap:16px}
 .pill{font-family:${font.mono};font-size:24px;font-weight:700;padding:18px 28px;border:2px solid ${inner.line};border-radius:999px;color:${inner.text}}
-.pill.on{background:${gradient.brand};border-color:transparent}
+.pill.on{background:${color.cobalt};border-color:${color.cobalt}}
 `;
   const content = `<img class="m" src="${logo('symbol-color')}">
 <h2>Got an idea?<br><em>Let’s compile it.</em></h2>
@@ -225,6 +242,7 @@ export function slideHtml(slide, n, total) {
     case 'steps': return stepsSlide(slide, n, total);
     case 'statement': return statementSlide(slide, n, total);
     case 'services': return servicesSlide(slide, n, total);
+    case 'image': return imageSlide(slide, n, total);
     case 'cta': return ctaSlide(n, total);
     default: throw new Error(`unknown slide type ${slide.type}`);
   }
