@@ -39,8 +39,23 @@ export function icon(name, { size = 48, stroke = 2 } = {}) {
 // *word* → accent span; trailing punctuation joins the span so it doesn't drift away from the word
 const accent = (text) => text.replace(/\*(.+?)\*([.,!?]*)/g, '<em>$1$2</em>');
 
+// The bundled font subsets have no arrows (U+2192 falls back to a thin system glyph), so
+// arrows are drawn with Lucide icons instead.
+const glyph = (name) => `<span class="gl">${icon(name, { size: 24, stroke: 2.5 })}</span>`;
+
+// All text from content.mjs goes through here: keeps hyphenated words and “DM START” on one line,
+// applies accents, swaps arrows for icons, and (for big display type) tucks in loose apostrophes.
+function rich(text, { display = false } = {}) {
+  let s = text
+    .replace(/\b([A-Za-z0-9]+(?:-[A-Za-z0-9]+)+)\b/g, '<span class="nw">$1</span>')
+    .replace(/DM “/g, 'DM&nbsp;“');
+  s = accent(s).replace(/\n/g, '<br>');
+  if (display) s = s.replace(/’/g, '<span class="ap">’</span>');
+  return s.replace(/→/g, glyph('arrow-right'));
+}
+
 const sparkText = `background:${gradient.spark};-webkit-background-clip:text;background-clip:text;color:transparent;`;
-const underline = (c) => `text-decoration:underline;text-decoration-color:${c};text-decoration-thickness:.085em;text-underline-offset:.12em;text-decoration-skip-ink:none;`;
+const underline = (c) => `text-decoration:underline;text-decoration-color:${c};text-decoration-thickness:.085em;text-underline-offset:.12em;text-decoration-skip-ink:auto;`;
 
 const themes = {
   dark: {
@@ -103,7 +118,12 @@ body{background:${t.bg};color:${t.text};position:relative}
 .brand img{height:50px;display:block}
 .tag{font-family:${font.mono};font-size:23px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:${t.sub}}
 .tag b{color:${t.text};font-weight:700}
-em{font-style:normal;${t.em}}
+em{font-style:normal;white-space:nowrap;${t.em}}
+.nw{white-space:nowrap}
+.ap{margin:0 -.04em}
+.gl{display:inline-flex;vertical-align:-.12em}
+.gl svg{width:.9em;height:.9em}
+h1,h2,p,li,.sub,.cap,.card{text-wrap:pretty}
 .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-family:${font.mono};font-size:24px;font-weight:500;letter-spacing:.05em;color:${t.sub}}
 `;
 }
@@ -134,9 +154,9 @@ h1{margin-top:56px;font-size:${size}px;line-height:1.04;letter-spacing:-.028em;w
   const body = `<div class="grid"></div><img class="wm" src="${logo(t.watermark)}"><div class="frame">
 ${brandRow(t, `<div class="tag">[ <b>${post.tag}</b> ]</div>`)}
 ${lead}
-<h1>${accent(post.headline)}</h1>
-<div class="sub">${post.sub}</div>
-<div class="foot"><span>${handle}</span><span>${post.slides?.length ? 'Swipe →' : ''}</span></div>
+<h1>${rich(post.headline, { display: true })}</h1>
+<div class="sub">${rich(post.sub)}</div>
+<div class="foot"><span>${handle}</span><span>${post.slides?.length ? rich('Swipe →') : ''}</span></div>
 </div>`;
   return page({ width: POST_W, height: POST_H, css, body });
 }
@@ -151,7 +171,7 @@ function innerFrame(n, total, content, css, last = false) {
     body: `<div class="grid" style="opacity:.7"></div><div class="frame">
 ${brandRow(inner, `<div class="tag"><b>${String(n).padStart(2, '0')}</b> / ${String(total).padStart(2, '0')}</div>`)}
 ${content}
-<div class="foot"><span>${handle}</span><span>${last ? 'Save for later ↗' : 'Swipe →'}</span></div>
+<div class="foot"><span>${handle}</span><span>${last ? `Save for later ${glyph('bookmark')}` : rich('Swipe →')}</span></div>
 </div>`,
   });
 }
@@ -160,27 +180,29 @@ const h2Css = `h2{margin-top:104px;font-size:76px;line-height:1;letter-spacing:-
 
 export function listSlide(slide, n, total) {
   const css = `${h2Css}
-ol{list-style:none;margin-top:60px;border-top:2px solid ${inner.line}}
-li{display:flex;gap:36px;align-items:baseline;padding:38px 0;border-bottom:2px solid ${inner.line}}
+ol{list-style:none;margin:60px 0 48px;border-top:2px solid ${inner.line};flex:1;max-height:840px;display:flex;flex-direction:column}
+li{flex:1;display:flex;align-items:center;padding:22px 0;border-bottom:2px solid ${inner.line}}
+li .row{display:flex;gap:36px;align-items:baseline}
 li .n{font-family:${font.mono};font-size:27px;font-weight:700;color:${color.spark};min-width:44px}
 li .x{font-size:43px;line-height:1.22;font-weight:700;letter-spacing:-.01em;word-spacing:.03em}
 `;
+  // Rows share the space between title and footer: short items spread out, long ones compress.
   const items = slide.items.map((it, i) =>
-    `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="x">${accent(it)}</span></li>`).join('');
-  return innerFrame(n, total, `<h2>${slide.title}</h2><ol>${items}</ol>`, css);
+    `<li><div class="row"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="x">${rich(it)}</span></div></li>`).join('');
+  return innerFrame(n, total, `<h2>${rich(slide.title, { display: true })}</h2><ol>${items}</ol>`, css);
 }
 
 export function stepsSlide(slide, n, total) {
   const css = `${h2Css}
-ol{list-style:none;margin-top:56px;display:flex;flex-direction:column;gap:20px}
-li{display:grid;grid-template-columns:84px 1fr;column-gap:30px;padding:30px 34px;background:${color.navy};border:2px solid ${inner.line};border-radius:28px}
+ol{list-style:none;margin:52px 0 48px;display:flex;flex-direction:column;gap:16px}
+li{display:grid;grid-template-columns:84px 1fr;column-gap:30px;padding:28px 34px;background:${color.navy};border:2px solid ${inner.line};border-radius:28px}
 li .n{grid-row:span 2;font-family:${font.mono};font-size:28px;font-weight:700;color:${color.white};background:${color.cobalt};height:64px;border-radius:18px;display:grid;place-items:center}
 li .h{font-size:42px;font-weight:800;letter-spacing:-.015em;word-spacing:.03em;line-height:1.1}
 li .d{margin-top:10px;font-size:30px;font-weight:500;line-height:1.36;color:${inner.sub}}
 `;
   const items = slide.items.map(([h, d], i) =>
-    `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="h">${h}</span><span class="d">${d}</span></li>`).join('');
-  return innerFrame(n, total, `<h2>${slide.title}</h2><ol>${items}</ol>`, css);
+    `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="h">${rich(h)}</span><span class="d">${rich(d)}</span></li>`).join('');
+  return innerFrame(n, total, `<h2>${rich(slide.title, { display: true })}</h2><ol>${items}</ol>`, css);
 }
 
 export function statementSlide(slide, n, total) {
@@ -188,20 +210,20 @@ export function statementSlide(slide, n, total) {
 .k{margin-top:170px;font-family:${font.mono};font-size:28px;font-weight:700;color:${color.sky}}
 p{margin-top:40px;font-size:72px;line-height:1.16;letter-spacing:-.022em;word-spacing:.04em;font-weight:700}
 `;
-  return innerFrame(n, total, `<div class="k">${slide.kicker}</div><p>${accent(slide.text)}</p>`, css);
+  return innerFrame(n, total, `<div class="k">${slide.kicker}</div><p>${rich(slide.text, { display: true })}</p>`, css);
 }
 
 export function servicesSlide(slide, n, total) {
   const css = `${h2Css}
-.cards{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cards{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:20px}
 .card{background:${color.navy};border:2px solid ${inner.line};border-radius:28px;padding:36px 26px;display:flex;align-items:center;gap:22px}
 .card .i{flex:none;width:84px;height:84px;border-radius:24px;background:${gradient.brand};color:${color.white};display:grid;place-items:center}
 .card .h{color:${inner.text};font-size:36px;font-weight:800;letter-spacing:-.015em;line-height:1.1}
 .card .s{margin-top:8px;color:${inner.sub};font-family:${font.mono};font-size:22px;font-weight:500;line-height:1.3}
 `;
   const cards = services.map((s) =>
-    `<div class="card"><div class="i">${icon(s.icon, { size: 44, stroke: 1.9 })}</div><div><div class="h">${s.title}</div><div class="s">${s.sub}</div></div></div>`).join('');
-  return innerFrame(n, total, `<h2>${slide.title}</h2><div class="cards">${cards}</div>`, css);
+    `<div class="card"><div class="i">${icon(s.icon, { size: 44, stroke: 1.9 })}</div><div><div class="h">${rich(s.title)}</div><div class="s">${rich(s.sub)}</div></div></div>`).join('');
+  return innerFrame(n, total, `<h2>${rich(slide.title, { display: true })}</h2><div class="cards">${cards}</div>`, css);
 }
 
 // A screenshot or photo, e.g. for case studies. `src` is relative to the repo root.
@@ -215,11 +237,20 @@ h2{margin-top:72px}
 .shot{flex:1;min-height:0;margin:${slide.title ? 44 : 64}px 0 ${slide.caption ? 0 : 40}px;border-radius:28px;border:2px solid ${inner.line};background:${color.navy} url(${src}) center/${slide.fit === 'cover' ? 'cover' : 'contain'} no-repeat}
 .cap{margin:28px 0 40px;font-size:32px;font-weight:500;line-height:1.35;color:${inner.sub}}
 `;
-  const content = `${slide.title ? `<h2>${accent(slide.title)}</h2>` : ''}<div class="shot"></div>${slide.caption ? `<div class="cap">${accent(slide.caption)}</div>` : ''}`;
+  const content = `${slide.title ? `<h2>${rich(slide.title, { display: true })}</h2>` : ''}<div class="shot"></div>${slide.caption ? `<div class="cap">${rich(slide.caption)}</div>` : ''}`;
   return innerFrame(n, total, content, css);
 }
 
-export function ctaSlide(n, total) {
+// Last slide of every carousel. A post can override the headline/body, e.g. the mentoring post
+// shouldn't promise to "compile" a student's project for them.
+export const CTA_DEFAULT = {
+  headline: 'Got an idea?\n*Let’s compile it.*',
+  body: 'DM us **“START”** or tap the link in bio, and we’ll reply with next steps.',
+};
+
+export function ctaSlide(slide, n, total) {
+  const headline = slide.headline ?? CTA_DEFAULT.headline;
+  const body = (slide.body ?? CTA_DEFAULT.body).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
   const css = `
 .m{margin-top:110px;height:190px;align-self:flex-start}
 h2{margin-top:70px;font-size:112px;line-height:1.04;letter-spacing:-.028em;word-spacing:.04em;font-weight:800}
@@ -230,9 +261,9 @@ p b{color:${inner.text};font-weight:800}
 .pill.on{background:${color.cobalt};border-color:${color.cobalt}}
 `;
   const content = `<img class="m" src="${logo('symbol-color')}">
-<h2>Got an idea?<br><em>Let’s compile it.</em></h2>
-<p>DM us <b>“START”</b> or tap the link in bio, and we’ll reply with next steps.</p>
-<div class="pills"><span class="pill on">Follow ${handle}</span><span class="pill">Save</span><span class="pill">Share</span></div>`;
+<h2>${rich(headline, { display: true })}</h2>
+<p>${rich(body)}</p>
+<div class="pills"><span class="pill on">Follow ${handle}</span></div>`;
   return innerFrame(n, total, content, css, true);
 }
 
@@ -243,7 +274,7 @@ export function slideHtml(slide, n, total) {
     case 'statement': return statementSlide(slide, n, total);
     case 'services': return servicesSlide(slide, n, total);
     case 'image': return imageSlide(slide, n, total);
-    case 'cta': return ctaSlide(n, total);
+    case 'cta': return ctaSlide(slide, n, total);
     default: throw new Error(`unknown slide type ${slide.type}`);
   }
 }
@@ -266,6 +297,6 @@ export function highlightCover(h) {
   return page({
     width: 1080, height: 1920,
     css: `body{background:${gradient.brand};display:grid;place-items:center;color:${color.white}}`,
-    body: icon(h.icon, { size: 330, stroke: 1.7 }),
+    body: icon(h.icon, { size: 360, stroke: 2.1 }),
   });
 }

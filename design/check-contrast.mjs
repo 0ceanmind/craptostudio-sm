@@ -2,8 +2,9 @@
 // (gradients, glows and the watermark included), not just the palette values.
 // Usage: npm run check        Exits non-zero if any text falls below its threshold.
 //
-// Thresholds are stricter than WCAG because posts are viewed at about 1/3 scale on a phone:
-// 4.5:1 for anything under 48px on the 1080px canvas, 3:1 for big headlines.
+// Posts are viewed at about 1/3 scale on a phone, so "large text" (allowed 3:1) means
+// 56px+ bold or 72px+ regular on the 1080px canvas; everything else needs 4.5:1.
+// Gradient-filled accent text is measured against each of its gradient's colour stops.
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { posts } from './content.mjs';
@@ -21,9 +22,10 @@ const blend = (fg, a, bg) => fg.map((v, i) => v * a + bg[i] * (1 - a));
 
 const pages = [];
 for (const post of posts) {
-  const total = post.slides.length + 1;
+  const slides = post.slides ?? [];
+  const total = slides.length + 1;
   pages.push([`${post.slug} cover`, cover(post)]);
-  post.slides.forEach((s, i) => {
+  slides.forEach((s, i) => {
     if (s.type !== 'image') pages.push([`${post.slug} slide ${i + 2}`, slideHtml(s, i + 2, total)]);
   });
 }
@@ -47,12 +49,16 @@ for (const [name, html] of pages) {
       if (!node.textContent.trim()) continue;
       const el = node.parentElement;
       const cs = getComputedStyle(el);
-      if (cs.color === 'rgba(0, 0, 0, 0)') continue; // gradient-filled accent text
+      // Gradient-filled text (background-clip:text) has a transparent colour; use its gradient stops.
+      const colors = cs.color === 'rgba(0, 0, 0, 0)'
+        ? (cs.backgroundImage.match(/rgba?\([^)]+\)/g) || [])
+        : [cs.color];
+      if (!colors.length) continue;
       const range = document.createRange();
       range.selectNodeContents(node);
       for (const r of range.getClientRects()) {
         if (r.width < 2 || r.height < 2) continue;
-        out.push({ text: node.textContent.trim().slice(0, 40), color: cs.color, size: parseFloat(cs.fontSize),
+        out.push({ text: node.textContent.trim().slice(0, 40), colors, size: parseFloat(cs.fontSize), weight: parseInt(cs.fontWeight, 10),
           x: Math.max(0, Math.floor(r.left)), y: Math.max(0, Math.floor(r.top)), w: Math.ceil(r.width), h: Math.ceil(r.height) });
       }
     }
@@ -60,22 +66,25 @@ for (const [name, html] of pages) {
   });
 
   // Same page with all text hidden = the background behind the text.
-  await page.addStyleTag({ content: '*{color:transparent!important;text-decoration-color:transparent!important}em{background-image:none!important}' });
+  await page.addStyleTag({ content: '*{color:transparent!important;text-decoration-color:transparent!important}em{background-image:none!important}.gl{visibility:hidden!important}' });
   const { data, info } = await sharp(await page.screenshot()).removeAlpha().raw().toBuffer({ resolveWithObject: true });
 
   for (const run of runs) {
-    const m = run.color.match(/rgba?\(([^)]+)\)/)[1].split(',').map((v) => parseFloat(v));
-    const fg = m.slice(0, 3);
-    const alpha = m[3] ?? 1;
     let worst = Infinity;
-    for (let y = run.y; y < Math.min(run.y + run.h, info.height); y += 2) {
-      for (let x = run.x; x < Math.min(run.x + run.w, info.width); x += 2) {
-        const i = (y * info.width + x) * 3;
-        const bg = [data[i], data[i + 1], data[i + 2]];
-        worst = Math.min(worst, ratio(blend(fg, alpha, bg), bg));
+    for (const c of run.colors) {
+      const m = c.match(/rgba?\(([^)]+)\)/)[1].split(',').map((v) => parseFloat(v));
+      const fg = m.slice(0, 3);
+      const alpha = m[3] ?? 1;
+      for (let y = run.y; y < Math.min(run.y + run.h, info.height); y += 2) {
+        for (let x = run.x; x < Math.min(run.x + run.w, info.width); x += 2) {
+          const i = (y * info.width + x) * 3;
+          const bg = [data[i], data[i + 1], data[i + 2]];
+          worst = Math.min(worst, ratio(blend(fg, alpha, bg), bg));
+        }
       }
     }
-    const min = run.size >= 48 ? 3 : 4.5;
+    const large = (run.size >= 56 && run.weight >= 700) || run.size >= 72;
+    const min = large ? 3 : 4.5;
     checked++;
     if (worst < min) {
       const key = `${name}|${run.text}`;

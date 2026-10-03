@@ -29,7 +29,7 @@ instagram/
 exports/                    upload-ready images (generated, see below)
   profile/                  profile picture (white and dark versions), 1080×1080
   highlights/               10 story highlight covers, 1080×1920
-  posts/NN-<name>/          launch carousels, 1080×1350; 01.png is the cover
+  posts/NN-<slug>/          launch carousels, 1080×1350; 01.png is the cover
   logo/                     trimmed logo, symbol and wordmark PNGs (colour/white/black)
   preview/                  profile mockup and grid preview
   brand/brand-board.png     one-page brand overview
@@ -54,9 +54,9 @@ npx playwright install chromium   # first time only
 npm run build                     # logo crops + every image in exports/
 ```
 
-`npm run logo` re-cuts the logo PNGs from `brand/logo/source/`, and `npm run render` re-renders the posts, highlights, profile pictures and previews. `npm run check` measures text contrast on every template against the real rendered background and fails if anything is too faint to read on a phone.
+`npm run logo` re-cuts the logo PNGs from `brand/logo/source/`, and `npm run render` re-renders the posts, highlights, profile pictures and previews. `npm run check` measures text contrast on every post cover and text slide (image slides aren't checked) against the real rendered background, gradient-filled accent words included, and fails if any text is too faint to read on a phone. `npm run render` also warns when a slide's content runs into its footer.
 
-To add a new carousel, add an entry to `posts` in `design/content.mjs`. Slide types are `list`, `steps`, `statement`, `services`, `image` (a screenshot or photo, for case studies) and `cta`. A post with no slides is a single image, and its cover drops the "Swipe →" hint.
+To add a new carousel, add an entry to `posts` in `design/content.mjs`. Slide types are `list`, `steps`, `statement`, `services`, `image` (a screenshot or photo, for case studies) and `cta`. A post with `slides: []` is a single image, and its cover drops the "Swipe →" hint. A `cta` slide can override its headline, e.g. `{ type: 'cta', headline: 'Stuck on a project?\n*Let’s work it out.*' }`.
 
 ## Credits
 

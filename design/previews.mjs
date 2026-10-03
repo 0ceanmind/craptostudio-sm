@@ -26,7 +26,7 @@ const gridOrder = () => [...posts].sort((a, b) => b.order - a.order);
 const coverOf = (p) => img(`posts/${pad(p.order)}-${p.slug}/01.png`);
 
 export const profileBio = [
-  'Ideas, compiled. ⚡',
+  'Ideas, compiled. 💻',
   'Unity games · iOS &amp; Android apps · Software · Custom AI',
   'Interactive content &amp; project upgrades',
   '👇 DM "START" to begin',
@@ -66,10 +66,10 @@ body{width:430px;background:#fff;color:#0f1419;font-size:14px}
   const body = `
 <div class="bar"><b>${handle.slice(1)}</b><div class="ic">${icon('square-plus', { size: 24 })}${icon('menu', { size: 24 })}</div></div>
 <div class="head"><div class="av"><img src="${img('profile/profile-picture.png')}"></div>
-<div class="stats"><div><b>9</b><span>posts</span></div><div><b>–</b><span>followers</span></div><div><b>–</b><span>following</span></div></div></div>
+<div class="stats"><div><b>${posts.length}</b><span>posts</span></div><div><b>–</b><span>followers</span></div><div><b>–</b><span>following</span></div></div></div>
 <div class="bio"><div class="n">Crapto Studio | Games·Apps·AI</div><div class="c">Software Company</div>
 ${profileBio.map((l) => `<div>${l}</div>`).join('')}
-<div class="l">🔗 your-website.com and 2 more</div></div>
+<div class="l">🔗 your-project-form-link and 4 more</div></div>
 <div class="btns"><div class="f">Follow</div><div>Message</div><div>Contact</div></div>
 <div class="hl">${hl}</div>
 <div class="tabs"><span class="on">${icon('grid-3x3', { size: 22 })}</span><span>${icon('clapperboard', { size: 22 })}</span><span>${icon('square-user', { size: 22 })}</span></div>
@@ -105,7 +105,8 @@ h3{font-family:${font.mono};font-size:14px;font-weight:700;letter-spacing:.2em;t
 .row{display:flex;gap:14px}
 .sw{width:118px;font-size:13px}.sw b{display:block;margin-top:8px;font-weight:800;font-size:14px}.sw span{font-family:${font.mono};color:#5A6F8C;font-size:12px}
 .chip{height:64px;border-radius:14px}
-.grads{display:flex;gap:14px;margin-top:14px}.grads div{flex:1;height:40px;border-radius:12px;color:#fff;font-family:${font.mono};font-size:12px;font-weight:700;display:flex;align-items:center;padding:0 16px}
+.grads{display:flex;gap:14px;margin-top:14px}.grads>div{flex:1}.bar{height:40px;border-radius:12px}
+.grads span{display:block;margin-top:8px;font-family:${font.mono};font-size:12px;font-weight:700;color:#5A6F8C}
 .type{display:flex;gap:40px;align-items:flex-end}
 .big{font-size:84px;font-weight:800;letter-spacing:-.04em;line-height:.9}
 .tmeta{font-size:14px;color:#5A6F8C;line-height:1.5}.tmeta b{color:${color.ink}}
@@ -122,7 +123,7 @@ h3{font-family:${font.mono};font-size:14px;font-weight:700;letter-spacing:.2em;t
 <div><h3>Colour</h3>
 <div class="row">${sw('Cobalt', color.cobalt)}${sw('Crapto Blue', color.blue)}${sw('Sky', color.sky)}${sw('Ember', color.ember)}${sw('Spark', color.spark)}${sw('Amber', color.amber)}</div>
 <div class="row" style="margin-top:14px">${sw('Midnight', color.midnight)}${sw('Navy', color.navy)}${sw('Line', color.line)}${sw('Slate', color.slate)}${sw('Mist', color.mist)}${sw('Ink', color.ink)}${sw('White', color.white)}</div>
-<div class="grads"><div style="background:${gradient.brand}">Brand gradient · Cobalt → Sky</div><div style="background:${gradient.spark}">Spark gradient · Ember → Amber</div></div></div>
+<div class="grads"><div><div class="bar" style="background:${gradient.brand}"></div><span>Brand gradient · Cobalt to Sky</span></div><div><div class="bar" style="background:${gradient.spark}"></div><span>Spark gradient · Ember to Amber</span></div></div></div>
 <div><h3>Type</h3><div class="type"><div class="big">Aa</div><div class="tmeta"><b>Plus Jakarta Sans</b><br>ExtraBold 800 headlines · Bold 700 · Medium 500 body</div>
 <div><div class="mono">[ 01 / GAMES ]</div><div class="tmeta"><b>JetBrains Mono</b> · labels, tags, numbers</div></div></div></div>
 <div><h3>Instagram</h3><div class="posts">${covers}</div><div class="hls">${hl}</div></div>

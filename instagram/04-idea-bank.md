@@ -10,7 +10,7 @@ A long list of post and Reel ideas, so you never stare at an empty calendar. Eve
 |---|---|
 | [`02-content-strategy.md`](02-content-strategy.md) | Pillars, weekly rhythm, Reel covers, hashtag sets, the first 30 days |
 | [`03-launch-posts.md`](03-launch-posts.md) | The 9 launch posts (post these first) |
-| [`../design/content.mjs`](../design/content.mjs) | Text for every rendered carousel. Add new carousels here, then run `npm run render` |
+| [`../design/content.mjs`](../design/content.mjs) | Text for every rendered carousel. Add new carousels here, then run `npm run render` and `npm run check` |
 | [`../brand/brand-guide.md`](../brand/brand-guide.md#51-logo-files) | Your logo files and which one to use on which background (for Reel watermarks and end cards) |
 
 **Contents**
@@ -224,7 +224,7 @@ Each script is 40–42 seconds. Before you film, read the Reel tips and cover ru
 - **Subtitles:** turn them on, or add them in your editor. Many people watch without sound.
 - **Your logo files:** use the trimmed PNGs in `../exports/logo/`. They are cut from your original files in `../brand/logo/source/` (the white versions come from `Crapto Studio-10.png`). Use them as they are: don't redraw, recolour or fade them.
 - **Watermark (optional):** the white symbol [`../exports/logo/symbol-white.png`](../exports/logo/symbol-white.png), small (at least 32 px wide), near the top of the frame with some empty space around it ([clear space rules](../brand/brand-guide.md#53-clear-space)). Check in the preview that the app's buttons don't cover it.
-- **End card (last 3–4 s):** your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) in the middle of the brand blue gradient (135°, Cobalt `#376BB1` → Sky `#5AB4D9`), with the line from the script below it. Make it once and reuse it. **Shortcut:** use a launch post's last slide, for example [`../exports/posts/01-support/03.png`](../exports/posts/01-support/03.png), in the middle of a 1080 × 1920 Midnight `#0B1628` canvas. Cover its small `03 / 03` page number with a box in the background colour.
+- **End card (last 3–4 s):** your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) in the middle of a Cobalt `#376BB1` background, the blue post background (not the brand gradient: white text is too faint on its lighter blues), with the line from the script below it. Make it once and reuse it. **Shortcut:** use a launch post's last slide, for example [`../exports/posts/01-support/03.png`](../exports/posts/01-support/03.png), in the middle of a 1080 × 1920 Midnight `#0B1628` canvas. Cover its small `03 / 03` page number with a box in the background colour.
 - **Cover:** a 1080 × 1350 design in the middle of the 1080 × 1920 frame, so it looks right in the grid's 3:4 crop. How to make one: [Reel covers](02-content-strategy.md#reel-covers) in the strategy. Suggested cover text is given for each Reel.
 
 ### Reel 1: Games (same jump, two versions)
@@ -281,7 +281,7 @@ Building a game in Unity? DM "START" and tell us about it.
 | 0:08–0:15 | Type a normal question, for example "Can I return something after 30 days?" The answer appears | Step 2: ask in normal words | "Then anyone can ask in normal words…" |
 | 0:15–0:21 | Zoom in on the source under the answer (for example "Returns policy, section 2") | It shows where the answer came from | "…and it shows where the answer came from, so your team can check it." |
 | 0:21–0:29 | Type a question that isn't in the documents. It replies that it can't find it and offers to pass you to a person | **Not in the documents? It says so.** | "If the answer isn't in your documents, it doesn't guess. It says so, and hands over to a person." |
-| 0:29–0:36 | Talking head (phone video), or text on the brand blue gradient | Need one? Only if your team answers the same questions every day. | "Need one? Only if your team answers the same questions every day. If not, an FAQ page may be enough." |
+| 0:29–0:36 | Talking head (phone video), or text on Cobalt `#376BB1` | Need one? Only if your team answers the same questions every day. | "Need one? Only if your team answers the same questions every day. If not, an FAQ page may be enough." |
 | 0:36–0:40 | End card | **AI that fits your business. DM "START"** | "Want to know if AI fits your business? DM us START." |
 
 **Cover:** tag `03 / Custom AI` · headline "AI that says *I don't know*." · blue theme.
@@ -363,7 +363,7 @@ Sticker names and options can change in the app. If one is missing, use the clos
 | 11 | **Desk / setup** | Phone video | Test devices on the desk, the Unity editor open, today's task on a sticky note | BUILD | Any | Work |
 | 12 | **Countdown** | Countdown sticker | A launch, an event you attend, or a competition deadline. Real dates only. | OFFER | When true | Matching service |
 | 13 | **Finish the sentence** | Question sticker | "The app I wish existed is…" · "The task I'd automate first is…" | TEACH | Wed | — |
-| 14 | **Shipped this week** | Text on a brand background (Midnight or blue gradient) | "Shipped this week: [thing 1] · [thing 2] · [thing 3]" | BUILD | Fri | Work |
+| 14 | **Shipped this week** | Text on a brand background (Midnight or Cobalt) | "Shipped this week: [thing 1] · [thing 2] · [thing 3]" | BUILD | Fri | Work |
 | 15 | **DM "START" reminder** | Short text + link sticker | "Got an idea? DM START, or fill in the form." Link sticker: `[your project brief form link]` | OFFER | Fri | Start |
 
 **Tips**
@@ -376,7 +376,7 @@ Sticker names and options can change in the app. If one is missing, use the clos
 
 ## 5) Six carousel formulas
 
-Reusable slide structures. Each one maps to the templates in [`../design/content.mjs`](../design/content.mjs): `cover`, `list`, `steps`, `statement`, `services`, `cta`.
+Reusable slide structures. Each one maps to the templates in [`../design/content.mjs`](../design/content.mjs): `cover`, `list`, `steps`, `statement`, `services`, `image`, `cta`.
 
 **Template limits (checked against the templates in `design/`)**
 
@@ -387,6 +387,7 @@ Reusable slide structures. Each one maps to the templates in [`../design/content
 | `steps` | 4 steps, each a short title + one sentence | Written as `['Title', 'One sentence.']`. Needs a `title`. |
 | `statement` | One or two sentences, about 200 characters at most (the launch statement is 133) | Always set a `kicker`: the small mono line above, for example `// myth 01`. Without one, the slide shows the word "undefined". |
 | `services` | Fixed: the 8 service cards | Needs a `title`, for example "What we build". |
+| `image` | One screenshot or photo (PNG, JPG or WebP), with an optional short `title` and `caption` | Written as `{ type: 'image', src: 'photos/after.png', title: 'The *after*', caption: '…', fit: 'contain' }`. `src` is relative to the repo root. `fit: 'contain'` (default) shows the whole image; `'cover'` fills the frame and crops the edges. |
 | `cta` | Fixed text: "Got an idea? Let's compile it.", DM "START" or link in bio, and Follow · Save · Share | Always the last slide. |
 
 Only the cover uses the post's theme. All the other slides are always dark.
@@ -474,14 +475,14 @@ Never put a price or a time on these slides unless it's your real, current numbe
 |---|---|---|
 | 1 | `cover` | "Same app. *Faster.*" (only if true) |
 | 2 | `statement` | Kicker `// before`. The problem in one sentence |
-| 3 | Screenshot | A real "before" screenshot, exported at 1080 × 1350 (optional) |
+| 3 | `image` | A real "before" screenshot (optional) |
 | 4 | `list` | What we changed (3–5 items) |
-| 5 | Screenshot | The "after" screenshot, same size (optional) |
+| 5 | `image` | The "after" screenshot (optional) |
 | 6 | `statement` | Kicker `// after`. The real result, with real numbers |
 | 7 | `statement` | Kicker `// client`. `[add a real client quote]`. Only with permission; otherwise skip this slide |
 | 8 | `cta` | DM "START" |
 
-The templates make text slides only, and each one shows a page number (for example `02 / 06`) that counts template slides only. If you add screenshots in the Instagram app (exported at 1080 × 1350), those numbers will be wrong. Two simple options: skip slides 3 and 5 and show the screens in a Reel (`UP1`, `UP2`), or ask whoever maintains `design/` to add an image slide type.
+Slides 3 and 5 are `image` slides (see the template limits above), for example `{ type: 'image', src: 'photos/before.png', title: 'The *before*' }`. They render inside the normal dark slide frame, so the page numbers (for example `02 / 08`) stay correct. No screenshots? Skip slides 3 and 5 and show the screens in a Reel (`UP1`, `UP2`). Adding screenshots in the Instagram app (exported at 1080 × 1350) is only a fallback: the page numbers count template slides only, so they will be wrong.
 
 ### Formula 6: This or that
 

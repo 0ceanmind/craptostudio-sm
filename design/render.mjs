@@ -23,6 +23,15 @@ async function shot(html, file, { width, height, scale = 1, fullPage = false }) 
   }
   await page.setContent(html, { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
+  // Layout guard for posts: warn when content runs into (or nearly touches) the footer row.
+  const crowded = await page.evaluate(() => {
+    const foot = document.querySelector('.foot');
+    const prev = foot?.previousElementSibling;
+    if (!foot || !prev) return null;
+    const gap = foot.getBoundingClientRect().top - prev.getBoundingClientRect().bottom;
+    return gap < 40 ? Math.round(gap) : null;
+  });
+  if (crowded !== null) console.warn(`warning: ${path.relative(root, file)}: content ends ${crowded}px above the footer (want ≥ 40px)`);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   if (scale === 1) {
     await page.screenshot({ path: file });
@@ -51,9 +60,10 @@ for (const [i, h] of highlights.entries()) {
 for (const post of posts) {
   const dir = out('posts', `${pad(post.order)}-${post.slug}`);
   fs.rmSync(dir, { recursive: true, force: true });
-  const total = post.slides.length + 1;
+  const slides = post.slides ?? [];
+  const total = slides.length + 1;
   await shot(cover(post), path.join(dir, '01.png'), { width: 1080, height: 1350 });
-  for (const [i, slide] of post.slides.entries()) {
+  for (const [i, slide] of slides.entries()) {
     await shot(slideHtml(slide, i + 2, total), path.join(dir, `${pad(i + 2)}.png`), { width: 1080, height: 1350 });
   }
 }

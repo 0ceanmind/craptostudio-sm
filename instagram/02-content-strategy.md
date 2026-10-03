@@ -200,7 +200,7 @@ More hooks: the [hook formulas](04-idea-bank.md#6-ten-caption-hook-formulas) in 
 
 - Post original videos. Instagram has said it favours original content, so reposts and videos with another app's watermark may reach fewer people.
 - Use your own voice or the free audio library. Business accounts may have a smaller music library.
-- End with a short end card (about 2–4 seconds): your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) on the brand blue gradient (Cobalt `#376BB1` → Sky `#5AB4D9`), plus "DM START". Make it once and reuse it (details in the idea bank's [Reel scripts](04-idea-bank.md#3-three-reel-scripts)).
+- End with a short end card (about 2–4 seconds): your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) on Cobalt `#376BB1`, the blue post background (not the brand gradient: white text is too faint on its lighter blues), plus "DM START". Make it once and reuse it (details in the idea bank's [Reel scripts](04-idea-bank.md#3-three-reel-scripts)).
 - If your app offers **Trial reels** (shows a Reel to non-followers first), use it to test two hooks for the same video.
 
 ### Reel covers
@@ -215,9 +215,8 @@ The cover is what people see on your profile grid, so it keeps the grid looking 
 | Style | Same look as the carousel covers: theme background, ExtraBold headline, one accent word, the small mono tag (for example `[ 01 / Games ]`). |
 | Logo | Use your own logo files: the trimmed PNGs in `../exports/logo/` (cut from your originals in `../brand/logo/source/`). For example `symbol-white.png` as a small watermark. Don't redraw or recolour the logo. |
 
-**Shortcut with the templates:** render a normal 1080 × 1350 cover (add a post block in [`../design/content.mjs`](../design/content.mjs), see Carousels below; `slides: []` gives you the cover only). Place it in the middle of a 1080 × 1920 canvas filled with the same background: Midnight `#0B1628` (dark), Mist `#D4E5F2` (light) or the Cobalt → Sky gradient (blue). The whole design then sits inside the grid crop. Two things to check:
+**Shortcut with the templates:** render a normal 1080 × 1350 cover (add a post block in [`../design/content.mjs`](../design/content.mjs), see Carousels below; `slides: []` gives you the cover only, without "Swipe →"). Place it in the middle of a 1080 × 1920 canvas filled with the same background: Midnight `#0B1628` (dark), Mist `#D4E5F2` (light) or Cobalt `#376BB1` (blue; the blue cover is shaded slightly darker toward the bottom-right). The whole design then sits inside the grid crop. One thing to check:
 
-- The cover's bottom line says "Swipe →". That's wrong on a Reel, so cover it with a small box in the background colour.
 - Look at the top and bottom edges of the design. If you can see a join line, soften it in your editor.
 
 After uploading, open **Edit cover** and check how the cover looks in the profile grid before you publish.
@@ -238,11 +237,12 @@ After uploading, open **Edit cover** and check how the cover looks in the profil
 | `steps` | Processes: how we work, how to prepare |
 | `statement` | One strong sentence |
 | `services` | The 8 services grid |
+| `image` | A screenshot or photo: case studies, demos, before/after |
 | `cta` | Last slide: DM "START" / link in bio / Follow · Save · Share |
 
-**How to make a new carousel:** in [`../design/content.mjs`](../design/content.mjs), copy one post block, give it the next `order` number (10, 11, …) and a new `slug`, edit the text and pick a theme (`dark`, `blue` or `light`). Run `npm run render`. The slides appear in `../exports/posts/NN-<slug>/` (for example `../exports/posts/10-ai-myths/01.png` is the cover). The idea bank has a [ready-to-paste example](04-idea-bank.md#formula-3-myth-vs-fact).
+**How to make a new carousel:** in [`../design/content.mjs`](../design/content.mjs), copy one post block, give it the next `order` number (10, 11, …) and a new `slug`, edit the text and pick a theme (`dark`, `blue` or `light`). Run `npm run render`, then `npm run check` (it fails if any text is too faint to read on a phone). The slides appear in `../exports/posts/NN-<slug>/` (for example `../exports/posts/10-ai-myths/01.png` is the cover). The idea bank has a [ready-to-paste example](04-idea-bank.md#formula-3-myth-vs-fact).
 
-Note: the grid preview and profile mockup in `../exports/preview/` are built from every post in the list, so after you add posts they no longer show only the launch grid. Keep a copy of the launch versions if you still need them.
+Note: the grid preview and profile mockup in `../exports/preview/` show every post in the list, newest first, and grow taller with each post you add, so after you add posts they no longer show only the launch grid. Keep a copy of the launch versions if you still need them.
 
 Rotate the three themes so the grid stays balanced. Inner slides are always dark, so every carousel reads the same after the cover.
 
@@ -266,7 +266,7 @@ Save good stories to the matching highlight (Games, Apps, AI…). Adding a story
 ### Single images: announcements only
 
 Use a single image only for news: a project launch, a new service, an event you're at, a holiday break.
-The cover template shows "Swipe →", so for a single image use a real photo or screenshot with a short text overlay, or make a 2-slide post (cover + `cta`).
+For a branded single image, add a post with `slides: []` in [`../design/content.mjs`](../design/content.mjs): only the cover is rendered, and its footer shows just the handle, without "Swipe →". A real photo or screenshot with a short text overlay works too.
 
 ---
 
@@ -487,13 +487,13 @@ Your strongest SHOW content (idea S8). Post one as soon as you finish a project 
 |---|---|---|
 | 1. Cover | `cover` | "How we [result] for [type of client]" |
 | 2. The problem | `statement` | What wasn't working, in the client's words if possible |
-| 3. What we built | `list` | 3–5 short points |
+| 3. What we built | `list` or `image` | 3–5 short points, or a real screenshot with a one-line caption |
 | 4. How | `steps` | Tech and process, in plain English |
 | 5. Result | `statement` | Only real, measured results. No numbers? Describe what changed |
 | 6. Client quote | `statement` | `[add a real client quote]`, only with permission. No quote? Skip this slide |
 | 7. CTA | `cta` | DM "START" |
 
-The templates make text slides only. You can add real screenshots (1080 × 1350) in the Instagram app, but each template slide shows a page number (for example `02 / 07`) that counts template slides only, so added screenshots make those numbers wrong. Show the screens in the Reel version instead, or see the options under [Formula 5](04-idea-bank.md#formula-5-before--after) in the idea bank. Also post a short Reel version (screen recording + 3 lines of on-screen text) and invite the client as a Collab if they agree.
+For real screenshots or photos, use an `image` slide, for example `{ type: 'image', src: 'photos/after.png', title: 'The *after*', caption: '[what changed, in one line]' }`. `src` is relative to the repo root (PNG, JPG or WebP), `title` and `caption` are optional, and `fit` is `'contain'` (default, shows the whole image) or `'cover'` (fills the frame, crops the edges). It renders inside the normal slide frame, so the page numbers (for example `02 / 07`) stay correct. Adding screenshots (1080 × 1350) in the Instagram app is only a fallback: the page numbers count template slides only, so they would be wrong. More options under [Formula 5](04-idea-bank.md#formula-5-before--after) in the idea bank. Also post a short Reel version (screen recording + 3 lines of on-screen text) and invite the client as a Collab if they agree.
 
 ### Social proof, once you have it
 

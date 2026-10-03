@@ -26,7 +26,7 @@ Do the [profile setup](01-profile-setup.md) first. Then publish these 9 posts. T
 | 8 | Games | Dark | Top row, middle | 3 | `../exports/posts/08-games/` | Games |
 | 9 | Intro | Blue | Top row, left | 5 | `../exports/posts/09-intro/` | Work |
 
-Themes: **Blue** = brand gradient (Cobalt `#376BB1` → Sky `#5AB4D9`). **Dark** = Midnight `#0B1628`. **Light** = Mist `#D4E5F2`. Only the cover (`01.png`) uses the post's theme. All other slides use the dark theme, so every carousel looks the same after the first swipe.
+Themes: **Blue** = Cobalt `#376BB1`, shaded slightly darker toward the bottom-right. **Dark** = Midnight `#0B1628`. **Light** = Mist `#D4E5F2`. Only the cover (`01.png`) uses the post's theme. All other slides use the dark theme, so every carousel looks the same after the first swipe.
 
 Logos: every slide uses your own logo files from `../brand/logo/source/` (cropped copies are in `../exports/logo/`). The symbol sits in the top bar of every slide and on the last slide. The Intro cover shows the full white logo (`Crapto Studio-10.png`).
 
@@ -76,6 +76,8 @@ A small bonus: the number tags on the service covers (`01 / Games`, `02 / Apps` 
 
 - Grid only: [`../exports/preview/grid.png`](../exports/preview/grid.png)
 - Full profile mockup: [`../exports/preview/profile-mockup.png`](../exports/preview/profile-mockup.png)
+
+Both show every post in `design/content.mjs`, newest first. Right now that's the 9 launch posts; once you add later posts and re-render, they show those too and grow taller.
 
 ![Launch grid preview](../exports/preview/grid.png)
 
@@ -602,4 +604,4 @@ Good to know:
 
 - The X pattern moves by one square with every new post (pinned posts stay where they are). That's normal. Don't hold back new content to protect it.
 - You can re-share any launch post to your story later, for example when someone asks "What do you do?"
-- To change the text on a launch slide, edit `design/content.mjs` and re-render (see the [README](../README.md)). You generally can't replace the images in a published post, so only do this before you post, or for future posts.
+- To change the text on a launch slide, edit `design/content.mjs`, re-render and run `npm run check` to confirm all text is still readable (see the [README](../README.md)). You generally can't replace the images in a published post, so only do this before you post, or for future posts.

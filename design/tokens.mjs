@@ -4,7 +4,7 @@
 
 export const color = {
   cobalt: '#376BB1', // deep end of the logo's blue gradient
-  blue: '#4296D1', // "Crapto Blue": logo core and wordmark
+  blue: '#4296D1', // "Crapto Blue": logo core (the wordmark itself is a flat #388ECC)
   sky: '#5AB4D9', // light end of the blue gradient
   ember: '#EC6C1C', // deep end of the orange spark gradient
   spark: '#F28D19', // accent orange, used sparingly
