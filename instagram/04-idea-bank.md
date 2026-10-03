@@ -232,7 +232,7 @@ Each script is 40–42 seconds. Before you film, read the Reel tips and cover ru
 | | |
 |---|---|
 | **Idea** | `GM1` · BUILD · Games |
-| **Goal** | Show you understand game feel. Reach people planning a game (founders, creators, brands) and Unity developers who share it. |
+| **Goal** | Show you understand game feel. Reach people planning a game (founders, creators, brands). Unity developers may share it too. |
 | **You need** | A Unity scene with a simple character and a jump. Six versions of it (plain, then the 5 layers added one at a time), or one version with a toggle for each layer. A screen recorder: Unity's Recorder package, OBS, or your computer's built-in recorder. |
 | **Audio** | Your voice with the game sound underneath. Turn the game sound up for the "sound" step. |
 
@@ -314,7 +314,7 @@ DM "START". If you don't need AI, we'll tell you.
 |---|---|---|---|
 | 0:00–0:03 | Split screen: old version still loading (left), new version already open (right) | **Before → after. Same app.** | "Same app. Before and after our upgrade." |
 | 0:03–0:09 | Before: open the app, the loading spinner. Timer visible. Add a second problem only if it was real (for example a laggy scroll) | Before: [X] s to open | "This is the app before. [X] seconds to open[, and one more real problem, for example: the scroll stutters]." |
-| 0:09–0:16 | Health-check cuts: profiler graph, list of large files, outdated packages | What we found: [problem 1] · [problem 2] · [problem 3] | "We ran a health check and found three problems: [problem 1], [problem 2] and [problem 3]." |
+| 0:09–0:16 | Health-check cuts: profiler graph, list of large files, outdated packages | What we found: [problem 1] · [problem 2] · [problem 3] | "We ran a health check. Here's what we found: [problem 1], [problem 2] and [problem 3]." |
 | 0:16–0:26 | Quick fix montage, one cut per real fix (for example a code change, or image sizes before and after) | Fix 1 · Fix 2 · Fix 3 (one per cut) | "So we fixed them one by one: [fix 1], [fix 2] and [fix 3]." |
 | 0:26–0:33 | After: the same flow, same device. Timer visible | After: [Y] s to open | "After: [Y] seconds to open. Same phone, same steps[, and the second problem is gone, if it really is]." |
 | 0:33–0:38 | Split screen again, both timers visible | **No rebuild. Same app, made better.** | "No rebuild from scratch. Same app, made better." |
