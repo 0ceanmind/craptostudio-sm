@@ -7,6 +7,8 @@ Work through it top to bottom, then tick off the [launch checklist](#11-launch-c
 
 **What the finished profile should look like:** [`../exports/preview/profile-mockup.png`](../exports/preview/profile-mockup.png)
 
+In the mockup, the post count is the number of posts in [`../design/content.mjs`](../design/content.mjs) (9 at launch), and the link line "🔗 your-project-form-link and 4 more" is a placeholder: your profile shows your own first link there, plus the other links from [section 6](#6-links-up-to-5).
+
 **Note on menus:** Instagram moves and renames menus between app versions. The menu paths below are a guide. If you can't find an item, use the search bar in Settings.
 
 ---
@@ -130,7 +132,7 @@ Bios can be up to 150 characters. Below are 3 options. Lengths are counted with 
 ### Option A — Recommended (135 characters)
 
 ```
-Ideas, compiled. ⚡
+Ideas, compiled. 💻
 Unity games · iOS & Android apps · Software · Custom AI
 Interactive content & project upgrades
 👇 DM "START" to begin
@@ -156,14 +158,14 @@ Ideas, compiled. ↓
 
 ### Why A is recommended
 
-- **Tagline first.** "Ideas, compiled." is the brand line. It also appears on the launch posts, so people remember it.
+- **Tagline first.** "Ideas, compiled." is the brand line. It also appears on the launch posts, so people remember it. The 💻 says "tech" at a glance. (Not ⚡: it's a common Bitcoin/Lightning symbol, so it would work against not looking like a crypto account.)
 - **Every main service in plain words.** The services are written as words, not emoji. Visitors see "games", "apps", "software" and "AI" right away, so nobody mistakes what Crapto Studio does.
 - **One clear action.** "DM START" is the same keyword used in the posts and in your DM replies.
 - **Room to spare.** 135 of 150 characters.
 
 ### Character count note
 
-Instagram's own counter may count some emoji as 2 characters. Some keyboards also add an invisible character after emoji like ⚡ or 🛠. So Option B may show around 145 in the app. That is still under 150, but check the counter before you save.
+Instagram's own counter may count some emoji as 2 characters. Some keyboards also add an invisible character after emoji like 🛠. So Option B may show around 145 in the app. That is still under 150, but check the counter before you save.
 
 **Line breaks:** type the bio in the app, or paste it from your notes app. If the line breaks disappear, add them by hand in the app.
 
@@ -450,7 +452,7 @@ Pin these 3 launch posts. They should end up in this order, left to right:
 |---|---|---|
 | 1 (left) | `09-intro` — "Ideas, compiled." | Who Crapto Studio is and what you build |
 | 2 (middle) | `08-games` — "Games people want to replay." | The newest service post; keeps the grid pattern |
-| 3 (right) | `07-start` — "Got an idea? Here's how we build it." | How to start + what to send |
+| 3 (right) | `07-start` — "New project? Here’s how we build it." | How to start + what to send |
 
 These are the last 3 posts you publish (the top row). Pinning them keeps the launch grid as designed (see [`../exports/preview/grid.png`](../exports/preview/grid.png)) and keeps them on top when you post new content.
 

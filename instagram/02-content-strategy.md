@@ -238,9 +238,9 @@ After uploading, open **Edit cover** and check how the cover looks in the profil
 | `statement` | One strong sentence |
 | `services` | The 8 services grid |
 | `image` | A screenshot or photo: case studies, demos, before/after |
-| `cta` | Last slide: DM "START" / link in bio / Follow · Save · Share |
+| `cta` | Last slide: one call to action (DM "START" or tap the link in bio) and a single Follow pill; the footer reads "Save for later" with a bookmark icon. Default headline "Got an idea? Let’s compile it."; override it per post, e.g. `{ type: 'cta', headline: 'Stuck on a project?\n*Let’s work it out.*' }` |
 
-**How to make a new carousel:** in [`../design/content.mjs`](../design/content.mjs), copy one post block, give it the next `order` number (10, 11, …) and a new `slug`, edit the text and pick a theme (`dark`, `blue` or `light`). Run `npm run render`, then `npm run check` (it fails if any text is too faint to read on a phone). The slides appear in `../exports/posts/NN-<slug>/` (for example `../exports/posts/10-ai-myths/01.png` is the cover). The idea bank has a [ready-to-paste example](04-idea-bank.md#formula-3-myth-vs-fact).
+**How to make a new carousel:** in [`../design/content.mjs`](../design/content.mjs), copy one post block, give it the next `order` number (10, 11, …) and a new `slug`, edit the text and pick a theme (`dark`, `blue` or `light`). Run `npm run render` (it warns if a slide's content runs into its footer), then `npm run check` (it fails if any text is too faint to read on a phone). The slides appear in `../exports/posts/NN-<slug>/`. The idea bank has a [ready-to-paste example](04-idea-bank.md#formula-3-myth-vs-fact): once you add it as post 10 and render, its cover is `../exports/posts/10-ai-myths/01.png` (hypothetical until then: that folder is created only after the post is added).
 
 Note: the grid preview and profile mockup in `../exports/preview/` show every post in the list, newest first, and grow taller with each post you add, so after you add posts they no longer show only the launch grid. Keep a copy of the launch versions if you still need them.
 

@@ -4,7 +4,7 @@ The 9 launch posts, ready to publish: which files to upload, in which order, and
 
 Do the [profile setup](01-profile-setup.md) first. Then publish these 9 posts. Then follow the [content strategy](02-content-strategy.md).
 
-> **Handle:** this guide assumes the handle **@craptostudio**. If yours is different, swap it in. The handle is printed on every slide (bottom-left, and in the "Follow" button on the last slide): change it in `design/tokens.mjs` and re-render the images (see the [README](../README.md)). The captions don't mention the handle, but you may want the **#craptostudio** hashtag to match it.
+> **Handle:** this guide assumes the handle **@craptostudio**. If yours is different, swap it in. The handle is printed on every slide (bottom-left, and in the "Follow" button on the last slide): change it in `../design/tokens.mjs` and re-render the images (see the [README](../README.md)). The captions don't mention the handle, but you may want the **#craptostudio** hashtag to match it.
 
 **Contents**
 
@@ -77,7 +77,7 @@ A small bonus: the number tags on the service covers (`01 / Games`, `02 / Apps` 
 - Grid only: [`../exports/preview/grid.png`](../exports/preview/grid.png)
 - Full profile mockup: [`../exports/preview/profile-mockup.png`](../exports/preview/profile-mockup.png)
 
-Both show every post in `design/content.mjs`, newest first. Right now that's the 9 launch posts; once you add later posts and re-render, they show those too and grow taller.
+Both show every post in `../design/content.mjs`, newest first. Right now that's the 9 launch posts; once you add later posts and re-render, they show those too and grow taller.
 
 ![Launch grid preview](../exports/preview/grid.png)
 
@@ -149,7 +149,7 @@ Before you publish post 1, make sure the **"START" saved reply** is ready and te
 
 ## 2) The 9 posts, in posting order
 
-Every post ends with the same **CTA slide** (the last file in each folder): the colour symbol, the headline "Got an idea? Let's compile it.", the line: DM us "START" or tap the link in bio, and we'll reply with next steps. Below that are three buttons: "Follow @craptostudio", "Save" and "Share".
+Every post ends with a **CTA slide** (the last file in each folder): the colour symbol, the headline "Got an idea? Let's compile it." (the Support post uses "Stuck on a project? Let's work it out." instead), and one call to action: DM us "START" or tap the link in bio, and we'll reply with next steps. Below that is a single button, "Follow @craptostudio", and the footer reads "Save for later" with a bookmark icon.
 
 ---
 
@@ -168,9 +168,9 @@ Every post ends with the same **CTA slide** (the last file in each folder): the 
 
 | File | Slide | What it shows |
 |---|---|---|
-| `01.png` | Cover | Tag "07 / Support", trophy icon, headline "Your project. Your win. *Our backup.*", line "Programming projects · Competitions · Hackathons". |
-| `02.png` | List: "How we help" | Mentoring for programming projects; debugging & code review sessions; competition & hackathon preparation; architecture & tech-stack guidance; "We explain the why, so you can present it with confidence". |
-| `03.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
+| `01.png` | Cover | Tag "07 / Support", trophy icon, headline "Your project. Your win. *Our backup.*", line "Mentoring for projects, competitions & hackathons". |
+| `02.png` | List: "How we help" | Mentoring for programming projects; debugging & code review sessions; prep before competitions & hackathons; architecture & tech-stack guidance; "You do the work. We explain the why." |
+| `03.png` | CTA | "Stuck on a project? Let's work it out." + DM "START" / link in bio. |
 
 **Caption** (hook: 104 characters)
 
@@ -216,8 +216,8 @@ Blue slide, trophy icon: "Your project. Your win. Our backup." Coding mentoring 
 
 | File | Slide | What it shows |
 |---|---|---|
-| `01.png` | Cover | Tag "06 / Interactive", presentation icon, headline "Presentations people *remember*.", line "Interactive content · Presentations · Experiences". |
-| `02.png` | List: "What we build" | Interactive presentations & pitch decks; touchscreen & kiosk experiences for events; interactive lessons, quizzes & training; 3D product showcases & demos; gamified campaigns for brands. |
+| `01.png` | Cover | Tag "06 / Interactive", presentation icon, headline "Presentations people *remember*.", line "Interactive content · Presentations · Demos". |
+| `02.png` | List: "What we build" | Interactive presentations & pitch decks; touchscreen & kiosk apps for events; interactive lessons, quizzes & training; 3D product showcases & demos; gamified campaigns for brands. |
 | `03.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
 **Caption** (hook: 75 characters)
@@ -237,7 +237,7 @@ Planning an event, a launch or a course? DM us "START" with the date and your id
 **Alt text** (cover)
 
 ```
-Dark slide, presentation icon: "Presentations people remember." Interactive content and experiences.
+Dark slide, presentation icon: "Presentations people remember." Interactive content and demos.
 ```
 
 **Posting notes**
@@ -262,8 +262,8 @@ Dark slide, presentation icon: "Presentations people remember." Interactive cont
 
 | File | Slide | What it shows |
 |---|---|---|
-| `01.png` | Cover | Tag "05 / Upgrades", trending-up arrow icon, headline "Already built? Let's make it *better*.", line "Fix · Optimize · Extend · Modernize". |
-| `02.png` | List: "What we do" | Code review & project health check; bug fixing and performance tuning; new features on your existing codebase; UI/UX refresh without starting over; updates to new versions, SDKs & platforms. |
+| `01.png` | Cover | Tag "05 / Upgrades", wrench icon, headline "Already built? Let's make it *better*.", line "Fix · Optimise · Extend · Modernise". |
+| `02.png` | List: "What we do" | Code review & project health check; bug fixing & performance tuning; new features for your existing app or game; UI/UX refresh without starting over; updates for new OS, engine & SDK versions. |
 | `03.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
 **Caption** (hook: 88 characters)
@@ -284,7 +284,7 @@ DM us "START" with a link to your project and what's bothering you about it.
 **Alt text** (cover)
 
 ```
-Light blue slide, arrow icon: "Already built? Let's make it better." Upgrades for existing software.
+Light blue slide, wrench icon: "Already built? Let's make it better." Upgrades for existing code.
 ```
 
 **Posting notes**
@@ -310,7 +310,7 @@ Light blue slide, arrow icon: "Already built? Let's make it better." Upgrades fo
 | File | Slide | What it shows |
 |---|---|---|
 | `01.png` | Cover | Tag "04 / Software", code icon, headline "Software built around how you *work*.", line "Web · Desktop · Dashboards · Custom tools". |
-| `02.png` | List: "What we build" | Custom business software & internal tools; web platforms, portals & dashboards; spreadsheets & paperwork → real systems; APIs and integrations between your tools; documented code that you fully own. |
+| `02.png` | List: "What we build" | Custom business software & internal tools; web platforms, portals & dashboards; spreadsheets & paperwork → real systems; APIs & integrations between your tools; documented code, handed over to you. |
 | `03.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
 **Caption** (hook: 101 characters)
@@ -356,7 +356,7 @@ Dark slide, code icon: "Software built around how you work." Web, desktop, dashb
 | File | Slide | What it shows |
 |---|---|---|
 | `01.png` | Cover | Tag "03 / Custom AI", sparkles icon, headline "AI that fits *your* business.", line "Assistants · Automation · Integrations". |
-| `02.png` | List: "What we build" | AI assistants that know your business data; automations for docs, emails & reports; AI features inside your app or website; vision, voice & data-analysis tools; "Honest advice, including when you don't need AI". |
+| `02.png` | List: "What we build" | AI assistants that know your business data; automations for docs, emails & reports; AI features inside your app or website; image, voice & data-analysis tools; "Honest advice, including when you don't need AI". |
 | `03.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
 **Caption** (hook: 91 characters)
@@ -403,7 +403,7 @@ Blue slide, sparkles icon: "AI that fits your business." Custom AI assistants an
 | File | Slide | What it shows |
 |---|---|---|
 | `01.png` | Cover | Tag "02 / Apps", smartphone icon, headline "Apps that earn a spot on the *home screen*.", line "iOS · Android · Cross-platform". |
-| `02.png` | List: "What we build" | iOS & Android apps, native or cross-platform; UI/UX design that feels obvious to use; accounts, payments, maps & notifications; backends, admin panels & APIs; store publishing, updates & maintenance. |
+| `02.png` | List: "What we build" | iOS & Android apps, native or cross-platform; UI/UX design that's easy from the first tap; accounts, payments, maps & notifications; backends, admin panels & APIs; store submission, updates & maintenance. |
 | `03.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
 **Caption** (hook: 90 characters)
@@ -448,8 +448,8 @@ Dark slide, phone icon: "Apps that earn a spot on the home screen." iOS, Android
 
 | File | Slide | What it shows |
 |---|---|---|
-| `01.png` | Cover | Tag "Start here", paper plane icon, headline "Got an idea? Here's how we *build it*.", line "4 steps · no jargon · no surprises". |
-| `02.png` | Steps: "How we work" | 1 Talk (tell us the idea, goal and timeline; DM "START" or link in bio), 2 Plan (scope, right tech, clear quote and timeline), 3 Build (real progress every week), 4 Launch & support (ship, hand over, stay for updates). |
+| `01.png` | Cover | Tag "Start here", paper plane icon, headline "New project? Here's how we *build it*.", line "4 steps · No jargon · No surprises". |
+| `02.png` | Steps: "How we work" | 1 Talk (Tell us your idea, goal and deadline. DM "START" or tap the link in bio.), 2 Plan (We scope it, pick the right tech, then send a clear quote and timeline.), 3 Build (You see real progress every week, not just slides.), 4 Launch & support (We ship it, hand it over and offer support for updates.). |
 | `03.png` | List: "Send us this first" | What you want to build (one sentence is fine); who it's for; your deadline; your budget range; links or apps you like. |
 | `04.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
@@ -462,7 +462,7 @@ You don't need a technical plan to start. A rough idea is enough. Asking the rig
 Don't know your budget yet? A rough range is fine. It helps us suggest the right size for a first version.
 Not sure what to build? Tell us the problem instead, and we'll help you shape the idea.
 
-Save this post for the checklist, then DM us "START" or use the link in bio when you're ready.
+Save this post for the checklist, then DM us "START" or tap the link in bio when you're ready.
 
 #craptostudio #startup #smallbusiness #productdevelopment #appdevelopment
 ```
@@ -470,7 +470,7 @@ Save this post for the checklist, then DM us "START" or use the link in bio when
 **Alt text** (cover)
 
 ```
-Light blue slide, paper plane icon: "Got an idea? Here's how we build it." 4 steps to start.
+Light blue slide, paper plane icon: "New project? Here's how we build it." 4 steps to start.
 ```
 
 **Posting notes**
@@ -496,8 +496,8 @@ Light blue slide, paper plane icon: "Got an idea? Here's how we build it." 4 ste
 
 | File | Slide | What it shows |
 |---|---|---|
-| `01.png` | Cover | Tag "01 / Games", game controller icon, headline "Games people want to *replay*.", line "Unity · 2D & 3D · Mobile, PC & Web". |
-| `02.png` | List: "What we build" | Full games in Unity, from concept to release; playable prototypes & vertical slices; advergames & gamified experiences for brands; gameplay systems, UI and game feel; builds for mobile, PC and WebGL. |
+| `01.png` | Cover | Tag "01 / Games", game controller icon, headline "Games people want to *replay*.", line "Unity · 2D & 3D · Mobile, PC & web". |
+| `02.png` | List: "What we build" | Full Unity games, from concept to launch; playable prototypes & vertical slices; advergames & gamified experiences for brands; gameplay systems, UI & game feel; builds for mobile, PC & WebGL. |
 | `03.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
 **Caption** (hook: 96 characters)
@@ -544,8 +544,8 @@ Dark slide, game controller icon: "Games people want to replay." Unity games for
 |---|---|---|
 | `01.png` | Cover | Tag "Hello, world", the full white Crapto Studio logo, headline "Ideas, *compiled.*", line "Games · Apps · Software · AI". |
 | `02.png` | Statement: "// who we are" | "Crapto Studio is a tech studio. We *design and build* games, apps, software and custom AI, and we level up projects that already exist." |
-| `03.png` | Services: "What we build" | 8 cards: Games (Unity · 2D & 3D), Apps (iOS & Android), Software (web, desktop, tools), Custom AI (assistants & automation), Interactive (content & presentations), Upgrades (fix, optimize, extend), Support (projects & competitions), Custom (whatever you need built). |
-| `04.png` | Steps: "Why work with us" | Honest scoping (clear quote and timeline; we'll say if you don't need it); Weekly progress (working builds you can try); You own it (clean, documented code and every asset); We stick around (updates, fixes and new features after launch). |
+| `03.png` | Services: "What we do" | 8 cards: Games (Unity, 2D & 3D), Apps (iOS & Android), Software (Web, desktop & tools), Custom AI (Chatbots & automation), Interactive (Presentations & demos), Upgrades (Fix, speed up, extend), Support (Project mentoring), Custom (Tell us the problem). |
+| `04.png` | Steps: "Why work with us" | Honest scoping (Clear quote, clear timeline. If you don't need something, we'll say so.); Weekly progress (Working builds you can try, not just status reports.); Clean handover (Clean, documented code and your project files, handed over.); We stick around (Ongoing support for updates, fixes & new features.). |
 | `05.png` | CTA | "Got an idea? Let's compile it." + DM "START" / link in bio. |
 
 **Caption** (hook: 110 characters)
@@ -563,7 +563,7 @@ What we do:
 • Interactive content and presentations
 • Upgrades for apps, games and software that already exist
 • Mentoring and guidance for programming projects and competitions
-• Custom solutions for whatever else you need built
+• Custom solutions: not on this list? Tell us the problem.
 
 We work with startups, small businesses, brands, educators, event teams, game creators, students and competition teams.
 Follow along for our builds, behind-the-scenes and practical tips.
@@ -604,4 +604,4 @@ Good to know:
 
 - The X pattern moves by one square with every new post (pinned posts stay where they are). That's normal. Don't hold back new content to protect it.
 - You can re-share any launch post to your story later, for example when someone asks "What do you do?"
-- To change the text on a launch slide, edit `design/content.mjs`, re-render and run `npm run check` to confirm all text is still readable (see the [README](../README.md)). You generally can't replace the images in a published post, so only do this before you post, or for future posts.
+- To change the text on a launch slide, edit `../design/content.mjs`, re-render and run `npm run check` to confirm all text is still readable (see the [README](../README.md)). You generally can't replace the images in a published post, so only do this before you post, or for future posts.

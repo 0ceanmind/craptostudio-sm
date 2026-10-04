@@ -3,7 +3,7 @@
 How Crapto Studio looks, sounds and shows up, on Instagram and everywhere else.
 Use this guide when you write a caption, design a post, reply to a DM, or send the logo to someone.
 
-> **Handle:** this guide assumes the Instagram handle is **@craptostudio**. If yours is different, change it here, in the `instagram/` docs and in `design/tokens.mjs` (then rebuild the images, see [section 9](#9-instagram-template-system)).
+> **Handle:** this guide assumes the Instagram handle is **@craptostudio**. If yours is different, change it here, in the [`../instagram/`](../instagram/) docs and in [`../design/tokens.mjs`](../design/tokens.mjs) (then rebuild the images, see [section 9](#9-instagram-template-system)).
 
 ![Crapto Studio brand board](../exports/brand/brand-board.png)
 
@@ -96,7 +96,7 @@ Where to use it: the first slide of the intro post, the bio (if the version you 
 | Write "we" and "you" | Write "the company" or "our esteemed clients" |
 | Add one light, clever line when it fits | Force jokes, or use humour in serious replies (complaints, bugs) |
 | End with one clear next step (DM "START", link in bio) | End with three different calls to action |
-| Use 0 to 3 emoji per caption, only where they help | Use emoji chains (🔥🔥🔥) or crypto-style emoji (🚀🌕💎📈🪙💰) |
+| Use 0 to 3 emoji per caption, only where they help | Use emoji chains (🔥🔥🔥) or crypto-style emoji (🚀🌕💎📈🪙💰⚡) |
 
 ### 3.3 Words we use / words we avoid
 
@@ -106,7 +106,7 @@ Where to use it: the first slide of the intro post, the bio (if the version you 
 | fix, speed up, improve, level up, upgrade | cutting-edge, next-gen, state-of-the-art |
 | plan, clear, simple, honest | synergy, leverage, seamless, holistic |
 | weekly progress, working build, playable | world-class, best-in-class, #1, the best |
-| you own it, step by step, here's how | guaranteed, 100%, cheap, unlimited |
+| clean handover, step by step, here's how | guaranteed, 100%, cheap, unlimited |
 | idea, project, goal, deadline, budget range | ninja, guru, rockstar, wizard |
 | games, apps, software, custom AI | crypto, coin, token, blockchain, NFT, Web3, mint, wallet, trading, "to the moon" |
 
@@ -200,7 +200,7 @@ Why: it keeps our support about mentoring and guidance, protects the student (th
 - **Name field example:** `Crapto Studio | Games·Apps·AI` (29 characters; keep the Name field at 30 or fewer). Other options are in [the profile setup guide](../instagram/01-profile-setup.md).
 - **Never use crypto words,** even as a joke: coin, token, blockchain, NFT, Web3, mint, wallet, trading, "to the moon", HODL.
 - **Never use crypto hashtags:** no #crypto, #bitcoin, #nft, #web3, #blockchain, #trading. Instagram limits posts to 5 hashtags, so use topic tags only, for example #gamedev, #unity3d, #appdevelopment, #softwaredevelopment, #aiautomation (pick the ones that match the post).
-- **Avoid crypto-looking visuals and emoji:** no coins, candlestick charts, gold-on-black "trading" looks, 🚀🌕💎📈🪙💰.
+- **Avoid crypto-looking visuals and emoji:** no coins, candlestick charts, rising "stock chart" icons, gold-on-black "trading" looks, 🚀🌕💎📈🪙💰⚡ (⚡ is the Bitcoin Lightning symbol, which is why bio option A uses 💻).
 - **Don't follow or engage with crypto accounts.** Delete crypto spam comments. We recommend adding common crypto spam words to Instagram's Hidden Words filter, in the app's settings.
 
 **Ready reply** for *"Is this a crypto thing?"*
@@ -220,7 +220,7 @@ The logo has two parts:
 
 ### 5.1 Logo files
 
-**Original files** in `brand/logo/source/` (4168 × 4167 px PNG, with a lot of empty space around the logo). Never edit or overwrite these. Paths are relative to this guide.
+**Original files** in [`logo/source/`](logo/source/) (4168 × 4167 px PNG, with a lot of empty space around the logo). Never edit or overwrite these. Paths are relative to this guide.
 
 | File | What it is | Use it for |
 |---|---|---|
@@ -309,13 +309,13 @@ At 120 px wide, the capital letters of the wordmark are only about 14 px tall. B
 - ✗ Don't use screenshots or JPG versions (they lose transparency and sharpness). Always start from the PNG files above.
 - ✗ Don't place it next to crypto-looking imagery (coins, charts, "trading" visuals).
 
-**One exception:** the large, faint symbol watermark in post backgrounds (about 5–7% opacity, slightly tilted, running off the corner) may be faded, rotated and cropped. It is decoration behind the content, never the main logo.
+**One exception:** the large, faint symbol watermark on post covers (about 5–7% opacity, slightly tilted, running off the corner) may be faded, rotated and cropped. It is decoration behind the content, never the main logo.
 
 ### 5.7 Get the vector source
 
 The repo only has PNG files. They are fine for social media and for small print (the full logo is 3263 px wide inside the source file, which is about 27 cm wide at 300 dpi).
 
-For signs, large prints, merch, embroidery or laser-cutting you need a **vector file** (SVG, AI, EPS or PDF). For a website, an SVG is also better: it stays sharp at any size. Ask whoever designed the logo for the vector source. The numbers in the file names (`-08` … `-11`) look like artboard exports from a design app, so the designer most likely has the original file. While you're asking, also ask for the name of the wordmark typeface and whether it needs a licence. When you get the vectors, add them to `brand/logo/source/`.
+For signs, large prints, merch, embroidery or laser-cutting you need a **vector file** (SVG, AI, EPS or PDF). For a website, an SVG is also better: it stays sharp at any size. Ask whoever designed the logo for the vector source. The numbers in the file names (`-08` … `-11`) look like artboard exports from a design app, so the designer most likely has the original file. While you're asking, also ask for the name of the wordmark typeface and whether it needs a licence. When you get the vectors, add them to [`logo/source/`](logo/source/) (next to this guide).
 
 ---
 
@@ -326,7 +326,7 @@ For signs, large prints, merch, embroidery or laser-cutting you need a **vector 
 | Family | Name | Hex | RGB | Role |
 |---|---|---|---|---|
 | Blue | **Cobalt** | `#376BB1` | 55, 107, 177 | Deep end of the brand blue gradient; blue post background and badges; headings on light backgrounds |
-| Blue | **Crapto Blue** | `#4296D1` | 66, 150, 209 | Primary brand colour (logo core and wordmark ≈ `#3A93D3`) |
+| Blue | **Crapto Blue** | `#4296D1` | 66, 150, 209 | Primary brand colour (logo core ≈ `#4094D0`; the wordmark is a flat `#388ECC`) |
 | Blue | **Sky** | `#5AB4D9` | 90, 180, 217 | Light end of the blue gradient; highlights on dark |
 | Orange | **Ember** | `#EC6C1C` | 236, 108, 28 | Deep end of the orange spark gradient |
 | Orange | **Spark** | `#F28D19` | 242, 141, 25 | Accent orange: CTAs, small highlights, numbers. Use sparingly (~10%) |
@@ -347,8 +347,8 @@ For signs, large prints, merch, embroidery or laser-cutting you need a **vector 
 | **Spark** | Ember → Spark → Amber | `linear-gradient(135deg, #EC6C1C 0%, #F28D19 50%, #F4B310 100%)` |
 | **Blue post** | Cobalt, shaded slightly darker toward the bottom-right | `linear-gradient(160deg, rgba(255,255,255,.05) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.2) 100%), #376BB1` |
 
-- The brand gradient is for highlight covers (white icons), icon tiles on dark and light covers, decorative elements and the brand board. Never put small text on it: white is only 3.22 : 1 on Crapto Blue and 2.34 : 1 on Sky.
-- Blue posts use the blue post background instead: Cobalt, shaded slightly darker toward the bottom-right, so small white text stays above 4.5 : 1. Step-number badges and the highlighted "Follow @craptostudio" pill on the CTA slide are solid Cobalt.
+- The brand gradient is for highlight covers (white icons), icon tiles on dark and light covers, the icon tiles on the services slide, decorative elements and the gradient bars on the brand board (their labels sit under the bars, not on them). Never put small text on it: white is only 3.22 : 1 on Crapto Blue and 2.34 : 1 on Sky.
+- Blue posts use the blue post background instead: Cobalt, shaded slightly darker toward the bottom-right, so small white text clears 4.5 : 1 everywhere it sits (`npm run check` confirms it; the full range, grid and watermark included, is in [6.4](#64-accessible-pairings)). Step-number badges and the single "Follow @craptostudio" pill on the CTA slide are solid Cobalt.
 - The spark gradient is for small things only: the accent word on dark posts, small dots, a CTA button. Never a full background.
 
 ### 6.3 Usage ratio
@@ -369,7 +369,7 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 - **3 : 1** to 4.5 : 1: **large text only** (big, bold headlines) and icons
 - Below **3 : 1**: don't use for text or important icons
 
-**Instagram note:** a 1080 px post is shown at roughly one third of its size on a phone. So on the 1080 px canvas, treat text as "large" only if it is about **56 px or bigger and bold** (or about 72 px and bigger at regular weight). Everything smaller should reach 4.5 : 1.
+**Instagram note:** a 1080 px post is shown at roughly one third of its size on a phone. So on the 1080 px canvas, treat text as "large" (3 : 1 is enough) only if it is **56 px or bigger and bold**, or **72 px or bigger at regular weight**. Everything else needs 4.5 : 1. `npm run check` uses exactly this rule.
 
 **Safe pairings**
 
@@ -402,7 +402,7 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 | | White on the middle (Crapto Blue) | 3.22 | ⚠ Large text only |
 | | White on the Sky end | 2.34 | ✗ Don't put text here |
 | | Spark (any part) | 2.20 or lower | ✗ Orange only as shapes or underlines on blue |
-| **Blue post background** (Cobalt, shaded) | White | 4.87 (lightest, top-left) to 7.46 (darkest, bottom-right) | ✓ All text, at 100% white |
+| **Blue post background** (Cobalt, shaded) | White | 4.87 (lightest, top-left) to 7.46 (darkest, bottom-right) for the shaded Cobalt alone. With the faint grid (5.5%) and watermark (7%) on top, about 4.49 to 7.41: the lightest spots are where grid lines cross the watermark, in the lower right, away from the text | ✓ All text, at 100% white (`npm run check` confirms every text run on blue covers passes) |
 | **Spark** `#F28D19` (button, highlight) | Midnight | 7.42 | ✓ All text |
 | | Ink | 7.16 | ✓ All text |
 | | White | 2.44 | ✗ Never white text on orange |
@@ -416,7 +416,7 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 3. On blue: put text on Cobalt (the blue post background), in 100% white, including small labels. Not on the lighter blues: white is only 3.22 : 1 on Crapto Blue and 2.34 : 1 on Sky, so keep the brand gradient for icons, tiles and decoration. White at 82% opacity reaches only 4.20 : 1 even on pure Cobalt, so don't use see-through white for small text.
 4. Orange buttons and highlights always get Ink or Midnight text, never white.
 
-> **Checked on the real posts:** `npm run check` renders every cover and text slide, hides the text to get the real background behind it (gradients, glows, grid lines and watermark included) and measures each text run's worst-case contrast. It needs **4.5 : 1** for text under 48 px on the 1080 px canvas and **3 : 1** for headlines of 48 px and up (stricter than WCAG, see the Instagram note above). All 425 text runs on the 30 template pages pass, including the small text on blue covers. Run it after any colour, font or layout change; it exits with an error if any text falls below its threshold.
+> **Checked on the real posts:** `npm run check` renders every cover and text slide, hides the text to get the real background behind it (gradients, glows, grid lines and watermark included) and measures each text run's worst-case contrast. It allows **3 : 1** only for large text (56 px or bigger and bold, or 72 px or bigger at regular weight, on the 1080 px canvas) and needs **4.5 : 1** for everything else (stricter than WCAG, see the Instagram note above). Gradient-filled accent text (the Spark-gradient accent on dark covers and inner slides) is measured against each of its gradient's colour stops. All 434 text runs on the 30 template pages pass, including the small text on blue covers. Image slides are not checked, so check the title and caption on those by eye. Run it after any colour, font or layout change; it exits with an error if any text falls below its threshold.
 
 <details>
 <summary>Full contrast matrix (text colour × background)</summary>
@@ -456,7 +456,7 @@ The render pipeline already includes both fonts (installed with `npm install`), 
 
 ### 7.2 Type scale for 1080 px-wide Instagram graphics
 
-Sizes are in px on the 1080 px canvas (feed posts 1080 × 1350, stories and reels 1080 × 1920). These are the values the templates in `design/templates.mjs` use.
+Sizes are in px on the 1080 px canvas (feed posts 1080 × 1350, stories and reels 1080 × 1920). These are the values the templates in [`../design/templates.mjs`](../design/templates.mjs) use.
 
 | Style | Font and weight | Size | Line height | Letter spacing | Used for |
 |---|---|---|---|---|---|
@@ -466,13 +466,21 @@ Sizes are in px on the 1080 px canvas (feed posts 1080 × 1350, stories and reel
 | Statement | Plus Jakarta Sans 700 | 72 | 1.16 | −2.2% | The one big sentence on a statement slide |
 | Subhead | Plus Jakarta Sans 700–800 | 36–43 | 1.1–1.22 | −1% to −1.5% | List items, step names, service card titles |
 | Body | Plus Jakarta Sans 500 | 30–38 | 1.35–1.38 | 0 | Step descriptions (30), image captions (32), CTA text (38) |
-| Label | JetBrains Mono 500–700 | 22–28 | 1.2–1.3 | +1% to +18%, uppercase for the brand label and tags | "CRAPTO STUDIO" label, tags, slide numbers, handle, sub-lines, kickers |
+| Label | JetBrains Mono 500–700 | 22–28 | 1.2–1.3 | 0 to +18% (+18% brand label, +10% tags, +5% handle/Swipe, +1% cover sub-line; 0 for kickers, numbers, service sub-lines), uppercase for the brand label and tags | "CRAPTO STUDIO" label, tags, slide numbers, handle, sub-lines, kickers |
 
 **Minimums:** anything people must read should be about **30 px or more**. Smaller mono labels (22–28 px) are only for short extras: the "CRAPTO STUDIO" label (23 px, Bold, +18%), tags and slide numbers (23 px), the handle and "Swipe →" (24 px), cover sub-lines (28 px) and service sub-lines (22 px). Nothing in the templates is smaller than **22 px**.
 
 **Stories, reels and highlight covers (1080 × 1920):** use the same scale. We recommend keeping text and key content away from the top ~250 px and the bottom ~300 px, where Instagram shows the profile name, buttons and the reply bar. Highlight covers are shown as a small circle, so keep the icon centred and use no text.
 
 **Headlines:** one accent word or short phrase per headline (see section 9). Sentence case ("Games people want to replay."), not Title Case.
+
+**Line breaks and text treatment:** the templates handle these for you (all post text goes through `rich()` in [`../design/templates.mjs`](../design/templates.mjs)), so you don't need to add manual line breaks:
+
+- Hyphenated words ("cross-platform", "data-analysis") and the accent word or phrase never break across lines, and DM “START” (typed exactly like that, as in the "Talk" step) always stays together.
+- Headings, paragraphs, list and step items, sub-lines, image captions and service cards use `text-wrap: pretty`, so they don't end with a single word alone on the last line.
+- In big display type (cover headlines, slide titles, the statement and the CTA headline), loose apostrophes are tucked in slightly, so "Let’s" and "Here’s" don't look gappy.
+- The bundled font files have no arrow character (→), so arrows in post text ("Swipe →", "Spreadsheets & paperwork → real systems") are drawn as the Lucide `arrow-right` icon. Keep typing → in [`../design/content.mjs`](../design/content.mjs) as usual.
+- On blue and light covers, the accent underline breaks around descenders (g, j, p, y) instead of running through them.
 
 ### 7.3 The wordmark is artwork, not a font
 
@@ -502,7 +510,7 @@ The "Crapto Studio" letters under the symbol are part of the logo artwork. Don't
 
 The theme is for the **cover** (slide 1). Inner slides (list, steps, statement, services, image, CTA) always use the dark theme, so every carousel reads the same after the first swipe.
 
-**Mixing themes on the grid:** alternate themes so no two neighbours look the same. In the launch grid, the blue posts sit on one diagonal and the light posts in the other two corners, with dark posts in between. Together they form an X ([grid preview](../exports/preview/grid.png); it shows every post in `design/content.mjs`, newest first, so once you add posts it shows those too):
+**Mixing themes on the grid:** alternate themes so no two neighbours look the same. In the launch grid, the blue posts sit on one diagonal and the light posts in the other two corners, with dark posts in between. Together they form an X ([grid preview](../exports/preview/grid.png); it shows every post in [`../design/content.mjs`](../design/content.mjs), newest first, so once you add posts it shows those too):
 
 | | Left | Middle | Right |
 |---|---|---|---|
@@ -514,14 +522,15 @@ Numbers are the posting order: post 01 first, 09 last (Instagram shows the newes
 
 ### 8.2 The subtle grid background
 
-Every post has a faint square grid behind the content: thin 2 px lines, cells of about 72 px on a 1080 px canvas, at very low opacity (about 5.5–8%), faded out with a soft mask. It nods to graph paper, level editors and code editors.
+Every post has a faint square grid behind the content: thin 2 px lines, cells of about 72 px on a 1080 px canvas, at very low opacity (about 5–8%), faded out with a soft mask. It nods to graph paper, level editors and code editors.
 
-- Dark theme: Slate-tinted lines (7%). Blue theme: white lines (5.5%). Light theme: Cobalt-tinted lines (8%).
+- These values apply to covers. Dark theme: Slate-tinted lines (7%). Blue theme: white lines (5.5%). Light theme: Cobalt-tinted lines (8%).
+- Inner slides use the dark grid at 70% strength (about 5%).
 - It must never compete with the text. If you notice the grid before the headline, it is too strong.
 
 ### 8.3 Shapes
 
-- Soft, rounded corners (about 24–36 px on a 1080 px canvas) on cards, tiles and buttons. They echo the round shapes in the symbol.
+- Soft, rounded corners (about 18–36 px on a 1080 px canvas) on cards, tiles and badges; pills are fully rounded. They echo the round shapes in the symbol.
 - Soft shadows only. No hard drop shadows, bevels or glossy effects.
 - Keep layouts simple: one headline, one idea, plenty of empty space.
 
@@ -530,8 +539,8 @@ Every post has a faint square grid behind the content: thin 2 px lines, cells of
 We use [Lucide](https://lucide.dev) (free, ISC licence).
 
 - Outline icons only, with round line ends. Don't mix with filled icons or emoji inside graphics (emoji are fine in captions).
-- One stroke width per design (the templates use about 1.7–1.9). Keep icons the same visual size within a slide.
-- One colour per icon: Sky or White on dark, White on blue, Cobalt on light. Inside a tile: White on a brand-gradient tile, Cobalt on a white tile. Orange only for one small highlighted icon.
+- One stroke width per design (the templates use 1.9 on icon tiles and 2.1 on the 360 px highlight-cover icons; the small inline arrow and bookmark icons in the text use 2.5). Keep icons the same visual size within a slide.
+- One colour per icon: Sky or White on dark, White on blue, Cobalt on light. Inside a tile: White on a brand-gradient tile, Cobalt on a white tile. Orange only for one small highlighted icon. The small inline arrow and bookmark icons are the exception: they take the colour of the text they sit in (for example Slate in the footer of a dark slide).
 
 | Topic | Lucide icon |
 |---|---|
@@ -540,12 +549,16 @@ We use [Lucide](https://lucide.dev) (free, ISC licence).
 | Software | `code-xml` |
 | Custom AI | `sparkles` |
 | Interactive | `presentation` |
-| Upgrades | `trending-up` |
+| Upgrades | `wrench` |
 | Support | `trophy` |
 | Custom solutions | `puzzle` |
 | Start | `send` |
 | Work | `layout-grid` |
 | Reviews | `message-square-quote` |
+
+Upgrades used to be `trending-up`. A rising chart reads as a stock or crypto price chart ("stonks"), which is exactly the association we avoid (see [section 4](#how-not-to-be-mistaken-for-a-crypto-account)), so it is now a `wrench` on the services card, the highlight cover and the Upgrades post cover. Don't use rising-chart icons anywhere.
+
+Arrows in post text use `arrow-right`, and the "Save for later" footer on the CTA slide uses `bookmark` (see [7.2](#72-type-scale-for-1080-px-wide-instagram-graphics)).
 
 ### 8.5 Orange is a spark, not a colour block
 
@@ -588,13 +601,13 @@ All Instagram graphics are generated from code, so every post uses the same colo
 
 | Template | What it is | When to use it |
 |---|---|---|
-| **Cover** | First slide of every carousel, in the post's theme (dark, blue or light): a tag (e.g. "01 / Games"), a big headline with one accent word or phrase, a short mono sub-line, and an icon tile or the logo | Every post starts with one. A post with no slides (`slides: []`) is a single image: just the cover, and its footer shows only the handle, without "Swipe →" |
-| **List** | A slide title and up to 5 numbered points | "What we build", "What we do", "Send us this first" |
-| **Steps** | Up to 4 numbered steps, each with a short name and one line of text, on cards | "How we work", "Why work with us" |
+| **Cover** | First slide of every carousel, in the post's theme (dark, blue or light): a tag (e.g. "01 / Games"), a big headline with one accent word or phrase, a short mono sub-line, and an icon tile or the logo | Every post starts with one. A post with no slides (`slides: []`, or no `slides` at all) is a single image: just the cover, and its footer shows only the handle, without "Swipe →" |
+| **List** | A slide title and up to 5 numbered points. The rows share the space between the title and the footer, so short items spread out and long ones compress | "What we build", "What we do", "Send us this first" |
+| **Steps** | Up to 4 numbered steps on cards, each with a short name and a one- or two-line description, with at least 48 px of space above the footer | "How we work", "Why work with us" |
 | **Statement** | One big sentence with a small code-comment kicker ("// who we are") | Positioning, a strong opinion, an announcement |
-| **Services** | A grid of the 8 services, each with its Lucide icon and a short sub-line | The intro post, a "what we do" reminder |
+| **Services** | A grid of the 8 services in equal-height cards, each with its Lucide icon on a brand-gradient tile and a short sub-line | The intro post, a "what we do" reminder |
 | **Image** | A screenshot or photo (PNG, JPG or WebP) in the dark slide frame, with an optional title and caption. `fit: 'contain'` (default) shows the whole image; `'cover'` fills the frame | Case studies, demos, before/after. Use it instead of adding screenshots in the Instagram app, so the slide numbers (e.g. "02 / 07") stay right |
-| **CTA** | The last slide: "Got an idea? Let's compile it." and what to do next (DM "START" or tap the link in bio) | Every carousel ends with one |
+| **CTA** | The last slide: the headline "Got an idea? Let’s compile it.", one call to action (DM “START” or tap the link in bio) and a single "Follow @craptostudio" pill. The footer reads "Save for later" with a bookmark icon. A post can set its own headline: the Support post uses "Stuck on a project? Let’s work it out." | Every carousel ends with one |
 
 Other generated assets:
 
@@ -603,21 +616,23 @@ Other generated assets:
 | Profile picture | `../exports/profile/profile-picture.png`, `../exports/profile/profile-picture-dark.png` |
 | Highlight covers: a white Lucide icon on the brand gradient, in this order: Start, Work, Games, Apps, AI, Software, Interactive, Upgrades, Support, Reviews | `../exports/highlights/01-start.png` … `../exports/highlights/10-reviews.png` |
 | Launch posts (9 carousels, folder number = posting order): `01-support`, `02-interactive`, `03-upgrades`, `04-software`, `05-ai`, `06-apps`, `07-start`, `08-games`, `09-intro` | `../exports/posts/NN-<slug>/01.png` (cover), `02.png`, … |
-| Profile mockup and grid preview: every post in `design/content.mjs`, newest first. They grow taller as you add posts, so later they show more than the 9-post launch grid | `../exports/preview/profile-mockup.png`, `../exports/preview/grid.png` |
+| Profile mockup and grid preview: every post in [`../design/content.mjs`](../design/content.mjs), newest first. They grow taller as you add posts, so later they show more than the 9-post launch grid. The mockup's post count follows the same file, and its link line ("🔗 your-project-form-link and 4 more") is a placeholder | `../exports/preview/profile-mockup.png`, `../exports/preview/grid.png` |
 | Brand board | `../exports/brand/brand-board.png` |
 
 ### 9.2 Changing text and regenerating
 
-- **Text:** edit `design/content.mjs`. It is the single source of truth for post copy, themes, posting order and highlights. Wrap one word or a short phrase in `*asterisks*` to give it the accent treatment, e.g. `'Games people want to *replay*.'`
-- **New posts:** add an entry to `posts` in `design/content.mjs`. Slide types are `list`, `steps`, `statement`, `services`, `image` and `cta`. An image slide looks like `{ type: 'image', src: 'photos/dashboard.png', title: 'The *after*', caption: 'Load time: 9s → 1.2s', fit: 'contain' }`: `src` is relative to the repo root (PNG, JPG or WebP), `title` and `caption` are optional, and `fit` is `'contain'` (default) or `'cover'`. A post with `slides: []` is a single image (the cover only, with no "Swipe →").
-- **Colours and fonts:** edit `design/tokens.mjs`. Keep them in line with sections 6 and 7 of this guide.
+- **Text:** edit [`../design/content.mjs`](../design/content.mjs). It is the single source of truth for post copy, themes, posting order and highlights. Wrap one word or a short phrase in `*asterisks*` to give it the accent treatment, e.g. `'Games people want to *replay*.'`
+- **New posts:** add an entry to `posts` in [`../design/content.mjs`](../design/content.mjs). Slide types are `list`, `steps`, `statement`, `services`, `image` and `cta`. An image slide looks like `{ type: 'image', src: 'photos/dashboard.png', title: 'The *after*', caption: 'Load time: 9s → 1.2s', fit: 'contain' }`: `src` is relative to the repo root, not to this guide (`photos/dashboard.png` is a hypothetical example; there is no `photos/` folder yet), the file can be PNG, JPG or WebP, `title` and `caption` are optional, and `fit` is `'contain'` (default) or `'cover'`. A post with `slides: []` (or no `slides` at all) is a single image (the cover only, with no "Swipe →").
+- **CTA headline:** by default the CTA slide says "Got an idea? Let’s compile it." A `cta` slide can override the headline, e.g. `{ type: 'cta', headline: 'Stuck on a project?\n*Let’s work it out.*' }`, which the Support post uses so mentoring doesn't promise to "compile" a student's project for them. It can also override the line under the headline with `body` (wrap a word in `**double asterisks**` to make it bold, as the default does with “START”).
+- **Colours and fonts:** edit [`../design/tokens.mjs`](../design/tokens.mjs). Keep them in line with sections 6 and 7 of this guide.
+- **Layout check:** `npm run render` (also run by `npm run build`) warns if any slide's content ends within 40 px of the footer. If you see that warning, shorten the text or split the slide.
 - **Rebuild everything:**
 
 ```bash
 npm install                        # first time only
 npx playwright install chromium    # first time only
 npm run build                      # regenerates logos, posts, highlights and previews into exports/
-npm run check                      # measures text contrast on every post template; fails if any text is too faint
+npm run check                      # measures text contrast on every post cover and text slide; fails if any text is too faint
 ```
 
 Run `npm run check` after any change to colours, fonts, layouts or post text (see [6.4](#64-accessible-pairings)). Full details are in the [README](../README.md).

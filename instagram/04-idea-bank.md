@@ -56,7 +56,7 @@ Every idea belongs to one pillar. Same pillars and mix as the strategy file.
 | Week | Tue Reel (SHOW) | Thu carousel (TEACH / OFFER) | Sat Reel (BUILD) |
 |---|---|---|---|
 | 1 | `UP1` Before / after: new look | `GM5` What a prototype should prove (TEACH) | `AI4` We tried to break our own AI |
-| 2 | `AP5` Small details that make an app feel finished | `SP6` How mentoring works (OFFER) | `SW4` What "you own the code" looks like |
+| 2 | `AP5` Small details that make an app feel finished | `SP6` How mentoring works (OFFER) | `SW4` What a clean handover looks like |
 | 3 | `GM3` One project, three screens | `CS5` Game, app, software or AI? (TEACH) | `IX5` Same quiz, more fun |
 
 Then start the next round with new IDs. At 3 feed posts a week, the bank lasts about 3–4 months. BUILD ideas run out first (there are 12), so add BUILD ideas from your real work as you go, and repeat the topics that worked best.
@@ -128,7 +128,7 @@ Six ideas for each of the 8 services. Captions follow the structure in the strat
 | SW1 | Reel | SHOW | Spreadsheet → system | "This used to be a spreadsheet. Now it's a real system." | Screen recording. Shot 1: a messy spreadsheet (test data). Shot 2: the same job in the new tool: a form, a dashboard, a one-click report. End on the dashboard. |
 | SW2 | Reel | SHOW | Two tools, connected | "New order → sheet updated → team notified." | Screen recording in three parts: an order placed in [tool A], a new row in [tool B], a message in [tool C]. Test data. Show the real timing; if it takes a minute, say so. |
 | SW3 | Carousel | TEACH | Tech words in plain English | "MVP, API, backend: tech words in plain English." | `cover → list → list → cta`. One word per line, for example: MVP = the smallest useful version · API = how two programs talk to each other · Backend = the part you don't see, where data is stored · Frontend = the part you see and tap · Bug = the program does something it wasn't planned to do. Second list: 5 more words people ask you about. |
-| SW4 | Reel | BUILD | What "you own the code" looks like | "“You own the code.” Here's what that should look like." | Screen recording of a handover from your own project: a README with setup steps, clear folder names, the docs page, the repository access screen. End with a question on screen: "Does your project have this?" |
+| SW4 | Reel | BUILD | What a clean handover looks like | "A clean handover: here's what it should look like." | Screen recording of a handover from your own project: a README with setup steps, clear folder names, the docs page, the repository access screen. End with a question on screen: "Does your project have this?" |
 | SW5 | Carousel | TEACH | Ready-made tool or custom software? | "Don't build custom software if this already exists." | `cover → list → list → statement → cta`. List 1, "A ready-made tool is enough when…": it fits most of your process · your team is small · your process is standard. List 2, "Custom software makes sense when…": you pay for many tools that don't talk to each other · your team copies the same data by hand every day · your way of working is part of what makes you different. Statement: "If a ready-made tool fits, we'll say so." Formula: [This or that](#formula-6-this-or-that). |
 | SW6 | Carousel | OFFER | Need an internal tool? | "Need an internal tool? Send us these 5 things." | `cover → list → cta`. List: how you do it today (a screenshot, no private data) · who uses it and how often · which tools it must connect to · your deadline · your budget range. |
 
@@ -224,7 +224,7 @@ Each script is 40–42 seconds. Before you film, read the Reel tips and cover ru
 - **Subtitles:** turn them on, or add them in your editor. Many people watch without sound.
 - **Your logo files:** use the trimmed PNGs in `../exports/logo/`. They are cut from your original files in `../brand/logo/source/` (the white versions come from `Crapto Studio-10.png`). Use them as they are: don't redraw, recolour or fade them.
 - **Watermark (optional):** the white symbol [`../exports/logo/symbol-white.png`](../exports/logo/symbol-white.png), small (at least 32 px wide), near the top of the frame with some empty space around it ([clear space rules](../brand/brand-guide.md#53-clear-space)). Check in the preview that the app's buttons don't cover it.
-- **End card (last 3–4 s):** your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) in the middle of a Cobalt `#376BB1` background, the blue post background (not the brand gradient: white text is too faint on its lighter blues), with the line from the script below it. Make it once and reuse it. **Shortcut:** use a launch post's last slide, for example [`../exports/posts/01-support/03.png`](../exports/posts/01-support/03.png), in the middle of a 1080 × 1920 Midnight `#0B1628` canvas. Cover its small `03 / 03` page number with a box in the background colour.
+- **End card (last 3–4 s):** your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) in the middle of a Cobalt `#376BB1` background, the blue post background (not the brand gradient: white text is too faint on its lighter blues), with the line from the script below it. Make it once and reuse it. **Shortcut:** use a launch post's last slide, for example [`../exports/posts/03-upgrades/03.png`](../exports/posts/03-upgrades/03.png) ("Got an idea? Let’s compile it."; the Support post's last slide has its own headline, "Stuck on a project? Let’s work it out."), in the middle of a 1080 × 1920 Midnight `#0B1628` canvas. Its small `03 / 03` page number sits inside the dark theme's top-right blue glow (about `#17324D` there, not Midnight), so a Midnight box would show as a patch: fill the box with the colour sampled right next to the number, or crop or blur that corner. The glow also reaches the slide's top edge, so soften any join line there.
 - **Cover:** a 1080 × 1350 design in the middle of the 1080 × 1920 frame, so it looks right in the grid's 3:4 crop. How to make one: [Reel covers](02-content-strategy.md#reel-covers) in the strategy. Suggested cover text is given for each Reel.
 
 ### Reel 1: Games (same jump, two versions)
@@ -378,17 +378,17 @@ Sticker names and options can change in the app. If one is missing, use the clos
 
 Reusable slide structures. Each one maps to the templates in [`../design/content.mjs`](../design/content.mjs): `cover`, `list`, `steps`, `statement`, `services`, `image`, `cta`.
 
-**Template limits (checked against the templates in `design/`)**
+**Template limits (checked against [`../design/templates.mjs`](../design/templates.mjs))**
 
 | Template | Keep it to | Note |
 |---|---|---|
 | `cover` headline | Up to 30 characters if you can (the `*asterisks*` don't count) | Shorter headlines render bigger (up to 18 characters gets the largest size). Wrap one word in `*asterisks*` for the accent. The cover also needs a `tag` and a `sub` line. |
-| `list` | Up to 5 items. About 35 characters fit on one line | Keep most items to one line; two lines is the maximum. Split longer lists over two slides. Needs a `title`. |
+| `list` | Up to 5 items. About 35 characters fit on one line | Keep most items to one line; two lines is the maximum. The rows share the space between the title and the footer, and `npm run render` warns if a slide's content runs into its footer. Split longer lists over two slides. Needs a `title`. |
 | `steps` | 4 steps, each a short title + one sentence | Written as `['Title', 'One sentence.']`. Needs a `title`. |
 | `statement` | One or two sentences, about 200 characters at most (the launch statement is 133) | Always set a `kicker`: the small mono line above, for example `// myth 01`. Without one, the slide shows the word "undefined". |
-| `services` | Fixed: the 8 service cards | Needs a `title`, for example "What we build". |
+| `services` | Fixed: the 8 service cards | Needs a `title`, for example "What we do" (the launch intro post's title). |
 | `image` | One screenshot or photo (PNG, JPG or WebP), with an optional short `title` and `caption` | Written as `{ type: 'image', src: 'photos/after.png', title: 'The *after*', caption: '…', fit: 'contain' }`. `src` is relative to the repo root. `fit: 'contain'` (default) shows the whole image; `'cover'` fills the frame and crops the edges. |
-| `cta` | Fixed text: "Got an idea? Let's compile it.", DM "START" or link in bio, and Follow · Save · Share | Always the last slide. |
+| `cta` | Default headline "Got an idea? Let’s compile it.", one call to action (DM "START" or tap the link in bio) and a single Follow pill. The footer reads "Save for later" with a bookmark icon | Always the last slide. A post can override the headline, e.g. `{ type: 'cta', headline: 'Stuck on a project?\n*Let’s work it out.*' }` (as launch post `01-support` does). |
 
 Only the cover uses the post's theme. All the other slides are always dark.
 
@@ -404,7 +404,7 @@ TEACH and case-study carousels work best with 5–10 slides; OFFER carousels can
 | 2 | `list` | Items 1–5 ("Before the event") |
 | 3 | `list` | Items 6–10 ("On the day"). Optional. |
 | 4 | `statement` | Kicker `// remember`. The one thing to remember, in one sentence |
-| 5 | `cta` | Save · Share · DM "START" |
+| 5 | `cta` | DM "START" (the footer already says "Save for later"; ask for saves and shares in the caption) |
 
 ### Formula 2: The process
 
@@ -428,14 +428,14 @@ TEACH and case-study carousels work best with 5–10 slides; OFFER carousels can
 | 6 | `statement` | Kicker `// our honest take`. The summary line |
 | 7 | `cta` | DM "START" |
 
-**Ready to paste into `posts` in `design/content.mjs`** (change `order` to the next free number; the slides render to `exports/posts/10-ai-myths/`, and the post is also added to the grid previews in `exports/preview/`):
+**Ready to paste into `posts` in [`../design/content.mjs`](../design/content.mjs)** (change `order` to the next free number; after `npm run render` the slides land in `../exports/posts/10-ai-myths/`, a hypothetical folder that is created only once this post is added, and the post is also added to the grid previews in `../exports/preview/`):
 
 ```js
 {
   order: 10, slug: 'ai-myths', theme: 'blue', icon: 'sparkles',
   tag: '03 / Custom AI',
   headline: 'You might not *need* AI.',
-  sub: '4 myths · honest answers',
+  sub: '4 myths · Honest answers',
   slides: [
     { type: 'statement', kicker: '// myth 01',
       text: '“AI will fix messy data.” *Not really.* Clean the data first, or the AI repeats the mess.' },
