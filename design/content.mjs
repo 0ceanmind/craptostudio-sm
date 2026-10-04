@@ -27,6 +27,19 @@ export const services = [
   { icon: 'puzzle', title: t('Custom', 'حلول مخصّصة'), sub: t('Tell us the problem', 'أخبرنا بالمشكلة') },
 ];
 
+// Profile header. The bio holds both languages and must stay ≤150 characters (this one is 139
+// code points); 01-profile-setup.md quotes it, and the profile mockup shows it.
+export const profile = {
+  name: 'Crapto Studio | Games·Apps·AI',
+  category: 'Software Company',
+  bio: [
+    'Ideas, compiled. 💻 أفكارك، جاهزة للتشغيل',
+    'Games · Apps · Software · AI',
+    'ألعاب · تطبيقات · برمجيات · ذكاء اصطناعي',
+    '👇 DM "START" · راسلنا «ابدأ»',
+  ],
+};
+
 // Story highlights, in the order they should appear on the profile (left to right).
 export const highlights = [
   { slug: 'start', icon: 'send', label: t('Start', 'ابدأ') },

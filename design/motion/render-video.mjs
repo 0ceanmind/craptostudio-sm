@@ -9,8 +9,9 @@
 //   node design/motion/render-video.mjs ai --frame 5.5     one full-size frame → .preview/
 //   node design/motion/render-video.mjs ai --loopcheck     how far the last frame is from frame 0
 //
-// Output: exports/motion/NN-<slug>/<lang>-<format>.mp4 plus <lang>-<format>.jpg (frame 0, the
-// same complete composition Instagram shows as the thumbnail).
+// Output: feed  → exports/posts/NN-<slug>/<lang>/01-hero.mp4 (its still, 01-cover.png, comes from
+//                 `npm run render`: it is the same frame 0)
+//         reel  → exports/reels/NN-<slug>-<lang>.mp4 plus -cover.jpg (frame 0, for the Reel cover)
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
@@ -69,7 +70,7 @@ for (const post of selected) {
     for (const format of formats) {
       const { width, height } = FORMATS[format];
       const page = await browser.newPage({ viewport: { width, height } });
-      await page.setContent(stage({ scene, post, lang, format }), { waitUntil: 'load' });
+      await page.setContent(stage({ scene, post, lang, format, swipe: (post.slides ?? []).length > 0 }), { waitUntil: 'load' });
       await page.waitForFunction(() => window.__ready === true);
       const duration = await page.evaluate(() => window.__duration);
       const name = `${lang}-${format}`;
@@ -109,20 +110,23 @@ for (const post of selected) {
           .png().toFile(out);
         console.log(`preview: ${path.relative(root, out)} (t = ${times.map((t) => t.toFixed(2)).join(', ')})`);
       } else {
-        const dir = path.join(root, 'exports/motion', `${pad(post.order)}-${post.slug}`);
-        fs.mkdirSync(dir, { recursive: true });
-        const enc = encode(path.join(dir, `${name}.mp4`), width, height);
+        const base = `${pad(post.order)}-${post.slug}`;
+        const file = format === 'feed'
+          ? path.join(root, 'exports/posts', base, lang, '01-hero.mp4')
+          : path.join(root, 'exports/reels', `${base}-${lang}.mp4`);
+        fs.mkdirSync(path.dirname(file), { recursive: true });
+        const enc = encode(file, width, height);
         const frames = Math.round(duration * FPS);
         const t0 = Date.now();
         for (let i = 0; i < frames; i++) {
           await page.evaluate((tt) => window.__seek(tt), i / FPS);
           const buf = await page.screenshot({ type: 'jpeg', quality: 96 });
-          if (i === 0) await sharp(buf).jpeg({ quality: 92 }).toFile(path.join(dir, `${name}.jpg`));
+          if (i === 0 && format === 'reel') await sharp(buf).jpeg({ quality: 92 }).toFile(file.replace(/\.mp4$/, '-cover.jpg'));
           await enc.write(buf);
         }
         await enc.end();
         videos++;
-        console.log(`video: ${path.relative(root, path.join(dir, `${name}.mp4`))} ${frames} frames in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
+        console.log(`video: ${path.relative(root, file)} ${frames} frames in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
       }
       await page.close();
     }
@@ -130,4 +134,4 @@ for (const post of selected) {
 }
 
 await browser.close();
-if (videos) console.log(`motion: wrote ${videos} videos to exports/motion/`);
+if (videos) console.log(`motion: wrote ${videos} videos`);
