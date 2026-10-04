@@ -70,7 +70,7 @@ for (const post of selected) {
       const { width, height } = FORMATS[format];
       const page = await browser.newPage({ viewport: { width, height } });
       await page.setContent(stage({ scene, post, lang, format }), { waitUntil: 'load' });
-      await page.evaluate(() => document.fonts.ready);
+      await page.waitForFunction(() => window.__ready === true);
       const duration = await page.evaluate(() => window.__duration);
       const name = `${lang}-${format}`;
 
@@ -81,12 +81,18 @@ for (const post of selected) {
         await page.screenshot({ path: out });
         console.log(`frame: ${path.relative(root, out)}`);
       } else if (loopcheck) {
+        // Seamless = (1) the state at t=duration equals frame 0, and (2) the jump across the seam
+        // (last frame -> frame 0) is no bigger than an ordinary frame-to-frame step elsewhere.
         const grab = async (tt) => { await page.evaluate((x) => window.__seek(x), tt); return sharp(await page.screenshot()).removeAlpha().raw().toBuffer(); };
-        const a = await grab(0); const b = await grab(duration - 1 / FPS);
-        let diff = 0; let changed = 0;
-        for (let i = 0; i < a.length; i++) { const d = Math.abs(a[i] - b[i]); diff += d; if (d > 24) changed++; }
-        const mean = diff / a.length; const pct = (100 * changed) / a.length;
-        console.log(`loopcheck ${post.slug} ${name}: mean diff ${mean.toFixed(2)}/255, ${pct.toFixed(2)}% of values differ by >24 ${mean < 2 && pct < 1 ? 'OK' : 'NOT SEAMLESS'}`);
+        const diff = (a, b) => { let d = 0; for (let i = 0; i < a.length; i++) d += Math.abs(a[i] - b[i]); return d / a.length; };
+        const first = await grab(0);
+        const end = diff(first, await grab(duration));
+        const seam = diff(await grab(duration - 1 / FPS), first);
+        const steps = [];
+        for (const f of [0.2, 0.45, 0.7, 0.9]) steps.push(diff(await grab(duration * f), await grab(duration * f + 1 / FPS)));
+        const typical = Math.max(...steps);
+        const ok = end < 0.5 && seam <= Math.max(typical * 1.5, 0.6);
+        console.log(`loopcheck ${post.slug} ${name}: end-vs-start ${end.toFixed(2)}, seam step ${seam.toFixed(2)}, typical step ≤ ${typical.toFixed(2)} (mean abs diff /255) ${ok ? 'OK' : 'NOT SEAMLESS'}`);
       } else if (preview) {
         const times = preview === true ? [0, 1, 2, 3, 4, 5, 6, 7].map((t) => t * duration / 8) : String(preview).split(',').map(Number);
         const tiles = [];

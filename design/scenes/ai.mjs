@@ -39,8 +39,9 @@ export default {
 .chat .head small{display:flex;align-items:center;gap:8px;font:500 19px ${ctx.rtl ? 'Alexandria' : 'JetBrains Mono'};color:var(--ui-sub)}
 .chat .head small i{width:10px;height:10px;border-radius:50%;background:#28C941}
 .chips{display:flex;gap:12px;flex-wrap:wrap}
+.chips .chip.ok{outline:0 solid rgba(90,180,217,.35)}
 .typing{position:absolute;top:0;inset-inline-start:0;opacity:0}
-.data{position:absolute;inset-inline-start:0;top:4px;display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:22px;font-weight:700;font-size:${ctx.rtl ? 22 : 21}px}
+.data{position:absolute;inset-inline-start:0;top:4px;outline:0 solid rgba(242,141,25,.45);display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:22px;font-weight:700;font-size:${ctx.rtl ? 22 : 21}px}
 .data .ib{width:46px;height:46px;border-radius:14px;background:var(--brand);color:#fff;display:grid;place-items:center}
 .wire{position:absolute;inset:0;overflow:visible}
 .pulse{position:absolute;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--sparkg);box-shadow:0 0 24px rgba(242,141,25,.8);opacity:0}
@@ -94,7 +95,7 @@ export default {
     tl.fromTo('.pulse', { opacity: 0 }, { opacity: 1, duration: 0.15 }, 1.95);
     tl.to('.pulse', { motionPath: { path: '#wire', align: '#wire', alignOrigin: [0.5, 0.5] }, duration: 0.8, ease: 'power1.inOut' }, 1.95);
     tl.to('.pulse', { opacity: 0, scale: 2.2, duration: 0.25 }, 2.75);
-    tl.fromTo('.data', { boxShadow: '0 0 0 0 rgba(242,141,25,0)' }, { boxShadow: '0 0 0 8px rgba(242,141,25,.45)', duration: 0.25, yoyo: true, repeat: 1 }, 1.95);
+    tl.fromTo('.data', { outlineWidth: 0 }, { outlineWidth: 8, duration: 0.25, yoyo: true, repeat: 1 }, 1.95);
     // ...typing dots...
     tl.fromTo('.typing', { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3 }, 2.2);
     gsap.utils.toArray('.typing i').forEach((dot, i) => {
@@ -106,6 +107,6 @@ export default {
     tl.fromTo('.bubble.ai .wd', { opacity: 0 }, { opacity: 1, duration: 0.18, stagger: 0.085, ease: 'none' }, 3.25);
     tl.fromTo('.chips', { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 0.01 }, 4.6);
     tl.fromTo('.chips .chip', { opacity: 0, y: 16, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.12, ease: 'back.out(1.8)' }, 4.6);
-    tl.fromTo('.chips .chip.ok', { boxShadow: '0 0 0 0 rgba(90,180,217,.0)' }, { boxShadow: '0 0 0 10px rgba(90,180,217,.35)', duration: 0.35, yoyo: true, repeat: 1 }, 5.3);
+    tl.fromTo('.chips .chip.ok', { outlineWidth: 0 }, { outlineWidth: 10, duration: 0.35, yoyo: true, repeat: 1 }, 5.3);
   },
 };

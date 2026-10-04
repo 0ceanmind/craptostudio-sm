@@ -140,15 +140,19 @@ gsap.registerPlugin(CustomEase, MotionPathPlugin, DrawSVGPlugin);
 CustomEase.create('silk', '0.22, 1, 0.36, 1');
 const ctx = ${JSON.stringify(ctx)};
 const DURATION = ${scene.duration};
-const tl = gsap.timeline({ paused: true, defaults: { ease: 'silk', duration: 0.7, immediateRender: false } });
-// Ambient motion: glows drift and return, so the loop closes seamlessly.
-tl.to('.g1', { x: ctx.rtl ? 60 : -60, y: 50, scale: 1.08, duration: DURATION / 2, ease: 'sine.inOut', repeat: 1, yoyo: true }, 0);
-tl.to('.g2', { x: ctx.rtl ? -50 : 50, y: -40, scale: 1.1, duration: DURATION / 2, ease: 'sine.inOut', repeat: 1, yoyo: true }, 0);
-(${fnSource(scene.animate)})(tl, gsap, ctx);
-tl.set({}, {}, DURATION);
 window.__duration = DURATION;
-window.__seek = (time) => { tl.seek(time, false); };
-window.__seek(0);`;
+// Build the timeline only once the web fonts are in: scenes measure text (chip widths etc.).
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'silk', duration: 0.7, immediateRender: false } });
+  // Ambient motion: glows drift and return, so the loop closes seamlessly.
+  tl.to('.g1', { x: ctx.rtl ? 60 : -60, y: 50, scale: 1.08, duration: DURATION / 2, ease: 'sine.inOut', repeat: 1, yoyo: true }, 0);
+  tl.to('.g2', { x: ctx.rtl ? -50 : 50, y: -40, scale: 1.1, duration: DURATION / 2, ease: 'sine.inOut', repeat: 1, yoyo: true }, 0);
+  (${fnSource(scene.animate)})(tl, gsap, ctx);
+  tl.set({}, {}, DURATION);
+  window.__seek = (time) => { tl.seek(time, false); };
+  window.__seek(0);
+  window.__ready = true;
+});`;
 
   return `<!doctype html><html lang="${lang}" dir="${rtl ? 'rtl' : 'ltr'}"><head><meta charset="utf-8"><style>${css}</style></head>
 <body class="fmt-${format} theme-${post.theme}">${body}<script>${script}</script></body></html>`;
