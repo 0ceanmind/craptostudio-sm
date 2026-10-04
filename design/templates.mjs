@@ -75,7 +75,7 @@ body{background:radial-gradient(ellipse 70% 45% at ${rtl ? '8%' : '92%'} 0%, rgb
 .brand img{height:50px;display:block}
 .tag{font-family:${stack.mono};font-size:23px;font-weight:500;letter-spacing:.1em;color:${color.slate};border:2px solid ${color.line};border-radius:999px;padding:8px 22px;direction:ltr}
 .tag b{color:${color.white};font-weight:700}
-em{font-style:normal;white-space:nowrap;background:${gradient.spark};-webkit-background-clip:text;background-clip:text;color:transparent}
+em{font-style:normal;white-space:nowrap;background:${gradient.spark};-webkit-background-clip:text;background-clip:text;color:transparent;padding:.22em .04em .12em;margin:-.22em -.04em -.12em}
 .nw{white-space:nowrap}
 .ap{margin:0 -.04em}
 .gl{display:inline-flex;vertical-align:-.12em}

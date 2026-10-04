@@ -17,18 +17,20 @@
 const t = (en, ar) => ({ en, ar });
 
 export const services = [
-  { icon: 'gamepad-2', title: t('Games', 'الألعاب'), sub: t('Unity, 2D & 3D', 'Unity، ثنائية وثلاثية الأبعاد') },
-  { icon: 'smartphone', title: t('Apps', 'التطبيقات'), sub: t('iOS & Android', 'iOS و Android') },
-  { icon: 'code-xml', title: t('Software', 'البرمجيات'), sub: t('Web, desktop & tools', 'ويب وسطح مكتب وأدوات') },
-  { icon: 'sparkles', title: t('Custom AI', 'الذكاء الاصطناعي'), sub: t('Chatbots & automation', 'مساعدات ذكية وأتمتة') },
-  { icon: 'presentation', title: t('Interactive', 'المحتوى التفاعلي'), sub: t('Presentations & demos', 'عروض تقديمية وتوضيحية') },
-  { icon: 'wrench', title: t('Upgrades', 'التطوير'), sub: t('Fix, speed up, extend', 'إصلاح وتسريع وتوسيع') },
-  { icon: 'trophy', title: t('Support', 'الإرشاد'), sub: t('Project mentoring', 'إرشاد في المشاريع') },
-  { icon: 'puzzle', title: t('Custom', 'حلول مخصّصة'), sub: t('Tell us the problem', 'أخبرنا بالمشكلة') },
+  { icon: 'gamepad-2', title: t('Games', 'ألعاب'), sub: t('Unity, 2D & 3D', 'Unity، ثنائية وثلاثية الأبعاد') },
+  { icon: 'smartphone', title: t('Apps', 'تطبيقات'), sub: t('iOS & Android', 'iOS و Android') },
+  { icon: 'code-xml', title: t('Software', 'برمجيات'), sub: t('Web, desktop & tools', 'ويب وسطح المكتب وأدوات') },
+  { icon: 'sparkles', title: t('Custom AI', 'ذكاء اصطناعي'), sub: t('Chatbots & automation', 'مساعدات ذكية وأتمتة') },
+  { icon: 'presentation', title: t('Interactive', 'محتوى تفاعلي'), sub: t('Presentations & demos', 'عروض تقديمية وتوضيحية') },
+  { icon: 'wrench', title: t('Upgrades', 'ترقية'), sub: t('Fix, speed up, extend', 'إصلاح وتسريع وتوسيع') },
+  { icon: 'trophy', title: t('Support', 'إرشاد'), sub: t('Project mentoring', 'للمشاريع والمسابقات') },
+  { icon: 'puzzle', title: t('Custom', 'حلول مخصّصة'), sub: t('Tell us the problem', 'أخبرنا بمشكلتك') },
 ];
 
-// Profile header. The bio holds both languages and must stay ≤150 characters (this one is 139
+// Profile header. The bio holds both languages and must stay ≤150 characters (this one is 140
 // code points); 01-profile-setup.md quotes it, and the profile mockup shows it.
+// The invisible ‏ (right-to-left mark) after «ابدأ» keeps the closing » next to the word:
+// that line starts in English, so without it the » jumps to the far end of the line.
 export const profile = {
   name: 'Crapto Studio | Games·Apps·AI',
   category: 'Software Company',
@@ -36,7 +38,7 @@ export const profile = {
     'Ideas, compiled. 💻 أفكارك، جاهزة للتشغيل',
     'Games · Apps · Software · AI',
     'ألعاب · تطبيقات · برمجيات · ذكاء اصطناعي',
-    '👇 DM "START" · راسلنا «ابدأ»',
+    '👇 DM "START" · راسلنا «ابدأ»‏',
   ],
 };
 
@@ -49,15 +51,15 @@ export const highlights = [
   { slug: 'ai', icon: 'sparkles', label: t('AI', 'ذكاء اصطناعي') },
   { slug: 'software', icon: 'code-xml', label: t('Software', 'برمجيات') },
   { slug: 'interactive', icon: 'presentation', label: t('Interactive', 'تفاعلي') },
-  { slug: 'upgrades', icon: 'wrench', label: t('Upgrades', 'تطوير') },
+  { slug: 'upgrades', icon: 'wrench', label: t('Upgrades', 'ترقية') },
   { slug: 'support', icon: 'trophy', label: t('Support', 'إرشاد') },
   { slug: 'reviews', icon: 'message-square-quote', label: t('Reviews', 'آراء العملاء') },
 ];
 
 // The default last slide. The DM keyword is START in English and «ابدأ» in Arabic.
 export const ctaDefault = {
-  headline: t('Got an idea?\n*Let’s compile it.*', 'لديك فكرة؟\n*لنحوّلها إلى واقع.*'),
-  body: t('DM us **“START”** or tap the link in bio.', 'راسلنا بكلمة **«ابدأ»** أو اضغط على الرابط في الملف الشخصي.'),
+  headline: t('Got an idea?\n*Let’s compile it.*', 'لديك فكرة؟\n*لنبنِها معاً.*'),
+  body: t('DM us **“START”** or tap the link in bio.', 'راسلنا بكلمة **«ابدأ»**\nأو اضغط على الرابط في الملف الشخصي.'),
 };
 
 // Launch posts. Every post is published twice, once in English and once in Arabic.
@@ -67,28 +69,28 @@ export const ctaDefault = {
 export const posts = [
   {
     order: 1, slug: 'support', theme: 'blue', icon: 'trophy', scene: 'support',
-    tag: t('07 / Support', '07 / الإرشاد'),
+    tag: t('07 / Support', '07 / إرشاد'),
     headline: t('You code.\n*We guide.*', 'أنت تبرمج،\n*ونحن نرشدك.*'),
-    sub: t('Mentoring for projects, competitions & hackathons', 'إرشاد في المشاريع البرمجية والمسابقات والهاكاثونات'),
+    sub: t('Mentoring for projects, competitions & hackathons', 'إرشاد للمشاريع والمسابقات والهاكاثونات'),
     slides: [
       { type: 'cards', title: t('How we help', 'كيف نساعدك'), items: [
-        { icon: 'graduation-cap', text: t('Project mentoring', 'إرشاد في المشاريع') },
-        { icon: 'bug', text: t('Debugging sessions', 'جلسات لتصحيح الأخطاء') },
+        { icon: 'graduation-cap', text: t('Project mentoring', 'إرشاد في مشروعك') },
+        { icon: 'bug', text: t('Debugging sessions', 'جلسات تصحيح الأخطاء') },
         { icon: 'trophy', text: t('Competition prep', 'التحضير للمسابقات') },
         { icon: 'lightbulb', text: t('You build. We explain.', 'أنت تبني، ونحن نشرح.') },
       ] },
-      { type: 'cta', headline: t('Stuck on a project?\n*Let’s work it out.*', 'عالق في مشروع؟\n*لنحلّها معاً.*') },
+      { type: 'cta', headline: t('Stuck on a project?\n*Let’s work it out.*', 'عالق في مشروع؟\n*لنجد الحل معاً.*') },
     ],
   },
   {
     order: 2, slug: 'interactive', theme: 'dark', icon: 'presentation', scene: 'interactive',
-    tag: t('06 / Interactive', '06 / المحتوى التفاعلي'),
+    tag: t('06 / Interactive', '06 / محتوى تفاعلي'),
     headline: t('Presentations people *remember*.', 'عروض تقديمية *لا تُنسى*.'),
     sub: t('Interactive content · Presentations · Demos', 'محتوى تفاعلي · عروض تقديمية · عروض توضيحية'),
     slides: [
       { type: 'cards', title: t('What we build', 'ماذا نصمّم'), items: [
         { icon: 'presentation', text: t('Interactive pitch decks', 'عروض تقديمية تفاعلية') },
-        { icon: 'mouse-pointer-click', text: t('Touchscreen & kiosk apps', 'تطبيقات الشاشات اللمسية') },
+        { icon: 'mouse-pointer-click', text: t('Touchscreen & kiosk apps', 'تطبيقات شاشات اللمس') },
         { icon: 'graduation-cap', text: t('Lessons & quizzes', 'دروس واختبارات تفاعلية') },
         { icon: 'box', text: t('3D product demos', 'عروض منتجات ثلاثية الأبعاد') },
       ] },
@@ -97,11 +99,11 @@ export const posts = [
   },
   {
     order: 3, slug: 'upgrades', theme: 'light', icon: 'wrench', scene: 'upgrades',
-    tag: t('05 / Upgrades', '05 / التطوير'),
-    headline: t('Already built?\nLet’s make it *better*.', 'مشروعك جاهز؟\n*لنجعله أفضل.*'),
+    tag: t('05 / Upgrades', '05 / ترقية'),
+    headline: t('Already built?\nLet’s make it *better*.', 'مشروعك جاهز؟\nلنجعله *أفضل.*'),
     sub: t('Fix · Speed up · Extend · Modernise', 'إصلاح · تسريع · توسيع · تحديث'),
     slides: [
-      { type: 'cards', title: t('What we do', 'ماذا نفعل'), items: [
+      { type: 'cards', title: t('What we do', 'ماذا نقدّم'), items: [
         { icon: 'search-check', text: t('Code health check', 'فحص شامل للكود') },
         { icon: 'gauge', text: t('Speed & bug fixes', 'تسريع وإصلاح الأخطاء') },
         { icon: 'square-plus', text: t('New features', 'ميزات جديدة') },
@@ -112,45 +114,45 @@ export const posts = [
   },
   {
     order: 4, slug: 'software', theme: 'dark', icon: 'code-xml', scene: 'software',
-    tag: t('04 / Software', '04 / البرمجيات'),
-    headline: t('Software built around how you *work*.', 'برمجيات مصمَّمة *حول طريقة عملك*.'),
+    tag: t('04 / Software', '04 / برمجيات'),
+    headline: t('Software built around how you *work*.', 'برمجيات تُبنى\n*على مقاسك*.'),
     sub: t('Web · Desktop · Dashboards · Custom tools', 'ويب · سطح المكتب · لوحات تحكم · أدوات مخصّصة'),
     slides: [
       { type: 'cards', title: t('What we build', 'ماذا نبني'), items: [
         { icon: 'layout-dashboard', text: t('Dashboards & portals', 'لوحات تحكم وبوابات') },
-        { icon: 'sheet', text: t('Spreadsheets → systems', 'من الجداول إلى أنظمة') },
-        { icon: 'plug', text: t('APIs & integrations', 'ربط الأنظمة والتكامل') },
-        { icon: 'file-code', text: t('Clean handover', 'تسليم كود موثّق') },
+        { icon: 'sheet', text: t('Spreadsheets → systems', 'من جداول البيانات إلى أنظمة') },
+        { icon: 'plug', text: t('APIs & integrations', 'واجهات API وربط الأنظمة') },
+        { icon: 'file-code', text: t('Clean handover', 'تسليم منظّم وموثّق') },
       ] },
       { type: 'cta' },
     ],
   },
   {
     order: 5, slug: 'ai', theme: 'blue', icon: 'sparkles', scene: 'ai',
-    tag: t('03 / Custom AI', '03 / الذكاء الاصطناعي'),
+    tag: t('03 / Custom AI', '03 / ذكاء اصطناعي'),
     headline: t('AI that fits *your* business.', 'ذكاء اصطناعي *يفهم* عملك.'),
-    sub: t('Assistants · Automation · Integrations', 'مساعدات ذكية · أتمتة · تكامل مع أدواتك'),
+    sub: t('Assistants · Automation · Integrations', 'مساعدات ذكية · أتمتة · ربط بأدواتك'),
     slides: [
       { type: 'cards', title: t('What we build', 'ماذا نبني'), items: [
         { icon: 'bot', text: t('AI assistants', 'مساعدات ذكية') },
         { icon: 'workflow', text: t('Automations', 'أتمتة المهام') },
-        { icon: 'puzzle', text: t('AI inside your app', 'ذكاء داخل تطبيقك') },
-        { icon: 'lightbulb', text: t('Honest advice', 'استشارة صادقة') },
+        { icon: 'puzzle', text: t('AI inside your app', 'ذكاء اصطناعي داخل تطبيقك') },
+        { icon: 'lightbulb', text: t('Honest advice', 'نصيحة صادقة') },
       ] },
       { type: 'cta' },
     ],
   },
   {
     order: 6, slug: 'apps', theme: 'dark', icon: 'smartphone', scene: 'apps',
-    tag: t('02 / Apps', '02 / التطبيقات'),
-    headline: t('Apps that earn a spot on the *home screen*.', 'تطبيقات تستحق مكانها *على شاشتك*.'),
+    tag: t('02 / Apps', '02 / تطبيقات'),
+    headline: t('Apps that earn a spot on the *home screen*.', 'تطبيقات تبقى *على شاشتك*.'),
     sub: t('iOS · Android · Cross-platform', 'iOS · Android · متعددة المنصات'),
     slides: [
       { type: 'cards', title: t('What we build', 'ماذا نبني'), items: [
-        { icon: 'smartphone', text: t('iOS & Android apps', 'تطبيقات iOS و Android') },
-        { icon: 'palette', text: t('UI/UX design', 'تصميم الواجهات والتجربة') },
+        { icon: 'smartphone', text: t('iOS & Android apps', 'تطبيقات iOS\nو Android') },
+        { icon: 'palette', text: t('UI/UX design', 'تصميم UI/UX') },
         { icon: 'credit-card', text: t('Payments & accounts', 'الدفع والحسابات') },
-        { icon: 'store', text: t('Store launch & updates', 'النشر في المتاجر والتحديثات') },
+        { icon: 'store', text: t('Store launch & updates', 'الإطلاق في المتاجر والتحديثات') },
       ] },
       { type: 'cta' },
     ],
@@ -158,27 +160,27 @@ export const posts = [
   {
     order: 7, slug: 'start', theme: 'light', icon: 'send', scene: 'start',
     tag: t('Start here', 'ابدأ من هنا'),
-    headline: t('New project?\nHere’s how we *build it*.', 'مشروع جديد؟\n*هكذا نبنيه.*'),
+    headline: t('New project?\nHere’s *the plan.*', 'مشروع جديد؟\n*هكذا نبنيه.*'),
     sub: t('4 steps · No jargon · No surprises', '4 خطوات · بلا تعقيد · بلا مفاجآت'),
     slides: [
       { type: 'steps', title: t('How we work', 'كيف نعمل'), items: [
-        { title: t('Talk', 'تحدّث معنا'), text: t('Tell us your idea. DM “START”.', 'أخبرنا بفكرتك. راسلنا بكلمة «ابدأ».') },
+        { title: t('Talk', 'نتحدّث'), text: t('Tell us your idea. DM “START”.', 'أخبرنا بفكرتك. راسلنا بكلمة «ابدأ».') },
         { title: t('Plan', 'نخطّط'), text: t('Clear scope, quote & timeline.', 'نطاق واضح وعرض سعر وجدول زمني.') },
         { title: t('Build', 'نبني'), text: t('Real progress every week.', 'تقدّم حقيقي تراه كل أسبوع.') },
-        { title: t('Launch & support', 'نُطلق وندعم'), text: t('We ship it and stay around.', 'نُطلق مشروعك ونبقى معك.') },
+        { title: t('Launch & support', 'نُطلق وندعم'), text: t('We ship it and stay around.', 'نسلّم مشروعك ونبقى معك.') },
       ] },
-      { type: 'cards', title: t('Send us this first', 'أرسل لنا أولاً'), items: [
+      { type: 'cards', title: t('Send us this first', 'أرسل لنا هذه أولاً'), items: [
         { icon: 'lightbulb', text: t('Your idea, in one line', 'فكرتك في سطر واحد') },
-        { icon: 'users', text: t('Who it’s for', 'لمن هذا المشروع') },
-        { icon: 'calendar', text: t('Your deadline', 'الموعد النهائي') },
-        { icon: 'wallet', text: t('Your budget range', 'الميزانية التقريبية') },
+        { icon: 'users', text: t('Who it’s for', 'جمهورك المستهدف') },
+        { icon: 'calendar', text: t('Your deadline', 'موعدك النهائي') },
+        { icon: 'wallet', text: t('Your budget range', 'ميزانيتك التقريبية') },
       ] },
       { type: 'cta' },
     ],
   },
   {
     order: 8, slug: 'games', theme: 'dark', icon: 'gamepad-2', scene: 'games',
-    tag: t('01 / Games', '01 / الألعاب'),
+    tag: t('01 / Games', '01 / ألعاب'),
     headline: t('Games people want to *replay*.', 'ألعاب تُلعب *مرة بعد مرة*.'),
     sub: t('Unity · 2D & 3D · Mobile, PC & web', 'Unity · ثنائية وثلاثية الأبعاد · للجوال والكمبيوتر والويب'),
     slides: [
@@ -198,11 +200,11 @@ export const posts = [
     sub: t('Games · Apps · Software · AI', 'ألعاب · تطبيقات · برمجيات · ذكاء اصطناعي'),
     slides: [
       { type: 'statement', kicker: t('// who we are', '// من نحن'),
-        text: t('We *design and build* games, apps, software and AI.', 'نصمّم *ونبني* الألعاب والتطبيقات والبرمجيات وحلول الذكاء الاصطناعي.') },
+        text: t('We *design and build* games, apps, software and AI.', '*نصمّم ونبني* ألعاباً وتطبيقات وبرمجيات وحلول ذكاء اصطناعي.') },
       { type: 'services', title: t('What we do', 'ماذا نقدّم') },
-      { type: 'steps', title: t('Why work with us', 'لماذا تعمل معنا'), items: [
-        { title: t('Honest scoping', 'تقدير صادق'), text: t('If you don’t need it, we say so.', 'إن لم تكن بحاجة إليه، نخبرك بصراحة.') },
-        { title: t('Weekly progress', 'تقدّم أسبوعي'), text: t('Builds you can try, every week.', 'نسخ تجريبية تراها كل أسبوع.') },
+      { type: 'steps', title: t('Why work with us', 'لماذا تختارنا'), items: [
+        { title: t('Honest scoping', 'صراحة من البداية'), text: t('If you don’t need it, we say so.', 'لا تحتاجه؟ سنخبرك بذلك.') },
+        { title: t('Weekly progress', 'تقدّم أسبوعي'), text: t('Builds you can try, every week.', 'نسخة جديدة تجرّبها كل أسبوع.') },
         { title: t('Clean handover', 'تسليم منظّم'), text: t('Documented code and project files.', 'كود موثّق وملفات المشروع كاملة.') },
         { title: t('We stick around', 'نبقى معك'), text: t('Support after launch.', 'دعم مستمر بعد الإطلاق.') },
       ] },

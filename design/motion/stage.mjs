@@ -71,7 +71,7 @@ function headlineHtml(text) {
 function headlineSize(text, format) {
   const len = text.replace(/[*\n]/g, '').length;
   const base = len <= 20 ? 100 : len <= 30 ? 88 : len <= 40 ? 78 : 70;
-  return format === 'reel' ? Math.round(base * 1.06) : base;
+  return base;
 }
 
 export function stage({ scene, post, lang, format, swipe = true }) {
@@ -85,13 +85,13 @@ export function stage({ scene, post, lang, format, swipe = true }) {
   const sceneLeft = (f.width - SCENE.width * f.sceneScale) / 2;
 
   const accent = post.theme === 'dark'
-    ? `em{background:${gradient.spark};-webkit-background-clip:text;background-clip:text;color:transparent}em .ul{display:none}`
+    ? `em{background:${gradient.spark};-webkit-background-clip:text;background-clip:text;color:transparent;padding:.22em .04em .12em;margin:-.22em -.04em -.12em}em .ul{display:none}`
     : `em .ul{position:absolute;inset-inline:0;bottom:${rtl ? '-.1em' : '-.02em'};height:.085em;border-radius:.04em;background:${post.theme === 'blue' ? color.amber : color.spark}}
        ${post.theme === 'light' ? `em{color:${color.cobalt}}` : ''}`;
 
   const copyCss = f.copy === 'bottom'
     ? `.copy{position:absolute;inset-inline:88px;bottom:${swipe ? 150 : 120}px}`
-    : `.copy{position:absolute;left:150px;right:150px;top:1220px;text-align:center}.copy h1{margin-inline:auto}`;
+    : `.copy{position:absolute;left:128px;right:128px;top:1220px;text-align:center}.copy h1{margin-inline:auto}`;
 
   const css = `
 ${fontCss}
@@ -109,7 +109,7 @@ body{background:${t.bg};color:${t.text};font-family:${rtl ? stack.arabic : stack
 .brand img{height:50px;display:block}
 .tag{font-family:${rtl ? stack.arabic : stack.mono};font-size:${rtl ? 26 : 23}px;font-weight:${rtl ? 600 : 500};letter-spacing:${rtl ? 0 : '.1em'};text-transform:uppercase;color:${t.sub};border:2px solid ${t.line};border-radius:999px;padding:${rtl ? '6px 22px 10px' : '8px 22px'}}
 ${copyCss}
-h1{font-size:${size}px;line-height:${rtl ? 1.32 : 1.04};letter-spacing:${rtl ? 0 : '-.028em'};word-spacing:${rtl ? 0 : '.04em'};font-weight:800;max-width:${f.copy === 'bottom' ? 904 : 780}px;text-wrap:balance}
+h1{font-size:${size}px;line-height:${rtl ? 1.32 : 1.04};letter-spacing:${rtl ? 0 : '-.028em'};word-spacing:${rtl ? 0 : '.04em'};font-weight:800;max-width:${f.copy === 'bottom' ? 904 : 824}px;text-wrap:balance}
 em{font-style:normal;white-space:nowrap;position:relative;display:inline-block}
 ${accent}
 .nw{white-space:nowrap}
