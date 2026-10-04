@@ -345,6 +345,7 @@ export default {
     tl.to('.bd-w', { y: 7, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
     tl.to('.tile.bulb', { y: -12, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
     tl.to('.tile.cap', { y: 12, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
+    tl.to('.mp .mpi', { y: -4, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
     tl.to('.tile.bulb .ti', { rotation: `+=${8 * dir}`, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     tl.to('.tile.cap .ti', { rotation: `-=${8 * dir}`, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     tl.to('.rays', { rotation: 60, duration: D, ease: 'none' }, 0); // 30° symmetry: two periods
@@ -382,32 +383,42 @@ export default {
     tl.fromTo('.sq path', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.55, ease: 'power2.out' }, 1.7);
     tl.fromTo('.gdot', { scale: 0 }, { scale: 1, duration: 0.4, ease: 'back.out(3)' }, 1.75);
 
-    // ---- The mentor asks (never edits) ----
-    tl.fromTo('.mb', { scale: 0.82, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.6)' }, 2.05);
-    tl.to(['.r1', '.r3', '.r4', '.r5', '.r7'], { opacity: 0.3, duration: 0.5, ease: 'power2.out' }, 2.1);
-    tl.to('.mm', { opacity: 0.2, duration: 0.5, ease: 'power2.out' }, 2.1);
-    tl.fromTo('.gping', { scale: 0.6, opacity: 1 }, { scale: 2.2, opacity: 0, duration: 0.7, ease: 'power2.out' }, 2.1);
+    // ---- The mentor points at the bug (a pointer, never a caret) and asks ----
+    // Pointer offsets from its resting tip (by the "You" tag) to the end of the squiggle.
+    const PB = { x: 300 - 444, y: 118 - 306 };
+    tl.to('.mp', { x: PB.x, duration: 0.55, ease: 'power2.inOut' }, 1.55);
+    tl.to('.mp', { y: PB.y, duration: 0.55, ease: 'power3.inOut' }, 1.55);
+    const click = (t) => {
+      tl.fromTo('.mp .mpi', { scale: 1 }, { scale: 0.86, transformOrigin: '3px 2px', duration: 0.1, ease: 'power2.out', repeat: 1, yoyo: true }, t);
+      tl.fromTo('.mp .pr', { scale: 0.4, opacity: 1 }, { scale: 2.1, opacity: 0, duration: 0.6, ease: 'power2.out' }, t + 0.04);
+    };
+    click(2.08);
+    const ask = 2.15;
+    tl.fromTo('.mb', { scale: 0.82, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.6)' }, ask);
+    tl.to(['.r1', '.r3', '.r4', '.r5', '.r7'], { opacity: 0.3, duration: 0.5, ease: 'power2.out' }, ask + 0.05);
+    tl.to('.mm', { opacity: 0.2, duration: 0.5, ease: 'power2.out' }, ask + 0.05);
+    tl.fromTo('.gping', { scale: 0.6, opacity: 1 }, { scale: 2.2, opacity: 0, duration: 0.7, ease: 'power2.out' }, ask);
     const speak = (t) => tl.fromTo('.mb .av .sr', { scale: 1, opacity: 0.9 }, { scale: 1.55, opacity: 0, duration: 0.7, ease: 'power2.out' }, t);
-    speak(2.2);
-    tl.fromTo('.mb .dots', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 2.15);
+    speak(ask + 0.15);
+    tl.fromTo('.mb .dots', { opacity: 0 }, { opacity: 1, duration: 0.2 }, ask + 0.1);
     gsap.utils.toArray('.mb .dots i').forEach((d, i) => {
-      tl.fromTo(d, { y: 0 }, { y: -9, duration: 0.18, ease: sine, repeat: 1, yoyo: true }, 2.2 + i * 0.09);
+      tl.fromTo(d, { y: 0 }, { y: -9, duration: 0.18, ease: sine, repeat: 1, yoyo: true }, ask + 0.15 + i * 0.09);
     });
     // The bubble grows from one line (praise) to fit the question, and back later.
     const tx = document.querySelector('.mb .tx');
     const oneLine = tx.offsetHeight;
     const askH = document.querySelector('.mb .q').offsetHeight;
-    tl.to('.mb .tx', { height: askH, duration: 0.4, ease: 'power2.inOut' }, 2.5);
-    tl.to('.mb .dots', { opacity: 0, duration: 0.15 }, 2.6);
-    tl.fromTo('.mb .q', { opacity: 0 }, { opacity: 1, duration: 0.01 }, 2.62);
-    tl.fromTo('.mb .q .w', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.07, ease: 'power2.out' }, 2.62);
+    tl.to('.mb .tx', { height: askH, duration: 0.4, ease: 'power2.inOut' }, ask + 0.42);
+    tl.to('.mb .dots', { opacity: 0, duration: 0.15 }, ask + 0.5);
+    tl.fromTo('.mb .q', { opacity: 0 }, { opacity: 1, duration: 0.01 }, ask + 0.55);
+    tl.fromTo('.mb .q .w', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.065, ease: 'power2.out' }, ask + 0.55);
 
     // ---- The student moves to the right line and types the fix ----
-    tl.to('.cur', { x: cx(8), y: cy(6), duration: 0.6 }, 3.25);
-    tl.to('.band.act', { y: 0, duration: 0.6 }, 3.25);
-    tl.fromTo('.gbar', { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: 'power2.out' }, 3.85);
+    tl.to('.cur', { x: cx(8), y: cy(6), duration: 0.55 }, 3.38);
+    tl.to('.band.act', { y: 0, duration: 0.55 }, 3.38);
+    tl.fromTo('.gbar', { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: 'power2.out' }, 3.9);
     chars.forEach((c, j) => {
-      const t = 3.9 + j * 0.085;
+      const t = 3.96 + j * 0.08;
       tl.fromTo(c, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.09, ease: 'power2.out' }, t);
       tl.to('.cur', { x: cx(8 + j + 1), duration: 0.06, ease: 'power2.out' }, t);
     });
@@ -440,6 +451,7 @@ export default {
     tl.to('.sk', { opacity: 0, duration: 0.2 }, run + 0.5);
     tl.fromTo('.segs i', { opacity: 0 }, { opacity: 1, duration: 0.12, stagger: 0.05 }, run);
     tl.fromTo('.ring .ok', { scale: 0 }, { scale: 1, duration: 0.4, ease: 'back.out(2.4)' }, run + 0.65);
+    tl.fromTo('.ring .wv', { scale: 1, opacity: 0.9 }, { scale: 1.9, opacity: 0, duration: 0.7, ease: 'power2.out' }, run + 0.7);
     tl.fromTo('.ts .lb', { opacity: 0, x: 14 * dir }, { opacity: 1, x: 0, duration: 0.4, ease: 'power3.out' }, run + 0.7);
     tl.fromTo('.ts', { scale: 1 }, { scale: 1.04, duration: 0.14, ease: 'power2.out', repeat: 1, yoyo: true }, run + 0.68);
     tl.fromTo('.tg', { opacity: 0 }, { opacity: 0.8, duration: 0.25, ease: 'power2.out' }, run + 0.66);
@@ -447,12 +459,16 @@ export default {
 
     // ---- The mentor reacts ----
     const praise = 5.75;
-    tl.to('.mb .q .w', { opacity: 0, y: -10, duration: 0.2, stagger: 0.025, ease: 'power2.in' }, praise);
-    tl.to('.mb .q', { opacity: 0, duration: 0.01 }, praise + 0.4);
-    tl.to('.mb .tx', { height: oneLine, duration: 0.4, ease: 'power2.inOut' }, praise + 0.22);
-    tl.fromTo('.mb .p .w', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, ease: 'power2.out' }, praise + 0.38);
-    tl.fromTo('.mb .av', { scale: 1 }, { scale: 1.12, duration: 0.16, ease: 'power2.out', repeat: 1, yoyo: true }, praise + 0.38);
-    speak(praise + 0.38);
+    // The pointer glides back to the student's "You" tag: "Nice, you found it!"
+    tl.to('.mp', { x: 0, duration: 0.6, ease: 'power3.inOut' }, praise - 0.2);
+    tl.to('.mp', { y: 0, duration: 0.6, ease: 'power2.inOut' }, praise - 0.2);
+    click(praise + 0.4);
+    tl.to('.mb .q .w', { opacity: 0, y: -10, duration: 0.18, stagger: 0.02, ease: 'power2.in' }, praise);
+    tl.to('.mb .q', { opacity: 0, duration: 0.01 }, praise + 0.32);
+    tl.to('.mb .tx', { height: oneLine, duration: 0.36, ease: 'power2.inOut' }, praise + 0.1);
+    tl.fromTo('.mb .p .w', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, ease: 'power2.out' }, praise + 0.34);
+    tl.fromTo('.mb .av', { scale: 1 }, { scale: 1.12, duration: 0.16, ease: 'power2.out', repeat: 1, yoyo: true }, praise + 0.34);
+    speak(praise + 0.34);
     tl.fromTo('.rx', { scale: 0, rotation: -40 * dir }, { scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(2.6)' }, praise + 0.55);
 
     // ---- Badge pops ----

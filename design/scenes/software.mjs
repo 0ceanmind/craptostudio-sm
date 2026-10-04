@@ -281,9 +281,10 @@ export default {
     const srcs = new Set(TILES.filter((t) => t.src).map((t) => t.src.join(',')));
 
     // spreadsheet grid
+    // In Arabic the toolbar runs right to left: undo/redo point the other way, text aligns right.
     const tb = ['undo-2', 'redo-2', 'printer', 'paintbrush', '|', 'bold', 'italic', 'underline', 'strikethrough', 'baseline', '|',
-      'align-left', 'align-center', '|', 'percent', 'sigma', 'filter', 'arrow-up-down', 'table-2']
-      .map((n) => (n === '|' ? '<i class="sep"></i>' : ico(n, { size: 20 }))).join('');
+      rtl ? 'align-right' : 'align-left', 'align-center', '|', 'percent', 'sigma', 'filter', 'arrow-up-down', 'table-2']
+      .map((n) => (n === '|' ? '<i class="sep"></i>' : ico(n, { size: 20, cls: rtl && /^(undo|redo)/.test(n) ? 'flip' : '' }))).join('');
     const heads = [`<div class="sh-h" style="${box([0, 88, GX, 34])}"></div>`,
       ...Array.from({ length: NC }, (_, c) => `<div class="sh-h" style="${box([GX + c * CW, 88, CW, 34])}">${'ABCDEF'[c]}</div>`),
       ...Array.from({ length: NR }, (_, r) => `<div class="sh-h" style="${box([0, GY + r * RH, GX, RH])}">${r + 1}</div>`)].join('');
@@ -303,15 +304,13 @@ export default {
       <div class="sh-fx"><span class="fx">${ico('square-function', { size: 22 })}</span><span class="fm">${copy.formula}</span></div>
       ${heads}${cells}</div>`;
 
-    // odometer number: the leading digit rolls once, the rest spin a full turn more
+    // odometer number: every digit rolls up once from 0 to its value (calm, readable count-up)
     const odo = (val) => {
       const chars = [...val];
-      const digits = chars.filter((ch) => /\d/.test(ch)).length;
-      let seen = 0;
       return `<span class="num"><span class="nr">${chars.map((ch) => {
         if (!/\d/.test(ch)) return `<span class="sym">${ch}</span>`;
-        const idx = seen++ === 0 && digits > 1 ? +ch : +ch + 10;
-        const strip = Array.from({ length: 20 }, (_, k) => `<i>${k % 10}</i>`).join('');
+        const idx = +ch;
+        const strip = Array.from({ length: 10 }, (_, k) => `<i>${k}</i>`).join('');
         return `<span class="od"><span class="st" data-i="${idx}" style="transform:translateY(${-idx * LH}px)">${strip}</span></span>`;
       }).join('')}</span></span>`;
     };
@@ -346,7 +345,8 @@ export default {
         const f = FLAGS[t.src.join(',')] ?? '';
         cv = `<span class="cv ${isNum(v) ? 'n' : ''} ${t.src[0] ? '' : 'hd'} ${f}">${val(v)}</span>`;
       }
-      return `<div class="${cls}" data-n="${n}" data-l="${(t.s[0] / BW).toFixed(3)}" data-c="${JSON.stringify(mx(t.s))}" data-d="${JSON.stringify(mx(t.d))}" data-r="${t.r}" style="${box(t.d)};border-radius:${t.r}px">
+      const fillH = t.k === 'bar' ? ` data-h="${(BARS[t.i] * TRACK_H).toFixed(1)}"` : '';
+      return `<div class="${cls}" data-n="${n}"${fillH} data-l="${(t.s[0] / BW).toFixed(3)}" data-c="${JSON.stringify(mx(t.s))}" data-d="${JSON.stringify(mx(t.d))}" data-r="${t.r}" style="${box(t.d)};border-radius:${t.r}px">
         <i class="cs"></i><i class="sk"></i>${cv}<div class="ct">${content(t)}</div></div>`;
     }).join('');
 

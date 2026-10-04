@@ -277,7 +277,7 @@ export default {
   <div class="n" style="width:92px;height:92px;inset-inline-start:806px;top:330px"></div>
   <div class="n" style="width:74px;height:74px;inset-inline-start:700px;top:560px"></div>
 </div>
-<div class="fsp" style="inset-inline-start:862px;top:4px;transform:rotate(30deg)">${petalSvg()}</div>
+<div class="fsp" style="inset-inline-start:860px;top:10px;transform:rotate(30deg)">${petalSvg()}</div>
 <div class="fsp" style="inset-inline-start:14px;top:330px;transform:rotate(-140deg) scale(.8)">${petalSvg()}</div>
 <div class="fsp" style="inset-inline-start:330px;top:0px;transform:rotate(70deg) scale(.7)">${petalSvg()}</div>
 <div class="gw"><div class="tilt win">
@@ -431,13 +431,13 @@ export default {
     tl.to('.vp', { '--ir': '96px', duration: 0.5, ease: 'power3.inOut' }, 0.85);
     tl.fromTo('.ring .r2', { rotation: 0 }, { rotation: 120, svgOrigin: `${XC} ${HY}`, duration: 1.2, ease: 'none' }, 0.85);
     tl.to('.dg', { y: 0, duration: 0.6, ease: 'power3.inOut' }, 1.1);
-    tl.fromTo('.go', { opacity: 0, scale: 0.4, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.36, ease: 'back.out(2.2)' }, 1.08);
+    tl.fromTo('.go', { opacity: 0, scale: 0.4, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.36, ease: 'back.out(2.2)' }, 1.04);
     // ...rebuild: the iris opens on a fresh run.
     tl.to('.vp', { '--ir': '1100px', duration: 0.6, ease: 'power2.in' }, 1.45);
     tl.to('.ring', { opacity: 0, duration: 0.3, ease: 'power1.in' }, 1.75);
     // GO! leaves by shrinking away (a fade would turn orange-over-blue muddy).
-    tl.to('.go', { scale: 0, y: 30, duration: 0.3, ease: 'back.in(2.2)' }, 1.48);
-    tl.to('.go', { opacity: 0, duration: 0.04, ease: 'none' }, 1.74);
+    tl.to('.go', { scale: 0, y: 30, duration: 0.28, ease: 'back.in(1.6)' }, 1.42);
+    tl.to('.go', { opacity: 0, duration: 0.04, ease: 'none' }, 1.68);
     tl.fromTo(['.sc', '.lives'], { y: 0 }, { y: -6, duration: 0.18, ease: 'power2.out', repeat: 1, yoyo: true, stagger: 0.08 }, 1.9);
 
     // ---- Pickups: pop + burst + "+1", then the petal flies into the score badge ----

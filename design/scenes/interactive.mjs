@@ -59,7 +59,7 @@ export default {
     ar: {
       title: 'جولة في المنتج',
       d3: '3D',
-      hint: 'المس للاستكشاف',
+      hint: 'اضغط للاستكشاف',
       stat: '48 ساعة',
       statLabel: 'عمر البطارية',
       quiz: 'اختبار سريع',
@@ -173,6 +173,7 @@ export default {
 .opt .ohv{position:absolute;inset:-2px;border-radius:18px;border:3px solid var(--sky);box-shadow:0 0 18px rgba(90,180,217,.5);opacity:0}
 .opt .osel{position:absolute;inset:-2px;border-radius:18px;background:var(--sparkg);color:#0E1A2B;display:flex;align-items:center;gap:${r ? 10 : 12}px;padding-inline:${r ? 14 : 16}px;box-shadow:0 10px 26px rgba(242,141,25,.45)}
 .opt .osel .ok{width:${r ? 24 : 26}px;height:${r ? 24 : 26}px;border-radius:50%;background:#0E1A2B;color:var(--amber);display:grid;place-items:center;flex:none}
+.opt .oclip{position:absolute;inset:-2px;border-radius:18px;overflow:hidden}
 .opt .orip{position:absolute;inset-inline-start:calc(74% - 22px);top:calc(50% - 12px);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.55);opacity:0}
 .back{transform:rotateY(180deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:${r ? 2 : 6}px;
   background:radial-gradient(ellipse 80% 70% at 50% 18%,rgba(34,197,94,.20),rgba(34,197,94,0) 70%),linear-gradient(170deg,#1A3358,#13233D)}
@@ -183,11 +184,14 @@ export default {
 .ck .cc{fill:#22C55E;filter:drop-shadow(0 0 12px rgba(34,197,94,.7))}
 .ck .cp{fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
 .back .cr{font-size:${r ? 32 : 38}px;line-height:${r ? 1.4 : 1.15};font-weight:800;white-space:nowrap}
-.back .pts{display:inline-flex;align-items:center;gap:8px;height:40px;padding-inline:16px;border-radius:999px;background:var(--sparkg);color:#0E1A2B;font-size:${r ? 20 : 21}px;font-weight:800;white-space:nowrap}
+.back .pts{display:inline-flex;align-items:center;gap:8px;height:40px;padding-inline:16px;border-radius:999px;background:var(--sparkg);color:#0E1A2B;font-size:${r ? 22 : 21}px;font-weight:800;white-space:nowrap}
 .back .pts bdi{direction:ltr;unicode-bidi:isolate;font-family:${stack.display}}
-.burst{position:absolute;left:180px;top:62px;width:0;height:0}
-.burst .cf{position:absolute;left:-9px;top:-12px;width:18px;height:24px;opacity:0;filter:drop-shadow(0 0 6px rgba(242,141,25,.6))}
-.burst .bd{position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;background:var(--sky);opacity:0;box-shadow:0 0 10px rgba(90,180,217,.8)}
+.burst{position:absolute;left:180px;top:114px;width:0;height:0}
+.burst .cf{position:absolute;left:-13px;top:-17px;width:26px;height:34px;opacity:0;filter:drop-shadow(0 0 8px rgba(242,141,25,.65))}
+.burst .bd{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:var(--sky);opacity:0;box-shadow:0 0 12px rgba(90,180,217,.9)}
+.qflash{position:absolute;left:50%;top:50%;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;opacity:0;
+  background:radial-gradient(circle,rgba(244,179,16,.42) 0%,rgba(242,141,25,.2) 32%,rgba(242,141,25,0) 66%)}
+.qring{position:absolute;inset:0;border-radius:28px;border:3px solid var(--amber);box-shadow:0 0 26px rgba(242,141,25,.75),inset 0 0 18px rgba(242,141,25,.35);opacity:0}
 
 /* floating tile + cursor */
 .tile{position:absolute;inset-inline-start:48px;top:572px;width:118px;height:118px}
@@ -211,7 +215,7 @@ export default {
       const deco = i % 4 === 0 ? '<i class="emb"></i><span class="leds"><i></i><i></i><i></i></span>' : '<i class="grl"></i>';
       return `<div class="fc fm" style="--o:${o}deg">${deco}</div>`;
     }).join('');
-    const burst = Array.from({ length: 18 }, (_, i) => (i % 3 === 2 ? '<i class="bd"></i>' : `<i class="cf">${petalSvg()}</i>`)).join('');
+    const burst = Array.from({ length: 28 }, (_, i) => (i % 4 === 3 ? '<i class="bd"></i>' : `<i class="cf">${petalSvg()}</i>`)).join('');
     return `${gooFilter}
 <svg width="0" height="0" style="position:absolute"><defs>
 <linearGradient id="ipet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4B310"/><stop offset=".55" stop-color="#F28D19"/><stop offset="1" stop-color="#EC6C1C"/></linearGradient>
@@ -248,13 +252,13 @@ export default {
     <div class="glare"></div>
   </div>
 </div></div>
-<div class="qwrap"><div class="qin"><div class="qtilt"><div class="flip">
+<div class="qwrap"><i class="qflash"></i><div class="burst">${burst}</div><div class="qin"><div class="qtilt"><i class="qring"></i><div class="flip">
   <div class="face front">
     <span class="qtag">${ico('sparkles', { size: 20, stroke: 2.4 })}${copy.quiz}</span>
     <b class="qq">${copy.q}</b>
     <div class="opts">
       <span class="opt"><i class="rd"></i>${copy.opts[0]}</span>
-      <span class="opt ok"><i class="rd"></i>${copy.opts[1]}<i class="ohv"></i><span class="osel"><i class="ok">${ico('check', { size: 18, stroke: 3.5 })}</i>${copy.opts[1]}</span><i class="orip"></i></span>
+      <span class="opt ok"><i class="rd"></i>${copy.opts[1]}<i class="ohv"></i><span class="osel"><i class="ok">${ico('check', { size: 18, stroke: 3.5 })}</i>${copy.opts[1]}</span><span class="oclip"><i class="orip"></i></span></span>
     </div>
   </div>
   <div class="face back">
@@ -263,7 +267,7 @@ export default {
     <b class="cr">${copy.correct}</b>
     <span class="pts"><bdi>${copy.pts}</bdi>${copy.ptsLabel}</span>
   </div>
-</div></div></div><div class="burst">${burst}</div></div>
+</div></div></div></div>
 <div class="cur"><i class="tg"></i><div class="hm">${hand}</div></div>`;
   },
 
@@ -294,8 +298,11 @@ export default {
     const P_HOT = { x: HOT.x, y: HOT.y + bob(T1, -6, D / 2) };
     // Tap the answer near its end edge so the hand never hides the label.
     const P_OPT = { x: OPT.x + OPT.w * 0.24 * S, y: OPT.y + 10 + bob(T2, 8, D / 4) };
-    const P_REST = { x: OPT.x + (OPT.w * 0.24 + 18) * S, y: OPT.y + 30 };
+    // Rest just past the tapped spot, pulled in from the scene edge (Reels buttons sit there).
+    const P_REST = { x: OPT.x + OPT.w * 0.1 * S, y: OPT.y + 30 };
+    const BO = at('.burst'); // card centre: the success burst's origin
     gsap.set('.cur', { x: P_REST.x, y: P_REST.y });
+    gsap.set('.qring', { z: -6 });
     gsap.set('.flip', { rotationY: 180 });
     gsap.set('.ck .cc', { transformOrigin: '50% 50%' });
     gsap.set('.lead circle', { transformOrigin: '50% 50%' });
@@ -374,7 +381,7 @@ export default {
     tl.to('.cur', { motionPath: { path: [mid(P_HOT, P_OPT, 60 * S, -30), P_OPT], curviness: 1.1 }, duration: 1.15, ease: 'power2.inOut' }, T2 - 1.25);
     tl.fromTo('.ohv', { opacity: 0 }, { opacity: 1, duration: 0.2 }, T2 - 0.25);
     tap(T2);
-    tl.fromTo('.orip', { scale: 0.3, opacity: 0.9 }, { scale: 4, opacity: 0, duration: 0.55, ease: 'power2.out' }, T2);
+    tl.fromTo('.orip', { scale: 0.3, opacity: 0.9 }, { scale: 5, opacity: 0, duration: 0.55, ease: 'power2.out' }, T2);
     tl.fromTo('.osel', { opacity: 0 }, { opacity: 1, duration: 0.22 }, T2 + 0.04);
     tl.fromTo('.osel .ok', { scale: 0 }, { scale: 1, duration: 0.35, ease: 'back.out(3)' }, T2 + 0.08);
     tl.to('.ohv', { opacity: 0, duration: 0.3 }, T2 + 0.3);
@@ -382,26 +389,38 @@ export default {
     const TF = T2 + 0.3;
     tl.fromTo('.flip', { rotationY: 0 }, { rotationY: 180, duration: 0.8, ease: 'power3.inOut' }, TF);
     tl.fromTo('.qin', { scale: 1 }, { scale: 1.06, duration: 0.4, ease: 'power2.out', repeat: 1, yoyo: true }, TF);
-    const TB = TF + 0.42; // back face turns towards the viewer
+    const TB = TF + 0.4; // back face turns towards the viewer
     tl.fromTo('.back .gl', { opacity: 0 }, { opacity: 1, duration: 0.25 }, TB);
     tl.to('.back .gl', { opacity: 0.55, duration: 0.9, ease: sine }, TB + 0.5);
     tl.fromTo('.back .shine', { x: 0 }, { x: 620 * S, duration: 0.9, ease: 'power2.inOut' }, TB + 0.3);
-    tl.fromTo('.ck .cc', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2.4)' }, TB);
-    tl.fromTo('.ck .cp', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.35, ease: 'power2.out' }, TB + 0.2);
-    tl.fromTo('.back .cr', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, TB + 0.12);
-    tl.fromTo('.back .pts', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(2.6)' }, TB + 0.28);
-    // ...with a burst of spark petals...
-    const ANG = [-176, -158, -140, -124, -110, -96, -82, -68, -54, -40, -26, -166, -132, -104, -88, -60, -148, -116];
+    tl.fromTo('.ck .cc', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2.4)' }, TB);
+    tl.fromTo('.ck .cp', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.32, ease: 'power2.out' }, TB + 0.16);
+    tl.fromTo('.back .cr', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2)' }, TB + 0.05);
+    tl.fromTo('.back .pts', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2.6)' }, TB + 0.16);
+    // ...a shock ring and a warm flash bloom out from behind the card...
+    tl.fromTo('.qring', { opacity: 0.95, scale: 1 }, { opacity: 0, scale: 1.24, duration: 0.75, ease: 'power2.out' }, TB);
+    tl.fromTo('.qflash', { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, TB - 0.04);
+    tl.to('.qflash', { opacity: 0, scale: 1.25, duration: 0.65, ease: 'power1.in' }, TB + 0.26);
+    // ...and spark petals burst out from behind it, fanning over the slide towards the open side.
+    // Targets clear the card and stay inside the scene box (they never reach the headline).
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+    const LIM = { l: 26 - BO.x, r: 878 - BO.x, t: 34 - BO.y, b: 700 - BO.y };
     all('.burst i').forEach((p, i) => {
-      const a = (ANG[i] * Math.PI) / 180;
-      const rad = 120 + ((i * 37) % 80);
-      const X = Math.cos(a) * rad * S - 20 * S;
-      const Y = Math.sin(a) * rad * 0.9;
-      const r0 = (i * 53) % 360;
-      const t0 = TB + 0.05 + (i % 4) * 0.02;
-      tl.fromTo(p, { x: 0, y: 0, scale: 0.2, rotation: r0, opacity: 1 }, { x: X, y: Y, scale: 0.85 + (i % 3) * 0.2, rotation: r0 + 160 * S, duration: 0.6, ease: 'power3.out' }, t0);
-      tl.to(p, { x: X * 1.1, y: Y + 60, rotation: r0 + 250 * S, duration: 0.75, ease: 'power1.in' }, t0 + 0.6);
-      tl.to(p, { opacity: 0, duration: 0.4, ease: 'power1.in' }, t0 + 0.95);
+      const dot = p.classList.contains('bd');
+      const f = (i * 0.618034 + 0.1) % 1; // golden-ratio spread: even, never regular
+      const a = ((-214 + f * 172) * Math.PI) / 180; // -214°..-42°: left, over the top, to upper right
+      const dx = Math.cos(a) * S;
+      const dy = Math.sin(a);
+      const exit = Math.min(206 / Math.max(Math.abs(dx), 0.01), 140 / Math.max(Math.abs(dy), 0.01));
+      const d = exit + 26 + ((i * 47) % 160) + (dot ? 40 : 0);
+      const X = clamp(dx * d, LIM.l, LIM.r);
+      const Y = clamp(dy * d, LIM.t, LIM.b);
+      const out = (Math.atan2(dy, dx) * 180) / Math.PI + 90; // petal tip points away from the card
+      const sc = dot ? 1 : 0.72 + (i % 4) * 0.16;
+      const t0 = TB + 0.02 + (i % 5) * 0.025;
+      tl.fromTo(p, { x: 0, y: 0, scale: 0.3, rotation: out, opacity: 1 }, { x: X, y: Y, scale: sc, rotation: out + 70 * S, duration: 0.75, ease: 'power4.out' }, t0);
+      tl.to(p, { x: clamp(X * 1.06, LIM.l, LIM.r), y: clamp(Y + 44 + (i % 3) * 14, LIM.t, LIM.b), rotation: out + 190 * S, duration: 0.7, ease: 'sine.in' }, t0 + 0.75);
+      tl.to(p, { opacity: 0, scale: sc * 0.6, duration: 0.5, ease: 'power1.in' }, t0 + 0.92);
     });
     tl.fromTo('.pop', { scale: 1 }, { scale: 1.06, duration: 0.25, ease: 'power2.out', repeat: 1, yoyo: true }, TB);
     tl.fromTo('.dk .fl', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out', repeat: 1, yoyo: true, repeatDelay: 0.2 }, TB);

@@ -203,7 +203,7 @@ export default {
     const blobs = [
       [16, 558, 128], [104, 628, 84], [44, 482, 62], [170, 546, 54], [24, 668, 58],
     ];
-    const sparks = [[206, 676, 30, 0.9], [586, 358, -150, 0.7], [596, 2, 70, 0.75], [870, 482, -40, 0.8], [0, 404, 160, 0.7]];
+    const sparks = [[206, 676, 30, 0.9], [586, 358, -150, 0.7], [592, 14, 70, 0.75], [870, 482, -40, 0.8], [5, 404, 160, 0.7]];
     const petals = (n) => Array.from({ length: n }, () => '<i class="spark"></i>').join('');
     const code = copy.code;
     const row = (cls, n, mark, html, ind) => `<div class="up-row ${cls}"><span class="fl"></span><b>${n}</b><i>${mark}</i><code${ind ? ' class="in"' : ''}>${html}</code></div>`;
@@ -411,10 +411,14 @@ export default {
     tl.fromTo('.up-badge .g path', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.4, ease: 'power2.out' }, F + 0.36);
     tl.fromTo('.up-badge .rp', { opacity: 0.9, scale: 0.9 }, { opacity: 0, scale: 1.9, duration: 0.7, ease: 'power2.out' }, F + 0.3);
     gsap.utils.toArray('.up-pop .spark').forEach((p, i) => {
-      const a = (i / 6) * Math.PI * 2 - Math.PI / 2;
+      // fan out on the badge's outer side (away from the label); mirrored in RTL
+      const deg = 90 + i * 36;
+      const a = ((ctx.rtl ? 180 - deg : deg) * Math.PI) / 180;
       tl.fromTo(p, { x: Math.cos(a) * 30, y: Math.sin(a) * 30, rotation: (a * 180) / Math.PI + 90, scale: 0.4 },
         { x: Math.cos(a) * 70, y: Math.sin(a) * 70, scale: 0.75, duration: 0.7, ease: 'power3.out' }, F + 0.3);
-      tl.fromTo(p, { opacity: 1 }, { opacity: 0, duration: 0.3, ease: 'power1.in' }, F + 0.65);
+      // separate opacity tweens: a quick fade in as they leave the badge, a fade out at the end
+      tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: 0.1, ease: 'none' }, F + 0.3);
+      tl.to(p, { opacity: 0, duration: 0.3, ease: 'power1.in' }, F + 0.65);
     });
     tl.to('.up-blbl .x', { opacity: 0, y: -10, duration: 0.25, ease: 'power2.in' }, F + 0.1);
     tl.fromTo('.up-blbl .o', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: 'back.out(2)' }, F + 0.3);
@@ -445,7 +449,8 @@ export default {
       const a = ((-200 + i * (220 / 7)) * Math.PI) / 180;
       tl.fromTo(p, { x: Math.cos(a) * 98, y: Math.sin(a) * 98, rotation: (a * 180) / Math.PI + 90, scale: 0.5 },
         { x: Math.cos(a) * 138, y: Math.sin(a) * 138, scale: 0.85, duration: 0.8, ease: 'power3.out' }, A + 0.02);
-      tl.fromTo(p, { opacity: 1 }, { opacity: 0, duration: 0.35, ease: 'power1.in' }, A + 0.45);
+      tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: 0.1, ease: 'none' }, A + 0.02);
+      tl.to(p, { opacity: 0, duration: 0.35, ease: 'power1.in' }, A + 0.45);
     });
   },
 };
