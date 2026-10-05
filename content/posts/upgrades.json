@@ -1,0 +1,70 @@
+{
+  "slug": "upgrades",
+  "order": 3,
+  "status": "ready",
+  "theme": "light",
+  "scene": "upgrades",
+  "icon": "wrench",
+  "tag": {
+    "en": "05 / Upgrades",
+    "ar": "05 / ترقية"
+  },
+  "headline": {
+    "en": "Already built?\nLet’s make it *better*.",
+    "ar": "مشروعك جاهز؟\nلنجعله *أفضل.*"
+  },
+  "sub": {
+    "en": "Fix · Speed up · Extend · Modernise",
+    "ar": "إصلاح · تسريع · توسيع · تحديث"
+  },
+  "slides": [
+    {
+      "type": "cards",
+      "title": {
+        "en": "What we do",
+        "ar": "ماذا نقدّم"
+      },
+      "items": [
+        {
+          "icon": "search-check",
+          "text": {
+            "en": "Code health check",
+            "ar": "فحص شامل للكود"
+          }
+        },
+        {
+          "icon": "gauge",
+          "text": {
+            "en": "Speed & bug fixes",
+            "ar": "تسريع وإصلاح الأخطاء"
+          }
+        },
+        {
+          "icon": "square-plus",
+          "text": {
+            "en": "New features",
+            "ar": "ميزات جديدة"
+          }
+        },
+        {
+          "icon": "refresh-cw",
+          "text": {
+            "en": "Updates & redesigns",
+            "ar": "تحديثات وإعادة تصميم"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "Your app, game or software might not need a rebuild. It might just need the right fixes.\n\nWe start with a health check: we run your project, read the code and list what's broken or slow.\nThen you get a clear plan: what to fix first, what can wait, and what isn't worth paying for. If starting over really is the better choice, we'll tell you honestly.\nIt doesn't matter who wrote the code: you, another studio, or a freelancer who has moved on.\n\nDM us \"START\" with a link to your project and what's bothering you about it.\n\n#craptostudio #codereview #refactoring #bugfix #appdevelopment",
+    "ar": "قد لا يحتاج تطبيقك أو لعبتك أو برنامجك إلى إعادة بناء من الصفر، بل إلى الإصلاحات الصحيحة فقط.\n\nنبدأ كل ترقية بفحص شامل: نشغّل مشروعك ونقرأ الكود ونحدّد ما هو معطّل أو بطيء.\nثم تحصل على خطة واضحة: ما يُصلَح أولاً، وما يمكن تأجيله، وما لا يستحق أن تدفع مقابله. وإن كانت إعادة البناء هي الخيار الأفضل فعلاً، فسنخبرك بصراحة.\nلا يهمّ من كتب الكود: أنت، أو استوديو آخر، أو مطوّر مستقل انتقل إلى مشروع آخر.\n\nراسلنا بكلمة «ابدأ» مع رابط مشروعك، وأخبرنا بما يزعجك فيه.\n\n#برمجة #تطوير_البرمجيات #تطوير_التطبيقات #تقنية #craptostudio"
+  },
+  "alt": {
+    "en": "Light cover: app upgrade with a Before/After switch, fixed code and a speed gauge in the fast zone.",
+    "ar": "غلاف فاتح: ترقية تطبيق مع مفتاح قبل/بعد وكود مُصلَح ومؤشر سرعة في المنطقة السريعة."
+  }
+}

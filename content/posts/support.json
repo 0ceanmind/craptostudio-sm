@@ -1,0 +1,74 @@
+{
+  "slug": "support",
+  "order": 1,
+  "status": "ready",
+  "theme": "blue",
+  "scene": "support",
+  "icon": "trophy",
+  "tag": {
+    "en": "07 / Support",
+    "ar": "07 / إرشاد"
+  },
+  "headline": {
+    "en": "You code.\n*We guide.*",
+    "ar": "أنت تبرمج،\n*ونحن نرشدك.*"
+  },
+  "sub": {
+    "en": "Mentoring for projects, competitions & hackathons",
+    "ar": "إرشاد للمشاريع والمسابقات والهاكاثونات"
+  },
+  "slides": [
+    {
+      "type": "cards",
+      "title": {
+        "en": "How we help",
+        "ar": "كيف نساعدك"
+      },
+      "items": [
+        {
+          "icon": "graduation-cap",
+          "text": {
+            "en": "Project mentoring",
+            "ar": "إرشاد في مشروعك"
+          }
+        },
+        {
+          "icon": "bug",
+          "text": {
+            "en": "Debugging sessions",
+            "ar": "جلسات تصحيح الأخطاء"
+          }
+        },
+        {
+          "icon": "trophy",
+          "text": {
+            "en": "Competition prep",
+            "ar": "التحضير للمسابقات"
+          }
+        },
+        {
+          "icon": "lightbulb",
+          "text": {
+            "en": "You build. We explain.",
+            "ar": "أنت تبني، ونحن نشرح."
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "headline": {
+        "en": "Stuck on a project?\n*Let’s work it out.*",
+        "ar": "عالق في مشروع؟\n*لنجد الحل معاً.*"
+      }
+    }
+  ],
+  "caption": {
+    "en": "Stuck on a programming project, or getting ready for a hackathon? You don't have to figure it out alone.\n\nWe mentor students and teams. You write the code; we help you find the problem and explain the \"why\" behind each fix.\nThat way you understand every line, and you can explain it to your teacher or the judges.\nPlease check your school's or competition's rules on outside help first. We work within them.\n\nDM us \"START\" with your project, your deadline and where you're stuck.\n\n#craptostudio #hackathon #programming #learntocode #computerscience",
+    "ar": "عالق في مشروعك البرمجي أو تستعد لهاكاثون؟ لست مضطراً إلى حلّ كل شيء وحدك.\n\nنرشد الطلاب والفرق، ولا ننجز المشروع نيابةً عنك: أنت تكتب الكود، ونحن نساعدك على اكتشاف الخطأ ونشرح لك السبب وراء كل إصلاح.\nهكذا تفهم كل سطر في مشروعك، وتستطيع شرحه لأستاذك أو للجنة التحكيم.\nراجع أولاً قواعد مدرستك أو جامعتك أو المسابقة بشأن المساعدة الخارجية، فنحن نعمل في حدودها.\n\nراسلنا بكلمة «ابدأ» وأخبرنا عن مشروعك وموعد التسليم والنقطة التي تعثّرت عندها.\n\n#برمجة #تعلم_البرمجة #هاكاثون #علوم_الحاسب #craptostudio"
+  },
+  "alt": {
+    "en": "Blue cover: code editor where a student fixed a bug with a mentor's hint. \"You code. We guide.\"",
+    "ar": "غلاف أزرق: محرر كود أصلح فيه الطالب الخطأ بتوجيه من المرشد، وعبارة «أنت تبرمج، ونحن نرشدك.»"
+  }
+}

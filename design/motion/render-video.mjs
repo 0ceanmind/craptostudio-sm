@@ -19,7 +19,8 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { posts } from '../content.mjs';
-import { stage, FORMATS } from './stage.mjs';
+import { stage, FORMATS, loadScene } from './stage.mjs';
+import { postFolder } from '../posts.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const FPS = 30;
@@ -47,7 +48,6 @@ const preview = opt('preview');
 const frameAt = opt('frame');
 const loopcheck = opt('loopcheck');
 
-const pad = (n) => String(n).padStart(2, '0');
 const selected = posts.filter((p) => p.scene && (!slugs.length || slugs.includes(p.slug)));
 if (!selected.length) { console.error('no matching posts with a scene'); process.exit(1); }
 
@@ -65,7 +65,7 @@ const browser = await chromium.launch();
 let videos = 0;
 
 for (const post of selected) {
-  const scene = (await import(path.join(root, 'design/scenes', `${post.scene}.mjs`))).default;
+  const scene = await loadScene(post.scene);
   for (const lang of langs) {
     for (const format of formats) {
       const { width, height } = FORMATS[format];
@@ -110,7 +110,7 @@ for (const post of selected) {
           .png().toFile(out);
         console.log(`preview: ${path.relative(root, out)} (t = ${times.map((t) => t.toFixed(2)).join(', ')})`);
       } else {
-        const base = `${pad(post.order)}-${post.slug}`;
+        const base = postFolder(post);
         const file = format === 'feed'
           ? path.join(root, 'exports/posts', base, lang, '01-hero.mp4')
           : path.join(root, 'exports/reels', `${base}-${lang}.mp4`);
@@ -123,6 +123,8 @@ for (const post of selected) {
           const buf = await page.screenshot({ type: 'jpeg', quality: 96 });
           if (i === 0 && format === 'reel') await sharp(buf).jpeg({ quality: 92 }).toFile(file.replace(/\.mp4$/, '-cover.jpg'));
           await enc.write(buf);
+          // Machine-readable progress for the workspace's render queue.
+          if (i % 15 === 14 || i === frames - 1) console.log(`progress ${post.slug} ${name} ${i + 1}/${frames}`);
         }
         await enc.end();
         videos++;

@@ -1,0 +1,119 @@
+{
+  "slug": "start",
+  "order": 7,
+  "status": "ready",
+  "theme": "light",
+  "scene": "start",
+  "icon": "send",
+  "tag": {
+    "en": "Start here",
+    "ar": "ابدأ من هنا"
+  },
+  "headline": {
+    "en": "New project?\nHere’s *the plan.*",
+    "ar": "مشروع جديد؟\n*هكذا نبنيه.*"
+  },
+  "sub": {
+    "en": "4 steps · No jargon · No surprises",
+    "ar": "4 خطوات · بلا تعقيد · بلا مفاجآت"
+  },
+  "slides": [
+    {
+      "type": "steps",
+      "title": {
+        "en": "How we work",
+        "ar": "كيف نعمل"
+      },
+      "items": [
+        {
+          "title": {
+            "en": "Talk",
+            "ar": "نتحدّث"
+          },
+          "text": {
+            "en": "Tell us your idea. DM “START”.",
+            "ar": "أخبرنا بفكرتك. راسلنا بكلمة «ابدأ»."
+          }
+        },
+        {
+          "title": {
+            "en": "Plan",
+            "ar": "نخطّط"
+          },
+          "text": {
+            "en": "Clear scope, quote & timeline.",
+            "ar": "نطاق واضح وعرض سعر وجدول زمني."
+          }
+        },
+        {
+          "title": {
+            "en": "Build",
+            "ar": "نبني"
+          },
+          "text": {
+            "en": "Real progress every week.",
+            "ar": "تقدّم حقيقي تراه كل أسبوع."
+          }
+        },
+        {
+          "title": {
+            "en": "Launch & support",
+            "ar": "نُطلق وندعم"
+          },
+          "text": {
+            "en": "We ship it and stay around.",
+            "ar": "نسلّم مشروعك ونبقى معك."
+          }
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": {
+        "en": "Send us this first",
+        "ar": "أرسل لنا هذه أولاً"
+      },
+      "items": [
+        {
+          "icon": "lightbulb",
+          "text": {
+            "en": "Your idea, in one line",
+            "ar": "فكرتك في سطر واحد"
+          }
+        },
+        {
+          "icon": "users",
+          "text": {
+            "en": "Who it’s for",
+            "ar": "جمهورك المستهدف"
+          }
+        },
+        {
+          "icon": "calendar",
+          "text": {
+            "en": "Your deadline",
+            "ar": "موعدك النهائي"
+          }
+        },
+        {
+          "icon": "wallet",
+          "text": {
+            "en": "Your budget range",
+            "ar": "ميزانيتك التقريبية"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "Not sure how to start a project with a tech studio? Here's the whole process in 4 steps.\n\nYou don't need a technical plan to start. A rough idea is enough. Asking the right questions is our job.\nDon't know your budget yet? A rough range is fine. It helps us suggest the right size for a first version.\nNot sure what to build? Tell us the problem instead, and we'll help you shape the idea.\n\nSave this post for the checklist, then DM us \"START\" or tap the link in bio when you're ready.\n\n#craptostudio #startup #smallbusiness #productdevelopment #appdevelopment",
+    "ar": "لا تعرف كيف تبدأ مشروعاً مع استوديو تقني؟ إليك الطريق كاملاً في 4 خطوات.\n\nلا تحتاج إلى خطة تقنية لتبدأ، فالفكرة المبدئية تكفي، وطرح الأسئلة الصحيحة مهمتنا نحن.\nلم تحدّد ميزانيتك بعد؟ يكفي نطاق تقريبي يساعدنا على اقتراح الحجم المناسب للنسخة الأولى.\nلا تعرف ماذا تبني بالضبط؟ أخبرنا بالمشكلة، وسنساعدك على بلورة الفكرة.\n\nاحفظ هذا المنشور لتعود إلى القائمة، ثم راسلنا بكلمة «ابدأ» أو اضغط على الرابط في الملف الشخصي متى كنت جاهزاً.\n\n#ريادة_الأعمال #الشركات_الناشئة #مشاريع_صغيرة #برمجة #craptostudio"
+  },
+  "alt": {
+    "en": "Light cover: four steps, Talk, Plan, Build, Launch, joined by a lit path, with a launch badge.",
+    "ar": "غلاف فاتح: أربع خطوات، نتحدّث ونخطّط ونبني ونُطلق، يربطها مسار مضيء، مع شارة الإطلاق."
+  }
+}

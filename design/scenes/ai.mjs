@@ -5,6 +5,11 @@ import { ico, gooFilter } from '../motion/ui.mjs';
 const words = (s) => s.split(' ').map((w) => `<span class="wd">${w}</span>`).join(' ');
 
 export default {
+  meta: {
+    title: "AI assistant chat",
+    description: "A store assistant answers a customer live: question, data pulse, typing dots, answer streams in, quick-reply chips.",
+    bestFor: "AI products, chatbots, automation, anything conversational",
+  },
   duration: 8,
 
   copy: {

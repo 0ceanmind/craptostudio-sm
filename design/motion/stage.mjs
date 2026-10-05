@@ -7,9 +7,13 @@
 //     same state. Use .to() for clearing and .fromTo() for rebuilding (immediateRender is off
 //     by default here, so nothing jumps at frame 0).
 //   - The headline never animates out; it stays readable for the whole video.
+//
+// Scene text and data: a scene's `copy` ({ en, ar }) holds its default on-screen text and `data`
+// its default language-neutral settings (images, code, numbers). A post overrides them with
+// `sceneCopy: { en: {...}, ar: {...} }` and `sceneData: {...}`, so one scene can show any project.
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { color, gradient, handle } from '../tokens.mjs';
 import { fontCss, stack } from '../fonts.mjs';
 import { uiCss } from './ui.mjs';
@@ -50,6 +54,35 @@ export const THEMES = {
   },
 };
 
+// Loads design/scenes/<name>.mjs. `fresh` re-imports a file that changed on disk (the workspace
+// keeps running while scenes are edited).
+export const scenesDir = path.join(root, 'design/scenes');
+export async function loadScene(name, { fresh = false } = {}) {
+  if (!/^[a-z0-9-]+$/.test(name ?? '')) throw new Error(`invalid scene name "${name}"`);
+  const file = path.join(scenesDir, `${name}.mjs`);
+  if (!fs.existsSync(file)) throw new Error(`unknown scene "${name}" (no design/scenes/${name}.mjs)`);
+  const url = pathToFileURL(file).href + (fresh ? `?v=${fs.statSync(file).mtimeMs}` : '');
+  return (await import(url)).default;
+}
+
+const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
+// Post overrides win; objects merge key by key, arrays and strings are replaced whole.
+export function mergeCopy(base, over) {
+  if (over === undefined || over === null) return base;
+  if (isObj(base) && isObj(over)) {
+    return Object.fromEntries([...new Set([...Object.keys(base), ...Object.keys(over)])].map((k) => [k, mergeCopy(base[k], over[k])]));
+  }
+  return over;
+}
+
+// The text and data a scene renders with, for one post and language.
+export function sceneInputs(scene, post, lang) {
+  return {
+    copy: mergeCopy(scene.copy?.[lang] ?? {}, post.sceneCopy?.[lang]),
+    data: { ...(scene.data ?? {}), ...(post.sceneData ?? {}) },
+  };
+}
+
 // Scenes may write animate() as a method; turn that into a function expression for the page.
 const fnSource = (fn) => {
   const src = fn.toString();
@@ -80,8 +113,8 @@ export function stage({ scene, post, lang, format, swipe = true }) {
   const copy = { tag: post.tag[lang], headline: post.headline[lang], sub: post.sub[lang] };
   const rtl = lang === 'ar';
   const size = headlineSize(copy.headline, format);
-  const ctx = { lang, rtl, format, theme: post.theme, width: f.width, height: f.height };
-  const sceneCopy = scene.copy?.[lang] ?? {};
+  const { copy: sceneCopy, data } = sceneInputs(scene, post, lang);
+  const ctx = { lang, rtl, format, theme: post.theme, width: f.width, height: f.height, data };
   const sceneLeft = (f.width - SCENE.width * f.sceneScale) / 2;
 
   const accent = post.theme === 'dark'
@@ -129,7 +162,7 @@ ${scene.css?.(ctx) ?? ''}`;
 
   const body = `
 <div class="bg"><div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div></div>
-<div class="scene">${scene.html({ ...ctx, copy: sceneCopy })}</div>
+<div class="scene">${scene.html({ ...ctx, copy: sceneCopy, data })}</div>
 <div class="top"><div class="brand"><img src="${logo(t.symbol)}"><span>CRAPTO STUDIO</span></div><div class="tag">${escape(copy.tag)}</div></div>
 <div class="copy"><h1>${headlineHtml(copy.headline)}</h1><div class="sub">${escape(copy.sub)}</div></div>
 ${foot}`;

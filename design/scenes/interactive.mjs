@@ -40,6 +40,11 @@ const particles = () => {
 };
 
 export default {
+  meta: {
+    title: "3D product + quiz",
+    description: "A turning 3D product inside a slide, a tapped hotspot opens an info card, then a quiz card flips to Correct!",
+    bestFor: "Interactive content, presentations, education",
+  },
   duration: 8,
 
   copy: {

@@ -1,0 +1,70 @@
+{
+  "slug": "games",
+  "order": 8,
+  "status": "ready",
+  "theme": "dark",
+  "scene": "games",
+  "icon": "gamepad-2",
+  "tag": {
+    "en": "01 / Games",
+    "ar": "01 / ألعاب"
+  },
+  "headline": {
+    "en": "Games people want to *replay*.",
+    "ar": "ألعاب تُلعب *مرة بعد مرة*."
+  },
+  "sub": {
+    "en": "Unity · 2D & 3D · Mobile, PC & web",
+    "ar": "Unity · ثنائية وثلاثية الأبعاد · للجوال والكمبيوتر والويب"
+  },
+  "slides": [
+    {
+      "type": "cards",
+      "title": {
+        "en": "What we build",
+        "ar": "ماذا نبني"
+      },
+      "items": [
+        {
+          "icon": "gamepad-2",
+          "text": {
+            "en": "Full Unity games",
+            "ar": "ألعاب Unity متكاملة"
+          }
+        },
+        {
+          "icon": "flask-conical",
+          "text": {
+            "en": "Playable prototypes",
+            "ar": "نماذج أولية قابلة للعب"
+          }
+        },
+        {
+          "icon": "megaphone",
+          "text": {
+            "en": "Advergames for brands",
+            "ar": "ألعاب تسويقية للعلامات التجارية"
+          }
+        },
+        {
+          "icon": "sparkles",
+          "text": {
+            "en": "Game feel & polish",
+            "ar": "متعة اللعب واللمسات الأخيرة"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "A game idea is easy to explain. Making it fun to play is the hard part. That's the part we love.\n\nNot sure your idea works yet? Start with a playable prototype: a small version of the core game that real players can test before you build the full thing.\nWe care about \"game feel\": how a jump, a hit or a button press feels in your hands. It's the difference between a game people try once and one they replay.\nBrands: a short branded game (an \"advergame\") gives people a reason to spend time with your product, by choice.\n\nGot a game idea? DM us \"START\" and tell us about it in one sentence. 🎮\n\n#craptostudio #gamedev #unity3d #madewithunity #indiedev",
+    "ar": "شرح فكرة اللعبة سهل، أما جعلها ممتعة فهو التحدي الحقيقي، وهو بالضبط ما نحبّه.\n\nلست متأكداً من فكرتك بعد؟ ابدأ بنموذج أولي قابل للعب: نسخة صغيرة من جوهر اللعبة يجرّبها لاعبون حقيقيون قبل بناء اللعبة كاملة.\nنهتم كثيراً بما يُسمّى «متعة اللعب»: إحساس القفزة والضربة وضغطة الزر بين يديك، فهذا ما يجعل اللاعب يعود إلى اللعبة مرة بعد مرة.\nوللعلامات التجارية: لعبة تسويقية قصيرة تمنح جمهورك سبباً ليقضي وقتاً مع منتجك باختياره.\n\nلديك فكرة لعبة؟ راسلنا بكلمة «ابدأ» وأخبرنا عنها في جملة واحدة. 🎮\n\n#تطوير_الألعاب #ألعاب_فيديو #صناعة_الألعاب #unity3d #craptostudio"
+  },
+  "alt": {
+    "en": "Dark cover: a 2D platformer in a Unity-style window, a blob hero collecting orange petals at night.",
+    "ar": "غلاف داكن: لعبة منصّات ثنائية الأبعاد في نافذة بأسلوب Unity، وبطل صغير يجمع بتلات برتقالية."
+  }
+}

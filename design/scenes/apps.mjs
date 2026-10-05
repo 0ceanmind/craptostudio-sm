@@ -35,6 +35,11 @@ const wirePath = ([a, b, c, d], rtl) => {
 };
 
 export default {
+  meta: {
+    title: "Booking app on a phone",
+    description: "A tilted phone runs a booking flow: tap a service, pick a time, book, confirmation banner and spark burst.",
+    bestFor: "Mobile apps, booking or e-commerce flows",
+  },
   duration: 8,
 
   copy: {

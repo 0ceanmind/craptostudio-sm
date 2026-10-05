@@ -1,0 +1,70 @@
+{
+  "slug": "ai",
+  "order": 5,
+  "status": "ready",
+  "theme": "blue",
+  "scene": "ai",
+  "icon": "sparkles",
+  "tag": {
+    "en": "03 / Custom AI",
+    "ar": "03 / ذكاء اصطناعي"
+  },
+  "headline": {
+    "en": "AI that fits *your* business.",
+    "ar": "ذكاء اصطناعي *يفهم* عملك."
+  },
+  "sub": {
+    "en": "Assistants · Automation · Integrations",
+    "ar": "مساعدات ذكية · أتمتة · ربط بأدواتك"
+  },
+  "slides": [
+    {
+      "type": "cards",
+      "title": {
+        "en": "What we build",
+        "ar": "ماذا نبني"
+      },
+      "items": [
+        {
+          "icon": "bot",
+          "text": {
+            "en": "AI assistants",
+            "ar": "مساعدات ذكية"
+          }
+        },
+        {
+          "icon": "workflow",
+          "text": {
+            "en": "Automations",
+            "ar": "أتمتة المهام"
+          }
+        },
+        {
+          "icon": "puzzle",
+          "text": {
+            "en": "AI inside your app",
+            "ar": "ذكاء اصطناعي داخل تطبيقك"
+          }
+        },
+        {
+          "icon": "lightbulb",
+          "text": {
+            "en": "Honest advice",
+            "ar": "نصيحة صادقة"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "AI is only useful when it solves a real problem in your business. So that's where we start.\n\nFirst we ask: what takes too long, what gets repeated, what gets missed?\nThen we choose the simplest fix. Sometimes that's AI. Sometimes it's a basic automation with no AI at all.\nWe can start with a small test on your own examples, and we'll explain in plain words where your data goes and who can see it.\n\nGot a task you wish would run by itself? DM us \"START\" and describe it in one sentence.\n\n#craptostudio #artificialintelligence #aiautomation #aiforbusiness #chatbot",
+    "ar": "الذكاء الاصطناعي لا يفيدك إلا إذا حلّ مشكلة حقيقية في عملك، ومن هنا نبدأ.\n\nنسأل أولاً: ما الذي يستغرق وقتاً طويلاً؟ ما الذي يتكرّر؟ وما الذي يضيع بين الرسائل والملفات؟\nثم نختار أبسط حل: قد يكون ذكاءً اصطناعياً، وقد يكون أتمتة بسيطة لا تحتاج إليه أصلاً.\nيمكننا البدء بتجربة صغيرة على أمثلة من عملك، ونشرح لك بوضوح أين تذهب بياناتك ومن يمكنه الاطلاع عليها.\n\nلديك مهمة تتمنى لو أنها تُنجَز تلقائياً؟ راسلنا بكلمة «ابدأ» وصِفها في جملة واحدة.\n\n#الذكاء_الاصطناعي #التحول_الرقمي #ريادة_الأعمال #تقنية #craptostudio"
+  },
+  "alt": {
+    "en": "Blue cover: a store's AI assistant confirms a jacket is in stock in size M, in a chat window.",
+    "ar": "غلاف أزرق: مساعد ذكي لمتجر يجيب عميلاً عن توفّر سترة بمقاس M في نافذة محادثة."
+  }
+}

@@ -50,6 +50,11 @@ const isNum = (t) => /^[-#0-9.,/!A-Z]+$/.test(t) && /[0-9#]/.test(t);
 const val = (t) => (isNum(t) ? `<bdi dir="ltr">${t}</bdi>` : t);
 
 export default {
+  meta: {
+    title: "Spreadsheet to dashboard",
+    description: "A messy spreadsheet flies apart and reassembles into a clean dashboard with KPIs, chart and orders table.",
+    bestFor: "Business software, dashboards, internal tools",
+  },
   duration: 8,
 
   copy: {

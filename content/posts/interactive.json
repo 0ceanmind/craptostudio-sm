@@ -1,0 +1,70 @@
+{
+  "slug": "interactive",
+  "order": 2,
+  "status": "ready",
+  "theme": "dark",
+  "scene": "interactive",
+  "icon": "presentation",
+  "tag": {
+    "en": "06 / Interactive",
+    "ar": "06 / محتوى تفاعلي"
+  },
+  "headline": {
+    "en": "Presentations people *remember*.",
+    "ar": "عروض تقديمية *لا تُنسى*."
+  },
+  "sub": {
+    "en": "Interactive content · Presentations · Demos",
+    "ar": "محتوى تفاعلي · عروض تقديمية · عروض توضيحية"
+  },
+  "slides": [
+    {
+      "type": "cards",
+      "title": {
+        "en": "What we build",
+        "ar": "ماذا نصمّم"
+      },
+      "items": [
+        {
+          "icon": "presentation",
+          "text": {
+            "en": "Interactive pitch decks",
+            "ar": "عروض تقديمية تفاعلية"
+          }
+        },
+        {
+          "icon": "mouse-pointer-click",
+          "text": {
+            "en": "Touchscreen & kiosk apps",
+            "ar": "تطبيقات شاشات اللمس"
+          }
+        },
+        {
+          "icon": "graduation-cap",
+          "text": {
+            "en": "Lessons & quizzes",
+            "ar": "دروس واختبارات تفاعلية"
+          }
+        },
+        {
+          "icon": "box",
+          "text": {
+            "en": "3D product demos",
+            "ar": "عروض منتجات ثلاثية الأبعاد"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "Slides get skimmed. Things people can tap, play and explore get remembered.\n\nWe build interactive content for brands, marketers, teachers and event teams.\nPicture a pitch deck you click through like an app, a product you can turn in 3D, or a quiz on a touchscreen at your event stand.\nOur game-development side helps here: the same skills that make games fun make content people want to touch.\n\nPlanning an event, a launch or a course? DM us \"START\" with the date and your idea.\n\n#craptostudio #interactivecontent #presentationdesign #eventtech #gamification",
+    "ar": "الشرائح العادية تُتصفَّح على عجل، أما ما يمكن لمسه وتجربته واستكشافه فيبقى في الذاكرة.\n\nنصمّم محتوى تفاعلياً للعلامات التجارية وفرق التسويق والمعلّمين ومنظّمي الفعاليات.\nتخيّل عرضاً تقديمياً تتنقّل فيه كأنه تطبيق، أو منتجاً ثلاثي الأبعاد تديره وتستكشفه من كل الزوايا، أو اختباراً سريعاً على شاشة لمس في جناحك بالمعرض.\nخبرتنا في تطوير الألعاب تفيدنا هنا: ما يجعل اللعبة ممتعة هو نفسه ما يدفع الناس إلى التفاعل مع المحتوى.\n\nتخطّط لفعالية أو إطلاق منتج أو دورة تدريبية؟ راسلنا بكلمة «ابدأ» وأخبرنا بالموعد وبفكرتك.\n\n#عروض_تقديمية #محتوى_تفاعلي #التسويق_الرقمي #فعاليات #craptostudio"
+  },
+  "alt": {
+    "en": "Dark cover: interactive slide with a 3D product, an info card and a quiz answered correctly.",
+    "ar": "غلاف داكن: شريحة تفاعلية فيها منتج ثلاثي الأبعاد وبطاقة معلومات واختبار بإجابة صحيحة."
+  }
+}

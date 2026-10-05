@@ -22,6 +22,11 @@ const MARK_Y = 150;
 const DROPS = parts.droplets;
 
 export default {
+  meta: {
+    title: "Logo melt + service orbit",
+    description: "The Crapto Studio symbol melts into gooey droplets and re-forms while the eight services orbit it.",
+    bestFor: "Brand and announcement posts",
+  },
   duration: 8,
 
   copy: { en: {}, ar: {} },

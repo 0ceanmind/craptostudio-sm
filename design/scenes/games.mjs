@@ -150,6 +150,11 @@ function stars() {
 }
 
 export default {
+  meta: {
+    title: "2D platformer",
+    description: "A blob hero runs and jumps across platforms collecting orange petals in a Unity-style game window.",
+    bestFor: "Games, Unity projects, playful launches",
+  },
   duration: 8,
 
   copy: {

@@ -1,5 +1,6 @@
 // Renders every still asset to exports/ by screenshotting the HTML templates.
-// Usage: npm run render   (run `npm run logo` first if the logo crops are missing)
+// Usage: npm run render              everything (run `npm run logo` first if the logo crops are missing)
+//        npm run render -- ai games  only these posts' covers and slides (used by the workspace)
 //
 // Per post and language (exports/posts/NN-<slug>/<lang>/):
 //   01-cover.png   frame 0 of the hero animation (the video itself is made by `npm run motion`)
@@ -11,13 +12,17 @@ import { chromium } from 'playwright';
 import { color } from './tokens.mjs';
 import { posts, highlights } from './content.mjs';
 import { slideHtml, profilePicture, highlightCover } from './templates.mjs';
-import { stage } from './motion/stage.mjs';
+import { stage, loadScene } from './motion/stage.mjs';
+import { postFolder } from './posts.mjs';
 import { profileMockup, gridPreview, brandBoard } from './previews.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = (...p) => path.join(root, 'exports', ...p);
 const pad = (n) => String(n).padStart(2, '0');
 export const LANGS = ['en', 'ar'];
+const only = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+const unknown = only.filter((slug) => !posts.some((p) => p.slug === slug));
+if (unknown.length) { console.error(`render: no post named ${unknown.join(', ')}`); process.exit(1); }
 
 const browser = await chromium.launch();
 const page = await browser.newPage();
@@ -46,35 +51,40 @@ async function shot(html, file, { width, height, scale = 1, fullPage = false, re
   count++;
 }
 
-// Profile picture
-await shot(profilePicture(), out('profile/profile-picture.png'), { width: 1080, height: 1080 });
-await shot(profilePicture({ bg: color.midnight }), out('profile/profile-picture-dark.png'), { width: 1080, height: 1080 });
+if (!only.length) {
+  // Profile picture
+  await shot(profilePicture(), out('profile/profile-picture.png'), { width: 1080, height: 1080 });
+  await shot(profilePicture({ bg: color.midnight }), out('profile/profile-picture-dark.png'), { width: 1080, height: 1080 });
 
-// Highlight covers (icons only, shared by both languages)
-for (const [i, h] of highlights.entries()) {
-  await shot(highlightCover(h), out('highlights', `${pad(i + 1)}-${h.slug}.png`), { width: 1080, height: 1920 });
+  // Highlight covers (icons only, shared by both languages)
+  for (const [i, h] of highlights.entries()) {
+    await shot(highlightCover(h), out('highlights', `${pad(i + 1)}-${h.slug}.png`), { width: 1080, height: 1920 });
+  }
 }
 
-// Launch posts: one folder per post, one sub-folder per language
-for (const post of posts) {
-  const scene = (await import(path.join(root, 'design/scenes', `${post.scene}.mjs`))).default;
+// Posts: one folder per post, one sub-folder per language
+for (const post of posts.filter((p) => !only.length || only.includes(p.slug))) {
+  const scene = await loadScene(post.scene);
   const slides = post.slides ?? [];
   const total = slides.length + 1;
   for (const lang of LANGS) {
-    const dir = out('posts', `${pad(post.order)}-${post.slug}`, lang);
+    const dir = out('posts', postFolder(post), lang);
     for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) if (f.endsWith('.png')) fs.rmSync(path.join(dir, f));
     await shot(stage({ scene, post, lang, format: 'feed', swipe: slides.length > 0 }), path.join(dir, '01-cover.png'), { width: 1080, height: 1350, ready: 'stage' });
     for (const [i, slide] of slides.entries()) {
       await shot(slideHtml(slide, i + 2, total, lang), path.join(dir, `${pad(i + 2)}.png`), { width: 1080, height: 1350 });
     }
+    console.log(`progress ${post.slug} ${lang} stills done`);
   }
 }
 
 // Previews built from the files rendered above; both grow with the number of posts.
-const rows = Math.ceil((posts.length * LANGS.length) / 3);
-await shot(profileMockup(), out('preview/profile-mockup.png'), { width: 430, height: 800, scale: 2, fullPage: true });
-await shot(gridPreview(), out('preview/grid.png'), { width: 1080, height: rows * 480 });
-await shot(brandBoard(), out('brand/brand-board.png'), { width: 1600, height: 1000, scale: 2 });
+if (!only.length) {
+  const rows = Math.ceil((posts.length * LANGS.length) / 3);
+  await shot(profileMockup(), out('preview/profile-mockup.png'), { width: 430, height: 800, scale: 2, fullPage: true });
+  await shot(gridPreview(), out('preview/grid.png'), { width: 1080, height: rows * 480 });
+  await shot(brandBoard(), out('brand/brand-board.png'), { width: 1600, height: 1000, scale: 2 });
+}
 
 await browser.close();
 console.log(`render: wrote ${count} images to exports/`);

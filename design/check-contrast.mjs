@@ -1,6 +1,7 @@
 // Checks text contrast on every post template against the real rendered background
 // (gradients, glows and the watermark included), not just the palette values.
-// Usage: npm run check        Exits non-zero if any text falls below its threshold.
+// Usage: npm run check              every post; exits non-zero if any text falls below its threshold.
+//        npm run check -- ai games  only these posts
 //
 // Posts are viewed at about 1/3 scale on a phone, so "large text" (allowed 3:1) means
 // 56px+ bold or 72px+ regular on the 1080px canvas; everything else needs 4.5:1.
@@ -9,13 +10,9 @@
 // (opacity 0, covered by another layer, the back face of a flipped card) is skipped.
 import { chromium } from 'playwright';
 import sharp from 'sharp';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { posts } from './content.mjs';
 import { slideHtml } from './templates.mjs';
-import { stage } from './motion/stage.mjs';
-
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+import { stage, loadScene } from './motion/stage.mjs';
 
 const lum = ([r, g, b]) => {
   const c = [r, g, b].map((v) => v / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
@@ -28,9 +25,10 @@ const ratio = (a, b) => {
 const blend = (fg, a, bg) => fg.map((v, i) => v * a + bg[i] * (1 - a));
 
 // Every hero cover (frame 0 of the animation, feed and Reel) and every text slide, in both languages.
+const only = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 const pages = [];
-for (const post of posts) {
-  const scene = (await import(path.join(root, 'design/scenes', `${post.scene}.mjs`))).default;
+for (const post of posts.filter((p) => !only.length || only.includes(p.slug))) {
+  const scene = await loadScene(post.scene);
   const slides = post.slides ?? [];
   const total = slides.length + 1;
   for (const lang of ['en', 'ar']) {

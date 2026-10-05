@@ -69,6 +69,11 @@ const CODE = {
 };
 
 export default {
+  meta: {
+    title: "Before / after upgrade",
+    description: "A Before/After switch flips: code diff, bug turns into a check, speed gauge and score ring climb.",
+    bestFor: "Refactors, performance work, redesigns",
+  },
   duration: 8,
 
   copy: {

@@ -1,0 +1,100 @@
+{
+  "slug": "intro",
+  "order": 9,
+  "status": "ready",
+  "theme": "blue",
+  "scene": "intro",
+  "icon": null,
+  "tag": {
+    "en": "Hello, world",
+    "ar": "مرحباً بالعالم"
+  },
+  "headline": {
+    "en": "Ideas, *compiled.*",
+    "ar": "أفكارك، *جاهزة للتشغيل.*"
+  },
+  "sub": {
+    "en": "Games · Apps · Software · AI",
+    "ar": "ألعاب · تطبيقات · برمجيات · ذكاء اصطناعي"
+  },
+  "slides": [
+    {
+      "type": "statement",
+      "kicker": {
+        "en": "// who we are",
+        "ar": "// من نحن"
+      },
+      "text": {
+        "en": "We *design and build* games, apps, software and AI.",
+        "ar": "*نصمّم ونبني* ألعاباً وتطبيقات وبرمجيات وحلول ذكاء اصطناعي."
+      }
+    },
+    {
+      "type": "services",
+      "title": {
+        "en": "What we do",
+        "ar": "ماذا نقدّم"
+      }
+    },
+    {
+      "type": "steps",
+      "title": {
+        "en": "Why work with us",
+        "ar": "لماذا تختارنا"
+      },
+      "items": [
+        {
+          "title": {
+            "en": "Honest scoping",
+            "ar": "صراحة من البداية"
+          },
+          "text": {
+            "en": "If you don’t need it, we say so.",
+            "ar": "لا تحتاجه؟ سنخبرك بذلك."
+          }
+        },
+        {
+          "title": {
+            "en": "Weekly progress",
+            "ar": "تقدّم أسبوعي"
+          },
+          "text": {
+            "en": "Builds you can try, every week.",
+            "ar": "نسخة جديدة تجرّبها كل أسبوع."
+          }
+        },
+        {
+          "title": {
+            "en": "Clean handover",
+            "ar": "تسليم منظّم"
+          },
+          "text": {
+            "en": "Documented code and project files.",
+            "ar": "كود موثّق وملفات المشروع كاملة."
+          }
+        },
+        {
+          "title": {
+            "en": "We stick around",
+            "ar": "نبقى معك"
+          },
+          "text": {
+            "en": "Support after launch.",
+            "ar": "دعم مستمر بعد الإطلاق."
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "Hello, world 👋 We're Crapto Studio, a tech studio that designs and builds games, apps, software and custom AI.\n\nYou bring the idea. We turn it into something that runs. That's what \"Ideas, compiled.\" means.\nWe also upgrade projects that already exist, and mentor students and teams while they build their own projects.\nWe're here for startups, small businesses, brands, educators, event teams, game creators and students.\nFollow along for our builds, behind-the-scenes and practical tips.\n\nGot an idea? DM us \"START\" or tap the link in bio.\n\n#craptostudio #gamedev #appdevelopment #softwaredevelopment #artificialintelligence",
+    "ar": "مرحباً بالعالم 👋 نحن Crapto Studio، استوديو تقني يصمّم ويبني الألعاب والتطبيقات والبرمجيات وحلول الذكاء الاصطناعي.\n\nأنت تأتي بالفكرة، ونحن نحوّلها إلى شيء يعمل فعلاً. هذا معنى «أفكارك، جاهزة للتشغيل».\nونقدّم أيضاً ترقية المشاريع القائمة، وإرشاد الطلاب والفرق وهم يبنون مشاريعهم البرمجية بأنفسهم.\nخدماتنا موجّهة إلى الشركات الناشئة والمشاريع الصغيرة والعلامات التجارية والمعلّمين ومنظّمي الفعاليات وصنّاع الألعاب والطلاب.\nتابعنا لتشاهد ما نبنيه وكواليس عملنا، ولتحصل على نصائح عملية.\n\nلديك فكرة؟ راسلنا بكلمة «ابدأ» أو اضغط على الرابط في الملف الشخصي.\n\n#برمجة #تطوير_الألعاب #تطبيقات_الجوال #الذكاء_الاصطناعي #craptostudio"
+  },
+  "alt": {
+    "en": "Blue cover: the white Crapto Studio symbol with eight service labels orbiting it. \"Ideas, compiled.\"",
+    "ar": "غلاف أزرق: شعار Crapto Studio الأبيض تدور حوله الخدمات الثماني، وعبارة «أفكارك، جاهزة للتشغيل.»"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "slug": "apps",
+  "order": 6,
+  "status": "ready",
+  "theme": "dark",
+  "scene": "apps",
+  "icon": "smartphone",
+  "tag": {
+    "en": "02 / Apps",
+    "ar": "02 / تطبيقات"
+  },
+  "headline": {
+    "en": "Apps that earn a spot on the *home screen*.",
+    "ar": "تطبيقات تبقى *على شاشتك*."
+  },
+  "sub": {
+    "en": "iOS · Android · Cross-platform",
+    "ar": "iOS · Android · متعددة المنصات"
+  },
+  "slides": [
+    {
+      "type": "cards",
+      "title": {
+        "en": "What we build",
+        "ar": "ماذا نبني"
+      },
+      "items": [
+        {
+          "icon": "smartphone",
+          "text": {
+            "en": "iOS & Android apps",
+            "ar": "تطبيقات iOS\nو Android"
+          }
+        },
+        {
+          "icon": "palette",
+          "text": {
+            "en": "UI/UX design",
+            "ar": "تصميم UI/UX"
+          }
+        },
+        {
+          "icon": "credit-card",
+          "text": {
+            "en": "Payments & accounts",
+            "ar": "الدفع والحسابات"
+          }
+        },
+        {
+          "icon": "store",
+          "text": {
+            "en": "Store launch & updates",
+            "ar": "الإطلاق في المتاجر والتحديثات"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "An app is only worth building if people open it again tomorrow. That's what we design for.\n\nNot sure if you need a native app, a cross-platform app or just a good website? We'll help you choose, and we'll say so if a website is enough.\n\"Native\" means built separately for iOS and for Android. \"Cross-platform\" means one shared set of code for both, which can save time.\nWe start with the one thing your app must do really well, and build from there.\n\nGot an app idea? DM us \"START\" and tell us about it in one sentence.\n\n#craptostudio #appdevelopment #iosdev #androiddev #mobileapp",
+    "ar": "التطبيق الناجح هو الذي يفتحه الناس من جديد في اليوم التالي، وهذا ما نصمّم من أجله.\n\nلست متأكداً مما تحتاج إليه: تطبيق أصلي أم متعدد المنصات أم مجرد موقع جيد؟ نساعدك على الاختيار، ونخبرك بصراحة إن كان الموقع يكفي.\nالتطبيق الأصلي (Native) يُبنى لكل من iOS و Android على حدة، أما التطبيق متعدد المنصات فيعتمد على كود واحد للنظامين، وقد يوفّر ذلك الوقت.\nنبدأ بالمهمة الأهم التي يجب أن يتقنها تطبيقك، ثم نبني عليها.\n\nلديك فكرة تطبيق؟ راسلنا بكلمة «ابدأ» وأخبرنا عنها في جملة واحدة.\n\n#تطبيقات_الجوال #تطوير_التطبيقات #برمجة_تطبيقات #تجربة_المستخدم #craptostudio"
+  },
+  "alt": {
+    "en": "Dark cover: a booking app on a floating phone confirms a session, with rating and payment cards.",
+    "ar": "غلاف داكن: تطبيق حجز على هاتف عائم يؤكد موعد الجلسة، مع بطاقتي التقييم والدفع."
+  }
+}

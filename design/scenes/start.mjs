@@ -21,6 +21,11 @@ function pathD(rtl) {
 }
 
 export default {
+  meta: {
+    title: "Four-step journey",
+    description: "A spark travels a curved path through four steps (Talk, Plan, Build, Launch), lighting each one.",
+    bestFor: "Processes, timelines, how-it-works posts",
+  },
   duration: 8,
 
   copy: {

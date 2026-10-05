@@ -87,6 +87,11 @@ function minimap() {
 }
 
 export default {
+  meta: {
+    title: "Mentor code review",
+    description: "A code editor with a bug; a mentor comment asks a guiding question and the student types the fix; tests pass.",
+    bestFor: "Mentoring, education, debugging, code quality",
+  },
   duration: 8,
 
   copy: {

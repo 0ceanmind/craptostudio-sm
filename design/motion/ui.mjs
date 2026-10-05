@@ -23,6 +23,21 @@ export function ico(name, { size = 28, stroke = 2, cls = '' } = {}) {
 export const symbolPng = (name = 'symbol-color') =>
   `data:image/png;base64,${fs.readFileSync(path.join(root, 'exports/logo', `${name}.png`)).toString('base64')}`;
 
+// A project image (screenshot, logo, photo) as a data URI. `rel` is relative to the repo root,
+// e.g. content/assets/<post>/home.png (the workspace and the MCP server put uploads there).
+const mime = { png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', svg: 'image/svg+xml', gif: 'image/gif' };
+const assetCache = new Map();
+export function asset(rel) {
+  const file = path.resolve(root, rel);
+  if (!file.startsWith(root + path.sep)) throw new Error(`asset outside the repo: ${rel}`);
+  const type = mime[path.extname(file).slice(1).toLowerCase()];
+  if (!type) throw new Error(`unsupported image type: ${rel}`);
+  if (!fs.existsSync(file)) throw new Error(`missing image: ${rel}`);
+  const key = `${file}:${fs.statSync(file).mtimeMs}`;
+  if (!assetCache.has(key)) assetCache.set(key, `data:${type};base64,${fs.readFileSync(file).toString('base64')}`);
+  return assetCache.get(key);
+}
+
 export function uiCss(ctx) {
   const light = ctx.theme === 'light';
   const v = light

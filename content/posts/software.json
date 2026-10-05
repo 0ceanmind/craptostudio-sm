@@ -1,0 +1,70 @@
+{
+  "slug": "software",
+  "order": 4,
+  "status": "ready",
+  "theme": "dark",
+  "scene": "software",
+  "icon": "code-xml",
+  "tag": {
+    "en": "04 / Software",
+    "ar": "04 / برمجيات"
+  },
+  "headline": {
+    "en": "Software built around how you *work*.",
+    "ar": "برمجيات تُبنى\n*على مقاسك*."
+  },
+  "sub": {
+    "en": "Web · Desktop · Dashboards · Custom tools",
+    "ar": "ويب · سطح المكتب · لوحات تحكم · أدوات مخصّصة"
+  },
+  "slides": [
+    {
+      "type": "cards",
+      "title": {
+        "en": "What we build",
+        "ar": "ماذا نبني"
+      },
+      "items": [
+        {
+          "icon": "layout-dashboard",
+          "text": {
+            "en": "Dashboards & portals",
+            "ar": "لوحات تحكم وبوابات"
+          }
+        },
+        {
+          "icon": "sheet",
+          "text": {
+            "en": "Spreadsheets → systems",
+            "ar": "من جداول البيانات إلى أنظمة"
+          }
+        },
+        {
+          "icon": "plug",
+          "text": {
+            "en": "APIs & integrations",
+            "ar": "واجهات API وربط الأنظمة"
+          }
+        },
+        {
+          "icon": "file-code",
+          "text": {
+            "en": "Clean handover",
+            "ar": "تسليم منظّم وموثّق"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta"
+    }
+  ],
+  "caption": {
+    "en": "Still running your business on spreadsheets, copy-paste and long email threads? There's a better way.\n\nReady-made software often makes you change how you work. Custom software is built around it.\nWe start by looking at how your team works today: the steps, the files, the tasks you repeat every week.\nThen we build in small steps, so you can try each part and give feedback while it's being built.\n\nDM us \"START\" and tell us which task takes up the most time in your week.\n\n#craptostudio #softwaredevelopment #webdevelopment #webapp #businesssoftware",
+    "ar": "ما زلت تدير عملك بجداول البيانات والنسخ واللصق ورسائل البريد التي لا تنتهي؟ هناك طريقة أفضل.\n\nالبرامج الجاهزة تفرض عليك غالباً أن تغيّر طريقة عملك، أما البرمجيات المخصّصة فتُبنى على مقاسك.\nنبدأ بفهم ما يجري في فريقك اليوم: الخطوات والملفات والمهام التي تتكرّر كل أسبوع.\nثم نبني على مراحل صغيرة، فتجرّب كل جزء وتشاركنا ملاحظاتك أولاً بأول.\n\nراسلنا بكلمة «ابدأ» وأخبرنا: ما المهمة التي تستهلك معظم وقتك كل أسبوع؟\n\n#تطوير_البرمجيات #برمجيات #التحول_الرقمي #ريادة_الأعمال #craptostudio"
+  },
+  "alt": {
+    "en": "Dark cover: a messy spreadsheet turned into a clean dashboard with charts and an orders table.",
+    "ar": "غلاف داكن: جدول بيانات مزدحم يتحوّل إلى لوحة تحكم أنيقة فيها رسم بياني وجدول طلبات."
+  }
+}
