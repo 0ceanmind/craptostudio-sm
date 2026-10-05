@@ -15,7 +15,7 @@ import {
   safeRepoPath, uniqueSlug, nextOrder, ValidationError,
 } from './core/store.mjs';
 import { newPost, validatePost, emptySlide, SLIDE_TYPES, THEMES, STATUSES, iconExists } from './core/schema.mjs';
-import { listScenes, sceneNames } from './core/scenes.mjs';
+import { listScenes, validationContext } from './core/scenes.mjs';
 import { heroHtml, slidePreviewHtml, errorHtml } from './core/render-html.mjs';
 import { startJob, listJobs, cancelJob, jobsDir, KINDS } from './core/jobs.mjs';
 import { listProjects, startRun, stopRun, getRun, listRuns, runEvents, connectionStatus, resumeCommand } from './core/claude.mjs';
@@ -119,7 +119,7 @@ route('GET', '/api/meta', async (req, res) => ok(res, {
 route('GET', '/api/posts', async (req, res) => ok(res, listPosts().map(summary)));
 route('GET', '/api/posts/:slug', async (req, res, { slug }) => {
   const post = getPost(slug);
-  ok(res, { post, exports: exportsOf(post), assets: listAssets(slug), validation: validatePost(post, { scenes: await sceneNames() }) });
+  ok(res, { post, exports: exportsOf(post), assets: listAssets(slug), validation: validatePost(post, await validationContext(post)) });
 });
 route('POST', '/api/posts', async (req, res) => {
   const b = await body(req);
@@ -133,7 +133,7 @@ route('PUT', '/api/posts/:slug', async (req, res, { slug }) => {
 });
 route('POST', '/api/posts/:slug/validate', async (req, res) => {
   const b = await body(req);
-  ok(res, validatePost(b.post, { scenes: await sceneNames() }));
+  ok(res, validatePost(b.post, await validationContext(b.post)));
 });
 route('POST', '/api/posts/:slug/duplicate', async (req, res, { slug }) => ok(res, await duplicatePost(slug)));
 route('DELETE', '/api/posts/:slug', async (req, res, { slug }) => ok(res, deletePost(slug)));

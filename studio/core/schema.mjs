@@ -59,7 +59,9 @@ export function newPost({ slug, order, theme = 'dark', scene = 'showcase-stack',
 const LIMITS = { tag: 24, headline: 44, sub: 64, title: 28, cardText: 34, stepTitle: 22, stepText: 46, statement: 90, kicker: 24, alt: 100, caption: 2200 };
 const plain = (s) => String(s ?? '').replace(/\*/g, '');
 
-export function validatePost(post, { scenes = [] } = {}) {
+// `sceneCopy`: the default copy of the post's scene ({ en, ar }), to flag demo text left in a
+// project showcase (its defaults are an example project, with example numbers).
+export function validatePost(post, { scenes = [], sceneCopy = null } = {}) {
   const errors = []; const warnings = [];
   const err = (where, msg) => errors.push(`${where}: ${msg}`);
   const warn = (where, msg) => warnings.push(`${where}: ${msg}`);
@@ -101,6 +103,13 @@ export function validatePost(post, { scenes = [] } = {}) {
   if (post.sceneCopy !== undefined && (typeof post.sceneCopy !== 'object' || Array.isArray(post.sceneCopy))) err('sceneCopy', 'must be { "en": {...}, "ar": {...} }');
   else if (post.sceneCopy && Object.keys(post.sceneCopy).some((k) => !LANGS.includes(k))) err('sceneCopy', 'only "en" and "ar" keys (each mirrors the scene’s copy fields)');
   if (post.sceneData !== undefined && (typeof post.sceneData !== 'object' || Array.isArray(post.sceneData))) err('sceneData', 'must be an object');
+  if (sceneCopy && String(post.scene).startsWith('showcase-')) {
+    for (const lang of LANGS) {
+      for (const key of Object.keys(sceneCopy[lang] ?? {})) {
+        if (!(key in (post.sceneCopy?.[lang] ?? {}))) warn(`sceneCopy.${lang}.${key}`, `not set, so the animation shows the scene's demo text (${JSON.stringify(sceneCopy[lang][key]).slice(0, 60)}). Write this project's own${key === 'stats' ? ' (or [] when there are no real numbers)' : ''}`);
+      }
+    }
+  }
   for (const [k, v] of Object.entries(post.sceneData ?? {})) {
     if (/^(screens|images|logo|image|screenshot)s?$/.test(k)) for (const [i, p] of [].concat(v).entries()) if (p) image(p, `sceneData.${k}${Array.isArray(v) ? `[${i}]` : ''}`);
     if (k === 'icon' && v) icon(v, 'sceneData.icon');

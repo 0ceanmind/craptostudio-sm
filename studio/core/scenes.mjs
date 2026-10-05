@@ -34,3 +34,11 @@ export async function listScenes() {
 }
 
 export const sceneFile = (name) => path.join(scenesDir, `${name}.mjs`);
+
+// What validatePost needs to know about scenes for one post.
+export async function validationContext(post) {
+  const names = await sceneNames();
+  let sceneCopy = null;
+  if (names.includes(post?.scene)) { try { sceneCopy = (await getScene(post.scene)).copy ?? null; } catch { /* broken scene: reported by the preview */ } }
+  return { scenes: names, sceneCopy };
+}

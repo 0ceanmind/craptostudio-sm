@@ -12,8 +12,32 @@ import { ico, asset } from '../motion/ui.mjs';
 import { stack } from '../fonts.mjs';
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Word spans for animation (never letters: Arabic joins must stay intact). An inline-block is an
+// atomic object in bidi ordering, so a run of words in the other script (e.g. a Latin project
+// name inside Arabic text) is kept together in one span with its own direction; otherwise
+// "Skyline Run" would come out as "Run Skyline".
+const ARABIC_RE = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/;
+function wordSpans(text, rtl) {
+  const parts = String(text ?? '').split(/(\s+)/).filter((p) => p !== '');
+  const isSpace = (p) => /^\s+$/.test(p);
+  const other = (w) => (rtl ? !ARABIC_RE.test(w) && /[A-Za-z]/.test(w) : ARABIC_RE.test(w));
+  const out = [];
+  for (let i = 0; i < parts.length; i++) {
+    const p = parts[i];
+    if (isSpace(p)) { out.push(p); continue; }
+    if (!other(p)) { out.push(`<span class="w">${esc(p)}</span>`); continue; }
+    let j = i;
+    while (j + 2 < parts.length && isSpace(parts[j + 1]) && other(parts[j + 2])) j += 2;
+    out.push(`<span class="w" dir="${rtl ? 'ltr' : 'rtl'}">${esc(parts.slice(i, j + 1).join(''))}</span>`);
+    i = j;
+  }
+  return out.join('');
+}
+
+// Lucide icon by name; anything that is not a plain icon name (or not found) gets the fallback.
 const safeIco = (name, opts, fallback = 'sparkles') => {
-  try { return ico(String(name || fallback), opts); } catch { return ico(fallback, opts); }
+  const n = String(name ?? '');
+  try { return ico(/^[a-z0-9-]+$/.test(n) ? n : fallback, opts); } catch { return ico(fallback, opts); }
 };
 
 // A small icon for common tech names; anything else gets a generic one.
@@ -58,7 +82,7 @@ const STAT_H = 44; // odometer digit height
 
 function layout({ copy, data, rtl }) {
   const techs = (Array.isArray(data.stack) ? data.stack : String(data.stack ?? '').split(','))
-    .map((t) => (typeof t === 'object' && t ? t : { name: String(t ?? '').trim() }))
+    .map((t) => (typeof t === 'object' && t ? { name: String(t.name ?? '').trim(), icon: t.icon } : { name: String(t ?? '').trim() }))
     .filter((t) => t.name).slice(0, 8);
   const maxW = Math.max(150, ...techs.map((t) => chipW(t.name)));
   // Ring radius from the widest chip (it must stay in the box), card width from the ring (a chip
@@ -67,8 +91,8 @@ function layout({ copy, data, rtl }) {
   const ry = 138; // the back of the ring clears the card's top edge; its front passes below it
   const cardW = Math.round(Math.max(400, Math.min(530, 2 * (rx - 0.445 * maxW - 12))));
   const cardH = 200;
-  const features = (copy.features ?? []).filter((f) => f && (f.text ?? '').trim()).slice(0, 4);
-  const stats = (copy.stats ?? []).filter((s) => s && String(s.value ?? '').trim()).slice(0, 2);
+  const features = (Array.isArray(copy.features) ? copy.features : []).filter((f) => f && String(f.text ?? '').trim()).slice(0, 4);
+  const stats = (Array.isArray(copy.stats) ? copy.stats : []).filter((s) => s && String(s.value ?? '').trim()).slice(0, 2);
   const cy = stats.length ? 290 : 262;
   const fy = cy + 206;
   return { techs, maxW, rx, ry, cardW, cardH, features, stats, cy, oy: cy + 14, fy };
@@ -188,7 +212,7 @@ export default {
 .ss-st{display:flex;align-items:center;gap:16px;padding-block:12px;padding-inline:22px 24px;border-radius:26px;position:relative;overflow:hidden}
 .ss-st::before{content:'';position:absolute;inset-inline-start:0;top:14px;bottom:14px;width:5px;border-radius:0 4px 4px 0;background:var(--sparkg)}
 ${r ? '.ss-st::before{border-radius:4px 0 0 4px}' : ''}
-.ss-sv{display:flex;align-items:center;font:800 38px ${stack.display};line-height:${STAT_H}px;height:${STAT_H}px;color:var(--ui-text);direction:ltr;letter-spacing:-.01em}
+.ss-sv{display:flex;align-items:center;font:800 38px ${stack.display};font-variant-numeric:tabular-nums;line-height:${STAT_H}px;height:${STAT_H}px;color:var(--ui-text);direction:ltr;letter-spacing:-.01em}
 .ss-sv .od{position:relative;display:inline-block;height:${STAT_H}px;overflow:hidden}
 .ss-sv .odh{visibility:hidden}
 .ss-sv .ods{position:absolute;left:0;right:0;top:0;text-align:center;white-space:pre;line-height:${STAT_H}px}
@@ -202,7 +226,7 @@ ${r ? '.ss-st::before{border-radius:4px 0 0 4px}' : ''}
     const { copy, data, rtl } = ctx;
     const g = layout(ctx);
     const x = (v) => (rtl ? 904 - v : v); // mirror an LTR x for Arabic
-    const words = (s) => esc(s).split(/(\s+)/).map((w) => (/^\s+$/.test(w) || !w ? w : `<span class="w">${w}</span>`)).join('');
+    const words = (s) => wordSpans(s, rtl);
     // Logo: the post's image on a white tile, or the brand tile with an icon.
     let logo = '';
     if (data.logo) {
@@ -430,6 +454,9 @@ ${stats}
     qa('.ss-st').forEach((st, si) => {
       st.querySelectorAll('.ods').forEach((strip) => {
         const d = +strip.dataset.d;
+        // Pin the resting offset in px: GSAP would read a translate of exactly -50% of the strip
+        // (the "0" digit) as yPercent and then double it.
+        gsap.set(strip, { yPercent: 0, y: -(10 + d) * H });
         tl.to(strip, { y: 0, duration: 0.01 }, c0 + 0.5);
         tl.fromTo(strip, { y: 0 }, { y: -(10 + d) * H, duration: 1.3, ease: 'power3.out' }, s0 + 0.15 + si * 0.12);
       });

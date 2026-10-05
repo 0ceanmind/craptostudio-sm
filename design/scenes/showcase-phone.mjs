@@ -19,7 +19,14 @@ const SH = 652;
 const esc = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const len = (v) => [...String(v ?? '')].length;
 // Shortens text to `max` characters with an ellipsis (for one-line labels inside the phone).
-const clip = (v, max) => { const c = [...String(v ?? '')]; return c.length <= max ? c.join('') : `${c.slice(0, max - 1).join('').trimEnd()}…`; };
+const clip = (v, max) => {
+  const c = [...String(v ?? '')];
+  if (c.length <= max) return c.join('');
+  let cut = c.slice(0, max - 1).join('');
+  const space = cut.lastIndexOf(' ');
+  if (space > max * 0.7) cut = cut.slice(0, space); // end on a whole word when one is close
+  return `${cut.replace(/[\s,.;:،\-–]+$/u, '')}…`;
+};
 // A Lucide icon, falling back to a safe one when the name is unknown (typos shouldn't break a render).
 const icon = (name, opts, fallback = 'sparkles') => {
   try { return ico(String(name || fallback), opts); } catch { return ico(fallback, opts); }
@@ -231,9 +238,10 @@ export default {
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 .sp-badge{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;height:54px;padding-inline:18px 22px;border-radius:999px;max-width:100%;
   font:700 20px ${disp};white-space:nowrap}
-.sp-badge span{overflow:hidden;text-overflow:ellipsis}
+.sp-bt{overflow:hidden;text-overflow:ellipsis}
 .sp-dot{position:relative;width:14px;height:14px;border-radius:50%;background:#22C55E;flex:none;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
 .sp-dot i{position:absolute;inset:0;border-radius:50%;border:2px solid #22C55E;opacity:0}
+.sp-dot b{position:absolute;left:0;top:-3px;width:14px;height:21px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:var(--sparkg);opacity:0}
 `;
   },
 
@@ -290,7 +298,7 @@ export default {
       <div class="sp-at"><div class="sp-name" dir="auto" style="font-size:${nameSize}px">${esc(copy.name)}</div>${copy.tagline ? `<div class="sp-tag">${esc(copy.tagline)}</div>` : ''}</div>
     </div></div>
     ${feats.length ? `<div class="sp-feats">${feats.map((f, i) => `<div class="sp-f k${i}"><div class="sp-fi"><div class="sp-fc sp-card"><span class="sp-fic">${icon(f.icon, { size: 26, stroke: 2.2 })}</span><span class="sp-ft">${esc(f.text)}</span></div></div></div>`).join('')}</div>` : ''}
-    ${copy.badge ? `<div class="sp-bw" style="align-self:flex-start;max-width:100%"><div class="sp-badge sp-card"><span class="sp-dot"><i></i></span><span>${esc(clip(copy.badge, 40))}</span></div></div>` : ''}
+    ${copy.badge ? `<div class="sp-bw" style="align-self:flex-start;max-width:100%"><div class="sp-badge sp-card"><span class="sp-dot"><i></i>${'<b></b>'.repeat(6)}</span><span class="sp-bt">${esc(clip(copy.badge, 40))}</span></div></div>` : ''}
   </div>
 </div>`;
   },
@@ -359,6 +367,15 @@ export default {
     const tb = 2.45 + feats.length * gap + 0.1;
     tl.fromTo('.sp-bw .sp-badge', { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.8)' }, tb);
     beat(tb + 0.25);
+    // ...and a fan of spark petals bursts up out of its status dot.
+    $('.sp-dot b').forEach((p, i, all) => {
+      const a = (-165 + (150 * i) / (all.length - 1)) * (Math.PI / 180);
+      const r0 = (a * 180) / Math.PI + 90;
+      const t = tb + 0.2 + (i % 2) * 0.04;
+      tl.fromTo(p, { x: 0, y: 0, scale: 0.3, rotation: r0 }, { x: Math.cos(a) * 60, y: Math.sin(a) * 60, scale: 1, rotation: r0 + 50 * s, duration: 0.85, ease: 'power3.out' }, t);
+      tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: 0.1, ease: 'none' }, t);
+      tl.to(p, { opacity: 0, duration: 0.4, ease: 'power1.in' }, t + 0.45);
+    });
 
     // ---- the phone screen ----
     if (mode === 'multi') {

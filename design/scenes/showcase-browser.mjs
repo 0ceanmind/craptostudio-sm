@@ -24,7 +24,15 @@ const CALLOUT_W = 320;
 
 const esc = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const len = (v) => [...String(v ?? '')].length;
-const clip = (v, max) => { const c = [...String(v ?? '')]; return c.length <= max ? c.join('') : `${c.slice(0, max - 1).join('').trimEnd()}…`; };
+// Shortens text to `max` characters with an ellipsis (for one-line labels).
+const clip = (v, max) => {
+  const c = [...String(v ?? '')];
+  if (c.length <= max) return c.join('');
+  let cut = c.slice(0, max - 1).join('');
+  const space = cut.lastIndexOf(' ');
+  if (space > max * 0.7) cut = cut.slice(0, space); // end on a whole word when one is close
+  return `${cut.replace(/[\s,.;:،\-–]+$/u, '')}…`;
+};
 // A Lucide icon, falling back to a safe one when the name is unknown (typos shouldn't break a render).
 const icon = (name, opts, fallback = 'sparkles') => {
   try { return ico(String(name || fallback), opts); } catch { return ico(fallback, opts); }
@@ -222,6 +230,7 @@ export default {
 .sb-spot{position:absolute;width:0;height:0;transform-style:preserve-3d}
 .sb-bc{position:absolute;left:-11px;top:-11px;width:22px;height:22px;border-radius:50%;background:var(--sparkg);box-shadow:0 0 0 4px #fff,0 6px 16px rgba(11,22,40,.45)}
 .sb-bc i{position:absolute;inset:-4px;border-radius:50%;border:3px solid var(--spark);opacity:0}
+.sb-spot b{position:absolute;left:-6px;top:-9px;width:12px;height:18px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:var(--sparkg);opacity:0}
 .sb-rip{position:absolute;left:-40px;top:-40px;width:80px;height:80px;border-radius:50%;border:4px solid var(--sky);background:rgba(90,180,217,.18);opacity:0}
 .sb-cur{position:absolute;left:-3px;top:-2px;filter:drop-shadow(0 8px 10px rgba(2,6,14,.4))}
 .sb-co{position:absolute;width:${CALLOUT_W}px;border-radius:24px;padding:18px 20px 20px;display:flex;gap:14px;align-items:flex-start;
@@ -266,14 +275,14 @@ export default {
       hx = Math.round((Math.max(4, Math.min(96, num(data.spotX, 70))) / 100) * BW);
       hy = Math.round((Math.max(6, Math.min(94, num(data.spotY, 34))) / 100) * BH);
     } else {
-      const words = esc(clip(copy.title, 44)).split(/\s+/).filter(Boolean).map((w) => `<span class="w">${w}</span>`).join(' ');
+      const words = esc(clip(copy.title, 40)).split(/\s+/).filter(Boolean).map((w) => `<span class="w">${w}</span>`).join(' ');
       const tlen = len(copy.title);
       const titleSize = tlen <= 22 ? 32 : tlen <= 28 ? 28 : tlen <= 34 ? 24 : 21;
-      const navIcons = [appIcon === 'layout-dashboard' ? 'layout-grid' : 'layout-dashboard', 'inbox', 'users', 'chart-pie', 'settings'];
+      const navIcons = ['house', 'inbox', 'users', 'chart-pie'];
       const rows = [[120, 64, 'ok'], [96, 80, 'bl'], [132, 52, 'or'], [104, 70, 'ok']];
       page = `<div class="ga">
         <div class="ga-side"><span class="ga-logo">${icon(appIcon, { size: 26, stroke: 2.2 }, 'layout-dashboard')}</span>
-          ${navIcons.slice(0, 4).map((n, i) => `<span class="ga-nav ${i ? '' : 'on'}">${ico(n, { size: 24, stroke: 2.1 })}</span>`).join('')}<span class="ga-me"></span></div>
+          ${navIcons.map((n, i) => `<span class="ga-nav ${i ? '' : 'on'}">${ico(n, { size: 24, stroke: 2.1 })}</span>`).join('')}<span class="ga-me"></span></div>
         <div class="ga-main">
           <div class="ga-h"><b style="font-size:${titleSize}px">${words}</b><i class="bar"></i></div>
           <div class="ga-btn">${ico('plus', { size: 22, stroke: 3 })}<i class="bar"></i></div>
@@ -321,7 +330,7 @@ export default {
       <div class="sb-sheen"></div>
     </div>
     <div class="sb-ov">
-      <div class="sb-spot" style="left:${hx}px;top:${hy}px"><span class="sb-rip"></span><span class="sb-bc"><i></i></span></div>
+      <div class="sb-spot" style="left:${hx}px;top:${hy}px"><span class="sb-rip"></span>${'<b></b>'.repeat(7)}<span class="sb-bc"><i></i></span></div>
       ${callout.title || callout.text ? `<div class="sb-co" style="${coPos}"><span class="ci">${icon(callout.icon, { size: 26, stroke: 2.2 })}</span><div class="ct">${callout.title ? `<b>${esc(callout.title)}</b>` : ''}${callout.text ? `<p>${esc(callout.text)}</p>` : ''}</div></div>` : ''}
       <div class="sb-spot sb-cw" style="left:${hx}px;top:${hy}px"><span class="sb-cur">${CURSOR}</span></div>
     </div>
@@ -467,6 +476,15 @@ export default {
     if (mode === 'gen') tl.fromTo('.ga-btn', { outlineWidth: 0 }, { outlineWidth: 9, duration: 0.3, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 5.75);
     tl.fromTo('.sb-rip', { opacity: 0.9, scale: 0.3 }, { opacity: 0, scale: 2.2, duration: 0.75, ease: 'power2.out' }, 5.78);
     tl.fromTo('.sb-bc', { scale: 0 }, { scale: 1, duration: 0.5, ease: 'back.out(2.6)' }, 5.8);
+    // Spark petals burst out of the click.
+    $('.sb-spot b').forEach((p, i, all) => {
+      const a = ((360 * i) / all.length - 75) * (Math.PI / 180);
+      const r0 = (a * 180) / Math.PI + 90;
+      const t = 5.8 + (i % 2) * 0.04;
+      tl.fromTo(p, { x: 0, y: 0, scale: 0.3, rotation: r0 }, { x: Math.cos(a) * 58, y: Math.sin(a) * 58, scale: 1, rotation: r0 + 50 * s, duration: 0.85, ease: 'power3.out' }, t);
+      tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: 0.1, ease: 'none' }, t);
+      tl.to(p, { opacity: 0, duration: 0.4, ease: 'power1.in' }, t + 0.45);
+    });
     tl.fromTo('.sb-co', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(1.6)' }, 5.92);
     // ...and drifts aside so the callout is clear.
     tl.fromTo('.sb-cur', { x: 0, y: 0 }, { x: rest.x, y: rest.y, duration: 0.8, ease: 'power2.inOut' }, 6.2);

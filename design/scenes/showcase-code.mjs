@@ -14,6 +14,27 @@ import { stack } from '../fonts.mjs';
 const ARABIC = /[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]/;
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+// Word spans for animation (never letters: Arabic joins must stay intact). An inline-block is an
+// atomic object in bidi ordering, so a run of words in the other script (e.g. a Latin project
+// name inside Arabic text) is kept together in one span with its own direction; otherwise
+// "Skyline Run" would come out as "Run Skyline".
+function wordSpans(text, rtl) {
+  const parts = String(text ?? '').split(/(\s+)/).filter((p) => p !== '');
+  const isSpace = (p) => /^\s+$/.test(p);
+  const other = (w) => (rtl ? !ARABIC.test(w) && /[A-Za-z]/.test(w) : ARABIC.test(w));
+  const out = [];
+  for (let i = 0; i < parts.length; i++) {
+    const p = parts[i];
+    if (isSpace(p)) { out.push(p); continue; }
+    if (!other(p)) { out.push(`<span class="w">${esc(p)}</span>`); continue; }
+    let j = i;
+    while (j + 2 < parts.length && isSpace(parts[j + 1]) && other(parts[j + 2])) j += 2;
+    out.push(`<span class="w" dir="${rtl ? 'ltr' : 'rtl'}">${esc(parts.slice(i, j + 1).join(''))}</span>`);
+    i = j;
+  }
+  return out.join('');
+}
+
 // ---------------------------------------------------------------------------------------------
 // A tiny syntax highlighter. Classes: k keyword, n number/constant, s string, c comment,
 // f function, t type/class, d decorator/directive, o operator/punctuation, v identifier.
@@ -80,7 +101,7 @@ const ALIASES = {
 const norm = (s) => String(s ?? '').trim().toLowerCase();
 const langKey = (k) => (LANGS[k] ? k : LANGS[ALIASES[k]] ? ALIASES[k] : null);
 // The file's extension says the language best (the `language` field may be the scene default).
-export function resolveLang(file, language) {
+function resolveLang(file, language) {
   const ext = /\.([a-z0-9+#]+)$/i.exec(String(file ?? ''))?.[1];
   return langKey(norm(ext)) ?? langKey(norm(language)) ?? 'generic';
 }
@@ -89,7 +110,7 @@ const DEF = set('def function fn func fun void');
 const TYPEDEF = set('class struct interface enum new extends implements trait type record object protocol extension impl namespace');
 
 // Splits each line into [class, text] tokens. Whitespace tokens have class ''.
-export function tokenize(lines, L) {
+function tokenize(lines, L) {
   let block = false; // inside /* … */
   let triple = null; // inside a Python ''' / """ string
   return lines.map((line) => {
@@ -120,8 +141,10 @@ export function tokenize(lines, L) {
         push('c', e < 0 ? rest : rest.slice(0, e + 2)); continue;
       }
       if (L.line && rest.startsWith(L.line) && !(L.sh && /^#!/.test(rest) && i)) {
-        // Comments are typed word by word.
-        rest.split(/(\s+)/).filter(Boolean).forEach((w) => push(/^\s+$/.test(w) ? '' : 'c', w));
+        // Comments are typed word by word (an Arabic comment stays whole: as separate inline
+        // blocks its words would be laid out left to right).
+        if (ARABIC.test(rest)) push('c', rest);
+        else rest.split(/(\s+)/).filter(Boolean).forEach((w) => push(/^\s+$/.test(w) ? '' : 'c', w));
         break;
       }
       if (L.pre && !line.slice(0, i).trim() && (m = /^#\s*[a-z]+/.exec(rest))) { push('d', m[0]); prev = ''; continue; }
@@ -170,10 +193,10 @@ export function tokenize(lines, L) {
 
 // Output lines may start with a status mark; it becomes a coloured icon.
 const MARKS = [
-  [/^(✓|✔|√|\[ok\]|ok:?)\s*/i, 'check', 'ok'],
-  [/^(✗|✘|×|\[x\]|error:?)\s*/i, 'x', 'er'],
+  [/^(✓|✔|√|\[ok\]|ok\b:?)\s*/i, 'check', 'ok'],
+  [/^(✗|✘|×|\[x\]|error\b:?)\s*/i, 'x', 'er'],
   [/^(→|->|=>|›|»|>)\s*/, 'chevron-right', 'ar'],
-  [/^(!|⚠|warn(ing)?:?)\s*/i, 'triangle-alert', 'wa'],
+  [/^(!|⚠️?|warn(ing)?\b:?)\s*/i, 'triangle-alert', 'wa'],
   [/^(•|·|\*|-)\s+/, 'dot', 'dt'],
 ];
 function outLine(text) {
@@ -339,6 +362,7 @@ export default {
 .tk.n{color:#F7A072}
 .tk.d{color:#F4B310}
 .tk.c{color:#8A9FBE;font-style:italic}
+.tk.ar{font-style:normal}
 .tk.o{color:#93A9C6}
 .tk.v{color:#E6EEF8}
 .sc-mm{position:absolute;right:18px;width:78px;padding:8px 8px;border-radius:9px;background:rgba(147,169,198,.06);box-shadow:inset 0 0 0 1px rgba(147,169,198,.12)}
@@ -412,7 +436,7 @@ export default {
     const rowTop = (k) => PADT + k * g.lh;
     const rows = g.toks.map((toks, k) => {
       const chars = toks.reduce((n, [, t]) => n + t.length, 0);
-      const inner = toks.map(([c, t]) => (c ? `<span class="tk ${c}">${esc(t)}</span>` : esc(t))).join('');
+      const inner = toks.map(([c, t]) => (c ? `<span class="tk ${c}${ARABIC.test(t) ? ' ar' : ''}">${esc(t)}</span>` : esc(t))).join('');
       return `<div class="sc-row" style="top:${rowTop(k)}px;height:${g.lh}px;line-height:${g.lh}px">`
         + `<span class="no">${k + 1}</span><span class="cl${chars * g.cw > CLIP ? ' ov' : ''}">${inner}</span></div>`;
     }).join('');
@@ -447,11 +471,14 @@ export default {
       const chars = [...text];
       const max = ar ? 34 : 31;
       const ov = chars.length > max - 2;
-      const shown = chars.length > max ? chars.slice(0, max).join('') : text;
+      let shown = chars.length > max ? chars.slice(0, max).join('') : text;
+      // Arabic is cut between words, so the last visible letters keep their joined forms.
+      if (ar && shown !== text && shown.lastIndexOf(' ') > max / 2) shown = shown.slice(0, shown.lastIndexOf(' '));
       return `<div class="sc-ol"><span class="oi ${cls}">${icon ? ico(icon, { size: 20, stroke: 3 }) : ''}</span><span class="ot${ov ? ' ov' : ''}${ar ? ' rtl' : ''}"><bdi>${esc(shown)}</bdi></span></div>`;
     }).join('');
-    const words = (s) => esc(s).split(/(\s+)/).map((w) => (/^\s+$/.test(w) || !w ? w : `<span class="w">${w}</span>`)).join('');
-    const icon = (() => { try { return ico(data.icon || 'terminal', { size: 32, stroke: 2.2 }); } catch { return ico('terminal', { size: 32, stroke: 2.2 }); } })();
+    const words = (s) => wordSpans(s, rtl);
+    const iconName = /^[a-z0-9-]+$/.test(String(data.icon ?? '')) ? data.icon : 'terminal';
+    const icon = (() => { try { return ico(iconName, { size: 32, stroke: 2.2 }); } catch { return ico('terminal', { size: 32, stroke: 2.2 }); } })();
     const top = g.cardsTop;
     return `<svg width="0" height="0" style="position:absolute"><defs>
 <filter id="scgoo" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/>

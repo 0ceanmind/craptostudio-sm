@@ -5,7 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { root, postsDir, loadPosts, loadPost, postFolder } from '../../design/posts.mjs';
 import { validatePost, normalizePost, SLUG_RE, slugify } from './schema.mjs';
-import { sceneNames } from './scenes.mjs';
+import { validationContext } from './scenes.mjs';
 
 export { root, postsDir };
 export const assetsDir = path.join(root, 'content/assets');
@@ -84,7 +84,7 @@ const ordered = (post) => Object.fromEntries([...KEY_ORDER.filter((k) => k in po
 export async function savePost(input, { previousSlug } = {}) {
   const post = normalizePost(input);
   for (const k of ['sceneCopy', 'sceneData']) if (post[k] && !Object.keys(post[k]).length) delete post[k];
-  const { errors, warnings } = validatePost(post, { scenes: await sceneNames() });
+  const { errors, warnings } = validatePost(post, await validationContext(post));
   if (errors.length) throw new ValidationError(errors, warnings);
   const old = previousSlug && previousSlug !== post.slug ? previousSlug : post.slug;
   if (old !== post.slug && postExists(post.slug)) throw new ValidationError([`slug: a post named "${post.slug}" already exists`]);
