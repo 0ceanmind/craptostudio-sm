@@ -149,8 +149,17 @@ export function listRuns({ limit = 20 } = {}) {
     .map(({ events, ...r }) => ({ ...r, eventCount: events?.length ?? 0 }));
 }
 
-function buildPrompt({ cwd, sessionId, request, followUp }) {
+function buildPrompt({ cwd, sessionId, request, followUp, editSlug }) {
   if (followUp) return followUp;
+  if (editSlug) {
+    return `You are editing an existing post in the Crapto Studio workspace through the crapto-studio tools.
+
+1. Call get_brand_kit and get_post("${editSlug}").
+2. Make this change: ${request.trim()}
+3. Keep everything else as it is. Both languages stay in sync: if you change the English, write the Arabic (Modern Standard Arabic, written, not translated) and the other way round, unless the request is about one language only.
+4. Save with save_post (same slug), call preview_post and fix anything that looks wrong, then render_post (stills only).
+5. Don't touch other posts${cwd === root ? '' : ' or any project files'}. Reply with a short summary of what you changed.`;
+  }
   const playbook = fs.readFileSync(playbookFile, 'utf8');
   return `${playbook}
 
@@ -168,7 +177,7 @@ Start now: call get_brand_kit first, then follow the playbook to the end (save, 
 
 // Starts Claude Code in `cwd`. With `sessionId`, it continues (a fork of) that chat, so Claude has
 // the whole history of how the project was built. `followUpOf` continues an earlier run.
-export function startRun({ cwd, sessionId = null, request = '', followUpOf = null, message = '', model = '' }) {
+export function startRun({ cwd, sessionId = null, request = '', followUpOf = null, message = '', model = '', editSlug = null }) {
   const cli = claudeCli({ refresh: true });
   if (!cli.ok) throw new Error(`Claude Code CLI not found (${cli.error}). Install Claude Code, or set CLAUDE_BIN to its path.`);
   const parent = followUpOf ? getRun(followUpOf) : null;
@@ -193,14 +202,15 @@ export function startRun({ cwd, sessionId = null, request = '', followUpOf = nul
   else if (sessionId) args.push('--resume', sessionId, '--fork-session');
 
   const run = {
-    id, cwd: workdir, project: path.basename(workdir), sessionId: parent?.sessionId ?? sessionId, followUpOf, request: followUpOf ? message : request,
+    id, cwd: workdir, project: path.basename(workdir), sessionId: parent?.sessionId ?? sessionId, followUpOf, editSlug: parent?.editSlug ?? editSlug, request: followUpOf ? message : request,
     status: 'running', createdAt: Date.now(), events: [], posts: [...(parent?.posts ?? [])], claudeSessionId: parent?.claudeSessionId ?? null,
   };
-  const prompt = buildPrompt({ cwd: workdir, sessionId, request, followUp: followUpOf ? message : null });
-  const child = spawn(cli.bin, args, { cwd: workdir, shell: process.platform === 'win32', env: { ...process.env, CRAPTO_STUDIO_RUN: id }, windowsHide: true });
+  const prompt = buildPrompt({ cwd: workdir, sessionId, request, followUp: followUpOf ? message : null, editSlug });
+  const win = process.platform === 'win32'; // `claude` is a .cmd shim there: needs a shell, and quoting
+  const child = spawn(cli.bin, win ? args.map((a) => (/\s/.test(a) ? `"${a}"` : a)) : args, { cwd: workdir, shell: win, env: { ...process.env, CRAPTO_STUDIO_RUN: id }, windowsHide: true });
   run.child = child;
   runs.set(id, run);
-  pushEvent(run, { kind: 'status', text: parent ? 'Continuing the conversation…' : sessionId ? 'Opening your chat in Claude Code…' : 'Starting Claude Code in the project…' });
+  pushEvent(run, { kind: 'status', text: parent ? 'Continuing the conversation…' : editSlug ? `Asking Claude to edit “${editSlug}”…` : sessionId ? 'Opening your chat in Claude Code…' : 'Starting Claude Code in the project…' });
   child.stdin.end(prompt);
 
   const toolNames = new Map();

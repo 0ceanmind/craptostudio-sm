@@ -189,6 +189,15 @@ route('POST', '/api/claude/runs', async (req, res) => {
   const b = await body(req);
   ok(res, startRun({ cwd: b.cwd, sessionId: b.sessionId || null, request: b.request ?? '', model: b.model ?? '' }));
 });
+// "Ask Claude" in the editor: change one post in plain words. Runs in the post's project folder
+// when it came from one (so Claude can look things up), otherwise in the studio.
+route('POST', '/api/claude/edit', async (req, res) => {
+  const b = await body(req);
+  const post = getPost(b.slug);
+  if (!b.instruction?.trim()) return bad(res, 400, 'empty instruction');
+  const cwd = post.source?.path && fs.existsSync(post.source.path) ? post.source.path : root;
+  ok(res, startRun({ cwd, request: b.instruction, editSlug: post.slug, model: b.model ?? '' }));
+});
 route('POST', '/api/claude/runs/:id/message', async (req, res, { id }) => {
   const b = await body(req);
   if (!b.message?.trim()) return bad(res, 400, 'empty message');
@@ -264,7 +273,7 @@ const server = http.createServer(async (req, res) => {
     return bad(res, 404, 'not found');
   } catch (e) {
     if (e instanceof ValidationError) return bad(res, 422, e.message, { errors: e.errors, warnings: e.warnings });
-    if (!res.headersSent) bad(res, e.status ?? 500, e.message);
+    if (!res.headersSent) bad(res, e.status ?? (/^no (post|job) named|^no such/.test(e.message) ? 404 : 500), e.message);
   }
 });
 

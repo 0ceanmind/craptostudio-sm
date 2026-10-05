@@ -22,7 +22,9 @@ const mcpScript = path.join(root, 'studio/mcp.mjs');
 const skillDir = path.join(home, 'skills/crapto-post');
 const port = process.env.STUDIO_PORT;
 
-const run = (args) => spawnSync(bin, args, { encoding: 'utf8', shell: process.platform === 'win32' });
+// On Windows `claude` is a .cmd shim that needs a shell; quote arguments with spaces for it.
+const win = process.platform === 'win32';
+const run = (args) => spawnSync(bin, win ? args.map((a) => (/\s/.test(a) ? `"${a}"` : a)) : args, { encoding: 'utf8', shell: win });
 const quote = (s) => (/^[\w./:@=-]+$/.test(s) ? s : `"${s}"`);
 const addArgs = ['mcp', 'add', '--scope', 'user', ...(port ? ['-e', `STUDIO_PORT=${port}`] : []), 'crapto-studio', '--', process.execPath, mcpScript];
 

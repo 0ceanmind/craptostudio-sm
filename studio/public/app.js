@@ -74,7 +74,7 @@ function homeView() {
 
 // ---------- new post ----------
 export function newPost() {
-  let scene = state.scenes.find((s) => s.name === 'showcase-stack')?.name ?? state.scenes[0]?.name;
+  let scene = (state.scenes.find((s) => s.name === 'showcase-stack') ?? state.scenes.find((s) => s.kind === 'showcase') ?? state.scenes[0])?.name;
   let theme = 'dark';
   const name = h('input.in', { placeholder: 'Project or post name, e.g. Tasky app' });
   const scenes = h('div.scenes-grid');

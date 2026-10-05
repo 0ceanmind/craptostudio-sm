@@ -33,6 +33,8 @@ export function editorView(slug) {
   const fmtSeg = h('div.seg');
   const saveBtn = h('button.btn.primary', { onclick: () => save() }, icon('save', { size: 16 }), 'Save');
   const renderBtn = h('button.btn', { onclick: (e) => renderMenu(e.currentTarget) }, icon('clapperboard', { size: 16 }), 'Render', icon('chevron-down', { size: 14 }));
+  const askBtn = h('button.btn', { title: 'Describe a change; Claude edits the post in the brand style', onclick: () => askClaude() }, icon('wand-sparkles', { size: 16 }), 'Ask Claude');
+  const dock = h('div.dock', { hidden: true });
   const banner = h('div.banner', { hidden: true });
   const frame = h('div.frame', {}, h('div.busy'));
   const iframes = [h('iframe', { title: 'preview' }), h('iframe.back', { title: 'preview' })];
@@ -48,8 +50,8 @@ export function editorView(slug) {
   const ibody = h('div.ibody');
   const inspector = h('aside.inspector', {}, tabsEl, ibody);
   const stageCol = h('section.stagecol', {}, banner,
-    h('div.etool', {}, titleEl, dirtyEl, valBtn, langSeg, fmtSeg, renderBtn, saveBtn),
-    canvas, player, film);
+    h('div.etool', {}, titleEl, dirtyEl, valBtn, langSeg, fmtSeg, askBtn, renderBtn, saveBtn),
+    canvas, player, film, dock);
   const el = h('div.view.editor', {}, rail, stageCol, inspector);
 
   // ---------- data ----------
@@ -476,6 +478,47 @@ export function editorView(slug) {
       { icon: 'contrast', label: 'Check contrast', hint: 'Every text against its background', run: () => startJob('check') },
     ]);
   }
+
+  // ---------- Ask Claude ----------
+  const ASK_IDEAS = ['Make the headline punchier, in both languages', 'Rewrite the captions: shorter hook, warmer tone', 'Add a slide with the 4 main features', 'Make the Arabic sound more natural', 'Switch to the light theme and tighten all text'];
+  let askRun = null;
+  async function askClaude() {
+    if (dirty() && !(await save())) return;
+    const text = h('textarea.in', { rows: 4, placeholder: 'What should change? e.g. “Make the headline about saving time”, “add a screenshot slide”, “shorter captions”' });
+    const model = h('select.in', {}, [['', 'Your Claude Code default model'], ['opus', 'Opus: best writing'], ['sonnet', 'Sonnet: faster']].map(([v, l]) => h('option', { value: v, selected: (localStorage.getItem('studio.model') ?? '') === v }, l)));
+    modal({
+      title: 'Ask Claude to change this post',
+      body: h('div', {}, text,
+        h('div', { style: { display: 'flex', gap: '6px', flexWrap: 'wrap', margin: '10px 0 14px' } }, ASK_IDEAS.map((x) => h('button.pill', { style: { cursor: 'pointer', background: 'transparent' }, onclick: () => { text.value = x; } }, x))),
+        h('div.flabel', {}, 'Model'), model,
+        h('p.dim', { style: { fontSize: '12px', margin: '12px 0 0' } }, p.source?.path ? `Claude works in ${p.source.project} so it can check the project, but it can’t change the project’s files.` : 'Claude edits only this post, following the brand kit.')),
+      actions: [{ label: 'Cancel' }, { label: 'Ask Claude', primary: true, run: async () => {
+        if (!text.value.trim()) return false;
+        try {
+          askRun = await apiPost('/api/claude/edit', { slug: p.slug, instruction: text.value, model: model.value });
+          dockEvents.length = 0; dock.hidden = false; renderDock([]);
+        } catch (e) { toastError(e); return false; }
+      } }],
+    });
+    setTimeout(() => text.focus(), 50);
+  }
+  const dockEvents = [];
+  function renderDock(evs) {
+    const running = !evs.some((e) => e.kind === 'end');
+    const end = evs.find((e) => e.kind === 'end');
+    dock.replaceChildren(
+      h('div.dock-head', {}, icon('wand-sparkles', { size: 16 }), h('b', {}, running ? 'Claude is editing…' : end?.status === 'done' ? 'Claude is done' : 'Claude stopped'),
+        h('a.link', { href: `#/claude?run=${askRun.id}&cwd=${encodeURIComponent(askRun.cwd)}` }, 'Details'),
+        h('button.icon-btn', { title: running ? 'Stop' : 'Close', onclick: () => { if (running) apiPost(`/api/claude/runs/${askRun.id}/stop`).catch(toastError); else dock.hidden = true; } }, icon(running ? 'square' : 'x', { size: 14 }))),
+      h('div.dock-body', {}, evs.filter((e) => ['tool', 'text', 'end', 'tool_error'].includes(e.kind)).slice(-5).map((e) => h(`div.dock-ev.${e.kind}`, {}, e.kind === 'tool' ? icon('dot', { size: 14 }) : null, e.text.length > 220 ? `${e.text.slice(0, 220)}…` : e.text)),
+        running ? h('span.typing-dots', {}, h('i'), h('i'), h('i')) : null));
+  }
+  disposers.push(on('run', ({ id, event }) => {
+    if (!askRun || id !== askRun.id) return;
+    dockEvents.push(event);
+    renderDock(dockEvents);
+    if (event.kind === 'end' && event.status === 'done') toast('Claude updated the post', { kind: 'ok' });
+  }));
 
   // ---------- keyboard ----------
   const onKey = (e) => {

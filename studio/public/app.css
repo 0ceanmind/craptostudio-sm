@@ -234,6 +234,18 @@ select.in{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 .copybox{position:relative}
 .copybox .btn{position:absolute;right:8px;top:8px}
 
+/* Ask Claude dock */
+.stagecol{position:relative}
+.dock{position:absolute;right:16px;bottom:150px;width:min(380px,calc(100% - 32px));background:var(--panel2);border:1px solid rgba(242,141,25,.45);border-radius:16px;box-shadow:var(--shadow);z-index:10;animation:pop .25s cubic-bezier(.22,1,.36,1)}
+.dock-head{display:flex;align-items:center;gap:8px;padding:10px 10px 8px 14px;border-bottom:1px solid var(--line)}
+.dock-head .ico{color:var(--spark)}
+.dock-head b{flex:1;font-size:13.5px}
+.dock-body{padding:10px 14px 12px;display:flex;flex-direction:column;gap:6px;max-height:240px;overflow:auto}
+.dock-ev{font-size:12.5px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
+.dock-ev.tool{font:500 11.5px var(--mono);color:var(--sub);display:flex;gap:4px;align-items:center}
+.dock-ev.tool_error{color:#FFB3AB}
+.dock-ev.end{color:var(--text)}
+
 /* render menu */
 .menu{position:absolute;z-index:30;min-width:240px;background:var(--panel2);border:1px solid var(--line2);border-radius:12px;padding:6px;box-shadow:var(--shadow)}
 .menu button{width:100%;display:flex;align-items:center;gap:10px;background:transparent;border:0;padding:9px 10px;border-radius:8px;cursor:pointer;text-align:left}

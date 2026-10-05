@@ -66,10 +66,12 @@ export function claudeView(params) {
       h(`div.chat${chat === null ? '.on' : ''}`, { onclick: () => { chat = null; renderMain(); } }, icon('scan-search', { size: 16 }), h('div', {}, h('b', {}, 'Fresh look at the code'), h('span', {}, 'Claude reads the project from scratch'))),
       p.sessions.slice(0, 30).map((s) => h(`div.chat${chat === s.id ? '.on' : ''}`, { onclick: () => { chat = s.id; renderMain(); } }, icon('messages-square', { size: 16 }),
         h('div', { style: { minWidth: 0 } }, h('b', {}, s.title), h('span', {}, `${ago(s.updatedAt)}${s.branch ? ` · ${s.branch}` : ''} · ${size(s.size)}`)))));
+    const model = h('select.in', { onchange: () => localStorage.setItem('studio.model', model.value) },
+      [['', 'Your Claude Code default model'], ['opus', 'Opus: best writing and design judgement'], ['sonnet', 'Sonnet: faster']].map(([v, l]) => h('option', { value: v, selected: (localStorage.getItem('studio.model') ?? '') === v }, l)));
     const go = h('button.btn.spark', { style: { width: '100%', height: '44px', fontSize: '15px' }, disabled: !p.exists || !status?.cli?.ok, onclick: async () => {
       go.disabled = true;
       try {
-        const r = await apiPost('/api/claude/runs', { cwd: p.cwd, sessionId: chat, request: brief.value });
+        const r = await apiPost('/api/claude/runs', { cwd: p.cwd, sessionId: chat, request: brief.value, model: model.value });
         activeRun = r; runs = await get('/api/claude/runs'); renderMain();
       } catch (e) { toastError(e); go.disabled = false; }
     } }, icon('wand-sparkles', { size: 18 }), 'Generate carousel');
@@ -80,6 +82,7 @@ export function claudeView(params) {
         h('div.flabel', { style: { marginTop: '16px' } }, 'Context', h('span.hint', {}, 'continue a chat = Claude remembers how it was built')),
         chatList,
         h('div.flabel', {}, 'Brief'), brief, chips,
+        h('div.flabel', {}, 'Model'), h('div', { style: { marginBottom: '14px' } }, model),
         go,
         !status?.cli?.ok ? h('p.dim', { style: { fontSize: '12px' } }, 'Claude Code CLI not found on this computer.') : null,
         h('p.dim', { style: { fontSize: '12px', margin: '10px 0 0' } }, 'Claude can read the project and use the studio’s tools; it can’t change your project files or run commands. Chats are forked, so your original chat stays untouched.')),
