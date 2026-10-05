@@ -131,7 +131,7 @@ export default {
   box-shadow:0 22px 44px rgba(3,8,18,.38),inset 0 2px 0 rgba(255,255,255,.35)}
 .tile.bulb{inset-inline-start:808px;top:58px}
 .tile.bulb .ti{background:var(--sparkg);transform:rotate(${r ? -12 : 12}deg)}
-.tile.cap{inset-inline-start:0;top:34px}
+.tile.cap{inset-inline-start:16px;top:22px}
 .tile .gl{position:absolute;left:50%;top:50%;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:50%;
   background:radial-gradient(closest-side,rgba(244,179,16,.75),rgba(242,141,25,.28) 50%,rgba(242,141,25,0));opacity:0}
 .tile.cap .ti{background:linear-gradient(135deg,#5AB4D9,#4296D1 55%,#2C5C9E);transform:rotate(${r ? 10 : -10}deg)}
@@ -263,10 +263,10 @@ export default {
 <div class="sp-halo"></div>
 <div class="net goo">
   <div class="n" style="width:150px;height:150px;inset-inline-start:704px;top:6px"></div>
-  <div class="n" style="width:84px;height:84px;inset-inline-start:806px;top:122px"></div>
+  <div class="n" style="width:84px;height:84px;inset-inline-start:792px;top:122px"></div>
   <div class="n" style="width:62px;height:62px;inset-inline-start:690px;top:150px"></div>
   <div class="n" style="width:132px;height:132px;inset-inline-start:744px;top:430px"></div>
-  <div class="n" style="width:70px;height:70px;inset-inline-start:836px;top:372px"></div>
+  <div class="n" style="width:70px;height:70px;inset-inline-start:818px;top:372px"></div>
   <div class="n" style="width:64px;height:64px;inset-inline-start:690px;top:528px"></div>
 </div>
 <div class="fsp" style="inset-inline-start:610px;top:22px;transform:rotate(${rtl ? -30 : 30}deg)">${petalSvg()}</div>
@@ -335,7 +335,7 @@ export default {
 
     // ---- Ambient loops (whole cycles) ----
     gsap.utils.toArray('.net .n').forEach((n, i) => {
-      tl.to(n, { x: (i % 2 ? 16 : -14), y: (i % 3 ? -14 : 18), scale: 1 + (i % 3) * 0.06, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
+      tl.to(n, { x: (i % 2 ? 16 : -14) * dir, y: (i % 3 ? -14 : 18), scale: 1 + (i % 3) * 0.06, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     });
     tl.to('.fsp', { rotation: '+=360', duration: D, ease: 'none' }, 0);
     tl.to('.sp-halo', { scale: 1.06, opacity: 0.8, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);

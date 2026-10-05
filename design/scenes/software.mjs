@@ -176,6 +176,14 @@ export default {
 .sh-c.hi{background:rgba(244,179,16,.15)}
 .sh-c .tri{position:absolute;top:0;inset-inline-start:0;border-top:13px solid var(--ember);border-inline-end:13px solid transparent}
 .sh-c .pz{position:absolute;inset:0;border:3px solid var(--ember);background:rgba(236,108,28,.18);box-shadow:inset 0 0 14px rgba(236,108,28,.5);opacity:0}
+.sh-tb .flip{transform:scaleX(-1)}
+
+/* blueprint canvas + layout guides, shown only while the cells are in flight */
+.sw-bp{position:absolute;inset:0;opacity:0;
+  background-image:radial-gradient(circle,rgba(90,180,217,.34) 1.7px,transparent 2.3px);background-size:26px 26px;background-position:7px 9px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 75% at 50% 50%,#000 35%,transparent 100%)}
+.sw-guides{position:absolute;left:0;top:0;opacity:0;overflow:visible}
+.sw-guides .gd{fill:none;stroke:var(--sky);stroke-width:2.5;stroke-opacity:.75;filter:drop-shadow(0 0 6px rgba(90,180,217,.7))}
 
 /* tiles: each is a cell in the sheet and a piece of the dashboard */
 .tile{position:absolute;z-index:2}
@@ -212,7 +220,7 @@ export default {
 .t-kpi .num{position:absolute;bottom:16px;inset-inline-start:20px;height:${LH}px}
 .t-kpi .nr{display:flex;direction:ltr;height:${LH}px;
   font:800 46px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--ui-text)}
-.od{display:block;height:${LH}px;overflow:hidden}
+.od{display:block;height:${LH}px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 90%,transparent 100%)}
 .od .st{display:block}
 .od i{display:block;height:${LH}px;line-height:${LH}px;font-style:normal;text-align:center}
 .num .sym{line-height:${LH}px}
@@ -255,7 +263,7 @@ export default {
   background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.10),rgba(255,255,255,0));transform:translateX(${r ? 1000 : -260}px) rotate(18deg)}
 
 /* floating label + toast */
-.sw-label{position:absolute;left:0;right:0;top:612px;display:flex;justify-content:center;z-index:7}
+.sw-label{position:absolute;left:0;right:0;top:636px;display:flex;justify-content:center;z-index:7}
 .sw-label .lb{display:inline-flex;align-items:center;gap:12px;padding:9px;border-radius:999px;opacity:0;
   background:rgba(19,35,61,.94);border:2px solid var(--card-line);box-shadow:0 30px 60px rgba(2,6,14,.55)}
 .sw-label .chip{font-size:${r ? 24 : 23}px;padding:11px 22px;gap:10px}
@@ -376,6 +384,10 @@ export default {
     const sparks = [[330, 14, 30, 0.9], [884, 318, 80, 1], [10, 300, -140, 0.9], [600, 704, 40, 0.8], [224, 24, -40, 0.7]];
     const ghostCells = [[52, 86, 60], [150, 86, 40], [250, 118, 70, 'e'], [52, 150, 50], [350, 150, 60], [150, 182, 70], [250, 214, 50, 'e'], [52, 246, 64], [350, 246, 40]];
 
+    // blueprint guides: the dashboard's layout is drawn on the canvas while the sheet lifts off
+    const guides = `<svg class="sw-guides" viewBox="0 0 ${BW} 524" width="${BW}" height="524">${[[SIDE, 22], ...KPI.map((k) => [k, 22]), [CHART, 24], [TABLE, 24]]
+      .map(([rc, rad]) => { const [x, y, w, h] = mx(rc); return `<rect class="gd" data-l="${(rc[0] / BW).toFixed(3)}" x="${x + 1}" y="${y + 1}" width="${w - 2}" height="${h - 2}" rx="${rad}"/>`; }).join('')}</svg>`;
+
     return `${gooFilter}
 <div class="sfw">
   <div class="sw-halo"></div>
@@ -400,6 +412,8 @@ export default {
     </div>
     <div class="sw-body">
       ${sheet}
+      <div class="sw-bp"></div>
+      ${guides}
       ${tiles}
       <div class="sw-ov">
         <div class="sel" data-k="${JSON.stringify(selK)}" style="left:${last[0]}px;top:${last[1]}px;width:${last[2]}px;height:${last[3]}px"></div>
@@ -458,6 +472,9 @@ export default {
     tl.to('.sw-peak .pk', { opacity: 0, y: 12, scale: 0.7, duration: 0.3, ease: 'power2.in' }, T);
     tl.to(nonBarCt, { opacity: 0, duration: 0.3, ease: 'power2.in' }, T + 0.02);
     tl.to('.bf', { scaleY: 0, duration: 0.35, ease: 'power2.in', stagger: 0.02 }, T + 0.02);
+    // reset (while hidden) what the build animates back in
+    tl.set('.bf', { scaleY: 1, opacity: 0 }, T + 0.6);
+    tl.set('.okp', { drawSVG: '0%' }, T + 0.6);
     tl.set('.od .st', { y: 0 }, T + 0.4);
     tl.set('.ring-p', { strokeDashoffset: RING }, T + 0.4);
     tl.set(['.t-kpi .kl', '.t-kpi .kb', '.t-row .pl'], { opacity: 0 }, T + 0.4);
@@ -505,7 +522,13 @@ export default {
     tl.to('.sw-sheet', { opacity: 0, duration: 0.45, ease: 'power2.in' }, TF + 0.25);
     const lift = (i, el) => +el.closest('.tile').dataset.l * 0.55;
     tl.fromTo('.tile .cs', { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: lift }, TF + 0.05);
-    tl.fromTo('.tile', { scale: 1, rotation: 0, y: 0 }, { scale: 1.07, rotation: (i) => (((i * 37) % 7) - 3) * 1.2, y: -8, duration: 0.3, ease: 'power2.out', stagger: lift }, TF + 0.05);
+    // small cells pop up and tilt; the big ranges (future panels) rise flat, so the flight stays clean
+    const isBig = (el) => el.classList.contains('big');
+    tl.fromTo('.tile', { scale: 1, rotation: 0, y: 0 }, { scale: (i, el) => (isBig(el) ? 1.02 : 1.08), rotation: (i, el) => (isBig(el) ? 0 : (((i * 37) % 7) - 3) * 1.2), y: (i, el) => (isBig(el) ? -4 : -10), duration: 0.3, ease: 'power2.out', stagger: lift }, TF + 0.05);
+    // ...while the blueprint of the new system is drawn underneath, following the beam
+    tl.fromTo('.sw-bp', { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out' }, TF + 0.15);
+    tl.fromTo('.sw-guides', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, TF + 0.1);
+    tl.fromTo('.sw-guides .gd', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.75, ease: 'power2.inOut', stagger: (i, el) => +el.dataset.l * 0.55 }, TF + 0.12);
 
     // ...fly across the window and snap into the dashboard...
     const TY = TF + 0.45;
@@ -514,9 +537,19 @@ export default {
     tl.to('.tile', { scale: 1, rotation: 0, y: 0, duration: 0.9, ease: 'power3.inOut', stagger: fly }, TY);
     tl.to('.tile .cv', { opacity: 0, duration: 0.25, stagger: fly }, TY);
     tl.to('.tile:not(.t-bar) .cs', { opacity: 0, duration: 0.35, ease: 'power1.in', stagger: fly }, TY + 0.62);
-    // the bar rods land and settle into their values: the fill rises while the rod dims
-    tl.to('.t-bar .cs', { opacity: 0, duration: 0.7, ease: 'power1.inOut', stagger: fly }, TY + 0.8);
+    // the Total cells keep their cell height and drop to the foot of their tracks...
+    const STUB = 44;
+    const TRK = 238;
+    tl.fromTo('.t-bar .cs', { top: 0 }, { top: TRK - STUB, duration: 0.9, ease: 'power3.inOut', stagger: fly }, TY);
+    // ...then grow into bars (each starts as it lands) and hand over to the finished fill
+    const TG = TY + 0.9 + 10 * 0.028;
+    tl.fromTo('.t-bar .cs', { top: TRK - STUB }, { top: (i, el) => TRK - +el.closest('.tile').dataset.h, duration: 0.85, ease: 'power3.out', stagger: 0.028 }, TG);
+    tl.fromTo('.bf', { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power1.inOut', stagger: 0.028 }, TG + 0.7);
+    tl.to('.t-bar .cs', { opacity: 0, duration: 0.3, ease: 'power1.inOut', stagger: 0.028 }, TG + 0.8);
     tl.fromTo('.tile .sk', { opacity: 0 }, { opacity: 1, duration: 0.45, stagger: fly }, TY + 0.45);
+    // the blueprint hands over to the real panels
+    tl.to('.sw-guides', { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, TY + 0.65);
+    tl.to('.sw-bp', { opacity: 0, duration: 0.7, ease: 'power1.inOut' }, TY + 0.75);
     tl.fromTo('.sw-tilt', { rotationY: 0, rotationX: 0 }, { rotationY: -7 * s, rotationX: 6, duration: 1.6, ease: 'power2.inOut' }, TY - 0.1);
     tl.to('.t-sheet', { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' }, TY);
     tl.fromTo('.t-app', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45 }, TY + 0.3);
@@ -530,10 +563,9 @@ export default {
     tl.fromTo('.t-kpi .ct', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.028 }, land(6));
     tl.fromTo('.t-kpi .kl', { opacity: 0, x: -14 * s }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.06 }, land(6));
     tl.fromTo('.t-kpi .kb', { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)', stagger: 0.07 }, land(6) + 0.1);
-    tl.fromTo('.od .st', { y: 0 }, { y: (i, el) => -el.dataset.i * LH, duration: 1.4, ease: 'power3.out', stagger: 0.05 }, land(6));
+    tl.fromTo('.od .st', { y: 0 }, { y: (i, el) => -el.dataset.i * LH, duration: 1.3, ease: 'power3.out', stagger: 0.06 }, land(6));
     tl.fromTo('.ring-p', { strokeDashoffset: RING }, { strokeDashoffset: 2.51, duration: 1.2, ease: 'power3.out' }, land(7) + 0.15);
     tl.fromTo('.t-chart .ct', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45 }, land(9));
-    tl.fromTo('.bf', { scaleY: 0 }, { scaleY: 1, duration: 0.9, ease: 'power3.out', stagger: 0.028 }, land(10) - 0.05);
     tl.fromTo('.t-table .ct', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45 }, land(17));
     tl.fromTo('.t-row .ct', { opacity: 0, x: -26 * s }, { opacity: 1, x: 0, duration: 0.55, stagger: 0.1 }, land(18));
     tl.fromTo('.t-row .pl', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2.4)', stagger: 0.1 }, land(18) + 0.25);

@@ -397,14 +397,14 @@ export default {
     tl.fromTo('.ck .cp', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.32, ease: 'power2.out' }, TB + 0.16);
     tl.fromTo('.back .cr', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2)' }, TB + 0.05);
     tl.fromTo('.back .pts', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2.6)' }, TB + 0.16);
-    // ...a shock ring and a warm flash bloom out from behind the card...
-    tl.fromTo('.qring', { opacity: 0.95, scale: 1 }, { opacity: 0, scale: 1.24, duration: 0.75, ease: 'power2.out' }, TB);
+    // ...a warm flash blooms behind the card, and a shock ring goes out as the flip lands...
+    tl.fromTo('.qring', { opacity: 0.95, scale: 1 }, { opacity: 0, scale: 1.22, duration: 0.7, ease: 'power2.out' }, TF + 0.66);
     tl.fromTo('.qflash', { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, TB - 0.04);
     tl.to('.qflash', { opacity: 0, scale: 1.25, duration: 0.65, ease: 'power1.in' }, TB + 0.26);
     // ...and spark petals burst out from behind it, fanning over the slide towards the open side.
     // Targets clear the card and stay inside the scene box (they never reach the headline).
     const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
-    const LIM = { l: 26 - BO.x, r: 878 - BO.x, t: 34 - BO.y, b: 700 - BO.y };
+    const LIM = { l: 26 - BO.x, r: 878 - BO.x, t: Math.max(34 - BO.y, -300), b: 700 - BO.y };
     all('.burst i').forEach((p, i) => {
       const dot = p.classList.contains('bd');
       const f = (i * 0.618034 + 0.1) % 1; // golden-ratio spread: even, never regular
