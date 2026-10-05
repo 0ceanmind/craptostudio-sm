@@ -267,8 +267,8 @@ export default {
       hy = Math.round((Math.max(6, Math.min(94, num(data.spotY, 34))) / 100) * BH);
     } else {
       const words = esc(clip(copy.title, 44)).split(/\s+/).filter(Boolean).map((w) => `<span class="w">${w}</span>`).join(' ');
-      const tl = len(copy.title);
-      const titleSize = tl <= 22 ? 32 : tl <= 28 ? 28 : tl <= 34 ? 24 : 21;
+      const tlen = len(copy.title);
+      const titleSize = tlen <= 22 ? 32 : tlen <= 28 ? 28 : tlen <= 34 ? 24 : 21;
       const navIcons = [appIcon === 'layout-dashboard' ? 'layout-grid' : 'layout-dashboard', 'inbox', 'users', 'chart-pie', 'settings'];
       const rows = [[120, 64, 'ok'], [96, 80, 'bl'], [132, 52, 'or'], [104, 70, 'ok']];
       page = `<div class="ga">
@@ -303,7 +303,7 @@ export default {
 
     const blobs = [[-28, 40, 126], [70, 0, 70], [10, 168, 56], [770, 560, 140], [860, 520, 70], [700, 676, 60], [640, -20, 46]];
     const sparks = [[876, 140, 40, 0.85], [24, 300, -120, 0.9], [440, 2, 70, 0.75], [880, 470, 150, 0.8], [250, 700, -30, 0.8], [600, 712, 110, 0.7]];
-    const chip = (c, i) => `<div class="sb-chip c${i}"><div class="sb-ci"><div class="sb-cc"><span class="ib">${icon(c.icon, { size: 26, stroke: 2.2 })}</span><b>${esc(c.text)}</b></div></div></div>`;
+    const chip = (c, i) => `<div class="sb-chip c${i}"><div class="sb-ci"><div class="sb-cc"><span class="ib">${icon(c.icon, { size: 26, stroke: 2.2 })}</span><b>${esc(clip(c.text, 26))}</b></div></div></div>`;
 
     return `${GOO}
 <div class="sb" data-mode="${mode}" data-hx="${hx}" data-hy="${hy}" data-rx="${rest.x}" data-ry="${rest.y}" data-bw="${BW}" data-bh="${BH}">
@@ -315,7 +315,7 @@ export default {
     <div class="win">
       <div class="win-bar"><span class="d"></span><span class="d"></span><span class="d"></span>
         <span class="sb-nav">${ico(rtl ? 'chevron-right' : 'chevron-left', { size: 24, stroke: 2.4 })}${ico(rtl ? 'chevron-left' : 'chevron-right', { size: 24, stroke: 2.4 })}${ico('rotate-cw', { size: 20, stroke: 2.4 })}</span>
-        <span class="sb-url">${ico('lock', { size: 18, stroke: 2.6, cls: 'lk' })}<span>${esc(data.url || 'yourapp.com')}</span><i class="sb-load"></i></span>
+        <span class="sb-url">${ico('lock', { size: 18, stroke: 2.6, cls: 'lk' })}<span>${esc(clip(String(data.url || 'yourapp.com').replace(/^https?:\/\//, ''), 32))}</span><i class="sb-load"></i></span>
         <span class="sb-tools">${ico('share', { size: 22, stroke: 2.2 })}${ico('plus', { size: 22, stroke: 2.4 })}</span></div>
       <div class="sb-body">${page}<i class="sb-glare"></i></div>
       <div class="sb-sheen"></div>
@@ -348,9 +348,9 @@ export default {
     gsap.set('.sb-spot', { z: 24 });
     gsap.set('.sb-co', { z: 70 });
     gsap.set('.sb-cw', { z: 110 });
-    gsap.set('.sb-cur', { x: rest.x, y: rest.y });
+    gsap.set('.sb-cur', { x: rest.x, y: rest.y, transformOrigin: '3px 2px' });
     // Everything that moves gets its GSAP transform up front (same rasterisation at both ends).
-    gsap.set(['.sb-chip', '.sb-ci', '.sb-bc', '.sb-page', '.sb-page img'], { x: 0, y: 0 });
+    gsap.set(['.sb-chip', '.sb-ci', '.sb-bc', '.sb-page', '.sb-page img', '.ga-h .w', '.ga-btn', '.ga-kpi', '.ga-tbl', '.ga-pie', '.ga-row'], { x: 0, y: 0 });
 
     // ---- Ambient loops (whole cycles) ----
     tl.to('.sb-wrap', { y: -10, ...amb }, 0);
@@ -369,7 +369,8 @@ export default {
     };
     beat(0.05);
     beat(6.75);
-    // (starts and ends far enough out that the rotated band's corners never show)
+    // Light sweeps across the page (starting and ending far enough out that the rotated band's
+    // corners never show).
     const glare = (t) => tl.fromTo('.sb-glare', { x: -460, rotation: 16 }, { x: bw + 300, rotation: 16, duration: 1.2, ease: 'power2.inOut' }, t);
 
     // ---- 0.95s: clear: callout folds back into the hotspot, cursor leaves, chips drop ----
@@ -438,14 +439,14 @@ export default {
       tl.fromTo('.ga-kpi', { opacity: 0, y: 30, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.1 }, 2.05);
       tl.fromTo('.ga-ki', { scale: 0.3, rotation: -40 * s }, { scale: 1, rotation: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(2.2)' }, 2.2);
       tl.fromTo('.ga-kpi .bar', { scaleX: 0 }, { scaleX: 1, duration: 0.55, stagger: 0.05 }, 2.3);
-    tl.fromTo('.ga-kpi .tr i', { scaleX: 0 }, { scaleX: 1, duration: 0.9, stagger: 0.12, ease: 'power2.inOut' }, 2.55);
+      tl.fromTo('.ga-kpi .tr i', { scaleX: 0 }, { scaleX: 1, duration: 0.9, stagger: 0.12, ease: 'power2.inOut' }, 2.55);
       tl.fromTo(['.ga-tbl', '.ga-pie'], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 }, 2.5);
       tl.fromTo('.ga-row', { opacity: 0, x: 26 * s }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.09 }, 2.75);
       tl.fromTo('.ga-tbl .bar', { scaleX: 0 }, { scaleX: 1, duration: 0.5, stagger: 0.03 }, 2.8);
       tl.fromTo('.ga-st', { scale: 0 }, { scale: 1, duration: 0.45, stagger: 0.09, ease: 'back.out(2.4)' }, 3.1);
       // Donut segments draw one after another from where each one starts.
-    const seg = [[0, 47.4], [48.8, 78.9], [80.3, 98.6]];
-    tl.fromTo('.ga-pie .sg', { drawSVG: (i) => `${seg[i][0]}% ${seg[i][0]}%` }, { drawSVG: (i) => `${seg[i][0]}% ${seg[i][1]}%`, duration: 0.7, stagger: 0.22, ease: 'power2.inOut' }, 2.85);
+      const seg = [[0, 47.4], [48.8, 78.9], [80.3, 98.6]];
+      tl.fromTo('.ga-pie .sg', { drawSVG: (i) => `${seg[i][0]}% ${seg[i][0]}%` }, { drawSVG: (i) => `${seg[i][0]}% ${seg[i][1]}%`, duration: 0.7, stagger: 0.22, ease: 'power2.inOut' }, 2.85);
       tl.fromTo('.ga-pie .lg i', { scaleX: 0 }, { scaleX: 1, duration: 0.4, stagger: 0.08 }, 3.3);
       glare(3.6);
     }
@@ -457,10 +458,10 @@ export default {
       tl.fromTo(c.querySelector('.ib'), { outlineWidth: 0 }, { outlineWidth: 8, duration: 0.3, yoyo: true, repeat: 1, ease: 'sine.inOut' }, t + 0.3);
     });
 
-    // ---- 4.75s: the cursor glides in and clicks the hotspot ----
-    tl.fromTo('.sb-cur', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 4.7);
-    tl.fromTo('.sb-cur', { x: away.x }, { x: 0, duration: 0.95, ease: 'power3.inOut' }, 4.7);
-    tl.fromTo('.sb-cur', { y: away.y }, { y: 0, duration: 0.95, ease: 'power2.inOut' }, 4.7);
+    // ---- 4.6s: the cursor glides in (x and y on different eases, so it arcs), hovers, clicks ----
+    tl.fromTo('.sb-cur', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 4.6);
+    tl.fromTo('.sb-cur', { x: away.x }, { x: 0, duration: 0.9, ease: 'power3.inOut' }, 4.6);
+    tl.fromTo('.sb-cur', { y: away.y }, { y: 0, duration: 0.9, ease: 'power2.inOut' }, 4.6);
     tl.fromTo('.sb-cur', { scale: 1 }, { scale: 0.82, duration: 0.11, yoyo: true, repeat: 1, ease: 'power2.inOut' }, 5.68);
     if (mode === 'gen') tl.fromTo('.ga-btn', { scale: 1 }, { scale: 0.93, duration: 0.12, yoyo: true, repeat: 1, ease: 'power2.inOut' }, 5.68);
     if (mode === 'gen') tl.fromTo('.ga-btn', { outlineWidth: 0 }, { outlineWidth: 9, duration: 0.3, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 5.75);

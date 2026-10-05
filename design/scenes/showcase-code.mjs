@@ -385,8 +385,8 @@ export default {
 .sc-rs .ti{position:relative;width:62px;height:62px;border-radius:20px;background:var(--brand);color:#fff;display:grid;place-items:center;flex:none;
   box-shadow:0 12px 24px rgba(55,107,177,.35),inset 0 2px 0 rgba(255,255,255,.3)}
 .sc-rs .tc{position:absolute;inset-inline-end:-7px;bottom:-7px;width:26px;height:26px;border-radius:50%;background:#22C55E;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 3px var(--card)}
-.sc-rs h3{font:800 ${r ? 25 : 26}px/${r ? 1.45 : 1.2} ${ui};color:var(--ui-text);letter-spacing:${r ? 0 : '-.01em'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.sc-rs p{margin-top:12px;font:500 ${r ? 20 : 21}px/${r ? 1.55 : 1.42} ${ui};color:var(--ui-sub);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sc-rs h3{font:800 ${r ? 25 : 26}px/${r ? 1.45 : 1.2} ${ui};color:var(--ui-text);letter-spacing:${r ? 0 : '-.01em'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
+.sc-rs p{margin-top:12px;font:500 ${r ? 20 : 21}px/${r ? 1.55 : 1.42} ${ui};color:var(--ui-sub);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
 .sc-rs .w{display:inline-block}
 
 /* status pill */

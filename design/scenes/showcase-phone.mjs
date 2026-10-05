@@ -143,6 +143,9 @@ export default {
 .sp .phone{position:relative;
   box-shadow:${light ? '0 50px 90px rgba(14,26,43,.32)' : '0 60px 100px rgba(2,6,14,.65)'},0 0 0 3px #1F3456,0 0 0 4px rgba(147,169,198,.22),inset 0 0 0 2px rgba(255,255,255,.07)}
 .sp .screen{background:#05090F}
+.sp-btn{position:absolute;width:5px;border-radius:3px;background:linear-gradient(90deg,#2A4166,#16273F);inset-inline-start:-5px}
+.sp-btn.b1{top:150px;height:34px}.sp-btn.b2{top:204px;height:58px}.sp-btn.b3{top:276px;height:58px}
+.sp-btn.b4{inset-inline-start:auto;inset-inline-end:-5px;top:214px;height:92px}
 .sp .island{z-index:9}
 .sp-scr{position:absolute;inset:0;overflow:hidden;background:#0B1220;box-shadow:${-22 * s}px 0 44px rgba(0,0,0,.45)}
 .sp-scr + .sp-scr{opacity:0}
@@ -202,7 +205,7 @@ export default {
 /* the column beside the phone: app tile, features, status pill */
 .sp-col{position:absolute;inset-inline-start:420px;inset-inline-end:14px;top:18px;bottom:18px;display:flex;flex-direction:column;justify-content:center;gap:24px;z-index:3}
 .sp-card{background:linear-gradient(160deg,rgba(255,255,255,${light ? '.0' : '.06'}),rgba(255,255,255,0) 55%),var(--card);border:2px solid var(--card-line);color:var(--ui-text);box-shadow:${lift}}
-.sp-app{position:relative;display:flex;align-items:center;gap:20px;padding:20px 24px 20px 20px;border-radius:32px;padding-inline:20px 24px}
+.sp-app{position:relative;display:flex;align-items:center;gap:20px;padding-block:20px;padding-inline:20px 24px;border-radius:32px}
 .sp-ai{position:relative;width:100px;height:100px;border-radius:30px;flex:none;display:grid;place-items:center;color:#fff;overflow:hidden;
   background:var(--brand);box-shadow:0 14px 28px rgba(55,107,177,.42),inset 0 2px 0 rgba(255,255,255,.25)}
 .sp-ai img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -217,8 +220,9 @@ export default {
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
 .sp-feats{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .sp-f{position:relative;max-width:100%}
+.sp-fi{transform-origin:${r ? '100%' : '0'} 50%}
 .sp-f.k1,.sp-f.k3{margin-inline-start:38px;max-width:calc(100% - 38px)}
-.sp-fc{display:flex;align-items:center;gap:16px;padding:12px 22px 12px 12px;padding-inline:12px 22px;border-radius:24px;
+.sp-fc{display:flex;align-items:center;gap:16px;padding-block:12px;padding-inline:12px 22px;border-radius:24px;
   transform:perspective(900px) rotateY(${-10 * s}deg)}
 .sp-fic{width:52px;height:52px;border-radius:16px;flex:none;display:grid;place-items:center;background:var(--brand);color:#fff;outline:0 solid rgba(90,180,217,.4)}
 .sp-f.k1 .sp-fic{background:var(--sparkg);color:#0E1A2B;outline-color:rgba(242,141,25,.4)}
@@ -226,7 +230,7 @@ export default {
 .sp-ft{font-size:${r ? 21 : 22}px;line-height:${r ? 1.5 : 1.3};font-weight:700;min-width:0;overflow-wrap:anywhere;
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 .sp-badge{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;height:54px;padding-inline:18px 22px;border-radius:999px;max-width:100%;
-  font:700 ${r ? 20 : 20}px ${disp};white-space:nowrap}
+  font:700 20px ${disp};white-space:nowrap}
 .sp-badge span{overflow:hidden;text-overflow:ellipsis}
 .sp-dot{position:relative;width:14px;height:14px;border-radius:50%;background:#22C55E;flex:none;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
 .sp-dot i{position:absolute;inset:0;border-radius:50%;border:2px solid #22C55E;opacity:0}
@@ -257,7 +261,7 @@ export default {
         <div class="sk-sb"><span>9:41</span><span class="ic">${ico('signal', { size: 18, stroke: 2.6 })}${ico('wifi', { size: 18, stroke: 2.6 })}${ico('battery-full', { size: 22, stroke: 2.2 })}</span></div>
         <div class="sk-hd"><span class="sk-logo">${icon(appIcon, { size: 26, stroke: 2.2 }, 'smartphone')}</span><div class="sk-ht"><b dir="auto" style="font-size:${len(copy.name) <= 9 ? 23 : 20}px">${esc(clip(copy.name, len(copy.name) <= 9 ? 9 : 11))}</b><i class="bar"></i></div><span class="sk-av"></span></div>
         <div class="sk-hero"><i class="o1"></i><i class="o2"></i><i class="pt"></i><i class="bar l1"></i><i class="bar l2"></i>
-          <svg class="sk-ring" viewBox="0 0 74 74" style="${rtl ? 'transform:scaleX(-1)' : ''}"><circle class="tr" cx="37" cy="37" r="30"/><circle class="ar" cx="37" cy="37" r="30" transform="rotate(-90 37 37)" stroke-dasharray="137 189"/></svg>
+          <svg class="sk-ring" viewBox="0 0 74 74" style="${rtl ? 'transform:scaleX(-1)' : ''}"><circle class="tr" cx="37" cy="37" r="30"/><circle class="ar" cx="37" cy="37" r="30" transform="rotate(-90 37 37)" stroke-dasharray="135.72 188.5"/></svg>
           <div class="sk-prog"><i></i></div></div>
         <div class="sk-pills"><span class="sk-pill on">${icon(appIcon, { size: 18, stroke: 2.4 }, 'smartphone')}<i class="bar"></i></span><span class="sk-pill">${ico('clock', { size: 18, stroke: 2.4 })}<i class="bar"></i></span><span class="sk-pill">${ico('star', { size: 18, stroke: 2.4 })}<i class="bar" style="width:24px"></i></span></div>
         ${rows}
@@ -274,10 +278,10 @@ export default {
   <div class="sp-halo"></div>
   <div class="sp-net">${blobs.map(([x, y, d]) => `<i style="inset-inline-start:${x}px;top:${y}px;width:${d}px;height:${d}px"></i>`).join('')}</div>
   ${sparks.map(([x, y, rot, k]) => `<div class="spark" style="--x:${x}px;--y:${y}px;--r:${rot * s}deg;--k:${k}"></div>`).join('')}
-  <div class="sp-wrap"><div class="sp-tilt"><div class="phone"><div class="screen">
+  <div class="sp-wrap"><div class="sp-tilt"><div class="phone"><i class="sp-btn b1"></i><i class="sp-btn b2"></i><i class="sp-btn b3"></i><i class="sp-btn b4"></i><div class="screen">
     ${screen}
     <div class="island"></div>
-    <div class="sp-glare"></div><div class="sp-sheen"></div>
+    <div class="sp-glare"></div><div class="sp-sheen"></div><div class="sp-hi"></div>
   </div></div></div></div>
   <div class="sp-col">
     <div class="sp-appw"><div class="sp-app sp-card">
@@ -286,7 +290,7 @@ export default {
       <div class="sp-at"><div class="sp-name" dir="auto" style="font-size:${nameSize}px">${esc(copy.name)}</div>${copy.tagline ? `<div class="sp-tag">${esc(copy.tagline)}</div>` : ''}</div>
     </div></div>
     ${feats.length ? `<div class="sp-feats">${feats.map((f, i) => `<div class="sp-f k${i}"><div class="sp-fi"><div class="sp-fc sp-card"><span class="sp-fic">${icon(f.icon, { size: 26, stroke: 2.2 })}</span><span class="sp-ft">${esc(f.text)}</span></div></div></div>`).join('')}</div>` : ''}
-    ${copy.badge ? `<div class="sp-bw" style="align-self:flex-start;max-width:100%"><div class="sp-badge sp-card"><span class="sp-dot"><i></i></span><span>${esc(copy.badge)}</span></div></div>` : ''}
+    ${copy.badge ? `<div class="sp-bw" style="align-self:flex-start;max-width:100%"><div class="sp-badge sp-card"><span class="sp-dot"><i></i></span><span>${esc(clip(copy.badge, 40))}</span></div></div>` : ''}
   </div>
 </div>`;
   },
@@ -299,16 +303,17 @@ export default {
     const mode = document.querySelector('.sp').dataset.mode;
 
     // ---- Ambient loops (whole cycles, so the last frame matches the first) ----
-    gsap.set(".sp-tilt", { rotationY: -12 * s, rotationX: 4, rotationZ: 1.5 * s });
+    gsap.set('.sp-tilt', { rotationY: -12 * s, rotationX: 4, rotationZ: 1.5 * s });
     // Give everything that moves its GSAP transform up front, so frame 0 and the last frame are
     // rasterised the same way (an untouched element and one at translate(0,0) anti-alias differently).
-    gsap.set(['.sp-appw', '.sp-app', '.sp-aiw', '.sp-name', '.sp-tag', '.sp-f', '.sp-fi', '.sp-bw', '.sp-badge', '.sp-scr', '.sp-scr img'], { x: 0, y: 0 });
+    gsap.set(['.sp-appw', '.sp-app', '.sp-aiw', '.sp-ap', '.sp-name', '.sp-tag', '.sp-f', '.sp-fi', '.sp-bw', '.sp-badge', '.sp-scr', '.sp-scr img', '.sk-hero', '.sk-hero .pt', '.sk-pill', '.sk-row'], { x: 0, y: 0 });
     tl.to('.sp-wrap', { y: -12, ...amb }, 0);
-    tl.to(".sp-tilt", { rotationY: -5 * s, rotationX: 1.5, rotationZ: 0.5 * s, ...amb }, 0);
+    tl.to('.sp-tilt', { rotationY: -5 * s, rotationX: 1.5, rotationZ: 0.5 * s, ...amb }, 0);
     tl.to('.sp-halo', { scale: 1.08, opacity: 0.8, ...amb }, 0);
     tl.to('.sp-appw', { y: -8, ...amb }, 0);
-    $('.sp-f').forEach((f, i) => tl.to(f, { y: i % 2 ? 9 : -9, x: (i % 2 ? -5 : 5) * s, ...amb }, 0));
-    tl.to('.sp-bw', { y: 7, ...amb }, 0);
+    // The column drifts as one (different depths, same direction), so cards never close up on each other.
+    $('.sp-f').forEach((f, i) => tl.to(f, { y: i % 2 ? -12 : -8, x: (i % 2 ? -5 : 5) * s, ...amb }, 0));
+    tl.to('.sp-bw', { y: -6, ...amb }, 0);
     $('.sp-net i').forEach((n, i) => tl.to(n, { x: (i % 2 ? 16 : -12) * s, y: i % 3 ? -14 : 16, scale: 1 + (i % 3) * 0.07, ...amb }, 0));
     tl.to('.sp .spark', { rotation: '+=360', duration: D, ease: 'none' }, 0);
     tl.to('.sp .spark', { y: (i) => (i % 2 ? 14 : -14), ...amb }, 0);
@@ -321,13 +326,13 @@ export default {
     };
     beat(0.05);
     beat(6.4);
-    // The light sweeps across the glass.
-    // (starts and ends far enough out that the rotated band's corners never show)
+    // The light sweeps across the glass (starting and ending far enough out that the rotated
+    // band's corners never show).
     const glare = (t) => tl.fromTo('.sp-glare', { x: ctx.rtl ? 600 : -330, rotation: 18 }, { x: ctx.rtl ? -330 : 600, rotation: 18, duration: 1.05, ease: 'power2.inOut' }, t);
 
     // ---- 1.0s: clear the column ----
     tl.to('.sp-bw .sp-badge', { opacity: 0, scale: 0.85, duration: 0.35, ease: 'power2.in' }, 0.95);
-    tl.to($('.sp-fi').reverse(), { opacity: 0, x: 34 * s, scale: 0.92, duration: 0.4, stagger: 0.06, ease: 'power2.in' }, 1.0);
+    tl.to($('.sp-fi').reverse(), { opacity: 0, x: -36 * s, scale: 0.88, duration: 0.4, stagger: 0.06, ease: 'power2.in' }, 1.0);
     tl.to(['.sp-name', '.sp-tag'], { opacity: 0, y: -12, duration: 0.35, stagger: 0.05, ease: 'power2.in' }, 1.1);
     tl.to('.sp-aiw', { opacity: 0, scale: 0.6, rotation: -16 * s, duration: 0.4, ease: 'power2.in' }, 1.15);
     tl.to('.sp-ap', { opacity: 0, scale: 0.3, duration: 0.3, ease: 'power2.in' }, 1.1);
@@ -346,7 +351,8 @@ export default {
     const gap = feats.length > 3 ? 0.42 : 0.5;
     feats.forEach((f, i) => {
       const t = 2.45 + i * gap;
-      tl.fromTo(f, { opacity: 0, x: 46 * s, scale: 0.9 }, { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: 'back.out(1.5)' }, t);
+      // Each feature slides out of the phone's edge into its place.
+      tl.fromTo(f, { opacity: 0, x: -64 * s, scale: 0.82 }, { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: 'back.out(1.4)' }, t);
       tl.fromTo(f.querySelector('.sp-fic'), { outlineWidth: 0 }, { outlineWidth: 8, duration: 0.3, yoyo: true, repeat: 1, ease: 'sine.inOut' }, t + 0.3);
       tl.fromTo(f.querySelector('.sp-fic svg'), { scale: 0.4, rotation: -30 * s }, { scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2.2)' }, t + 0.12);
     });
@@ -396,7 +402,7 @@ export default {
       tl.fromTo('.sk-hero .ar', { drawSVG: '0%' }, { drawSVG: '0% 72%', duration: 1.1, ease: 'power2.inOut' }, 1.9);
       tl.fromTo('.sk-prog i', { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: 'power2.inOut' }, 1.95);
       tl.fromTo('.sk-hero .l1, .sk-hero .l2', { scaleX: 0 }, { scaleX: 1, duration: 0.6, stagger: 0.1 }, 1.85);
-      tl.fromTo('.sk-hero .pt', { scale: 0, rotation: -60 * s }, { scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2.4)' }, 2.2);
+      tl.fromTo('.sk-hero .pt', { scale: 0, rotation: -40 * s }, { scale: 1, rotation: 32 * s, duration: 0.6, ease: 'back.out(2.4)' }, 2.2);
       tl.fromTo('.sk-pill', { opacity: 0, y: 14, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: 'back.out(1.8)' }, 2.1);
       tl.fromTo('.sk-row', { opacity: 0, y: 0, x: 40 * s }, { opacity: 1, y: 0, x: 0, duration: 0.65, stagger: 0.13 }, 2.35);
       tl.fromTo('.sk-row .bar', { scaleX: 0 }, { scaleX: 1, duration: 0.55, stagger: 0.07 }, 2.5);
