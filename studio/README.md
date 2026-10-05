@@ -10,6 +10,8 @@ npm run connect         # once: lets you type /crapto-post inside Claude Code
 
 It runs on your computer (not on a website) because rendering uses Chromium and ffmpeg. It only listens on `localhost`.
 
+![The editor](examples/workspace-editor.png)
+
 ## What you can do
 
 | Screen | What it does |
@@ -67,6 +69,24 @@ or just ask "make a Crapto Studio carousel about this project". Claude reads the
 On **From Claude Code**, pick a project. Choose **Fresh look at the code**, or one of the project's chats: Claude then continues a copy (a fork) of that chat, so it knows how the project was built and what you decided, and your original chat stays untouched. Add an optional brief and press **Generate carousel**.
 
 The workspace runs your own `claude` command in that folder (your login, your settings), with the studio's tools. Claude may read the project but not change its files or run commands in it. When it's done, ask for changes in the box below the log, or copy the `claude --resume …` command to continue in your terminal.
+
+### What it makes
+
+Two carousels Claude made in testing, from two small **sample projects** written for the test (a plant-care app and an invoicing command-line tool; they are not real client work). Each row is one language: the cover, a moment of the animation, then the slides.
+
+From the workspace (**Generate carousel**, a fresh look at a React Native app with three screenshots in its repo): Claude picked `showcase-phone`, used the real screenshots in the phone and on two slides, and wrote both languages.
+
+![Carousel generated from a sample app project](examples/plantpal-from-claude-code.png)
+
+From inside Claude Code (`/crapto-post` in a Python command-line project with no screenshots): Claude picked `showcase-code` with a real snippet from the project.
+
+![Carousel made with /crapto-post](examples/invoicely-from-crapto-post.png)
+
+While it works, the **From Claude Code** screen shows every step:
+
+![A run in the workspace](examples/workspace-from-claude-code.png)
+
+A full generation took about 3 minutes; the cost depends on the model and the project's size (in testing, about $0.35 with Sonnet for a small project, about $1.25 with Opus). It runs on your own Claude Code plan or API key, like any Claude Code session.
 
 ### The tools Claude gets (MCP server `crapto-studio`)
 

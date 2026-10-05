@@ -65,7 +65,7 @@ export function claudeView(params) {
     const chatList = h('div.chats', {},
       h(`div.chat${chat === null ? '.on' : ''}`, { onclick: () => { chat = null; renderMain(); } }, icon('scan-search', { size: 16 }), h('div', {}, h('b', {}, 'Fresh look at the code'), h('span', {}, 'Claude reads the project from scratch'))),
       p.sessions.slice(0, 30).map((s) => h(`div.chat${chat === s.id ? '.on' : ''}`, { onclick: () => { chat = s.id; renderMain(); } }, icon('messages-square', { size: 16 }),
-        h('div', { style: { minWidth: 0 } }, h('b', {}, s.title), h('span', {}, `${ago(s.updatedAt)}${s.branch ? ` · ${s.branch}` : ''} · ${size(s.size)}`)))));
+        h('div', { style: { minWidth: 0 } }, h('b', {}, s.title), h('span', {}, `${ago(s.updatedAt)}${s.branch && s.branch !== 'HEAD' ? ` · ${s.branch}` : ''} · ${size(s.size)}`)))));
     const model = h('select.in', { onchange: () => localStorage.setItem('studio.model', model.value) },
       [['', 'Your Claude Code default model'], ['opus', 'Opus: best writing and design judgement'], ['sonnet', 'Sonnet: faster']].map(([v, l]) => h('option', { value: v, selected: (localStorage.getItem('studio.model') ?? '') === v }, l)));
     const go = h('button.btn.spark', { style: { width: '100%', height: '44px', fontSize: '15px' }, disabled: !p.exists || !status?.cli?.ok, onclick: async () => {
@@ -134,6 +134,7 @@ export function claudeView(params) {
   function evEl(ev) {
     if (ev.kind === 'tool') return h('div.ev.tool', {}, icon(/studio:/.test(ev.text) ? 'palette' : /^(Read|Glob|Grep|LS)/.test(ev.text) ? 'file-search' : 'wrench', { size: 14 }), ev.text);
     if (ev.kind === 'text') return h('div.ev.text', {}, icon('sparkles', { size: 16 }), h('div.bubble', { html: md(ev.text) }));
+    if (ev.kind === 'post' && ev.first === false) return h('div.ev.tool', {}, icon('refresh-cw', { size: 14 }), ev.text);
     if (ev.kind === 'post') {
       const s = state.posts.find((x) => x.slug === ev.slug);
       return h('div.ev.post', {}, icon('image', { size: 16 }), h('div.pc', {}, s?.cover ? h('img', { src: s.cover }) : null, h('div', { style: { flex: 1 } }, h('b', {}, ev.text), h('div.dim', { style: { fontSize: '12px' } }, 'Live in the workspace')), h('a.btn.sm', { href: `#/post/${ev.slug}` }, 'Open', icon('arrow-right', { size: 14 }))));

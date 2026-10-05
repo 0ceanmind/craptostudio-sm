@@ -134,12 +134,12 @@ export function editorView(slug) {
   }
 
   function renderTitle() {
-    titleEl.replaceChildren(h('b', {}, plain(p.headline?.en) || p.slug), h('span.pill', {}, `#${String(p.order).padStart(2, '0')}`), h('span.pill', {}, p.status));
+    titleEl.replaceChildren(h('b', { title: `${plain(p.headline?.en)} · #${p.order} · ${p.status}` }, plain(p.headline?.en) || p.slug), h(`span.pill${p.status === 'draft' ? '.warn' : ''}`, { title: `Posting order ${p.order} · ${p.status}` }, `#${String(p.order).padStart(2, '0')} ${p.status}`));
   }
 
   function renderSegs() {
     langSeg.replaceChildren(...['en', 'ar'].map((l) => h(`button${l === lang ? '.on' : ''}`, { onclick: () => { lang = l; localStorage.setItem('studio.lang', l); renderSegs(); refreshPreview(); refreshThumbs(true); } }, l === 'en' ? 'EN' : 'AR')));
-    fmtSeg.replaceChildren(...['feed', 'reel'].map((f) => h(`button${f === format ? '.on' : ''}`, { disabled: sel !== 0, title: sel !== 0 ? 'Only the animated hero has a Reel version' : '', onclick: () => { format = f; renderSegs(); refreshPreview(); } }, f === 'feed' ? '4:5 Feed' : '9:16 Reel')));
+    fmtSeg.replaceChildren(...['feed', 'reel'].map((f) => h(`button${f === format ? '.on' : ''}`, { disabled: sel !== 0, title: sel !== 0 ? 'Only the animated hero has a Reel version' : '', onclick: () => { format = f; renderSegs(); refreshPreview(); } }, f === 'feed' ? 'Feed' : 'Reel')));
     fmtSeg.style.opacity = sel === 0 ? 1 : 0.4;
   }
 
@@ -414,7 +414,7 @@ export function editorView(slug) {
       section('Danger zone', h('div', { style: { display: 'flex', gap: '8px' } },
         h('button.btn.sm', { onclick: async () => { try { const r = await apiPost(`/api/posts/${original}/duplicate`); await loadPosts(); location.hash = `#/post/${r.post.slug}`; } catch (e) { toastError(e); } } }, icon('copy', { size: 14 }), 'Duplicate'),
         h('button.btn.sm.danger', { onclick: async () => {
-          if (!(await confirmBox('Delete this post?', `“${plain(p.headline.en)}” and its rendered files move to .studio/trash/. You can restore them from there.`, { label: 'Delete', danger: true }))) return;
+          if (!(await confirmBox('Delete this post?', `“${plain(p.headline.en)}”, its images and its rendered files move to .studio/trash/. You can restore them from there.`, { label: 'Delete', danger: true }))) return;
           try { await del(`/api/posts/${original}`); savedJson = JSON.stringify(p); await loadPosts(); location.hash = '#/'; toast('Post moved to the trash', { kind: 'ok' }); } catch (e) { toastError(e); }
         } }, icon('trash-2', { size: 14 }), 'Delete'))),
     );

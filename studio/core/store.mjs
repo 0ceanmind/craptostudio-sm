@@ -114,6 +114,15 @@ export function deletePost(slug) {
   fs.renameSync(postFile(slug), path.join(bin, `${slug}.json`));
   const dir = path.join(exportsDir, 'posts', postFolder(post));
   if (fs.existsSync(dir)) fs.renameSync(dir, path.join(bin, 'exports'));
+  const reels = path.join(exportsDir, 'reels');
+  if (fs.existsSync(reels)) {
+    for (const f of fs.readdirSync(reels).filter((x) => x.startsWith(`${postFolder(post)}-`))) {
+      fs.mkdirSync(path.join(bin, 'reels'), { recursive: true });
+      fs.renameSync(path.join(reels, f), path.join(bin, 'reels', f));
+    }
+  }
+  const assets = path.join(assetsDir, slug);
+  if (fs.existsSync(assets)) fs.renameSync(assets, path.join(bin, 'assets'));
   return { trashed: path.relative(root, bin) };
 }
 

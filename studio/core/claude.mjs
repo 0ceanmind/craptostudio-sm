@@ -76,10 +76,13 @@ function readSession(file) {
   const first = head.filter((o) => o.type === 'user' && !o.isSidechain).map(promptText).find(Boolean) ?? '';
   const named = [...all].reverse().find((o) => ['summary', 'custom-title', 'ai-title'].includes(o.type));
   const last = [...tail].reverse().find((o) => o.type === 'last-prompt')?.lastPrompt ?? '';
+  // Runs started by the workspace begin with the playbook or an edit request: name them plainly.
+  const studioRun = /^# Crapto Studio: project|^You are editing an existing post in the Crapto Studio/.test(first);
   const info = {
     id: path.basename(file, '.jsonl'),
+    studioRun,
     cwd,
-    title: (named?.customTitle || named?.title || named?.aiTitle || named?.summary || first || '(untitled chat)').replace(/\s+/g, ' ').slice(0, 140),
+    title: (studioRun ? '✦ Crapto Studio carousel run' : named?.customTitle || named?.title || named?.aiTitle || named?.summary || first || '(untitled chat)').replace(/\s+/g, ' ').slice(0, 140),
     firstPrompt: first.slice(0, 400),
     lastPrompt: typeof last === 'string' ? last.slice(0, 200) : '',
     updatedAt: st.mtimeMs,
@@ -252,8 +255,9 @@ export function startRun({ cwd, sessionId = null, request = '', followUpOf = nul
           const text = Array.isArray(b.content) ? b.content.filter((c) => c.type === 'text').map((c) => c.text).join(' ') : String(b.content ?? '');
           if (/save_post$/.test(name) && !b.is_error && run.pendingSlug) {
             const slug = (text.match(/"slug":\s*"([a-z0-9-]+)"/) ?? [])[1] ?? run.pendingSlug;
-            if (!run.posts.includes(slug)) run.posts.push(slug);
-            pushEvent(run, { kind: 'post', slug, text: `Saved post “${slug}”` });
+            const first = !run.posts.includes(slug);
+            if (first) run.posts.push(slug);
+            pushEvent(run, { kind: 'post', slug, first, text: first ? `Saved post “${slug}”` : `Updated “${slug}”` });
           }
           if (b.is_error) pushEvent(run, { kind: 'tool_error', name, text: brief(text, 300) });
         }
