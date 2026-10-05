@@ -9,7 +9,10 @@
     "render": "node design/render.mjs",
     "build": "npm run logo && npm run render",
     "check": "node design/check-contrast.mjs",
-    "motion": "node design/motion/render-video.mjs"
+    "motion": "node design/motion/render-video.mjs",
+    "studio": "node studio/server.mjs",
+    "connect": "node studio/connect.mjs",
+    "mcp": "node studio/mcp.mjs"
   },
   "devDependencies": {
     "@fontsource/alexandria": "^5.3.0",
