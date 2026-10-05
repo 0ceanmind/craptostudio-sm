@@ -23,7 +23,7 @@ const dataUri = (rel) => `data:image/png;base64,${fs.readFileSync(path.join(root
 const logoCache = {};
 const logo = (name) => (logoCache[name] ??= dataUri(`exports/logo/${name}.png`));
 
-// The scene box is designed at 904×700 and scaled per format.
+// The scene box is designed at 904×740 and scaled per format.
 export const SCENE = { width: 904, height: 740 };
 
 export const FORMATS = {
@@ -42,7 +42,7 @@ export const THEMES = {
   blue: {
     bg: `linear-gradient(160deg, rgba(255,255,255,.05) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.2) 100%), ${color.cobalt}`,
     text: color.white, sub: color.white, line: 'rgba(255,255,255,0.28)', symbol: 'symbol-white',
-    glowA: 'rgba(90,180,217,.30)', glowB: 'rgba(11,22,40,.35)', grid: 'rgba(255,255,255,0.05)',
+    glowA: 'rgba(90,180,217,.08)', glowB: 'rgba(11,22,40,.35)', grid: 'rgba(255,255,255,0.05)', tagBg: 'rgba(11,22,40,.2)',
   },
   light: {
     bg: color.mist, text: color.ink, sub: '#3E5470', line: '#B9CDE0', symbol: 'symbol-color',
@@ -107,7 +107,7 @@ body{background:${t.bg};color:${t.text};font-family:${rtl ? stack.arabic : stack
 .top{position:absolute;top:${format === 'reel' ? 270 : 88}px;inset-inline:88px;height:56px;display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;gap:18px;font-family:${stack.mono};font-size:23px;font-weight:700;letter-spacing:.18em;direction:ltr}
 .brand img{height:50px;display:block}
-.tag{font-family:${rtl ? stack.arabic : stack.mono};font-size:${rtl ? 26 : 23}px;font-weight:${rtl ? 600 : 500};letter-spacing:${rtl ? 0 : '.1em'};text-transform:uppercase;color:${t.sub};border:2px solid ${t.line};border-radius:999px;padding:${rtl ? '6px 22px 10px' : '8px 22px'}}
+.tag{font-family:${rtl ? stack.arabic : stack.mono};font-size:${rtl ? 26 : 23}px;font-weight:${rtl ? 700 : 500};letter-spacing:${rtl ? 0 : '.1em'};text-transform:uppercase;color:${post.theme === 'dark' ? '#C3D0E2' : t.sub};border:2px solid ${t.line};border-radius:999px;padding:${rtl ? '6px 22px 10px' : '8px 22px'};background:${t.tagBg ?? 'transparent'}}
 ${copyCss}
 h1{font-size:${size}px;line-height:${rtl ? 1.32 : 1.04};letter-spacing:${rtl ? 0 : '-.028em'};word-spacing:${rtl ? 0 : '.04em'};font-weight:800;max-width:${f.copy === 'bottom' ? 904 : 824}px;text-wrap:balance}
 em{font-style:normal;white-space:nowrap;position:relative;display:inline-block}
@@ -136,10 +136,16 @@ ${foot}`;
 
   const script = `
 ${gsapJs}
+// Everything below runs in its own scope: a reused tab (page.setContent) keeps the previous
+// document's global scope, and a second top-level \`const ctx\` would throw.
+(() => {
 gsap.registerPlugin(CustomEase, MotionPathPlugin, DrawSVGPlugin);
 CustomEase.create('silk', '0.22, 1, 0.36, 1');
 const ctx = ${JSON.stringify(ctx)};
 const DURATION = ${scene.duration};
+// Reset first: page.setContent() keeps the same window object, so a flag left by the previous
+// document would otherwise report "ready" before this timeline exists.
+window.__ready = false;
 window.__duration = DURATION;
 // Build the timeline only once the web fonts are in: scenes measure text (chip widths etc.).
 document.fonts.ready.then(() => {
@@ -152,7 +158,8 @@ document.fonts.ready.then(() => {
   window.__seek = (time) => { tl.seek(time, false); };
   window.__seek(0);
   window.__ready = true;
-});`;
+});
+})();`;
 
   return `<!doctype html><html lang="${lang}" dir="${rtl ? 'rtl' : 'ltr'}"><head><meta charset="utf-8"><style>${css}</style></head>
 <body class="fmt-${format} theme-${post.theme}">${body}<script>${script}</script></body></html>`;

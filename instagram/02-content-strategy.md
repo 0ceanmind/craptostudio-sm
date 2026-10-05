@@ -1,5 +1,7 @@
 # Instagram content strategy: Crapto Studio
 
+<!-- Editors: some Arabic quotes inside English sentences end with an invisible right-to-left mark (U+200F), so their punctuation and « » display on the correct side. Keep them when you edit those lines. -->
+
 This is the plan for what to post after launch, how often, in which language, and how to turn views into real projects.
 It is built for a small team. Steady posting every week matters more than doing a lot at once.
 
@@ -64,7 +66,7 @@ Crapto Studio talks to two audiences: people who read and search in English, and
 | Same slide order | Don't reverse the slides for Arabic: `01-hero.mp4`, then `02.png`, `03.png` … in both languages. The page numbers count the same way |
 | The name stays Latin | Always "Crapto Studio" in Latin letters, in Arabic text too. Tech names stay Latin as well: Unity, iOS, Android, API |
 | Two keywords, one flow | The call to action is DM "START" in English and «ابدأ» in Arabic. Both lead to the same saved-reply flow, in the person's language ([`01-profile-setup.md` section 9](01-profile-setup.md#9-dm-setup)) |
-| Digits | Use the same digits as the designs (0–9) in Arabic captions too, as in "4 خطوات" or "24/7" |
+| Digits | Use the same Western digits as the designs (0–9) in Arabic captions too, as in «‏4 خطوات» or «‏07 / إرشاد». Don't mix in Eastern Arabic digits (٠١٢٣) |
 
 ### Adapt, don't translate
 
@@ -72,10 +74,10 @@ Write the Arabic post the way an Arabic copywriter would write it from scratch: 
 
 - **Use the terms from the posts.** The Arabic in [`../design/content.mjs`](../design/content.mjs) sets the vocabulary (table below). Use the same words in captions, hooks and replies.
 - **Modern Standard Arabic**, friendly and plain. Short sentences, no heavy formal phrases.
-- **Arabic punctuation:** ، ؛ ؟ and «» for quotes, as in: راسلنا بكلمة «ابدأ».
+- **Arabic punctuation:** ، ؛ ؟ and «» for quotes, as in: راسلنا بكلمة «ابدأ»‏.
 - **Topic first.** The first words of an Arabic hook name the topic (لعبة، تطبيق، نظام، ذكاء اصطناعي), just like in English.
-- **Mentoring stays mentoring.** In both languages the student or team does the work: «أنت تبرمج، ونحن نرشدك.» Never use words that suggest doing someone's assignment or project for them (for example «حل واجبات» or «مشاريع تخرج جاهزة»).
-- **Start every Arabic line with an Arabic word** (or an Arabic hashtag), not with a Latin word, the @handle, an emoji or a number. A line that starts with "Unity" or "Crapto Studio" is laid out left to right, and its punctuation can jump to the wrong end. Write نموذج أولي للعبة على Unity …, and check the caption preview on a phone before you share ([mixed-script tips](../brand/brand-guide.md#94-mixed-script-latin-digits-punctuation-and-direction)).
+- **Mentoring stays mentoring.** In both languages the student or team does the work: «أنت تبرمج، ونحن نرشدك.‏» Never use words that suggest doing someone's assignment or project for them (for example «حل واجبات» or «مشاريع تخرج جاهزة»).
+- **Start every Arabic line with an Arabic word** (or an Arabic hashtag), not with a Latin word, the @handle, an emoji or a number. A line that starts with "Unity" or "Crapto Studio" is laid out left to right, and its punctuation can jump to the wrong end. Put the Arabic words first and the Latin name after them (the [Arabic caption example](#keywords-in-captions-and-on-screen-text) starts with نموذج أولي, not with Unity), and check the caption preview on a phone before you share ([mixed-script tips](../brand/brand-guide.md#94-mixed-script-latin-digits-punctuation-and-direction)).
 - **Same honesty labels:** "Demo" = «نموذج تجريبي», "Concept" = «تصوّر مبدئي», "Internal project" = «مشروع داخلي», "Client project (shared with permission)" = «مشروع لعميل (يُنشر بإذنه)».
 
 **Shared terms** (from the posts; the full list is in the brand guide's [terminology table](../brand/brand-guide.md#93-terminology-english--arabic)):
@@ -93,15 +95,15 @@ Write the Arabic post the way an Arabic copywriter would write it from scratch: 
 | Integrations (connecting tools) | ربط |
 | DM keyword "START" | «ابدأ» |
 
-**Example hooks** (counted; all under 60 characters, so they work as on-screen text). Use a hook only if the video really shows it:
+**Example hooks** (counted without the quote marks; all under 60 characters, so they work as on-screen text). Use a hook only if the video really shows it:
 
-| English | Arabic (adapted, not translated) |
-|---|---|
-| "This used to be a spreadsheet. Now it's a real system." (54) | «كان جدول بيانات، وأصبح اليوم نظاماً متكاملاً.» (45) |
-| "Do you actually need AI? 3 honest signs." (40) | «هل يحتاج عملك فعلاً إلى الذكاء الاصطناعي؟ إليك 3 علامات.» (56) |
-| "Same jump. Before and after game feel." (38) | «القفزة نفسها، لكن الإحساس مختلف تماماً.» (39) |
-| "Your app feels slow? Check these 5 things first." (48) | «تطبيقك بطيء؟ افحص هذه النقاط الخمس أولاً.» (41) |
-| "We built this login screen today. Here's how." (45) | «شاشة تسجيل دخول بنيناها اليوم، خطوة بخطوة.» (42) |
+| English | Characters | Arabic (adapted, not translated) | Characters |
+|---|---|---|---|
+| "This used to be a spreadsheet. Now it's a real system." | 54 | «كان جدول بيانات، وأصبح اليوم نظاماً متكاملاً.» | 45 |
+| "Do you actually need AI? 3 honest signs." | 40 | «هل يحتاج عملك فعلاً إلى الذكاء الاصطناعي؟ إليك 3 علامات.» | 56 |
+| "Same jump. Before and after game feel." | 38 | «القفزة نفسها، لكن الإحساس مختلف تماماً.» | 39 |
+| "Your app feels slow? Check these 5 things first." | 48 | «تطبيقك بطيء؟ افحص هذه النقاط الخمس أولاً.» | 41 |
+| "We built this login screen today. Here's how." | 45 | «شاشة تسجيل دخول بنيناها اليوم، خطوة بخطوة.» | 42 |
 
 More hooks: the [hook formulas](04-idea-bank.md#6-ten-caption-hook-formulas) in the idea bank.
 
@@ -252,7 +254,7 @@ The launch posts set the style: each one opens with an animated hero, then a few
 |---|---|
 | Lead with motion | Slide 1 is the 8-second animated hero (`01-hero.mp4`, 1080 × 1350, silent). The static slides follow. Carousels can mix video and images |
 | Finished from the first frame | Frame 0 already shows the complete picture: headline, scene, everything. It's also the grid thumbnail (`01-cover.png` is the same frame), so the grid is never blank, and someone who stops after one second has seen the whole message |
-| Few words | Headline: one idea, a few words, one accent word. Slides: icon cards with 2–4 words each (up to 4 cards), numbered steps or one statement. If it needs a paragraph, it belongs in the caption |
+| Few words | Headline: one idea, a few words, one accent word. Slides: icon cards with a few words each (up to 4 cards), short numbered steps or one statement. If it needs a paragraph, it belongs in the caption |
 | The headline stays | The tag, headline and sub-line never animate out. They stay readable for the whole video |
 | A seamless loop | The hero holds the finished picture, clears it, rebuilds its little demo and lands back on exactly the frame it started with: hold → clear → rebuild → hold. Background motion (glows, blobs, spinning petals) completes whole cycles, so there's no jump when the video repeats |
 | Silk motion | Smooth "silk" easing (`cubic-bezier(.22, 1, .36, 1)`), staggered entrances, nothing jerky or flashy |
@@ -298,7 +300,7 @@ Example hooks in both languages, with character counts: [section 0](#adapt-dont-
 
 - Post original videos. Instagram has said it favours original content, so reposts and videos with another app's watermark may reach fewer people.
 - Use your own voice or the free audio library. Business accounts may have a smaller music library.
-- End real-footage Reels with a short end card (about 2–4 seconds): your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) on Cobalt `#376BB1`, the blue post background (not the brand gradient: white text is too faint on its lighter blues), plus "DM START" on the English Reel and راسلنا بكلمة «ابدأ» on the Arabic one. Make each once and reuse it (details in the idea bank's [Reel scripts](04-idea-bank.md#3-three-reel-scripts)).
+- End real-footage Reels with a short end card (about 2–4 seconds): your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) on Cobalt `#376BB1`, the blue post background (not the brand gradient: white text is too faint on its lighter blues), plus "DM START" on the English Reel and راسلنا بكلمة «ابدأ»‏ on the Arabic one. Make each once and reuse it (details in the idea bank's [Reel scripts](04-idea-bank.md#3-three-reel-scripts)).
 - If your app offers **Trial reels** (shows a Reel to non-followers first), use it to test two hooks for the same video, one language at a time.
 
 ### Reel covers
@@ -341,16 +343,18 @@ After uploading, open **Edit cover** and check how the cover looks in the profil
 | | `statement`: `{ kicker, text }` | One strong sentence |
 | | `services`: `{ title }` | The 8 services grid |
 | | `image`: `{ src, title?, caption?, fit }` | A screenshot or photo: case studies, demos, before/after ([details](#case-study-posts)) |
-| Last | `cta`: `{ headline?, body? }` | One call to action (the DM keyword or the link in bio) and a single Follow button; the footer reads "Save for later" / «احفظه لوقت لاحق» with a bookmark icon. Default headline: "Got an idea? Let’s compile it." / «لديك فكرة؟ لنبنِها معاً.» Override it per post, e.g. `{ type: 'cta', headline: t('Stuck on a project?\n*Let’s work it out.*', 'عالق في مشروع؟\n*لنجد الحل معاً.*') }` |
+| Last | `cta`: `{ headline?, body? }` | One call to action (the DM keyword or the link in bio) and a single Follow button; the footer reads "Save for later" / «احفظه لوقت لاحق» with a bookmark icon. Default headline: "Got an idea? Let’s compile it." / «لديك فكرة؟ لنبنِها معاً.‏» Override it per post, e.g. `{ type: 'cta', headline: t('Stuck on a project?\n*Let’s work it out.*', 'عالق في مشروع؟\n*لنجد الحل معاً.*') }` |
 
 Rotate the three hero themes (`dark`, `blue`, `light`) so the grid stays balanced. The slides after the hero are always dark, so every carousel reads the same after the first swipe.
+
+After the hero, these six types (`cards`, `steps`, `statement`, `services`, `image`, `cta`) are the only ones the templates render: any other type stops `npm run render` with an "unknown slide type" error. If an older idea or note asks for a `cover` slide, use the animated hero; if it asks for a `list`, use `cards` (up to 4 short items) or `steps`.
 
 ### Making a new animated post
 
 Every feed post comes from [`../design/content.mjs`](../design/content.mjs) plus a scene in [`../design/scenes/`](../design/scenes/). The short version (setup is in the [README](../README.md); the rules, the scene system and every render command are in the brand guide's [motion section](../brand/brand-guide.md#10-motion)):
 
 1. **Add the post.** In `content.mjs`, copy a post block in `posts` and give it the next `order` (10, 11, …), a new `slug` and a `theme` (`dark`, `blue` or `light`). Write every text as `t('English', 'Arabic')`: `tag`, `headline` (one `*accent*`), `sub` and the slides. Adapt the Arabic, don't translate it ([section 0](#adapt-dont-translate)). `slides: []` makes a single video/image post without the "Swipe" hint.
-2. **Give it a scene.** Every post needs one. Quick: reuse a scene that fits, for example `scene: 'ai'`, with a new headline (don't reuse the same scene too often, or the grid starts to repeat). Best for the posts that matter: a new file in `../design/scenes/`, built with the shared UI kit in [`../design/motion/ui.mjs`](../design/motion/ui.mjs). It must follow the loop contract in [`../design/motion/stage.mjs`](../design/motion/stage.mjs): the markup as written is the finished picture (frame 0); the timeline holds it, clears it with `.to()`, rebuilds it with `.fromTo()` and ends on the same picture after 8 seconds; background loops complete whole cycles; and the layout mirrors for Arabic (logical properties such as `inset-inline-start`). The stage draws the headline, so the scene never moves it.
+2. **Give it a scene.** Every post needs one: `npm run render` and `npm run check` load `../design/scenes/<scene>.mjs` for every post, so a post without a scene stops them (and `npm run motion` skips it, so it gets no video). Quick: reuse a scene that fits, for example `scene: 'ai'`, with a new headline. The animation stays the same, including the text inside it (that text lives in the scene's own `copy` block, in English and Arabic). Don't reuse the same scene too often, or the grid starts to repeat. Best for the posts that matter: a new file in `../design/scenes/` that exports `duration` (8), `copy: { en, ar }`, `css`, `html` and `animate`, built with the shared UI kit in [`../design/motion/ui.mjs`](../design/motion/ui.mjs). It must follow the loop contract in [`../design/motion/stage.mjs`](../design/motion/stage.mjs): the markup as written is the finished picture (frame 0); the timeline holds it, clears it with `.to()`, rebuilds it with `.fromTo()` and ends on the same picture after 8 seconds; background loops complete whole cycles; and the layout mirrors for Arabic (logical properties such as `inset-inline-start`). The stage draws the headline, so the scene never moves it.
 3. **Preview.** `npm run motion -- <slug> --preview` writes a contact sheet of 8 frames for each language and format to `.preview/`. `npm run motion -- <slug> --frame 5.5 --lang ar` saves full-size frames at 5.5 seconds (feed and Reel).
 4. **Check.** `npm run motion -- <slug> --loopcheck` must say OK for every variant. Then run `npm run render` (cover and slides in both languages; it warns when content runs into the footer) and `npm run check` (it fails if any text is too faint to read, in either language, on the feed and Reel covers and every text slide).
 5. **Render the videos.** `npm run motion -- <slug>` makes 4 videos (feed and Reel, English and Arabic), at about a minute each. Plain `npm run motion` renders every post: 36 videos for the launch posts alone.
@@ -471,7 +475,7 @@ Instagram search uses the words in your caption. Clear on-screen text helps peop
 
 | Service | Arabic keywords |
 |---|---|
-| Games | تطوير ألعاب، صناعة الألعاب، لعبة جوال، ألعاب Unity، ألعاب تسويقية، نموذج أولي قابل للعب |
+| Games | تطوير ألعاب، صناعة الألعاب، ألعاب الجوال، ألعاب Unity، ألعاب تسويقية، نموذج أولي قابل للعب |
 | Apps | تطبيق جوال، تطوير تطبيقات، برمجة تطبيقات، تطبيق iOS و Android، تصميم واجهات |
 | Software | لوحة تحكم، نظام إدارة، برمجيات مخصصة، من جداول البيانات إلى نظام، ربط الأنظمة |
 | Custom AI | ذكاء اصطناعي للأعمال، مساعد ذكي، أتمتة المهام، ذكاء اصطناعي داخل تطبيقك |
@@ -525,11 +529,12 @@ The same post in Arabic (adapted, not translated):
 
 Add alt text in the post's language (Advanced settings → Accessibility → **Write alt text**; the place can change between app versions). Describe what is on the slide and repeat the headline, in **100 characters or fewer**. Some app versions don't offer alt text for a video slide; then write it for the image slides, and let the caption's first line and the on-screen headline carry the video's message. The alt text for every launch post is in [`03-launch-posts.md`](03-launch-posts.md).
 
-Example: slide 2 of launch post `08-games` (the icon cards):
+Example: slide 2 of launch post `08-games` (the icon cards, titled "What we build" / «ماذا نبني»):
 
-> English (95 characters): Icon cards: full Unity games, playable prototypes, advergames for brands, game feel and polish.
->
-> Arabic (96 characters): بطاقات: ألعاب Unity متكاملة، نماذج أولية قابلة للعب، ألعاب تسويقية، متعة اللعب واللمسات الأخيرة.
+| Post | Alt text | Characters |
+|---|---|---|
+| English | What we build: full Unity games, playable prototypes, advergames for brands, game feel and polish. | 98 |
+| Arabic | ماذا نبني: ألعاب Unity متكاملة، نماذج أولية قابلة للعب، ألعاب تسويقية، ومتعة اللعب واللمسات الأخيرة. | 100 |
 
 ### Hashtags: max 5 per post
 
@@ -548,10 +553,10 @@ Instagram limits posts to 5 hashtags. Hashtags help a little; keywords in the ca
 | Start / planning a project | #craptostudio #startup #smallbusiness #productdevelopment #appdevelopment | #ريادة_الأعمال #الشركات_الناشئة #مشاريع_صغيرة #برمجة #craptostudio |
 | Studio / general | #craptostudio #softwaredevelopment #gamedev #appdevelopment #artificialintelligence | #برمجة #تطوير_الألعاب #تطبيقات_الجوال #الذكاء_الاصطناعي #craptostudio |
 
-- **Arabic sets end with #craptostudio**, so the line starts with an Arabic word and reads right to left. One Latin tag is fine where the tool's name is what people search for (#unity3d).
-- **Many Arabic tags exist with and without "ال"** (#الذكاء_الاصطناعي and #ذكاء_اصطناعي). Pick the one with more relevant posts; don't use both.
+- **Arabic sets end with #craptostudio**, so the line starts with an Arabic tag and reads right to left. One Latin tag is fine where the tool's name is what people search for (#unity3d).
+- **Many Arabic tags exist with and without the article «ال»**, for example ‏#الذكاء_الاصطناعي and ‏#ذكاء_اصطناعي. Pick the one with more relevant posts; don't use both.
 - **Before you use a tag for the first time**, tap it and look at the top posts. If they don't match your audience or look spammy, swap it for another one.
-- **Never** use crypto or trading tags in either language (#كريبتو، #عملات_رقمية، #بيتكوين، #تداول), or tags that sell ready-made student work (#حل_واجبات، #مشاريع_تخرج): Support is mentoring.
+- **Never** use crypto or trading tags in either language (‏#كريبتو، #عملات_رقمية، #بيتكوين، #تداول), or tags that sell ready-made student work (‏#حل_واجبات، #مشاريع_تخرج): Support is mentoring.
 
 ### Location tags
 
@@ -606,7 +611,7 @@ Public posts from professional accounts may also appear in search engines like G
 - ✅ "Nice camera feel on the dash. Are you using a spring for the follow?"
 - ✅ "Good point on scoping first. Did the client cut any features after that?"
 - ✅ «نقطة مهمة عن تحديد النطاق قبل البدء. هل استغنى العميل عن أي ميزة بعدها؟»
-- ❌ "Great post! 🔥" / "Check out our page!" / «منشور رائع! 🔥» / «زوروا صفحتنا!»
+- ❌ "Great post! 🔥" / "Check out our page!" / «منشور رائع! 🔥» / «زوروا صفحتنا!‏»
 
 **Don't:** use bots for likes, comments or follows, join engagement groups, or follow/unfollow in bulk. They break your Insights and can get the account restricted.
 
@@ -623,7 +628,7 @@ Every post, story and CTA slide points to the same action. Make that path smooth
 | Step | What happens | Who / tool |
 |---|---|---|
 | 1. Trigger | A post, story or CTA slide says: DM "START" (English) or «ابدأ» (Arabic), or tap the link in bio | Content |
-| 2. First reply | Send the START saved reply in the person's language (the 5 questions + form link) | You, saved replies ([`01-profile-setup.md` section 9](01-profile-setup.md#9-dm-setup)) |
+| 2. First reply | Send the START saved reply in the person's language (`start` in English, `arstart` in Arabic: the 5 questions + form link) | You, saved replies ([`01-profile-setup.md` section 9](01-profile-setup.md#9-dm-setup)) |
 | 3. They answer | What, who for, deadline, budget range, links they like | Client |
 | 4. Follow-up | Ask 1–3 short questions, or offer a call (`[your booking link]`) | You |
 | 5. Scope | Short call or written scope; say honestly if they don't need something | You |
@@ -632,7 +637,7 @@ Every post, story and CTA slide points to the same action. Make that path smooth
 
 **Not a fit?** Reply kindly anyway with the "not offered" saved reply, in their language. A friendly "no" often brings referrals later.
 
-**Optional:** comment-to-DM automation ("comment START and we'll DM you") through a third-party tool. If you use it, set up both keywords, check that the tool matches the Arabic word «ابدأ», and test both from a second account. Setup notes are in [`01-profile-setup.md` section 9](01-profile-setup.md#9-dm-setup).
+**Optional:** comment-to-DM automation ("comment START and we'll DM you") through a third-party tool. If you use it, set up both keywords, check that the tool matches the Arabic word «ابدأ» and its common variant spellings (such as «ابدا» or «إبدأ»), and test both from a second account. Setup notes are in [`01-profile-setup.md` section 9](01-profile-setup.md#9-dm-setup).
 
 ### Link-in-bio form
 
@@ -685,9 +690,9 @@ For real screenshots or photos, use an `image` slide, for example `{ type: 'imag
   With your OK, we'd like to share it on our Instagram (with your name or handle, or anonymous if you prefer).
   ```
   ```
-  شكراً لأنك اخترت Crapto Studio!
-  هل تكتب لنا جملتين أو ثلاثاً عن المشروع وعن تجربتك معنا؟
-  بعد موافقتك، نودّ مشاركة كلماتك على حسابنا في إنستغرام (باسمك أو باسم حسابك، أو دون ذكر الاسم إن كنت تفضّل ذلك).
+  شكراً مجدداً لأنك اخترت Crapto Studio!
+  هل يمكنك أن تكتب لنا جملتين أو ثلاثاً عن المشروع وعن تجربتك معنا؟
+  ونودّ، بموافقتك، أن ننشر كلماتك على حسابنا في إنستغرام (باسمك أو باسم حسابك، أو دون ذكر اسمك إن كنت تفضّل ذلك).
   ```
 - Turn real quotes into story frames and save them to the **Reviews** highlight.
 - Pin your best project post (see [`01-profile-setup.md` section 10](01-profile-setup.md#10-pinned-posts)).
@@ -820,7 +825,7 @@ Publish the 18 launch posts from [`03-launch-posts.md`](03-launch-posts.md) **in
 | 1 | Pairs **01 Support**, **02 Interactive**, **03 Upgrades** (6 posts: EN, AR, EN, AR, EN, AR) | Share each pair to your story right after you publish it | Reply to comments. Don't share the profile link or run ads yet: the grid isn't finished ([why](03-launch-posts.md#publish-all-18-before-you-promote-the-account)). Following a few accounts in your niche is fine |
 | 2 | Pairs **04 Software**, **05 Custom AI**, **06 Apps** | Share each pair to your story | Reply to comments and DMs, in the commenter's language |
 | 3 | Pairs **07 Start here**, **08 Games**, **09 Intro** | Share each pair. After upload 18 is live: pin (up to 3 posts; see [Pinning reorders the grid](03-launch-posts.md#pinning-reorders-the-grid) and [`01-profile-setup.md` section 10](01-profile-setup.md#10-pinned-posts)), create the highlights in reverse order ([section 8](01-profile-setup.md#8-story-highlights); skip Reviews until you have a real review), and check the grid against [`../exports/preview/grid.png`](../exports/preview/grid.png) | Start the daily routine. Follow 10–20 accounts in your target niches, in both languages |
-| 4 | — | "We're live" / «انطلقنا!» story + link sticker. Tell your own network: personal profiles, WhatsApp, LinkedIn, email signature | Routine |
+| 4 | — | "We're live" / «انطلقنا!‏» story + link sticker. Tell your own network: personal profiles, WhatsApp, LinkedIn, email signature | Routine |
 | 5 | **Reel pair: S1** What we build in 15 seconds. No footage for all four yet? Post the **09 Intro hero Reel pair** instead (`../exports/reels/09-intro-en.mp4`, then `09-intro-ar.mp4`) | Share the pair | Routine |
 | 6 | — | Poll, one per language: "What should we show next? Game or app?" / «ماذا نعرض لكم في المرة القادمة؟ لعبة أم تطبيق؟» | Routine |
 | 7 | Rest | — | Optional: first weekly check (10 min) |
@@ -835,7 +840,7 @@ You can also publish all 18 launch posts in one sitting if you prefer. The posti
 | 9 | — | | WIP clip + question sticker: "What are you building this month?" / «ماذا تبني هذا الشهر؟» |
 | 10 | **Carousel pair: `AI1`** You might not need AI. Post 10 in `content.mjs`, English and Arabic (start from the idea bank's [Formula 3](04-idea-bank.md#formula-3-myth-vs-fact)); for the hero, reuse the `ai` scene or write a new one | TEACH · Custom AI | Share + *Myth or fact* quiz |
 | 11 | — | | *Desk / setup* clip |
-| 12 | **Hero Reel pair: 08 Games** (`../exports/reels/08-games-en.mp4`, then `-ar`) | Hero Reel · Games | Share the pair |
+| 12 | **Hero Reel pair: 08 Games** (`../exports/reels/08-games-en.mp4`, then `08-games-ar.mp4`) | Hero Reel · Games | Share the pair |
 | 13 | — | | *DM reminder* ("START" · «ابدأ») + link sticker |
 | 14 | Rest | | [Weekly check](#weekly-check-10-minutes) (10 min) |
 
@@ -868,7 +873,7 @@ You can also publish all 18 launch posts in one sitting if you prefer. The posti
 | Day | Do |
 |---|---|
 | 29 | **Reel pair: `IX1`** Normal slides vs. interactive presentation, or **`IX2`** Touchscreen demo. SHOW · Interactive: the first post of week 5 (cycle week 4: SHOW + BUILD) |
-| 30 | Fill in the [monthly review](#monthly-review-template), with English and Arabic side by side. Pick next month's IDs from the idea bank, with more of what got shares, saves and DMs (`GM1` Game feel, with its full script, makes a good first BUILD Reel). Plan the other six launch hero Reel pairs (Software, Upgrades, Interactive, Support, Start here, Intro) for the next Saturdays. Swap a pinned post if you published real project work ([`01-profile-setup.md` section 10](01-profile-setup.md#10-pinned-posts)) |
+| 30 | Fill in the [monthly review](#monthly-review-template), with English and Arabic side by side. Pick next month's IDs from the idea bank, with more of what got shares, saves and DMs (`GM1` Game feel, with its full script, makes a good first BUILD Reel). Plan the other launch hero Reel pairs (Software, Upgrades, Interactive, Support, Start here, and Intro unless you posted it on Day 5) for the next Saturdays. Swap a pinned post if you published real project work ([`01-profile-setup.md` section 10](01-profile-setup.md#10-pinned-posts)) |
 
 **Month 1 after launch:** 8 new pairs (16 posts) and 3 hero Reel pairs (6 Reels) on top of the 18 launch posts. The new pairs are 4 SHOW, 2 TEACH, 1 BUILD and 1 OFFER, and with the hero Reels every service gets a post. That leans on proof and is light on offers on purpose: the launch posts already explain each service and all end with DM "START" / «ابدأ». From month 2, the [pillar cycle](#4-weekly-rhythm) gives the full mix.
 

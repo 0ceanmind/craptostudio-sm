@@ -15,7 +15,7 @@ Use this guide when you write a caption (in either language), design or animate 
 | Handle | @craptostudio |
 | What we are | A tech solutions studio |
 | Languages | English and Arabic (Modern Standard Arabic, right to left). Every post is published twice: the English post first, then the Arabic one |
-| Tagline | **Ideas, compiled.** · in Arabic: **أفكارك، جاهزة للتشغيل.** |
+| Tagline | **Ideas, compiled.** · in Arabic: **أفكارك، جاهزة للتشغيل.‏** |
 | DM keyword | **START** in English · **«ابدأ»** in Arabic |
 | Primary colour | Crapto Blue `#4296D1`, used as the blue gradient Cobalt → Sky |
 | Accent | Spark `#F28D19`, small amounts only |
@@ -70,8 +70,8 @@ What it means:
 How to write it:
 
 - English: always **"Ideas, compiled."**, with a capital I, a comma, a lowercase c and a full stop. Don't change it ("Ideas compiled!", "Your ideas, compiled") or add to it.
-- Arabic: always **«أفكارك، جاهزة للتشغيل.»**, with the Arabic comma (،) and a full stop. Don't write any other Arabic version.
-- One tagline per language: the English line goes in English posts, the Arabic line in Arabic posts. The bio is the one place where both sit together.
+- Arabic: always **«أفكارك، جاهزة للتشغيل.‏»**, with the Arabic comma (،) and a full stop. Don't write any other Arabic version.
+- One tagline per language: the English line goes in English posts, the Arabic line in Arabic posts. The bio is the one place where both sit together. There, the Arabic line drops its full stop: that bio line starts in English, so a final full stop would show up at the wrong end of the Arabic (see [9.4](#94-mixed-script-latin-digits-punctuation-and-direction)).
 
 Where to use it: the Intro post (its headline, in each language), the bio, the brand board, the end of a presentation, email signatures, and under the logo on large layouts. Do not use it more than once per post.
 
@@ -206,7 +206,7 @@ Why: it keeps our support about mentoring and guidance, protects the student (th
 | Crapto Studio's new app | CraptoStudio, craptostudio (one word only in the handle or a web address) |
 | نحن في Crapto Studio… (Latin letters inside Arabic) | Crapto Studios, Crypto Studio, Crapto studio, crapto studio |
 | | CS, C.S., Crapto St. |
-| | كرابتو ستوديو (transliterated), استوديو كرابتو (translated) |
+| | كرابتو ستوديو or استوديو كرابتو (the name written in Arabic letters) |
 
 - Two words, capital **C** and capital **S**, every time, in captions, bios, DMs, emails and documents.
 - **In Arabic text the name stays in Latin letters.** Never transliterate or translate it. Start the Arabic sentence with an Arabic word rather than with the name, so the line keeps its right-to-left direction (see [9.4](#94-mixed-script-latin-digits-punctuation-and-direction)).
@@ -219,7 +219,7 @@ Why: it keeps our support about mentoring and guidance, protects the student (th
 
 - **Say what we do right next to the name.** The Name field, the top of the bio and the first slide of each post should make it clear that this is tech: games, apps, software, AI or programming.
 - **Name field example:** `Crapto Studio | Games·Apps·AI` (29 characters; keep the Name field at 30 or fewer). Other options are in [the profile setup guide](../instagram/01-profile-setup.md).
-- **Never use crypto words,** even as a joke: coin, token, blockchain, NFT, Web3, mint, wallet, trading, "to the moon", HODL. In Arabic: عملات رقمية، كريبتو، بيتكوين، توكن، بلوكتشين، تداول، تعدين، محفظة رقمية، «إلى القمر».
+- **Never use crypto words,** even as a joke: coin, token, blockchain, NFT, Web3, mint, wallet, trading, "to the moon", HODL. In Arabic: عملات رقمية، كريبتو، بيتكوين، توكن، بلوكتشين، «إلى القمر»، تداول، تعدين، محفظة رقمية.
 - **Never use crypto hashtags:** no #crypto, #bitcoin, #nft, #web3, #blockchain, #trading, and no Arabic equivalents such as #عملات_رقمية, #بيتكوين or #تداول. Instagram limits posts to 5 hashtags, so use topic tags only, for example #gamedev, #unity3d, #appdevelopment, #softwaredevelopment, #aiautomation (pick the ones that match the post). The English and Arabic sets are in [the content strategy](../instagram/02-content-strategy.md).
 - **Avoid crypto-looking visuals and emoji:** no coins, candlestick charts, rising "stock chart" icons, gold-on-black "trading" looks, 🚀🌕💎📈🪙💰⚡ (⚡ is the Bitcoin Lightning symbol, which is why the bio uses 💻).
 - **Don't follow or engage with crypto accounts.** Delete crypto spam comments. We recommend adding common crypto spam words, in both languages, to Instagram's Hidden Words filter, in the app's settings.
@@ -383,11 +383,11 @@ For signs, large prints, merch, embroidery or laser-cutting you need a **vector 
 | Blue | **Crapto Blue** | `#4296D1` | 66, 150, 209 | Primary brand colour (logo core ≈ `#4094D0`; the wordmark is a flat `#388ECC`); the glow on dark backgrounds |
 | Blue | **Sky** | `#5AB4D9` | 90, 180, 217 | Light end of the blue gradient; highlights on dark; the kicker on the statement slide |
 | Orange | **Ember** | `#EC6C1C` | 236, 108, 28 | Deep end of the orange spark gradient |
-| Orange | **Spark** | `#F28D19` | 242, 141, 25 | Accent orange: CTAs, small highlights, numbers, petals. Use sparingly (~10%) |
-| Orange | **Amber** | `#F4B310` | 244, 179, 16 | Light end of the orange gradient; the accent underline on blue |
+| Orange | **Spark** | `#F28D19` | 242, 141, 25 | Accent orange: small highlights, the accent underline on light, petals, at most one CTA button (with Ink text). Use sparingly (~10%) |
+| Orange | **Amber** | `#F4B310` | 244, 179, 16 | Light end of the orange gradient; the accent underline on blue; the card numbers on the cards slide |
 | Dark | **Midnight** | `#0B1628` | 11, 22, 40 | Dark background (dark theme and every static slide) |
 | Dark | **Navy** | `#13233D` | 19, 35, 61 | Cards and raised surfaces on dark and blue, including the UI cards in the scenes |
-| Dark | **Line** | `#24395C` | 36, 57, 92 | Borders, dividers, grid pattern on dark |
+| Dark | **Line** | `#24395C` | 36, 57, 92 | Borders and dividers on dark: card and step outlines, the slide counter and the hero tag |
 | Neutral | **Slate** | `#93A9C6` | 147, 169, 198 | Secondary text on dark |
 | Light | **Mist** | `#D4E5F2` | 212, 229, 242 | Light background (light post theme), from the original logo file |
 | Dark | **Ink** | `#0E1A2B` | 14, 26, 43 | Text on light backgrounds and on orange |
@@ -402,7 +402,7 @@ For signs, large prints, merch, embroidery or laser-cutting you need a **vector 
 | **Blue post** | Cobalt, shaded slightly darker toward the bottom-right | `linear-gradient(160deg, rgba(255,255,255,.05) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.2) 100%), #376BB1` |
 
 - The **brand gradient** is for highlight covers (white icons), the icon tiles on the cards and services slides, avatars, step nodes and the gooey blobs in the scenes, decorative elements and the gradient bars on the brand board (their labels sit under the bars, not on them). Never put small text on it: white is only 3.22 : 1 on Crapto Blue and 2.34 : 1 on Sky. In a scene, a chat bubble, button or chip that carries text needs a solid fill (Cobalt or darker) instead.
-- **Blue posts** use the blue post background instead: Cobalt, shaded slightly darker toward the bottom-right, so small white text clears 4.5 : 1. The animated hero adds two soft glows that drift slowly: a Sky glow in a top corner and a Midnight glow in the opposite bottom corner. The Sky glow lightens the blue, so small text must sit on the shaded Cobalt, not on the glow's bright centre (see [6.4](#64-accessible-pairings)). Step badges and the single Follow pill on the CTA slide are solid Cobalt.
+- **Blue posts** use the blue post background instead: Cobalt, shaded slightly darker toward the bottom-right, so small white text clears 4.5 : 1. The animated hero adds two soft glows that drift slowly: a faint Sky glow in a top corner and a Midnight glow in the opposite bottom corner. The Sky glow lightens the blue, so it is kept faint enough that small white text still clears 4.5 : 1 over it; don't make it stronger (see [6.4](#64-accessible-pairings)). Step badges and the single Follow pill on the CTA slide are solid Cobalt.
 - The **spark gradient** is for small things only: the accent word on dark heroes and on every static slide, the petals and sparks in the scenes, small dots, a highlighted chip (with Ink text). Never a full background.
 
 ### 6.3 Usage ratio
@@ -456,22 +456,24 @@ Contrast ratios below are calculated with the WCAG 2 formula. The thresholds:
 | | White on the middle (Crapto Blue) | 3.22 | ⚠ Large text only |
 | | White on the Sky end | 2.34 | ✗ Don't put text here |
 | | Spark (any part) | 2.20 or lower | ✗ Orange only as shapes or underlines on blue |
-| **Blue post background** (Cobalt, shaded) | White | 4.87 (lightest, top-left) to 7.46 (darkest, bottom-right) on the shaded Cobalt alone. The hero's Sky glow lowers it to about 4 : 1 at the glow's centre | ✓ All text at 100% white on the shaded Cobalt. Keep small text off the Sky glow's bright centre; `npm run check` measures the real frame |
+| **Blue post background** (Cobalt, shaded) | White | 4.87 (lightest, top-left) to 7.46 (darkest, bottom-right) on the shaded Cobalt alone. The hero's faint Sky glow lowers it to about 4.6 : 1 at the glow's centre | ✓ All text at 100% white. Keep the Sky glow faint: a stronger glow pushes small text below 4.5 : 1. `npm run check` measures the real frame |
 | **Spark** `#F28D19` (button, highlight) | Midnight | 7.42 | ✓ All text |
 | | Ink | 7.16 | ✓ All text |
 | | White | 2.44 | ✗ Never white text on orange |
-| **Line** `#24395C` (chips, tags) | White | 11.57 | ✓ All text |
+| **Line** `#24395C` (if you use it as a fill) | White | 11.57 | ✓ All text |
 | | Slate | 4.81 | ✓ All text |
+| **Scene chip fill** `#1A2D4C` (chips and the assistant's chat bubble in the scenes, dark and blue themes) | White | 13.78 | ✓ All text |
+| | Slate | 5.73 | ✓ All text |
 
 **Rules of thumb**
 
 1. On dark: White for main text, Slate for secondary text, Sky or Spark for accents.
-2. On light: Ink for text, Cobalt only for big headlines or the accent word. Orange is never text on light; use it as an underline or a small shape. For secondary text on light, use a muted ink such as `#3E5470` (6.02 : 1 on Mist); the scenes' white UI cards use `#4A6080` (6.41 : 1 on White).
-3. On blue: put text on Cobalt (the blue post background), in 100% white, including small labels, and keep it off the Sky glow. Not on the lighter blues: white is only 3.22 : 1 on Crapto Blue and 2.34 : 1 on Sky, so keep the brand gradient for icons, tiles and decoration. White at 82% opacity reaches only 4.20 : 1 even on pure Cobalt, so don't use see-through white for small text.
+2. On light: Ink for text, Cobalt only for big headlines or the accent word. Orange is never text on light; use it as an underline or a small shape. For secondary text on light, use a muted ink such as `#3E5470` (6.02 : 1 on Mist); the scenes' white UI cards use `#3B5170` (8.09 : 1 on White).
+3. On blue: put text on Cobalt (the blue post background), in 100% white, including small labels, and keep the hero's Sky glow faint. Not on the lighter blues: white is only 3.22 : 1 on Crapto Blue and 2.34 : 1 on Sky, so keep the brand gradient for icons, tiles and decoration. White at 82% opacity reaches only about 4.2 : 1 even on pure Cobalt, so don't use see-through white for small text.
 4. Orange buttons, chips and highlights always get Ink or Midnight text, never white.
 5. A glow, a card's corner glow or a scene element behind small text changes its background. If `npm run check` flags it, move or soften the glow; don't lower the text's opacity or size.
 
-> **Checked on the real posts:** `npm run check` renders frame 0 of every hero (feed and Reel) and every text slide, in English and Arabic (78 pages for the 9 launch posts). It hides the text to get the real background behind it (gradients, glows, grid lines and the scene's cards included) and measures each text run's worst-case contrast, scene UI text included. It allows **3 : 1** only for large text (56 px or bigger and bold, or 72 px or bigger at regular weight, on the 1080 px canvas) and needs **4.5 : 1** for everything else (stricter than WCAG, see the Instagram note above). Gradient-filled accent text is measured against each of its gradient's colour stops. Image slides are not checked, so check the title and caption on those by eye. Run it after any change to colours, fonts, layouts, post text or a scene; it exits with an error if any text falls below its threshold. Fix every failure before you publish.
+> **Checked on the real posts:** `npm run check` renders frame 0 of every hero (feed and Reel) and every text slide, in English and Arabic (78 pages for the 9 launch posts). It hides the text to get the real background behind it (gradients, glows, grid lines and the scene's cards included) and scores each text run, scene UI text included, by its near-worst contrast across the text's box (the 10th percentile), at the text's real opacity. Text that isn't visible at frame 0 (fully transparent, covered by another layer, or on the back of a flipped card) is skipped. It allows **3 : 1** only for large text (56 px or bigger and bold, or 72 px or bigger at regular weight, on the 1080 px canvas) and needs **4.5 : 1** for everything else (stricter than WCAG, see the Instagram note above). Gradient-filled accent text is measured against each of its gradient's colour stops. Image slides are not checked, so check the title and caption on those by eye. Run it after any change to colours, fonts, layouts, post text or a scene; it exits with an error if any text falls below its threshold. Fix every failure before you publish.
 
 <details>
 <summary>Full contrast matrix (text colour × background)</summary>
@@ -521,7 +523,7 @@ The render pipeline already includes all three (installed with `npm install` fro
 - **No letter-spacing, ever.** Arabic letters join. Negative tracking crushes the joins and positive tracking pulls words apart, so letter-spacing and word-spacing are always 0 in Arabic (English headlines use −2.5% to −2.8%).
 - **No capitals, no italics.** Arabic has no case (the uppercase style on tags does nothing to Arabic), and slanted Arabic looks broken. Emphasis comes from weight and colour: the accent treatment works the same in both languages.
 - **Sizes:** Alexandria's Arabic looks larger than Latin at the same size and its lines are taller, so long slide text is set a step smaller in Arabic (titles 70 px instead of 76, the statement 70 instead of 80, the CTA headline 96 instead of 112). Small labels that switch from mono to Alexandria go a step larger (the hero tag 26 instead of 23, the sub-line 30 instead of 27). The hero headline uses the same size rule in both languages.
-- **Diacritics:** only where they prevent misreading or help the rhythm, as in the content file: «تابِع»، «نُطلق»، «تُنسى»، and shadda in «نصمّم»، «مخصّصة». Never full vowel marks on whole sentences.
+- **Diacritics:** only where they prevent misreading or help the rhythm, as in the content and templates: the kasra in «تابِع» and «لنبنِها», the damma in «نُطلق» and «تُنسى», the shadda in «نصمّم» and «مخصّصة». Never full vowel marks on whole sentences.
 - **No kashida (ـ) and no justified Arabic text.** Don't stretch words to fill a line.
 - **Never split Arabic words into letters when animating.** Each Arabic letter changes shape depending on its neighbours; wrapping letters in separate elements breaks the joins and shows them as isolated forms. Animate whole words (the Custom AI answer streams in word by word), lines or blocks. Letter-by-letter typing is only for code, Latin text and digits (the Support scene types code character by character).
 
@@ -540,7 +542,7 @@ Sizes are in px on the 1080 px canvas (feed posts 1080 × 1350, Reels, stories a
 | Service title | 800 | 36 · 1.1 · −1.5% | 32 · 1.35 | Services slide |
 | Body | 500 | CTA line 40 · 1.45; step description 31 · 1.4; image caption 32 · 1.4 | CTA line 36 · 1.45; step description 29 · 1.4; caption 32 · 1.4 | Short sentences under titles |
 | Hero sub-line | 500 | JetBrains Mono 27 · 1.5 | Alexandria 30 · 1.5 | The line under the hero headline |
-| Labels | 500–700 | JetBrains Mono: "CRAPTO STUDIO" 23 bold +18%; hero tag 23 +10% uppercase; slide counter 23 +10%; handle and "Swipe" 24 +5%; card numbers 26 bold; statement kicker 30 bold; service sub-lines 21 | Alexandria: hero tag 26 bold; «اسحب» 24; service sub-lines 22. Latin labels (CRAPTO STUDIO, handle, counter, numbers) stay in JetBrains Mono | Header, footer, tags, numbers |
+| Labels | 500–700 | JetBrains Mono: "CRAPTO STUDIO" 23 bold +18%; hero tag 23 +10% uppercase; slide counter 23 +10%; handle and "Swipe" 24 (+5% on slides); card numbers 26 bold; statement kicker 30 bold; service sub-lines 21 | Alexandria: hero tag 26 bold; «اسحب» 24; service sub-lines 22. Latin labels (CRAPTO STUDIO, handle, counter, numbers) stay in JetBrains Mono | Header, footer, tags, numbers |
 
 **Minimums:** anything people must read should be about **30 px or more**. Smaller labels (21–28 px) are only for short extras: the header label, tags, slide numbers, the handle, "Swipe" and the service sub-lines. Nothing on the static slides is smaller than **21 px**. Inside the scenes, small UI details (window titles, status lines) go down to about 19–20 px because they are part of the illustration; the message itself always lives in the headline and sub-line.
 
@@ -576,9 +578,9 @@ The "Crapto Studio" letters under the symbol are part of the logo artwork. Don't
 
 | | **Dark** | **Blue** | **Light** |
 |---|---|---|---|
-| Background | Midnight, with a soft Crapto Blue glow in a top corner and a Cobalt glow in the opposite bottom corner | Cobalt, shaded slightly darker toward the bottom-right (not the brand gradient, see [6.2](#62-gradients)), with a soft Sky glow in a top corner and a Midnight glow in the opposite bottom corner | Mist, with a soft white glow in a top corner and a Sky glow in the opposite bottom corner |
+| Background | Midnight, with a soft Crapto Blue glow in a top corner and a Cobalt glow in the opposite bottom corner | Cobalt, shaded slightly darker toward the bottom-right (not the brand gradient, see [6.2](#62-gradients)), with a faint Sky glow in a top corner and a Midnight glow in the opposite bottom corner | Mist, with a soft white glow in a top corner and a Sky glow in the opposite bottom corner |
 | Main text | White | White | Ink |
-| Secondary text (tag, sub-line, handle, "Swipe") | Slate | White at 100% | Muted ink (`#3E5470`) |
+| Secondary text (tag, sub-line, handle, "Swipe") | Slate; the hero tag is a lighter blue-grey (`#C3D0E2`) | White at 100%; the hero tag sits on a translucent Midnight pill | Muted ink (`#3E5470`) |
 | Accent word | Spark-gradient text | White word with an Amber underline | Cobalt word with a Spark underline |
 | Scene UI (windows, cards, chips) | Navy cards with faint Slate borders, White text | Same as dark: Navy cards on the blue | White cards with light blue-grey borders, Ink text |
 | Symbol in the header | Colour symbol | White symbol | Colour symbol |
@@ -586,7 +588,7 @@ The "Crapto Studio" letters under the symbol are part of the logo artwork. Don't
 
 In the hero, the glows drift slowly and return within the loop. The theme applies to the hero (slide 1: the video and its cover). The static slides (cards, steps, statement, services, image, CTA) always use the dark theme, so every carousel reads the same after the first swipe.
 
-**Mixing themes on the grid.** An English post and its Arabic twin always share a theme, so on the grid each pair reads as one wide, two-tile block. In posting order, dark pairs alternate with coloured (blue or light) pairs, and the coloured pairs form two diagonal staircases from top-left to bottom-right. The [grid preview](../exports/preview/grid.png) shows every post in [`../design/content.mjs`](../design/content.mjs), newest first (18 tiles, 6 rows at launch; it grows as you add posts):
+**Mixing themes on the grid.** An English post and its Arabic twin always share a theme, so on the grid each pair reads as a two-tile block. With three tiles per row, six pairs sit side by side in one row and three (Games, AI and Interactive) wrap from the end of one row to the start of the next. In posting order, dark pairs alternate with coloured (blue or light) pairs, so the colour steps diagonally down the grid instead of stacking in one column. The [grid preview](../exports/preview/grid.png) shows every post in [`../design/content.mjs`](../design/content.mjs), newest first (18 tiles, 6 rows at launch; it grows as you add posts):
 
 | | Left | Middle | Right |
 |---|---|---|---|
@@ -697,10 +699,10 @@ Why separate posts instead of one bilingual post:
 
 Rules for twins:
 
-- **Same story:** the same scene, theme, number and order of slides, and the same promise. The Arabic copy is written, not translated: it may say it differently (the Software headline is «برمجيات تُبنى على مقاسك.», "software made to measure"), but it never promises more or less than the English.
+- **Same story:** the same scene, theme, number and order of slides, and the same promise. The Arabic copy is written, not translated: it may say it differently (the Software headline is «برمجيات تُبنى على مقاسك.‏», "software made to measure"), but it never promises more or less than the English.
 - **One language per post.** Only the Latin exceptions in [9.4](#94-mixed-script-latin-digits-punctuation-and-direction) appear in Arabic posts.
 - **English first, then Arabic.** Post the English one, then its Arabic twin. Instagram shows the newest post first, so on the grid the Arabic post sits just before its English twin ([8.1](#81-the-three-post-themes)).
-- **Each post gets its own caption, up to 5 hashtags and alt text in its language.** Keep alt text short (under 100 characters) and describe what the animation shows. Arabic hashtags join words with an underscore (`#تطوير_الألعاب`), because a space ends a hashtag.
+- **Each post gets its own caption, up to 5 hashtags and alt text in its language.** Keep alt text short (100 characters or fewer) and describe what the animation shows. Arabic hashtags join words with an underscore (`#تطوير_الألعاب`), because a space ends a hashtag.
 - **The profile is shared.** The Name field (`Crapto Studio | Games·Apps·AI`) stays in English, the bio holds both languages ([9.4](#94-mixed-script-latin-digits-punctuation-and-direction)), and the highlight covers are icons only, so one set works for both.
 
 ### 9.2 The Arabic voice
@@ -709,12 +711,12 @@ The same personality as [section 3](#3-personality-voice-and-tone) (builder, pla
 
 | Do | Don't |
 |---|---|
-| Write Modern Standard Arabic as good modern product writing uses it: simple, current words | Classical or ornate phrasing («عملاءنا الكرام»، «يسعدنا أن نضع بين أيديكم»), or dialect in posts |
-| Speak to one reader directly: «أخبرنا بفكرتك»، «نبقى معك» | A distant third person: «تقدّم الشركة لعملائها…» |
+| Write Modern Standard Arabic as good modern product writing uses it: simple, current words | Classical or ornate phrasing («عملاؤنا الكرام»، «يسعدنا أن نضع بين أيديكم»), or dialect in posts |
+| Speak to one reader directly: «أخبرنا بفكرتك»، «نبقى معك» | A distant third person: «تقدّم الشركة لعملائها…‏» |
 | Keep sentences short, one idea per line. Arabic often runs longer than English, so cut words rather than shrinking the text | Long chains of «و» and «ثم» |
-| Lead with verbs: «نبني»، «نصمّم»، «نُطلق» | Translationese: «نقوم بعملية بناء…»، «يتم تطوير التطبيق…» |
+| Lead with verbs: «نبني»، «نصمّم»، «نُطلق» | Translationese: «نقوم بعملية بناء…‏»، «يتم تطوير التطبيق…‏» |
 | Start from the idea and write it the way an Arabic speaker would say it | Translate the English word for word (examples below) |
-| Frame mentoring so the student does the work: «أنت تبرمج، ونحن نرشدك.»، «أنت تبني، ونحن نشرح.» | Anything that sounds like doing the work for them: «ننجز مشروعك عنك»، «نحلّ واجبك» |
+| Frame mentoring so the student does the work: «أنت تبرمج، ونحن نرشدك.‏»، «أنت تبني، ونحن نشرح.‏» | Anything that sounds like doing the work for them: «ننجز مشروعك عنك»، «نحلّ واجبك» |
 | Use Arabic punctuation: ، ؟ ؛ « » | English commas, question marks and "quotes" in Arabic text |
 | Use 0 to 3 emoji, as in English | Crypto-style emoji (🚀🌕💎📈🪙💰⚡) |
 
@@ -730,17 +732,17 @@ The same personality as [section 3](#3-personality-voice-and-tone) (builder, pla
 | تقدّم أسبوعي، نسخة جديدة تجرّبها كل أسبوع | الأفضل، الأول، رقم 1، الرائد |
 | تسليم منظّم، دعم بعد الإطلاق | مضمون 100%، الأرخص، بلا حدود |
 | إرشاد، جلسات تصحيح الأخطاء | ننجز مشروعك بدلاً منك |
-| ألعاب، تطبيقات، برمجيات، ذكاء اصطناعي | عملات رقمية، كريبتو، بيتكوين، توكن، بلوكتشين، تداول، تعدين، محفظة رقمية، «إلى القمر» |
+| ألعاب، تطبيقات، برمجيات، ذكاء اصطناعي | عملات رقمية، كريبتو، بيتكوين، توكن، بلوكتشين، «إلى القمر»، تداول، تعدين، محفظة رقمية |
 
 **Write it, don't translate it**
 
 | English | ✗ Word for word | ✓ Our Arabic |
 |---|---|---|
-| Games people want to *replay*. | ألعاب يريد الناس إعادة لعبها. | ألعاب تُلعب *مرة بعد مرة*. |
-| Software built around how you *work*. | برمجيات مبنية حول طريقة عملك. | برمجيات تُبنى *على مقاسك*. |
-| Apps that earn a spot on the *home screen*. | تطبيقات تكسب مكاناً على الشاشة الرئيسية. | تطبيقات تبقى *على شاشتك*. |
-| Got an idea? *Let’s compile it.* | لديك فكرة؟ دعنا نقوم بتجميعها. | لديك فكرة؟ *لنبنِها معاً.* |
-| You code. *We guide.* | أنت ترمّز. نحن نوجّه. | أنت تبرمج، *ونحن نرشدك.* |
+| Games people want to replay. | ألعاب يريد الناس إعادة لعبها.‏ | ألعاب تُلعب مرة بعد مرة.‏ |
+| Software built around how you work. | برمجيات مبنية حول طريقة عملك.‏ | برمجيات تُبنى على مقاسك.‏ |
+| Apps that earn a spot on the home screen. | تطبيقات تكسب مكاناً على الشاشة الرئيسية.‏ | تطبيقات تبقى على شاشتك.‏ |
+| Got an idea? Let’s compile it. | لديك فكرة؟ دعنا نقوم بتجميعها.‏ | لديك فكرة؟ لنبنِها معاً.‏ |
+| You code. We guide. | أنت ترمّز. نحن نوجّه.‏ | أنت تبرمج، ونحن نرشدك.‏ |
 
 **Example: the Apps caption** (the English one is in [3.4](#34-example-rewrites-bad--good))
 
@@ -750,7 +752,7 @@ The same personality as [section 3](#3-personality-voice-and-tone) (builder, pla
 
 **Example: a student asking for help**
 
-The message: *«مرحباً، هل يمكنكم تنفيذ مشروع التخرج عني؟ موعد التسليم الأسبوع القادم»*
+The message: «مرحباً، هل يمكنكم إنجاز مشروع تخرّجي بدلاً مني؟ موعد التسليم الأسبوع القادم»
 
 ✓ Good
 > مرحباً! لا يمكننا إنجاز المشروع نيابةً عنك، فهو عملك أنت، ويجب أن تكون قادراً على شرحه. لكن يمكننا مساعدتك على إنجازه: في جلسة إرشاد نراجع الكود معك، ونساعدك في تصحيح الأخطاء، ونشرح لك المنطق وراء كل خطوة حتى تعرضه بثقة.
@@ -767,11 +769,11 @@ The Arabic in [`../design/content.mjs`](../design/content.mjs) is the reference.
 | English | Arabic | Where |
 |---|---|---|
 | Crapto Studio | Crapto Studio (in Latin letters, never translated or transliterated) | Everywhere |
-| Ideas, compiled. | أفكارك، جاهزة للتشغيل. | Tagline: Intro headline, bio, brand board |
+| Ideas, compiled. | أفكارك، جاهزة للتشغيل.‏ | Tagline: Intro headline, bio (without the full stop), brand board |
 | DM "START" | راسلنا بكلمة «ابدأ» | The call to action; the keyword is **START** in English and **«ابدأ»** in Arabic |
-| Got an idea? Let’s compile it. | لديك فكرة؟ لنبنِها معاً. | Default CTA headline |
-| … or tap the link in bio. | … أو اضغط على الرابط في الملف الشخصي. | CTA line |
-| Stuck on a project? Let’s work it out. | عالق في مشروع؟ لنجد الحل معاً. | Support CTA headline |
+| Got an idea? Let’s compile it. | لديك فكرة؟ لنبنِها معاً.‏ | Default CTA headline |
+| DM us “START” or tap the link in bio. | راسلنا بكلمة «ابدأ» أو اضغط على الرابط في الملف الشخصي.‏ | Default CTA line |
+| Stuck on a project? Let’s work it out. | عالق في مشروع؟ لنجد الحل معاً.‏ | Support CTA headline |
 | Follow @craptostudio | تابِع @craptostudio | CTA pill |
 | Swipe | اسحب | Slide footer |
 | Save for later | احفظه لوقت لاحق | CTA footer |
@@ -806,8 +808,8 @@ The other highlights: Start → ابدأ, Work → أعمالنا, Reviews → �
 | English | Arabic |
 |---|---|
 | upgrade, upgrades | ترقية |
-| mentoring, guidance | إرشاد (the student does the work: «أنت تبني، ونحن نشرح.») |
-| integrations, connecting your tools | ربط: «ربط بأدواتك»، «واجهات API وربط الأنظمة» |
+| mentoring, guidance | إرشاد (the student does the work: «أنت تبني، ونحن نشرح.‏») |
+| integrations, connecting your tools | ربط, as in «ربط بأدواتك» and «ربط الأنظمة» |
 | automation | أتمتة |
 | AI assistants, chatbots | مساعدات ذكية |
 | debugging | تصحيح الأخطاء |
@@ -830,14 +832,14 @@ The other highlights: Start → ابدأ, Work → أعمالنا, Reviews → �
 - Latin words inside Arabic are set in Plus Jakarta Sans automatically ([7.1](#71-typefaces)).
 - When «و» comes before a Latin word, write it as a separate word: «iOS و Android», as in the content file.
 
-**Digits:** use Western digits (0–9) in Arabic too, as the content does: «4 خطوات»، «07 / إرشاد»، «متاح 24/7». Don't mix in Eastern Arabic digits (٠١٢٣). Decimals use a point (4.9).
+**Digits:** use Western digits (0–9) in Arabic too, as the content does: «4 خطوات» in the Start sub-line, «07 / إرشاد» in the Support tag. Don't mix in Eastern Arabic digits (٠١٢٣). Decimals use a point (4.9).
 
 **Punctuation:** Arabic comma (،), question mark (؟), semicolon (؛) and guillemets (« ») for quotes; the full stop and exclamation mark are the same as in English. Quote the keyword with guillemets: «ابدأ». No space before punctuation, one space after.
 
 **Direction (bidi) tips**
 
 - **Start every Arabic caption, line and reply with an Arabic word,** not with the brand name, the @handle, an emoji, a number or a hashtag. Apps set a paragraph's direction from its first letter, and a Latin start flips the whole paragraph to left-to-right. Write «نحن في Crapto Studio…», not «Crapto Studio …».
-- **When a line has to start in Latin but ends in Arabic,** add an invisible right-to-left mark (RLM, U+200F) after the final Arabic punctuation, or the closing » jumps to the far end of the line. The bio does this on its last line: «ابدأ» is followed by an RLM. Keep it when you copy the bio; it is invisible, so copy the bio from [`../design/content.mjs`](../design/content.mjs) or [the profile setup guide](../instagram/01-profile-setup.md) rather than retyping it:
+- **When a line has to start in Latin but ends in Arabic,** add an invisible right-to-left mark (RLM, U+200F) after the final Arabic punctuation, or the closing » (or the full stop) jumps to the far end of the line. The bio does this on its last line: «ابدأ» is followed by an RLM. This guide does the same wherever Arabic ending in punctuation is quoted inside English text or a table. Keep it when you copy the bio; it is invisible, so copy the bio from [`../design/content.mjs`](../design/content.mjs) or [the profile setup guide](../instagram/01-profile-setup.md) rather than retyping it:
 
   ```
   Ideas, compiled. 💻 أفكارك، جاهزة للتشغيل
@@ -878,10 +880,10 @@ Every launch post opens with an animated hero: an 8-second scene that shows the 
 1. **Seamless 8-second loops.** Instagram replays feed videos, so the last frame must flow straight into the first. Ambient motion completes whole cycles within the 8 s: a drift goes out and comes back, a spin turns a full 360°, the Intro orbit makes exactly one turn, the game world scrolls exactly one pattern.
 2. **Frame 0 is the finished composition.** The first frame shows the complete scene, never an empty or half-built one. It becomes the grid thumbnail and `01-cover.png`, so the grid is never blank.
 3. **Hold → clear → rebuild → hold.** The finished picture holds for about a second, clears quickly (most scenes start clearing at about 0.9 s), the demo replays the story over a few seconds, and the finished picture holds again until the loop restarts.
-4. **"Silk" easing.** The default ease is `cubic-bezier(.22, 1, .36, 1)` (registered in GSAP as `silk`, 0.7 s by default): a quick start and a long, soft landing. Small pops use a gentle overshoot (`back.out`), ambient drifts use `sine.inOut`, and only constant travel (an orbit, a scrolling world, a spark on a path) is linear.
+4. **"Silk" easing.** The default ease is `cubic-bezier(.22, 1, .36, 1)` (registered in GSAP as `silk`, 0.7 s by default): a quick start and a long, soft landing. Small pops use a gentle overshoot (`back.out`), ambient drifts use `sine.inOut`, and only constant motion (an orbit, a scrolling world, a full spin, the Start spark's steady journey) is linear.
 5. **Staggered entrances.** Things arrive one after another, about 0.05–0.12 s apart, in reading order, so the eye follows the story. Don't drop everything in at once.
 6. **Calm ambient motion.** Glows, blobs and cards float a few pixels and come back. Nothing ambient competes with the story.
-7. **Transform and opacity.** Animate position, scale, rotation and opacity, plus SVG stroke drawing and motion paths for lines. Don't animate layout properties (width, height, margins, font size): they reflow text and make it shimmer.
+7. **Transform and opacity.** Animate position, scale, rotation and opacity. The only extras are paint-only effects that never move text: SVG stroke drawing and motion paths for lines, a soft outline ring, an SVG gauge redrawn as its needle turns. Don't animate layout properties (width, height, margins, font size): they reflow text and make it shimmer.
 8. **The headline stays readable.** The headline, sub-line, tag, header and footer never move or fade; only the scene and the background glows animate, and nothing in the scene crosses the headline.
 9. **No flashing.** No strobes or full-frame flashes, and nothing blinks more than three times a second. "Success" moments are soft: a glow, a ring, a short petal burst.
 10. **Deterministic.** Each frame is rendered by seeking the timeline to an exact time, so the same code always makes the same video. Use seeded randomness for decoration (as the scenes do), never `Math.random()` or the clock.
@@ -936,7 +938,7 @@ Check posts with long headlines on the Reel (`--frame … --format reel`) so the
 | 08 | Games | Dark | A 2D platformer in a Unity-style game window: a blob hero runs and jumps across brand-blue platforms collecting the logo's orange petals. An iris wipe restarts the run, the score rolls back, and a fresh run collects the petals again. |
 | 09 | Intro | Blue | The logo comes alive: the white symbol melts into gooey droplets that scatter and flow back together, the four orange petals spin back into place, and the eight services orbit the mark. |
 
-Names, ratings, prices, order numbers and speed figures inside the scenes are mock UI that illustrates the service. They are not results or client work: never quote them as facts in captions or replies. The text inside each animation lives in the `copy` block (`en` and `ar`) at the top of its scene file, not in `content.mjs`.
+Names, ratings, prices, order numbers and speed figures inside the scenes are mock UI that illustrates the service. They are not results or client work: never quote them as facts in captions or replies. The text inside each animation lives in the `copy` block (`en` and `ar`) at the top of its scene file, not in `content.mjs`. The one exception is the Intro orbit, which reads the service names from the `services` list in `content.mjs`.
 
 ### 10.5 Rendering and checking
 
@@ -989,7 +991,7 @@ Instagram carousels can mix video and images, so the video goes first and the PN
 | **statement** | One big sentence with a small code-comment kicker ("// who we are", «// من نحن») and the colour symbol | Positioning, a strong opinion, an announcement |
 | **services** | The 8 services in equal-height cards, each with its Lucide icon on a brand-gradient tile and a short sub-line, from the `services` list in [`../design/content.mjs`](../design/content.mjs) | The Intro post, a "what we do" reminder |
 | **image** | A screenshot or photo (PNG, JPG or WebP) in the dark slide frame, with an optional title and caption. `fit: 'contain'` (default) shows the whole image; `'cover'` fills the frame | Case studies, demos, before/after. Use it instead of adding screenshots in the Instagram app, so the slide numbers (e.g. "02 / 07") stay right |
-| **cta** | The last slide: the colour symbol, the headline "Got an idea? Let’s compile it." («لديك فكرة؟ لنبنِها معاً.»), one call to action (DM “START” or tap the link in bio; «ابدأ» in Arabic) and a single "Follow @craptostudio" pill («تابِع @craptostudio»). The footer reads "Save for later" with a bookmark icon. A post can set its own headline: the Support post uses "Stuck on a project? Let’s work it out." | Every carousel ends with one |
+| **cta** | The last slide: the colour symbol, the headline "Got an idea? Let’s compile it." («لديك فكرة؟ لنبنِها معاً.‏»), one call to action (DM “START” or tap the link in bio; «ابدأ» in Arabic) and a single "Follow @craptostudio" pill («تابِع @craptostudio»). The footer reads "Save for later" with a bookmark icon. A post can set its own headline: the Support post uses "Stuck on a project? Let’s work it out." | Every carousel ends with one |
 
 Every slide has the same header (colour symbol, "CRAPTO STUDIO", slide counter such as "02 / 03") and footer (handle, and "Swipe" or "Save for later"). A post with `slides: []` (or no `slides` at all) is a single hero video or image, and its footer drops "Swipe".
 
@@ -1013,9 +1015,9 @@ Every slide has the same header (colour symbol, "CRAPTO STUDIO", slide counter s
 ### 11.4 Changing text and regenerating
 
 - **Text:** edit [`../design/content.mjs`](../design/content.mjs). It is the single source of truth for post copy in both languages, themes, posting order, the profile and highlights. Every text field is written `t('English', 'العربية')`; always fill in both. Wrap one word or a short phrase in `*asterisks*` for the accent treatment, e.g. `t('Games people want to *replay*.', 'ألعاب تُلعب *مرة بعد مرة*.')`, and use `\n` to force a line break.
-- **Text inside an animation** (the chat, the app screens, the dashboard): edit the `copy` block at the top of its scene file in [`../design/scenes/`](../design/scenes/), again in `en` and `ar`.
+- **Text inside an animation** (the chat, the app screens, the dashboard): edit the `copy` block at the top of its scene file in [`../design/scenes/`](../design/scenes/), again in `en` and `ar`. (The Intro orbit shows the service names from `services` in `content.mjs`.)
 - **New posts:** add an entry to `posts` in [`../design/content.mjs`](../design/content.mjs) with `order`, `slug`, `theme` (`dark`, `blue` or `light`), `scene` (a file in `design/scenes/`), `tag`, `headline`, `sub` and `slides`. Every post needs a scene that follows [section 10](#10-motion). Slide types are `cards`, `steps`, `statement`, `services`, `image` and `cta`. An image slide looks like `{ type: 'image', src: 'photos/dashboard.png', title: t('The *after*', 'بعد *الترقية*'), caption: t('Same app, new dashboard', 'التطبيق نفسه، بلوحة تحكم جديدة'), fit: 'contain' }`: `src` is relative to the repo root, not to this guide (`photos/dashboard.png` is a hypothetical example; there is no `photos/` folder yet), the file can be PNG, JPG or WebP, `title` and `caption` are optional, and `fit` is `'contain'` (default) or `'cover'`. A post with `slides: []` (or no `slides` at all) is a single video or image, with no "Swipe".
-- **CTA headline:** by default the CTA slide says "Got an idea? Let’s compile it." / «لديك فكرة؟ لنبنِها معاً.». A `cta` slide can override the headline, e.g. `{ type: 'cta', headline: t('Stuck on a project?\n*Let’s work it out.*', 'عالق في مشروع؟\n*لنجد الحل معاً.*') }`, which the Support post uses so mentoring doesn't promise to "compile" a student's project for them. It can also override the line under the headline with `body` (wrap a word in `**double asterisks**` to make it bold, as the default does with “START” and «ابدأ»).
+- **CTA headline:** by default the CTA slide says "Got an idea? Let’s compile it." / «لديك فكرة؟ لنبنِها معاً.‏». A `cta` slide can override the headline, e.g. `{ type: 'cta', headline: t('Stuck on a project?\n*Let’s work it out.*', 'عالق في مشروع؟\n*لنجد الحل معاً.*') }`, which the Support post uses so mentoring doesn't promise to "compile" a student's project for them. It can also override the line under the headline with `body` (wrap a word in `**double asterisks**` to make it bold, as the default does with “START” and «ابدأ»).
 - **Colours and fonts:** edit [`../design/tokens.mjs`](../design/tokens.mjs) and [`../design/fonts.mjs`](../design/fonts.mjs). Keep them in line with sections 6 and 7 of this guide.
 - **Layout check:** `npm run render` (also run by `npm run build`) warns if any slide's content ends within 40 px of the footer. If you see that warning, shorten the text (in that language) or split the slide.
 - **Rebuild everything:**

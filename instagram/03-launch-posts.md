@@ -274,11 +274,13 @@ DM us "START" with your project, your deadline and where you're stuck.
 #برمجة #تعلم_البرمجة #هاكاثون #علوم_الحاسب #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 95 characters)
 
 ```
 Blue cover: code editor where a student fixed a bug with a mentor's hint. "You code. We guide."
 ```
+
+**Alt text, Arabic** (cover: 91 characters)
 
 ```
 غلاف أزرق: محرر كود أصلح فيه الطالب الخطأ بتوجيه من المرشد، وعبارة «أنت تبرمج، ونحن نرشدك.»
@@ -341,11 +343,13 @@ Planning an event, a launch or a course? DM us "START" with the date and your id
 #عروض_تقديمية #محتوى_تفاعلي #التسويق_الرقمي #فعاليات #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 92 characters)
 
 ```
 Dark cover: interactive slide with a 3D product, an info card and a quiz answered correctly.
 ```
+
+**Alt text, Arabic** (cover: 85 characters)
 
 ```
 غلاف داكن: شريحة تفاعلية فيها منتج ثلاثي الأبعاد وبطاقة معلومات واختبار بإجابة صحيحة.
@@ -407,11 +411,13 @@ DM us "START" with a link to your project and what's bothering you about it.
 #برمجة #تطوير_البرمجيات #تطوير_التطبيقات #تقنية #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 99 characters)
 
 ```
 Light cover: app upgrade with a Before/After switch, fixed code and a speed gauge in the fast zone.
 ```
+
+**Alt text, Arabic** (cover: 82 characters)
 
 ```
 غلاف فاتح: ترقية تطبيق مع مفتاح قبل/بعد وكود مُصلَح ومؤشر سرعة في المنطقة السريعة.
@@ -459,7 +465,7 @@ DM us "START" and tell us which task takes up the most time in your week.
 #craptostudio #softwaredevelopment #webdevelopment #webapp #businesssoftware
 ```
 
-**Arabic caption** (hook: 86 characters)
+**Arabic caption** (hook: 92 characters)
 
 ```
 ما زلت تدير عملك بجداول البيانات والنسخ واللصق ورسائل البريد التي لا تنتهي؟ هناك طريقة أفضل.
@@ -473,11 +479,13 @@ DM us "START" and tell us which task takes up the most time in your week.
 #تطوير_البرمجيات #برمجيات #التحول_الرقمي #ريادة_الأعمال #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 94 characters)
 
 ```
 Dark cover: a messy spreadsheet turned into a clean dashboard with charts and an orders table.
 ```
+
+**Alt text, Arabic** (cover: 83 characters)
 
 ```
 غلاف داكن: جدول بيانات مزدحم يتحوّل إلى لوحة تحكم أنيقة فيها رسم بياني وجدول طلبات.
@@ -539,11 +547,13 @@ Got a task you wish would run by itself? DM us "START" and describe it in one se
 #الذكاء_الاصطناعي #التحول_الرقمي #ريادة_الأعمال #تقنية #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 93 characters)
 
 ```
 Blue cover: a store's AI assistant confirms a jacket is in stock in size M, in a chat window.
 ```
+
+**Alt text, Arabic** (cover: 77 characters)
 
 ```
 غلاف أزرق: مساعد ذكي لمتجر يجيب عميلاً عن توفّر سترة بمقاس M في نافذة محادثة.
@@ -605,11 +615,13 @@ Got an app idea? DM us "START" and tell us about it in one sentence.
 #تطبيقات_الجوال #تطوير_التطبيقات #برمجة_تطبيقات #تجربة_المستخدم #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 96 characters)
 
 ```
 Dark cover: a booking app on a floating phone confirms a session, with rating and payment cards.
 ```
+
+**Alt text, Arabic** (cover: 78 characters)
 
 ```
 غلاف داكن: تطبيق حجز على هاتف عائم يؤكد موعد الجلسة، مع بطاقتي التقييم والدفع.
@@ -672,14 +684,16 @@ Save this post for the checklist, then DM us "START" or tap the link in bio when
 #ريادة_الأعمال #الشركات_الناشئة #مشاريع_صغيرة #برمجة #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 94 characters)
 
 ```
-Light cover: four steps, Talk, Plan, Build, Launch, joined by a path, with a "Launched" badge.
+Light cover: four steps, Talk, Plan, Build, Launch, joined by a lit path, with a launch badge.
 ```
 
+**Alt text, Arabic** (cover: 85 characters)
+
 ```
-غلاف فاتح: أربع خطوات، نتحدّث ونخطّط ونبني ونُطلق، يربطها مسار، مع شارة «تم الإطلاق».
+غلاف فاتح: أربع خطوات، نتحدّث ونخطّط ونبني ونُطلق، يربطها مسار مضيء، مع شارة الإطلاق.
 ```
 
 **Posting notes**
@@ -739,11 +753,13 @@ Got a game idea? DM us "START" and tell us about it in one sentence. 🎮
 #تطوير_الألعاب #ألعاب_فيديو #صناعة_الألعاب #unity3d #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 99 characters)
 
 ```
 Dark cover: a 2D platformer in a Unity-style window, a blob hero collecting orange petals at night.
 ```
+
+**Alt text, Arabic** (cover: 91 characters)
 
 ```
 غلاف داكن: لعبة منصّات ثنائية الأبعاد في نافذة بأسلوب Unity، وبطل صغير يجمع بتلات برتقالية.
@@ -809,11 +825,13 @@ Got an idea? DM us "START" or tap the link in bio.
 #برمجة #تطوير_الألعاب #تطبيقات_الجوال #الذكاء_الاصطناعي #craptostudio
 ```
 
-**Alt text** (cover)
+**Alt text, English** (cover: 100 characters)
 
 ```
 Blue cover: the white Crapto Studio symbol with eight service labels orbiting it. "Ideas, compiled."
 ```
+
+**Alt text, Arabic** (cover: 95 characters)
 
 ```
 غلاف أزرق: شعار Crapto Studio الأبيض تدور حوله الخدمات الثماني، وعبارة «أفكارك، جاهزة للتشغيل.»
@@ -858,11 +876,13 @@ That's one English and one Arabic Reel a week, on top of the posts in the conten
 2. Optional: add a quiet instrumental track. Don't trim the video.
 3. Set the cover: look for **Edit cover** (or **Cover**) → **Add from camera roll**, and pick the matching `-cover.jpg`. It is the Reel's first frame, so the cover and the video match.
 4. Paste the caption (see below). Add alt text if your app offers it for Reels (reuse the post's cover alt text).
-5. **Keep the launch grid intact:** if the app offers an option to keep the Reel off your profile grid (it has appeared as a toggle such as "Show in profile grid" on the share screen, but the name and place vary by app version), turn it off. The Reel still shows in your Reels tab and to non-followers. If your app doesn't offer it, the Reel lands top-left like any post and shifts the grid by one square. That's fine after launch.
+5. **Keep the launch grid intact:** if the app offers an option to keep the Reel off your profile grid (it has appeared as a toggle such as "Show in profile grid" on the share screen, but the name and place vary by app version), turn it off. The Reel still shows in your Reels tab and can still be recommended to people who don't follow you. If your app doesn't offer it, the Reel lands top-left like any post and shifts the grid by one square. That's fine after launch.
 
 ### Reel captions
 
-Keep them short: reuse the **hook** from the matching post, then one CTA line, then the same hashtags as that post. The Arabic Reel gets the Arabic hook and «ابدأ».
+Keep them short: reuse the **hook** from the matching post, then one CTA line, then the same hashtags as that post. The Arabic Reel gets the Arabic hook and «ابدأ». Example for the Games Reels:
+
+**English Reel** (`08-games-en.mp4`)
 
 ```
 A game idea is easy to explain. Making it fun to play is the hard part. That's the part we love.
@@ -871,6 +891,8 @@ Got a game idea? DM us "START". 🎮
 
 #craptostudio #gamedev #unity3d #madewithunity #indiedev
 ```
+
+**Arabic Reel** (`08-games-ar.mp4`)
 
 ```
 شرح فكرة اللعبة سهل، أما جعلها ممتعة فهو التحدي الحقيقي، وهو بالضبط ما نحبّه.
@@ -891,7 +913,7 @@ The launch posts explain **what** Crapto Studio does. The next posts should **sh
 | Rest of week 1, then week 2 onwards | Tell your own network, start the launch Reels, then the regular posting rhythm in both languages. Mix the content pillars and formats. | [02-content-strategy.md](02-content-strategy.md) (bilingual publishing, pillars, weekly rhythm, first 30 days) |
 | Any time you need an idea | Pick a post, Reel or story idea and adapt it, with English and Arabic hooks. | [04-idea-bank.md](04-idea-bank.md) (post ideas, Reel scripts, hook formulas) |
 | First real project you can show | Post it (case study, demo or before/after, with the client's permission) and swap it into your pins. | [01-profile-setup.md, pinned posts](01-profile-setup.md#10-pinned-posts) |
-| First real review | Add it to the Reviews highlight (or create the highlight now, if you skipped it at launch). Never write or invent one. Until then use `[add a real client quote]` as a placeholder only in drafts. | [01-profile-setup.md, story highlights](01-profile-setup.md#8-story-highlights) |
+| First real review | Add it to the Reviews highlight (Arabic label «آراء العملاء»). If you skipped that highlight at launch, create it now. Never write or invent one. Until then use `[add a real client quote]` as a placeholder only in drafts. | [01-profile-setup.md, story highlights](01-profile-setup.md#8-story-highlights) |
 | After 2 weeks | Open **Insights** and compare the 18 launch posts: saves, shares and profile visits, and English against Arabic. Also check which posts led to DMs (count those yourself, by keyword). Make more of what worked. | [02-content-strategy.md](02-content-strategy.md) (measuring what works) |
 
 Good to know:

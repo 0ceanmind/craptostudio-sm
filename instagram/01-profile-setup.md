@@ -3,7 +3,7 @@
 A step-by-step guide to set up the Crapto Studio Instagram profile before the launch posts go live.
 Work through it top to bottom, then tick off the [launch checklist](#11-launch-checklist) at the end.
 
-The account speaks **two languages**. Every launch post is published twice: once in English and once in Arabic (Modern Standard Arabic, right to left). So the profile has to work for both: the bio, the link titles, the highlights and the DM replies below all cover English and Arabic. The brand name always stays in Latin letters: **Crapto Studio**. The DM keyword is **START** in English and **«ابدأ»** in Arabic.
+The account speaks **two languages**. Every launch post is published twice: first in English, then in Arabic (Modern Standard Arabic, right to left). So the profile has to work for both: the bio, the link titles, the highlights and the DM replies below all cover English and Arabic. The brand name always stays in Latin letters: **Crapto Studio**. The DM keyword is **START** in English and **«ابدأ»** in Arabic.
 
 > **Handle:** this guide assumes the handle **@craptostudio**. If yours is different, swap it everywhere you see it.
 
@@ -36,13 +36,13 @@ Each post folder (`NN-slug/en/` or `NN-slug/ar/`) holds one carousel:
 
 - `01-hero.mp4`: the first slide, an 8-second animated hero that loops seamlessly (1080×1350, H.264, no sound).
 - `01-cover.png`: the video's first frame as a still image (identical to frame 0). That frame is the finished design, so the grid thumbnail is never blank, and you can post the still instead of the video if you prefer.
-- `02.png`, `03.png` …: the static slides that follow (icon cards, steps, the call to action).
+- `02.png`, `03.png` …: the static slides that follow, with fewer words (icon cards, numbered steps, a statement or the services grid on the intro post), always ending with the call to action.
 
 How to post them, with captions and alt text in both languages, is in [`03-launch-posts.md`](03-launch-posts.md).
 
-All of these are made from your own logo files in [`../brand/logo/source/`](../brand/logo/source/). The profile picture shows the colour symbol only (the same symbol as [`Crapto Studio-09.png`](../brand/logo/source/Crapto%20Studio-09.png)). The build cuts it from your main logo file, [`Crapto Studio-08.png`](../brand/logo/source/Crapto%20Studio-08.png).
+The profile picture and the logo on every post and video are made from your own logo files in [`../brand/logo/source/`](../brand/logo/source/). The profile picture shows the colour symbol only (the same symbol as [`Crapto Studio-09.png`](../brand/logo/source/Crapto%20Studio-09.png)). The build cuts it from your main logo file, [`Crapto Studio-08.png`](../brand/logo/source/Crapto%20Studio-08.png).
 
-**A file is missing?** Everything in `exports/` is generated. `npm run build` makes the logo crops and every still (profile picture, highlight covers, post covers and slides, previews). `npm run motion` makes the hero videos and Reels; it is slow (about a minute per video, 36 videos). `npm run check` checks the text contrast on every hero cover (feed and Reel) and every text slide, in both languages. `npm run render` alone remakes the stills after a text change in `content.mjs`.
+**A file is missing?** Everything in `exports/` is generated. `npm run build` makes the logo crops and symbol parts (`npm run logo`), then every still (`npm run render`: profile pictures, highlight covers, post covers and slides, previews, brand board). `npm run motion` makes the hero videos and Reels (run it after `npm run build`, because the videos use the logo crops and parts); it is slow (about a minute per video, 36 videos). `npm run check` checks the text contrast on every hero cover (feed and Reel) and every text slide, in both languages. After a text change in `content.mjs`, run `npm run render` for the stills and `npm run motion` for the videos (the headline is part of each hero video).
 
 ### Information to prepare
 
@@ -59,7 +59,7 @@ These are placeholders in this guide. Fill them in with real details. Leave out 
 
 The same placeholders appear inside the Arabic replies, so one search-and-replace fills both languages. Ideally the forms and pages work in Arabic too (see [section 6](#6-links-up-to-5)).
 
-**Copy Arabic, don't retype it.** Copy Arabic text from this page (or from [`../design/content.mjs`](../design/content.mjs)). That keeps the exact spelling, the Arabic quotation marks « » and the invisible direction marks explained in [section 4](#4-bio). A few Arabic lines on this page end with the same kind of invisible mark, so they display in the right order here; it does no harm when pasted. Some Markdown viewers still show mixed Arabic/English lines in code blocks in a slightly odd order (for example a full stop on the wrong side). The text itself pastes correctly, so judge the result on your phone.
+**Copy Arabic, don't retype it.** Copy Arabic text from this page (or from [`../design/content.mjs`](../design/content.mjs)). That keeps the exact spelling, the Arabic quotation marks « » and the invisible direction marks explained in [section 4](#4-bio). A few Arabic lines and quotes on this page contain the same kind of invisible mark, so they display in the right order here; it does no harm when pasted. Some Markdown viewers still show mixed Arabic/English lines in code blocks in a slightly odd order (for example a full stop on the wrong side). The text itself pastes correctly, so judge the result on your phone.
 
 ---
 
@@ -73,7 +73,7 @@ The same placeholders appear inside the Arabic replies, so one search-and-replac
 |---|---|
 | Contact buttons (Email, Call, and others) | Clients can reach you in one tap |
 | A category label under your name | Makes clear right away that you are a tech studio |
-| Insights (reach, profile visits, link taps, followers) | You can see which posts bring real enquiries, and which language your audience uses |
+| Insights (reach, profile visits, link taps, followers) | You can see which posts bring real enquiries, and whether your English or your Arabic posts reach more people |
 | Saved replies and FAQ questions in DMs | Faster, consistent answers in both languages (see [section 9](#9-dm-setup)) |
 | Works with scheduling and automation tools | Most of these tools need a professional account |
 
@@ -182,7 +182,7 @@ Copying the code block above (or the line in `content.mjs`) keeps the mark. Some
 
 ### Alternative: English-first (143 characters)
 
-For an account where most followers read English. It keeps the full English service list and the Arabic keyword, so Arabic speakers still know how to reach you. The last line is the same as in the recommended bio, invisible mark included.
+For an account where most followers read English. It spells out more of the services in English and keeps the Arabic keyword, so Arabic speakers still know how to reach you. The last line is the same as in the recommended bio, invisible mark included.
 
 ```
 Ideas, compiled. 💻
@@ -191,7 +191,7 @@ Interactive content & project upgrades
 👇 DM "START" · راسلنا «ابدأ»‏
 ```
 
-### Alternative: Arabic-first (123 characters)
+### Alternative: Arabic-first (124 characters)
 
 For an account where most followers read Arabic. Arabic leads; the English services and keyword follow.
 
@@ -199,10 +199,10 @@ For an account where most followers read Arabic. Arabic leads; the English servi
 أفكارك، جاهزة للتشغيل 💻
 ألعاب · تطبيقات · برمجيات · ذكاء اصطناعي
 Games · Apps · Software · AI
-👇 راسلنا «ابدأ» · DM "START"‎
+👇 راسلنا «ابدأ»‏ · DM "START"‎
 ```
 
-Here the last line starts in Arabic, so it runs right to left. It ends with the mirror-image mark, an invisible **left-to-right mark** (U+200E, "LRM") after `"START"`. Without it, the closing quotation mark of "START" jumps to the wrong side.
+Here the last line starts in Arabic, so it runs right to left. It ends with the mirror-image mark, an invisible **left-to-right mark** (U+200E, "LRM") after `"START"`. Without it, the closing quotation mark of "START" jumps to the wrong side. The same right-to-left mark as in the recommended bio also sits straight after «ابدأ», so the line still looks right on a phone that lays it out left to right. Both marks count: 122 visible characters + 2 marks = 124.
 
 ### Why the bilingual bio is recommended
 
@@ -214,7 +214,7 @@ Here the last line starts in Arabic, so it runs right to left. It ends with the 
 
 ### Character count note
 
-Instagram's own counter may count each emoji as 2 characters. So the app may show about 142 for the recommended bio, about 145 for English-first and about 125 for Arabic-first. All are under 150, but check the counter before you save.
+Instagram's own counter may count each emoji as 2 characters. So the app may show about 142 for the recommended bio, about 145 for English-first and about 126 for Arabic-first. All are under 150, but check the counter before you save.
 
 **Line breaks:** paste the bio in the app (or on instagram.com). If the line breaks disappear, add them by hand.
 
@@ -314,8 +314,8 @@ Both label columns come from `highlights` in [`../design/content.mjs`](../design
 A highlight has one name, so pick **one language for all 10 labels**. Don't mix languages in the row.
 
 - **Default: English labels.** They are short, they match the profile mockup, and they match the English-first order of the Name field. The longest is "Interactive" (11 characters).
-- **Arabic labels** if most of your audience reads Arabic (check Insights after the first weeks), or if you chose the Arabic-first bio.
-- **Length:** under the circle, only about the first 10–12 characters show, depending on the phone and the letters. Two Arabic labels are 12 characters: «ذكاء اصطناعي» and «آراء العملاء». Check them on your phone. If one is cut off, use "AI" for the AI highlight (widely understood in Arabic too) and «آراء» for Reviews.
+- **Arabic labels** if most of your audience reads Arabic (after the first weeks, compare how the English and Arabic posts do and which language your DMs arrive in), or if you chose the Arabic-first bio.
+- **Length:** under the circle, only about the first 10–12 characters show, depending on the phone and the letters. Two Arabic labels are 12 characters: «ذكاء اصطناعي» and «آراء العملاء». Check them on your phone. If one is cut off, use «آراء» for Reviews, and "AI" for the AI highlight (widely understood in Arabic too; the one exception to the one-language rule).
 
 You can rename a highlight later without changing its stories or its position.
 
@@ -404,7 +404,7 @@ For stories with text, the lines below are ready in both languages. Use one stor
 > **No reviews yet?** Don't fake one. Two honest options:
 >
 > 1. **Recommended:** skip Reviews at launch. Create it when you get the first real review. It will appear at the **front**. To move it to the end, add one new story (a short update or a re-shared post) to each of the other highlights in reverse order: Support first, Start last.
-> 2. Create it at launch with one honest story in both languages, for example:
+> 2. Create it at launch with one honest story in both languages, for example (only if it is true for you):
 >    - EN: First projects in progress. Real client reviews will appear here.
 >    - AR: مشاريعنا الأولى قيد التنفيذ. ستظهر هنا آراء عملائنا الحقيقية.‏
 >
@@ -512,7 +512,7 @@ Send us:
 
 ```
 يسعدنا أن نساعدك في مشروعك أو مسابقتك!
-نقدّم جلسات إرشاد، وجلسات لتصحيح الأخطاء ومراجعة الكود، والتحضير للمسابقات والهاكاثونات.
+نقدّم جلسات إرشاد، وجلسات تصحيح الأخطاء ومراجعة الكود، والتحضير للمسابقات والهاكاثونات.
 أنت تبرمج، ونحن نرشدك ونشرح لك السبب وراء كل خطوة، لتعرض عملك بثقة.
 لا ننجز العمل نيابةً عنك: يبقى المشروع مشروعك، ويلتزم بقواعد مدرستك أو جامعتك أو المسابقة.
 أرسل لنا:
@@ -532,9 +532,9 @@ If your idea touches any of these, we'd be happy to talk.
 ```
 
 ```
-شكراً على سؤالك! [الخدمة المطلوبة] ليست من الخدمات التي نقدّمها في Crapto Studio.
-ما نقدّمه: ألعاب Unity، وتطبيقات iOS و Android، وبرمجيات مخصّصة، وحلول ذكاء اصطناعي، ومحتوى تفاعلي وعروض تقديمية، وترقية المشاريع القائمة، وإرشاد في المشاريع البرمجية والمسابقات.
-إن كانت فكرتك قريبة من أيٍّ من هذه، يسعدنا أن نتحدّث معك.
+شكراً على سؤالك! لا نقدّم [الخدمة المطلوبة] في Crapto Studio.
+ما نقدّمه: ألعاب Unity، وتطبيقات iOS و Android، وبرمجيات، وحلول ذكاء اصطناعي مخصّصة، ومحتوى تفاعلي وعروض تقديمية، وترقية المشاريع القائمة، وإرشاد في المشاريع البرمجية والمسابقات.
+إن كانت فكرتك قريبة من أيٍّ من هذه، فيسعدنا أن نتحدّث معك.
 ```
 
 In the Arabic version, replace `[الخدمة المطلوبة]` with the name of what they asked about, in Arabic.
@@ -594,7 +594,7 @@ Send us a link or a short description, what's not working, and what you'd like t
 
 ### Optional: comment-to-DM automation
 
-The posts end with the keyword: "DM us START" on the English posts, «راسلنا بكلمة ابدأ» on the Arabic ones. You can also invite people to **comment** the keyword and send them the reply automatically. Third-party tools that connect to Instagram can do this. Meta's own tools may also offer some automations: check what your account has before you pay for a tool.
+The last slide of every post asks for the keyword: *DM us “START”* on the English posts and *راسلنا بكلمة «ابدأ»‏* on the Arabic ones. You can also invite people to **comment** the keyword and send them the reply automatically. Third-party tools that connect to Instagram can do this. Meta's own tools may also offer some automations: check what your account has before you pay for a tool.
 
 If you use one:
 
@@ -602,7 +602,7 @@ If you use one:
 - Some tools need a Business account and a linked Facebook Page.
 - Set up **two keywords**: START (English reply) and ابدأ (Arabic reply). If the tool matches exact words, add the common spellings too (Start, start; ابدا، إبدأ، ابدء).
 - Send one useful message (saved reply 1 in the matching language), not a series of messages.
-- Reply to the comment publicly too, in the commenter's language ("Sent you a DM!" / «أرسلنا لك رسالة») so others see it works.
+- Reply to the comment publicly too, in the commenter's language ("Sent you a DM!" / «أرسلنا لك رسالة خاصة») so others see it works.
 - Test both keywords from a second account before you announce it.
 
 ---
@@ -630,20 +630,20 @@ Without pins, the top two rows of the launch grid are (newest first, so each Ara
 
 ### At launch: two good options
 
-**Option 1: keep the grid exactly as designed (safest on launch day).** Pin the top row as it already is: `09-intro/ar`, `09-intro/en`, `08-games/ar`. Nothing moves.
+**Option 1: keep the grid exactly as designed (safest on launch day).** Pin the top row as it already is: `09-intro/ar`, `09-intro/en`, `08-games/ar`. Nothing moves now, and these three stay on top when you post again. Pinning just the intro pair (`09-intro/en` first, then `09-intro/ar`) is also safe.
 
 - Pin order: `08-games/ar` first, then `09-intro/en`, then `09-intro/ar` last.
 
-**Option 2: intro in both languages + how to start (recommended once the launch is complete).** Pin `09-intro/ar`, `09-intro/en` and **one** `07-start`: the one in the language most of your enquiries arrive in. Not sure yet? Pin `07-start/en` (it matches the English labels and the English-first Name); switch to `07-start/ar` if you chose Arabic labels or the Arabic-first bio, or once Insights shows most of your audience reads Arabic.
+**Option 2: intro in both languages + how to start (recommended once the launch is complete).** Pin `09-intro/ar`, `09-intro/en` and **one** `07-start`: the one in the language most of your enquiries arrive in. Not sure yet? Pin `07-start/en` (it matches the English labels and the English-first Name); switch to `07-start/ar` if you chose Arabic labels or the Arabic-first bio, or once most of your enquiries arrive in Arabic.
 
 - Pin order: the `07-start` post first, then `09-intro/en`, then `09-intro/ar` last.
 - What changes: only rows 1 and 2. Row 1 becomes `09-intro/ar`, `09-intro/en`, `07-start/…`. Row 2 becomes `08-games/ar`, `08-games/en`, and the other `07-start`. Rows 3 to 6 stay as designed.
 
 | Pin | Why |
 |---|---|
-| `09-intro/ar` — «أفكارك، جاهزة للتشغيل» | Who Crapto Studio is, for Arabic speakers. Top-left: the first post visitors see. |
+| `09-intro/ar` — «أفكارك، جاهزة للتشغيل.‏» | Who Crapto Studio is, for Arabic speakers. Top-left: the first post visitors see. |
 | `09-intro/en` — "Ideas, compiled." | The same for English speakers. |
-| `07-start` — "New project? Here’s the plan." / «مشروع جديد؟ هكذا نبنيه» | How to start and what to send. |
+| `07-start` — "New project? Here’s the plan." / «مشروع جديد؟ هكذا نبنيه.‏» | How to start and what to send. |
 
 You can't pin every post in both languages, and you don't need to: the other language is one row down, and you can re-share it to stories any time.
 

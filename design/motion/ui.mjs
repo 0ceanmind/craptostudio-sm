@@ -26,7 +26,7 @@ export const symbolPng = (name = 'symbol-color') =>
 export function uiCss(ctx) {
   const light = ctx.theme === 'light';
   const v = light
-    ? { card: '#FFFFFF', cardLine: '#D3E1EE', text: color.ink, sub: '#4A6080', soft: '#EEF4FA', shadow: '0 30px 60px rgba(14,26,43,.14)' }
+    ? { card: '#FFFFFF', cardLine: '#D3E1EE', text: color.ink, sub: '#3B5170', soft: '#EEF4FA', shadow: '0 30px 60px rgba(14,26,43,.14)' }
     : { card: color.navy, cardLine: 'rgba(147,169,198,.22)', text: color.white, sub: color.slate, soft: '#1A2D4C', shadow: '0 40px 80px rgba(3,8,18,.45)' };
   return `
 :root{--card:${v.card};--card-line:${v.cardLine};--ui-text:${v.text};--ui-sub:${v.sub};--soft:${v.soft};--shadow:${v.shadow};
@@ -40,7 +40,7 @@ export function uiCss(ctx) {
 .win-bar .d:nth-child(1){background:#FF6159}.win-bar .d:nth-child(2){background:#FFBD2E}.win-bar .d:nth-child(3){background:#28C941}
 .win-bar .t{margin-inline-start:12px}
 .bubble{max-width:78%;padding:20px 26px;border-radius:28px;font-size:${ctx.rtl ? 27 : 28}px;line-height:${ctx.rtl ? 1.6 : 1.4};font-weight:500}
-.bubble.me{align-self:flex-end;background:var(--brand);color:#fff;border-end-end-radius:8px}
+.bubble.me{align-self:flex-end;background:linear-gradient(135deg,${color.cobalt},#3A74B7);color:#fff;border-end-end-radius:8px}
 .bubble.ai{align-self:flex-start;background:var(--soft);color:var(--ui-text);border-end-start-radius:8px}
 .chip{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--soft);border:2px solid var(--card-line);font:600 ${ctx.rtl ? 22 : 21}px ${ctx.rtl ? stack.arabic : stack.mono};color:var(--ui-text);white-space:nowrap}
 .chip.hot{background:var(--sparkg);border-color:transparent;color:${color.ink}}

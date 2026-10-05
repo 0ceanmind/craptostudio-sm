@@ -117,7 +117,7 @@ export function cardsSlide(slide, n, total, lang) {
 .card{position:relative;overflow:hidden;background:${color.navy};border:2px solid ${color.line};border-radius:34px;padding:38px 34px;display:flex;flex-direction:column;justify-content:space-between}
 .card::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;inset-inline-end:-90px;top:-90px;background:radial-gradient(circle,rgba(66,150,209,.28),transparent 70%)}
 .card .i{width:112px;height:112px;border-radius:32px;background:${gradient.brand};color:#fff;display:grid;place-items:center;box-shadow:0 20px 40px rgba(3,8,18,.35)}
-.card .n{position:absolute;top:34px;inset-inline-end:34px;font-family:${stack.mono};font-size:26px;font-weight:700;color:${color.spark}}
+.card .n{position:absolute;top:34px;inset-inline-end:34px;font-family:${stack.mono};font-size:26px;font-weight:700;color:${color.amber}}
 .card .x{font-size:${rtl ? 38 : 40}px;line-height:${rtl ? 1.45 : 1.18};font-weight:800;letter-spacing:${rtl ? 0 : '-.015em'}}
 `;
   const items = slide.items.map((it, i) =>

@@ -171,7 +171,7 @@ export default {
 
 /* success */
 .ap-ok{position:absolute;inset:0;z-index:4;clip-path:circle(140% at 50% 92%);border-radius:46px;box-shadow:0 -24px 48px rgba(2,6,14,.5);
-  background:radial-gradient(120% 70% at 50% 36%,#5AB4D9 0%,#4296D1 34%,#376BB1 68%,#22457E 100%)}
+  background:radial-gradient(120% 70% at 50% 36%,#3F80C4 0%,#2F66A8 34%,#275290 68%,#1F3F74 100%)}
 .ap-ring{position:absolute;left:${CX}px;top:${CY}px;border-radius:50%;border:2px solid rgba(255,255,255,.3)}
 .ap-ring.r1{width:170px;height:170px;margin:-85px 0 0 -85px;background:rgba(255,255,255,.08)}
 .ap-ring.r2{width:236px;height:236px;margin:-118px 0 0 -118px;border-color:rgba(255,255,255,.18)}
@@ -181,13 +181,13 @@ export default {
 .ap-ck svg{width:64px;height:64px;overflow:visible}
 .ap-pet{position:absolute;width:18px;height:28px;margin:-14px 0 0 -9px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:var(--sparkg)}
 .ap-okt{position:absolute;top:398px;inset-inline:0;text-align:center;color:#fff;font-size:${r ? 28 : 30}px;font-weight:800;line-height:40px}
-.ap-oks{position:absolute;top:442px;inset-inline:0;text-align:center;color:rgba(255,255,255,.88);font-size:22px;font-weight:600;line-height:30px}
-.ap-ticket{position:absolute;top:500px;inset-inline:22px;height:86px;border-radius:22px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.26);
+.ap-oks{position:absolute;top:442px;inset-inline:0;text-align:center;color:#fff;font-size:22px;font-weight:600;line-height:30px}
+.ap-ticket{position:absolute;top:500px;inset-inline:22px;height:86px;border-radius:22px;background:rgba(11,22,40,.26);border:2px solid rgba(255,255,255,.26);
   display:flex;align-items:center;gap:14px;padding-inline:12px;color:#fff;box-shadow:0 16px 30px rgba(11,22,40,.25)}
 .ap-ticket .ap-art{width:60px;height:60px;border-radius:16px;flex:none}
 .ap-ticket .gly{transform:scale(.4)}
 .ap-ticket b{display:block;font-size:22px;font-weight:800;line-height:28px}
-.ap-ticket small{display:block;font-size:20px;font-weight:500;line-height:26px;opacity:.85}
+.ap-ticket small{display:block;font-size:20px;font-weight:500;line-height:26px}
 
 .ap-glare{position:absolute;top:-30%;height:160%;left:0;width:110px;z-index:7;
   background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.22),rgba(255,255,255,0));transform:translateX(${r ? 480 : -200}px) rotate(18deg)}
