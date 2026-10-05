@@ -289,6 +289,8 @@ code.cmd{display:block;font:500 12.5px var(--mono);background:var(--bg);border:1
 .ev.tool{font:500 12px var(--mono);color:var(--sub)}
 .ev.tool .ico{color:var(--dim)}
 .ev.text .bubble{background:var(--panel2);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:10px 13px;white-space:pre-wrap;line-height:1.55;max-width:100%;overflow-wrap:anywhere}
+.bubble code,.dock-ev code{font:500 .9em var(--mono);background:rgba(8,17,31,.6);border:1px solid var(--line);border-radius:5px;padding:0 4px}
+.bubble .li::before,.dock-ev .li::before{content:'• ';color:var(--spark)}
 .ev.post .pc{display:flex;align-items:center;gap:12px;border:1px solid rgba(242,141,25,.45);background:rgba(242,141,25,.07);border-radius:14px;padding:10px 12px;flex:1}
 .ev.post .pc img{width:48px;height:60px;border-radius:8px;object-fit:cover;background:var(--raised)}
 .ev.err{color:#FFB3AB;font-size:12.5px}

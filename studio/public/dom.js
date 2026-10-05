@@ -116,3 +116,14 @@ export const plain = (s) => String(s ?? '').replace(/\*/g, '').replace(/\n/g, ' 
 export async function copyText(text) {
   try { await navigator.clipboard.writeText(text); toast('Copied', { kind: 'ok', timeout: 1500 }); } catch { toast('Copy failed: select and copy by hand', { kind: 'error' }); }
 }
+
+// Just enough Markdown for Claude's messages: **bold**, `code`, - lists, line breaks.
+export function md(text) {
+  const esc = String(text ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return esc.split('\n').map((line) => {
+    let l = line.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
+    if (/^\s*[-*] /.test(line)) l = `<span class="li">${l.replace(/^\s*[-*] /, '')}</span>`;
+    else if (/^#{1,4} /.test(line)) l = `<b>${l.replace(/^#{1,4} /, '')}</b>`;
+    return l;
+  }).join('\n');
+}

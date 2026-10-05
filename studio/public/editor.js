@@ -1,6 +1,6 @@
 // The post editor: live animated preview with a timeline, a filmstrip of all slides, and an
 // inspector to edit the hero, every slide, the post settings, captions and rendered files.
-import { h, icon, get, post as apiPost, put, del, api, toast, toastError, modal, confirmBox, debounce, clone, plain, copyText, ago } from './dom.js';
+import { h, icon, get, post as apiPost, put, del, api, toast, toastError, modal, confirmBox, debounce, clone, plain, copyText, ago, md } from './dom.js';
 import { state, on, sceneOf, loadPosts } from './state.js';
 import { biField, textField, selectField, iconField, imageField, copyEditor, dataEditor, uploadFiles, dropTarget, field } from './fields.js';
 
@@ -510,7 +510,9 @@ export function editorView(slug) {
       h('div.dock-head', {}, icon('wand-sparkles', { size: 16 }), h('b', {}, running ? 'Claude is editing…' : end?.status === 'done' ? 'Claude is done' : 'Claude stopped'),
         h('a.link', { href: `#/claude?run=${askRun.id}&cwd=${encodeURIComponent(askRun.cwd)}` }, 'Details'),
         h('button.icon-btn', { title: running ? 'Stop' : 'Close', onclick: () => { if (running) apiPost(`/api/claude/runs/${askRun.id}/stop`).catch(toastError); else dock.hidden = true; } }, icon(running ? 'square' : 'x', { size: 14 }))),
-      h('div.dock-body', {}, evs.filter((e) => ['tool', 'text', 'end', 'tool_error'].includes(e.kind)).slice(-5).map((e) => h(`div.dock-ev.${e.kind}`, {}, e.kind === 'tool' ? icon('dot', { size: 14 }) : null, e.text.length > 220 ? `${e.text.slice(0, 220)}…` : e.text)),
+      h('div.dock-body', {}, evs.filter((e) => ['tool', 'text', 'end', 'tool_error'].includes(e.kind)).slice(-5).map((e) => (e.kind === 'tool'
+        ? h('div.dock-ev.tool', {}, icon('dot', { size: 14 }), e.text)
+        : h(`div.dock-ev.${e.kind}`, { html: md(e.text.length > 600 ? `${e.text.slice(0, 600)}…` : e.text) }))),
         running ? h('span.typing-dots', {}, h('i'), h('i'), h('i')) : null));
   }
   disposers.push(on('run', ({ id, event }) => {

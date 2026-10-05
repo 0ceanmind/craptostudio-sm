@@ -142,6 +142,7 @@ server.registerTool('render_post', {
 }, guard(async ({ slug, video = false }) => {
   getPost(slug);
   const stills = await waitForJob(startJob({ kind: 'stills', slug, source }).id, { timeoutMs: 5 * 60_000 });
+  if (stills.status === 'queued' || stills.status === 'running') return text({ status: stills.status, message: `${stills.message}. Another render (probably videos) is ahead in the queue; check again with get_render_status.`, job_id: stills.id, workspace: workspaceUrl(slug) });
   if (stills.status !== 'done') return fail(`Rendering failed: ${stills.error ?? stills.message}`);
   const out = { stills: stills.outputs.filter((f) => f.endsWith('.png')), warnings: stills.issues ?? [], workspace: workspaceUrl(slug) };
   if (video) out.videoJob = startJob({ kind: 'video', slug, source }).id;

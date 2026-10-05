@@ -240,7 +240,8 @@ export function startRun({ cwd, sessionId = null, request = '', followUpOf = nul
           if (b.type === 'text' && b.text.trim()) pushEvent(run, { kind: 'text', text: b.text.trim() });
           if (b.type === 'tool_use') {
             toolNames.set(b.id, b.name);
-            pushEvent(run, { kind: 'tool', name: b.name, text: describeTool(b.name, b.input) });
+            // ToolSearch only loads tool definitions; it isn't a step worth showing.
+            if (b.name !== 'ToolSearch') pushEvent(run, { kind: 'tool', name: b.name, text: describeTool(b.name, b.input) });
             if (/save_post$/.test(b.name) && b.input?.post?.slug) run.pendingSlug = b.input.post.slug;
           }
         }
@@ -269,7 +270,10 @@ export function startRun({ cwd, sessionId = null, request = '', followUpOf = nul
     run.status = run.cancelled ? 'cancelled' : run.result?.ok ? 'done' : 'failed';
     if (run.status === 'failed') run.error = run.result?.text || stderr.trim().split('\n').slice(-5).join('\n') || `Claude Code exited with code ${code}`;
     run.endedAt = Date.now();
-    pushEvent(run, { kind: 'end', status: run.status, text: run.status === 'done' ? (run.result?.text || 'Done.') : run.error ?? 'Stopped.' });
+    // The final answer is already in the feed as Claude's last message; don't repeat it.
+    const lastText = [...run.events].reverse().find((e) => e.kind === 'text')?.text ?? '';
+    const finalText = run.result?.text?.trim() ?? '';
+    pushEvent(run, { kind: 'end', status: run.status, text: run.status === 'done' ? (finalText && finalText !== lastText ? finalText : 'Finished.') : run.error ?? 'Stopped.' });
     persist(run);
     fs.rmSync(mcpConfig, { force: true });
   });

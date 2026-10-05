@@ -1,7 +1,7 @@
 // "From Claude Code": pick one of your Claude Code projects (and optionally one of its chats),
 // and Claude turns it into a branded carousel, live. Plus the one-time connection that adds
 // /crapto-post to Claude Code itself.
-import { h, icon, get, post as apiPost, toast, toastError, ago, copyText, debounce } from './dom.js';
+import { h, icon, get, post as apiPost, toast, toastError, ago, copyText, debounce, md } from './dom.js';
 import { state, on, loadPosts } from './state.js';
 
 const size = (b) => (b > 1024 * 1024 ? `${(b / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(b / 1024))} KB`);
@@ -114,7 +114,7 @@ export function claudeView(params) {
     msg.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) send(); });
     return h('div.card2', {},
       h('div', { style: { display: 'flex', alignItems: 'center', gap: '10px' } },
-        h('h3', { style: { flex: 1 } }, r.followUpOf ? 'Follow-up' : 'Generating a carousel'),
+        h('h3', { style: { flex: 1 } }, r.followUpOf ? 'Follow-up' : r.editSlug ? `Editing “${r.editSlug}”` : 'Generating a carousel'),
         h(`span.pill.${r.status === 'done' ? 'ok' : r.status === 'failed' ? 'err' : 'warn'}`, {}, h('span.dot'), r.status),
         running ? h('button.btn.sm.danger', { onclick: () => apiPost(`/api/claude/runs/${r.id}/stop`).catch(toastError) }, icon('square', { size: 13 }), 'Stop') : null),
       r.request ? h('p.muted', { style: { margin: '6px 0 0', fontSize: '13px' } }, `“${r.request}”`) : null,
@@ -133,13 +133,13 @@ export function claudeView(params) {
 
   function evEl(ev) {
     if (ev.kind === 'tool') return h('div.ev.tool', {}, icon(/studio:/.test(ev.text) ? 'palette' : /^(Read|Glob|Grep|LS)/.test(ev.text) ? 'file-search' : 'wrench', { size: 14 }), ev.text);
-    if (ev.kind === 'text') return h('div.ev.text', {}, icon('sparkles', { size: 16 }), h('div.bubble', {}, ev.text));
+    if (ev.kind === 'text') return h('div.ev.text', {}, icon('sparkles', { size: 16 }), h('div.bubble', { html: md(ev.text) }));
     if (ev.kind === 'post') {
       const s = state.posts.find((x) => x.slug === ev.slug);
       return h('div.ev.post', {}, icon('image', { size: 16 }), h('div.pc', {}, s?.cover ? h('img', { src: s.cover }) : null, h('div', { style: { flex: 1 } }, h('b', {}, ev.text), h('div.dim', { style: { fontSize: '12px' } }, 'Live in the workspace')), h('a.btn.sm', { href: `#/post/${ev.slug}` }, 'Open', icon('arrow-right', { size: 14 }))));
     }
     if (ev.kind === 'tool_error') return h('div.ev.err', {}, icon('triangle-alert', { size: 14 }), `${ev.name?.replace('mcp__crapto-studio__', '') ?? 'tool'}: ${ev.text}`);
-    if (ev.kind === 'end') return h(`div.ev.text${ev.status === 'done' ? '.end' : ''}`, {}, icon(ev.status === 'done' ? 'circle-check' : 'circle-x', { size: 16 }), h('div.bubble', {}, ev.text));
+    if (ev.kind === 'end') return h(`div.ev.text${ev.status === 'done' ? '.end' : ''}`, {}, icon(ev.status === 'done' ? 'circle-check' : 'circle-x', { size: 16 }), h('div.bubble', { html: md(ev.text) }));
     return h('div.ev.tool', {}, icon(ev.kind === 'init' ? 'terminal' : 'info', { size: 14 }), ev.text);
   }
 
