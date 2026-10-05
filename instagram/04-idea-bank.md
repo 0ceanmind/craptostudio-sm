@@ -10,8 +10,10 @@ A long list of post and Reel ideas, so you never stare at an empty calendar. Eve
 |---|---|
 | [`02-content-strategy.md`](02-content-strategy.md) | Bilingual publishing, pillars, weekly rhythm, Reel covers, hashtag sets (English and Arabic), the first 30 days |
 | [`03-launch-posts.md`](03-launch-posts.md) | The 18 launch posts (9 English + Arabic pairs). Post these first |
-| [`../design/content.mjs`](../design/content.mjs) | All post text, English and Arabic. Add new posts here, then run `npm run render`, `npm run motion -- <slug>` and `npm run check` |
-| [`../design/scenes/`](../design/scenes/) | The animated hero of each launch post, one file per scene. Reuse one as the hero of a new carousel, or copy one to make a [motion idea](#29-six-motion-ideas-the-scene-system) |
+| [`../studio/README.md`](../studio/README.md) | The workspace (`npm run studio`): make new posts (**New post**, or **From Claude Code** for a finished project), edit them in both languages with a live preview, and render them |
+| [`../content/posts/`](../content/posts/) | One file per post (`<slug>.json`): all its text in English and Arabic, slides, captions and alt text. Edit it in the workspace or by hand, then run `npm run render -- <slug>`, `npm run motion -- <slug>` and `npm run check -- <slug>` |
+| [`../design/content.mjs`](../design/content.mjs) | Shared text: the services, the profile and bio, the highlights, the default call to action |
+| [`../design/scenes/`](../design/scenes/) | The animated heroes: the 9 launch scenes and 4 project showcases. Reuse one as the hero of a new carousel (its text can change per post), or copy one to make a [motion idea](#29-six-motion-ideas-the-scene-system) |
 | [`../design/motion/`](../design/motion/) | The stage and loop contract (`stage.mjs`), the shared UI kit (`ui.mjs`) and the video renderer (`render-video.mjs`, run with `npm run motion`) |
 | [`../brand/brand-guide.md`](../brand/brand-guide.md#51-logo-files) | Your logo files and which one to use on which background (for Reel watermarks and end cards); the Arabic voice and terms ([section 9](../brand/brand-guide.md#9-bilingual-identity-english-and-arabic)); the motion rules ([section 10](../brand/brand-guide.md#10-motion)) |
 
@@ -75,13 +77,13 @@ Then start the next round with new IDs. At 2 new pairs a week, most of the bank 
 Every feed post is a pair, as the strategy's [bilingual publishing](02-content-strategy.md#0-bilingual-publishing) rules explain: an English post, then a separate Arabic post (Modern Standard Arabic, right to left) a few minutes later. On the grid the Arabic post then sits just before (left of) its English twin. What that means for the ideas below:
 
 - **Film once, edit twice.** The footage is shared. Only the on-screen text, subtitles, voiceover, end card and caption change.
-- **Rendered posts come in both languages.** The text in [`../design/content.mjs`](../design/content.mjs) and in each scene's `copy` is written as English + Arabic, and `npm run render` / `npm run motion` export an English and an Arabic version of everything: `en/` and `ar/` folders for each post, `-en.mp4` and `-ar.mp4` for each Reel.
-- **Every hook has an Arabic version.** It makes the same promise in natural Arabic, not a word-for-word translation ([adapt, don't translate](02-content-strategy.md#adapt-dont-translate)). The slide text in the tables is English: write the Arabic next to it in `content.mjs` as `t('English', 'العربية')`, with the shared terms below.
+- **Rendered posts come in both languages.** Every text in a post (its file in [`../content/posts/`](../content/posts/), including the text in its animation) is written in English and Arabic, and `npm run render` / `npm run motion` export an English and an Arabic version of everything: `en/` and `ar/` folders for each post, `-en.mp4` and `-ar.mp4` for each Reel.
+- **Every hook has an Arabic version.** It makes the same promise in natural Arabic, not a word-for-word translation ([adapt, don't translate](02-content-strategy.md#adapt-dont-translate)). The slide text in the tables is English: write the Arabic next to it, in the workspace's Arabic box (or as `{ "en": "English", "ar": "العربية" }` in the post's file), with the shared terms below.
 - **Keep these in Latin letters:** the name **Crapto Studio** (never translated or transliterated) and tech names such as Unity, iOS, Android, API, UI/UX.
 - **The DM keyword is START in English and «ابدأ» in Arabic.** The Arabic call to action is `راسلنا بكلمة «ابدأ»‏`.
 - **Show Arabic screens only if they're real.** If the app or demo you film has no Arabic version, keep the English footage and put the Arabic in the on-screen text, subtitles and caption.
 - **Start every Arabic line with an Arabic word**, not with a Latin word, a number, an emoji or a hashtag, or the line may be laid out left to right ([mixed-script tips](../brand/brand-guide.md#94-mixed-script-latin-digits-punctuation-and-direction)). The Arabic hooks below already do.
-- **Arrows:** in Arabic text you type in other apps (captions, video editors) they point left: `قبل ← بعد`. In the slide text in `content.mjs`, type `→` in both languages: the Arabic slide mirrors it. Keep arrows out of the hero's `tag`, `headline` and `sub`: the hero doesn't convert them, so an Arabic hero would show them pointing the wrong way.
+- **Arrows:** in Arabic text you type in other apps (captions, video editors) they point left: `قبل ← بعد`. In slide text (in the workspace or a post's file), type `→` in both languages: the Arabic slide mirrors it. Keep arrows out of the hero's `tag`, `headline` and `sub`: the hero doesn't convert them, so an Arabic hero would show them pointing the wrong way.
 
 **Terms used in this bank** (from the posts; service names and the full list are in the brand guide's [terminology table](../brand/brand-guide.md#93-terminology-english--arabic))
 
@@ -118,6 +120,7 @@ Every feed post is a pair, as the strategy's [bilingual publishing](02-content-s
 - **A carousel brings its own Reel.** Its animated hero also renders as a 9:16 Reel (`../exports/reels/NN-<slug>-en.mp4` and `-ar.mp4`, each with a `-cover.jpg`), ready for a Saturday hero Reel slot ([where Reels fit](02-content-strategy.md#where-reels-fit)). If the carousel reused a launch scene, its hero Reel looks almost the same as that launch Reel (only the tag, headline and sub-line change), so the strategy suggests an extra Reel pair from real footage (a BUILD idea) in that slot instead. A [motion idea](#29-six-motion-ideas-the-scene-system) brings a new animation, so its hero Reel is worth posting.
 - **Repeat winners.** If a post brings saves, shares or DMs, do the same topic again after 2–3 months with a new example and a new hook.
 - **Keep a simple log.** Copy the ID, language, date and result (reach, saves, DMs) into your tracker. It shows which pillar, service and language work best.
+- **Turn finished projects into posts.** A project you built with Claude Code can become a case-study carousel pair straight from the code: **From Claude Code** in the workspace, or `/crapto-post` inside Claude Code in that project. Claude picks a project showcase scene, uses real screenshots and writes both languages. It follows the same rules as this bank: no invented numbers, clients or results, and no client data or secrets on screen. You still check the draft and get the client's OK ([case-study posts](02-content-strategy.md#case-study-posts)).
 
 ### How to read the tables
 
@@ -244,18 +247,18 @@ Six ideas for each of the 8 services, then six motion ideas built with the scene
 
 Six ideas built with the same scene system as the launch heroes. Each one is a **new scene file**: an 8-second seamless loop that becomes slide 1 of a carousel pair (`../exports/posts/NN-<slug>/<lang>/01-hero.mp4`, with its frame 0 as `01-cover.png`) and, at no extra cost, a 9:16 Reel pair (`../exports/reels/NN-<slug>-<lang>.mp4` + `-cover.jpg`). Post the carousel pair in a Thursday slot, and its hero Reel pair in a Saturday slot at least a week later ([where Reels fit](02-content-strategy.md#where-reels-fit)). A Reel shows in your profile grid like any post; some app versions offer an option to keep a Reel off the grid, so use that only if your app has it.
 
-Before you write one, check whether a launch scene already tells the story (the nine are described in the brand guide's [hero scenes table](../brand/brand-guide.md#104-the-nine-hero-scenes)). A new scene is a coding task in its own right, so plan it outside the weekly batch.
+Before you write one, check whether an existing scene already tells the story once its words change. The nine launch scenes and the four project showcases (which show any project's own screenshots, code or tech stack) are described in the brand guide's [hero scenes table](../brand/brand-guide.md#104-the-nine-hero-scenes). In the workspace, **Text in the animation** changes the words inside a scene for one post only (for example, a different question, answer and chips in the `ai` chat), so that needs no new file. A new scene is a coding task in its own right, so plan it outside the weekly batch.
 
-**How to build one** (the full steps and commands: the strategy's [Making a new animated post](02-content-strategy.md#making-a-new-animated-post) and the brand guide's [motion rules](../brand/brand-guide.md#10-motion))
+**How to build one** (the scene rules and helpers: [`../design/scenes/README.md`](../design/scenes/README.md); the post itself: the strategy's [Making a new animated post](02-content-strategy.md#making-a-new-animated-post); the motion rules: the brand guide's [section 10](../brand/brand-guide.md#10-motion))
 
-1. **Start from the closest scene** (named in the table), copied to a new file in [`../design/scenes/`](../design/scenes/). Add a post to `posts` in [`../design/content.mjs`](../design/content.mjs) with `scene: '<the file name, without .mjs>'`, its `tag`, `headline` and `sub` as `t('English', 'العربية')`, and the slides suggested below.
+1. **Start from the closest scene** (named in the table), copied to a new file in [`../design/scenes/`](../design/scenes/). Give it a `meta` block (a title, what happens, what it's best for): that is how it shows up in the workspace's animation picker. Then make the post: **New post** in the workspace with your new animation, or a `content/posts/<slug>.json` file with `"scene": "<the file name, without .mjs>"`. Write its `tag`, `headline` and `sub` in both languages, and add the slides suggested below.
 2. **Keep the house style.** Frame 0 is the finished picture (it's the cover and the grid thumbnail). The timeline goes hold → clear (`.to()`) → rebuild the demo (`.fromTo()`) → hold, and ends exactly on frame 0 at 8 seconds. `silk` easing (`cubic-bezier(.22, 1, .36, 1)`), staggered entrances, and ambient loops (glows, floats, spins) that complete whole cycles. The headline never moves. Animate position, scale, rotation and opacity (plus line drawing), not sizes or margins; no flashing; Arabic text appears word by word or line by line, never letter by letter; and any randomness is seeded, never `Math.random()`, so every render is the same.
-3. **Build from the UI kit** in [`../design/motion/ui.mjs`](../design/motion/ui.mjs): app windows, chat bubbles, chips, typing dots, a phone frame, Lucide icons, the gooey filter that echoes the logo, spark petals. Put every on-screen word in the scene's `copy.en` and `copy.ar`, and use logical properties (inline-start / inline-end) so the Arabic version mirrors. Code stays left to right.
-4. **Check, then render:** `npm run motion -- <slug> --preview` (contact sheets in `../.preview/`), `--frame 4` for a full-size frame, `--loopcheck` (must say OK); then `npm run motion -- <slug>` (4 videos, about a minute each), `npm run render` and `npm run check`.
+3. **Build from the UI kit** in [`../design/motion/ui.mjs`](../design/motion/ui.mjs): app windows, chat bubbles, chips, typing dots, a phone frame, Lucide icons, the gooey filter that echoes the logo, spark petals. Put every on-screen word in the scene's `copy.en` and `copy.ar` (the defaults; each post can change them). Load images with the `asset()` helper. Use logical properties (inline-start / inline-end) so the Arabic version mirrors. Code stays left to right.
+4. **Check, then render:** open the post in the workspace and scrub the timeline in both languages. Then `npm run motion -- <slug> --preview` (contact sheets in `../.preview/`), `--frame 4` for a full-size frame, `--loopcheck` (must say OK); then `npm run motion -- <slug>` (4 videos, about a minute each), `npm run render -- <slug>` and `npm run check -- <slug>`.
 
 | ID | Service | Pillar | Working title | Hook (EN) | Hook (AR) | The 8-second loop, and the slides after it | Start from |
 |---|---|---|---|---|---|---|---|
-| MO1 | Upgrades | SHOW | Before / after, side by side | "Same screen. Before and after, side by side." | <span dir="rtl">الشاشة نفسها، قبل وبعد، جنباً إلى جنب</span> | **Frame 0:** the new screen, a divider handle resting at one edge, an "After" chip. **Loop:** hold → the handle glides across and uncovers the old screen ("Before"; reveal it with a moving clip, not by changing widths) → hold → it glides back while the new screen's parts settle in one after another (header, cards, button) → hold. Built from real screenshots (the owner's permission, or one of your older projects). **Slides:** `cards` "What changed" (up to 4 real changes) → `cta`. Fits a Tuesday SHOW slot as a Reel pair too. | [`upgrades.mjs`](../design/scenes/upgrades.mjs) (Before/After switch); [`intro.mjs`](../design/scenes/intro.mjs) shows how a scene loads image files |
+| MO1 | Upgrades | SHOW | Before / after, side by side | "Same screen. Before and after, side by side." | <span dir="rtl">الشاشة نفسها، قبل وبعد، جنباً إلى جنب</span> | **Frame 0:** the new screen, a divider handle resting at one edge, an "After" chip. **Loop:** hold → the handle glides across and uncovers the old screen ("Before"; reveal it with a moving clip, not by changing widths) → hold → it glides back while the new screen's parts settle in one after another (header, cards, button) → hold. Built from real screenshots (the owner's permission, or one of your older projects). **Slides:** `cards` "What changed" (up to 4 real changes) → `cta`. Fits a Tuesday SHOW slot as a Reel pair too. | [`upgrades.mjs`](../design/scenes/upgrades.mjs) (Before/After switch); [`showcase-browser.mjs`](../design/scenes/showcase-browser.mjs) shows how a scene loads screenshots |
 | MO2 | Custom AI | TEACH | The assistant that says "I don't know" | "An AI assistant that admits when it doesn't know." | <span dir="rtl">مساعد ذكي يعترف حين لا يعرف الإجابة</span> | **Frame 0:** a chat with two finished answers: one with a source chip under it, one saying the answer isn't in your documents, with a "talk to a person" chip. **Loop:** hold → the bubbles clear → question 1 arrives, typing dots, the answer appears word by word, the source chip pops → question 2, typing dots, the honest answer and the handover chip → hold. Label it "Demo". **Slides:** `cards` "A good assistant…": shows its source · says "I don't know" · hands over to a person · uses your documents only → `cta`. | [`ai.mjs`](../design/scenes/ai.mjs) (chat window, word-by-word answer, chips) |
 | MO3 | Apps · Custom | OFFER | From a one-line idea to a first screen | "From a one-line idea to a first screen." | <span dir="rtl">من فكرة في سطر واحد إلى أول شاشة</span> | **Frame 0:** a chat bubble with a one-line idea ("An app that helps [who] [do what]") beside a phone showing a finished first screen. **Loop:** hold → the screen's parts lift away, leaving a dashed wireframe → the wireframe lines draw themselves → each box fills in turn (header, cards, icons, button) → the button pulses once → hold. Label it "Concept" unless the screen is real. **Slides:** `cards` "Send us this first" (as in `07-start`) → `cta`. | [`start.mjs`](../design/scenes/start.mjs) (chat bubble), [`apps.mjs`](../design/scenes/apps.mjs) (phone), [`software.mjs`](../design/scenes/software.mjs) (pieces flying into place) |
 | MO4 | Software | TEACH | Three tools, one flow (integrations, ربط) | "Three tools, one flow. No copy and paste." | <span dir="rtl">ثلاث أدوات في مسار عمل واحد، بلا نسخ ولصق</span> | **Frame 0:** three tool cards (shop, sheet, team chat) joined by drawn wires; the new order is in the sheet, the team message has a check, a "synced" toast. **Loop:** hold → the wires undraw and the row and message clear → a "new order" chip pops on the shop card and travels along the first wire → a highlighted row slides into the sheet → the chip travels on → a message pops in the team chat → toast → hold. Generic Lucide icons, not other companies' logos. **Slides:** `cards` with the tools you really connect → `statement` "If a ready-made connector does the job, we'll say so." → `cta`. | [`apps.mjs`](../design/scenes/apps.mjs) (wires between elements), [`software.mjs`](../design/scenes/software.mjs) (rows, the "synced" toast) |
@@ -289,7 +292,7 @@ Each script is 40–42 seconds. Before you film, read the Reel tips and cover ru
 - **Your logo files:** use the trimmed PNGs in `../exports/logo/`. They are cut from your original files in `../brand/logo/source/` (the white versions come from `Crapto Studio-10.png`). Use them as they are: don't redraw, recolour or fade them.
 - **Watermark (optional):** the white symbol [`../exports/logo/symbol-white.png`](../exports/logo/symbol-white.png), small (at least 32 px wide), near the top but below the first 270 px (where the hero Reels start their header), with some empty space around it ([clear space rules](../brand/brand-guide.md#53-clear-space)). Check in the preview that the app's buttons don't cover it.
 - **End card (last 3–4 s):** your white logo [`../exports/logo/logo-white.png`](../exports/logo/logo-white.png) in the middle of a Cobalt `#376BB1` background, the blue post background (not the brand gradient: white text is too faint on its lighter blues), with the script's end line below it. Make one per language and reuse them. **Shortcut:** use a launch post's last slide in the middle of a 1080 × 1920 Midnight `#0B1628` canvas, for example [`../exports/posts/03-upgrades/en/03.png`](../exports/posts/03-upgrades/en/03.png) ("Got an idea? Let’s compile it.") and [`../exports/posts/03-upgrades/ar/03.png`](../exports/posts/03-upgrades/ar/03.png) (`لديك فكرة؟ لنبنِها معاً.‏`), made by `npm run render`. (The Support post's last slide has its own headline, "Stuck on a project? Let’s work it out.") The slide's small `03 / 03` page number sits inside a blue corner glow (top-right on the English slide, top-left on the Arabic one; about `#17324D` there, not Midnight), so a Midnight box over it would show as a patch: fill the box with the colour sampled right next to the number, or crop or blur that corner. The glow also reaches the slide's top edge, so soften any join line there.
-- **Cover:** 1080 × 1920, and the profile grid shows its centred 3:4 crop. Pick a frame where the result and the headline are both visible, or make a cover in the hero style ([Reel covers](02-content-strategy.md#reel-covers)). **Kit shortcut** for a hero-style cover: add a post to [`../design/content.mjs`](../design/content.mjs) with the cover's `tag`, `headline` and `sub`, `slides: []` and a fitting launch scene, then run `npm run motion -- <slug> --frame 0`. It saves frame 0 (the finished composition) for both languages and both formats in `../.preview/`; `<slug>-en-reel-0s.png` and `<slug>-ar-reel-0s.png` are your covers, already laid out for the grid crop. Take the post out again if you won't publish its animation. Don't use a scene whose sample numbers could be read as this Reel's result. Suggested cover text is given for each Reel.
+- **Cover:** 1080 × 1920, and the profile grid shows its centred 3:4 crop. Pick a frame where the result and the headline are both visible, or make a cover in the hero style ([Reel covers](02-content-strategy.md#reel-covers)). **Kit shortcut** for a hero-style cover: make a draft post (**New post** in the workspace, or a `content/posts/<slug>.json` file) with the cover's `tag`, `headline` and `sub`, no slides and a fitting launch scene, then run `npm run motion -- <slug> --frame 0`. It saves frame 0 (the finished composition) for both languages and both formats in `../.preview/`; `<slug>-en-reel-0s.png` and `<slug>-ar-reel-0s.png` are your covers, already laid out for the grid crop. Delete the post again (in the workspace, or delete its file) if you won't publish its animation. Don't use a scene whose sample numbers could be read as this Reel's result. Suggested cover text is given for each Reel.
 
 ### Reel 1: Games (same jump, two versions)
 
@@ -550,21 +553,21 @@ Make each story in both languages: two stories, or one card with English on top 
 
 ## 5) Six carousel formulas
 
-Reusable slide structures. Each one starts with the animated hero (slide 1) and then uses the slide types in [`../design/content.mjs`](../design/content.mjs): `cards`, `steps`, `statement`, `services`, `image` and `cta`. Every text is written as `t('English', 'العربية')`.
+Reusable slide structures. Each one starts with the animated hero (slide 1) and then uses the slide types `cards`, `steps`, `statement`, `services`, `image` and `cta`. Build them in the workspace (the filmstrip's **+ Slide**), or write them in the post's file in [`../content/posts/`](../content/posts/). Every text has an English and an Arabic version: `{ "en": "English", "ar": "العربية" }`. Below, `{…}` stands for one of these pairs.
 
 **Slide limits (checked against [`../design/templates.mjs`](../design/templates.mjs) and [`../design/motion/stage.mjs`](../design/motion/stage.mjs))**
 
 | Slide | How to write it | Keep it to |
 |---|---|---|
-| Hero (slide 1) | Not a slide type: set on the post with `scene`, `theme` (`dark`, `blue` or `light`), `tag`, `headline` and `sub`. `npm run motion` renders it as `01-hero.mp4` (the 8-second loop); `npm run render` saves its frame 0 as `01-cover.png`. Reuse a launch scene, or write a new one ([2.9](#29-six-motion-ideas-the-scene-system)) | Headline: one idea, one accent. Up to 20 characters renders largest, then 30 and 40 step down (the `*asterisks*` and `\n` don't count). Wrap one word in `*asterisks*` for the accent; `\n` forces a line break. One short sub-line. Every post needs a scene. The safest theme for a reused scene is the one its launch post uses |
-| `cards` | `{ type: 'cards', title: t(…), items: [{ icon: 'bug', text: t(…) }, …] }` | Up to 4 items (4 fill the 2 × 2 grid), a few words each: the launch cards are 11–31 characters. `icon` is a Lucide icon name; it must exist as `node_modules/lucide-static/icons/<name>.svg`, or the render stops with an error |
-| `steps` | `{ type: 'steps', title: t(…), items: [{ title: t('Talk', 'نتحدّث'), text: t(…) }, …] }` | 4 steps, each a short title + one short sentence |
-| `statement` | `{ type: 'statement', kicker: t('// myth 01', '// خرافة 01'), text: t(…) }` | One or two short sentences (the Formula 3 statements run up to about 95 characters and fit in both languages). Always set a `kicker`: the small mono line above. Without one, the slide shows the word "undefined" |
-| `services` | `{ type: 'services', title: t('What we do', 'ماذا نقدّم') }` | Fixed: the 8 service cards |
-| `image` | `{ type: 'image', src: 'photos/after.png', title: t('The *after*', '*بعد* الترقية'), caption: t(…), fit: 'contain' }` | One screenshot or photo (PNG, JPG or WebP), the same file in both languages. `src` is relative to the repo root. `title` and `caption` are optional. `fit: 'contain'` (default) shows the whole image; `'cover'` fills the frame and crops the edges |
-| `cta` | `{ type: 'cta' }`, or with `headline: t(…)` and/or `body: t(…)` | Always the last slide. Default headline "Got an idea? Let’s compile it." (`لديك فكرة؟ لنبنِها معاً.‏`), the DM "START" / «ابدأ» line, a single Follow pill, and the footer "Save for later" (`احفظه لوقت لاحق`) with a bookmark icon. A post can override the headline, e.g. `{ type: 'cta', headline: t('Stuck on a project?\n*Let’s work it out.*', 'عالق في مشروع؟\n*لنجد الحل معاً.*') }` (as launch post `01-support` does) |
+| Hero (slide 1) | Not a slide type: set on the post with `scene`, `theme` (`dark`, `blue` or `light`), `tag`, `headline` and `sub`. `npm run motion` renders it as `01-hero.mp4` (the 8-second loop); `npm run render` saves its frame 0 as `01-cover.png`. Reuse a launch scene (its text can change per post), use a project showcase for a project post, or write a new one ([2.9](#29-six-motion-ideas-the-scene-system)) | Headline: one idea, one accent. Up to 20 characters renders largest, then 30 and 40 step down (the `*asterisks*` and `\n` don't count). Wrap one word in `*asterisks*` for the accent; `\n` forces a line break. One short sub-line. Every post needs a scene. The safest theme for a reused scene is the one its launch post uses |
+| `cards` | `{ "type": "cards", "title": {…}, "items": [{ "icon": "bug", "text": {…} }, …] }` | Up to 4 items (4 fill the 2 × 2 grid), a few words each: the launch cards are 11–31 characters. `icon` is a Lucide icon name; it must exist as `node_modules/lucide-static/icons/<name>.svg`, or the render stops with an error |
+| `steps` | `{ "type": "steps", "title": {…}, "items": [{ "title": { "en": "Talk", "ar": "نتحدّث" }, "text": {…} }, …] }` | 4 steps, each a short title + one short sentence |
+| `statement` | `{ "type": "statement", "kicker": { "en": "// myth 01", "ar": "// خرافة 01" }, "text": {…} }` | One or two short sentences (the Formula 3 statements run up to about 95 characters and fit in both languages; the workspace shows a length warning above 90, which is a guide, not a limit). Always set a `kicker`: the small mono line above. The workspace won't save a statement without one |
+| `services` | `{ "type": "services", "title": { "en": "What we do", "ar": "ماذا نقدّم" } }` | Fixed: the 8 service cards |
+| `image` | `{ "type": "image", "src": "content/assets/<slug>/after.png", "title": { "en": "The *after*", "ar": "*بعد* الترقية" }, "caption": {…}, "fit": "contain" }` | One screenshot or photo (PNG, JPG or WebP), the same file in both languages. Drop it into the post's **Files** panel in the workspace: it is saved in `content/assets/<slug>/`. `src` is relative to the repo root. `title` and `caption` are optional. `"fit": "contain"` (default) shows the whole image; `"cover"` fills the frame and crops the edges |
+| `cta` | `{ "type": "cta" }`, or with `"headline": {…}` and/or `"body": {…}` | Always the last slide. Default headline "Got an idea? Let’s compile it." (`لديك فكرة؟ لنبنِها معاً.‏`), the DM "START" / «ابدأ» line, a single Follow pill, and the footer "Save for later" (`احفظه لوقت لاحق`) with a bookmark icon. A post can override the headline, e.g. `{ "type": "cta", "headline": { "en": "Stuck on a project?\n*Let’s work it out.*", "ar": "عالق في مشروع؟\n*لنجد الحل معاً.*" } }` (as launch post `01-support` does) |
 
-Only the hero uses the post's theme. All the other slides are always dark, in both languages; the Arabic slides are mirrored (right to left). Arrows typed as `→` turn into an icon that points left on the Arabic slides. A post with `slides: []` is a single video: the hero alone, without the "Swipe" hint.
+Only the hero uses the post's theme. All the other slides are always dark, in both languages; the Arabic slides are mirrored (right to left). Arrows typed as `→` turn into an icon that points left on the Arabic slides. A post with no slides (`"slides": []`) is a single video: the hero alone, without the "Swipe" hint.
 
 TEACH and case-study carousels work best with 4–8 slides, one idea per slide, few words; OFFER carousels can be shorter (3–4 slides). Make slide 2 strong on its own (Instagram may show the carousel again starting from slide 2). Upload `01-hero.mp4` first, then `02.png`, `03.png` … in the same order for both languages.
 
@@ -580,15 +583,15 @@ TEACH and case-study carousels work best with 4–8 slides, one idea per slide, 
 | 4 | `statement` | Kicker `// remember` (`// تذكّر`). The one thing to remember, in one sentence |
 | 5 | `cta` | DM "START" / «ابدأ» (the footer already says "Save for later"; ask for saves and shares in the caption) |
 
-**Ready to paste: slide 2 of `SP1`** (inside the post's `slides` in [`../design/content.mjs`](../design/content.mjs))
+**Ready to paste: slide 2 of `SP1`** (into the `"slides"` list of the post's file in [`../content/posts/`](../content/posts/), right after the `[`; add a comma after it if another slide follows. In the workspace, type the same words into a `cards` slide.)
 
-```js
-{ type: 'cards', title: t('Before the event', 'قبل المسابقة'), items: [
-  { icon: 'book-open', text: t('Read rules & judging', 'قراءة القواعد ومعايير التحكيم') },
-  { icon: 'users', text: t('Agree who does what', 'توزيع المهام بوضوح') },
-  { icon: 'laptop', text: t('Laptops & accounts ready', 'تجهيز الأجهزة والحسابات') },
-  { icon: 'list-checks', text: t('Check what you may prepare', 'معرفة ما يُسمح بتحضيره مسبقاً') },
-] },
+```json
+{ "type": "cards", "title": { "en": "Before the event", "ar": "قبل المسابقة" }, "items": [
+  { "icon": "book-open", "text": { "en": "Read rules & judging", "ar": "قراءة القواعد ومعايير التحكيم" } },
+  { "icon": "users", "text": { "en": "Agree who does what", "ar": "توزيع المهام بوضوح" } },
+  { "icon": "laptop", "text": { "en": "Laptops & accounts ready", "ar": "تجهيز الأجهزة والحسابات" } },
+  { "icon": "list-checks", "text": { "en": "Check what you may prepare", "ar": "معرفة ما يُسمح بتحضيره مسبقاً" } }
+] }
 ```
 
 ### Formula 2: The process
@@ -613,32 +616,68 @@ TEACH and case-study carousels work best with 4–8 slides, one idea per slide, 
 | 6 | `statement` | Kicker `// our honest take` (`// رأينا بصراحة`). The summary line |
 | 7 | `cta` | DM "START" / «ابدأ» |
 
-**Ready to paste into `posts` in [`../design/content.mjs`](../design/content.mjs)** (change `order` to the next free number). It reuses the `ai` scene, so its hero is the store-assistant animation under this headline. `npm run render` writes the stills to `../exports/posts/10-ai-myths/en/` and `…/ar/` (`01-cover.png`, then `02.png` … `07.png`); `npm run motion -- ai-myths` adds `01-hero.mp4` to both folders and the Reels `../exports/reels/10-ai-myths-en.mp4` and `10-ai-myths-ar.mp4` (each with a `-cover.jpg`). These are hypothetical paths until you add the post. The post also joins the grid previews in `../exports/preview/`. Then run `npm run check`.
+**Ready to paste as a new file, `content/posts/ai-myths.json`** (if 10 is taken, change `order` to one more than your newest post's). It reuses the `ai` scene, so its hero is the store-assistant animation under this headline. It starts as a `draft` with an empty caption and alt text: write those in the workspace's **Caption** panel (the [`AI1`](#24-custom-ai) hooks make a good first line), then set the status to ready. `npm run render -- ai-myths` writes the stills to `../exports/posts/10-ai-myths/en/` and `…/ar/` (`01-cover.png`, then `02.png` … `07.png`); `npm run motion -- ai-myths` adds `01-hero.mp4` to both folders and the Reels `../exports/reels/10-ai-myths-en.mp4` and `10-ai-myths-ar.mp4` (each with a `-cover.jpg`). These are hypothetical paths until you add the post. A full `npm run render` also adds it to the grid previews in `../exports/preview/`. Then run `npm run check -- ai-myths`.
 
-```js
+```json
 {
-  order: 10, slug: 'ai-myths', theme: 'blue', icon: 'sparkles', scene: 'ai',
-  tag: t('03 / Custom AI', '03 / ذكاء اصطناعي'),
-  headline: t('You might not *need* AI.', 'قد لا *تحتاج* إلى الذكاء الاصطناعي.'),
-  sub: t('4 myths · Honest answers', '4 خرافات · إجابات صادقة'),
-  slides: [
-    { type: 'statement', kicker: t('// myth 01', '// خرافة 01'),
-      text: t('“AI will fix messy data.” *Not really.* Clean the data first, or the AI repeats the mess.',
-        '«الذكاء الاصطناعي سيُصلح فوضى بياناتك.» *ليس تماماً.* نظّم بياناتك أولاً، وإلا فسيكرّر الفوضى نفسها.') },
-    { type: 'statement', kicker: t('// myth 02', '// خرافة 02'),
-      text: t('“Every app needs a chatbot.” Often a good *search or FAQ* does the job.',
-        '«كل تطبيق يحتاج إلى روبوت محادثة.» غالباً يكفي *بحث جيد* أو صفحة أسئلة شائعة.') },
-    { type: 'statement', kicker: t('// myth 03', '// خرافة 03'),
-      text: t('“AI is always right.” It can be wrong, so plan *who checks* the answers.',
-        '«الذكاء الاصطناعي لا يخطئ.» بل قد يخطئ، لذا حدّد *من يراجع* إجاباته.') },
-    { type: 'statement', kicker: t('// myth 04', '// خرافة 04'),
-      text: t('“Use AI for everything.” If a *simple rule* works, use the rule.',
-        '«استخدم الذكاء الاصطناعي في كل شيء.» إن كانت *قاعدة بسيطة* تكفي، فاعتمدها.') },
-    { type: 'statement', kicker: t('// our honest take', '// رأينا بصراحة'),
-      text: t('If you don’t need AI, *we’ll tell you.*', 'لا تحتاج إلى الذكاء الاصطناعي؟ *سنخبرك بذلك.*') },
-    { type: 'cta' },
+  "slug": "ai-myths",
+  "order": 10,
+  "status": "draft",
+  "theme": "blue",
+  "scene": "ai",
+  "icon": "sparkles",
+  "tag": { "en": "03 / Custom AI", "ar": "03 / ذكاء اصطناعي" },
+  "headline": {
+    "en": "You might not *need* AI.",
+    "ar": "قد لا *تحتاج* إلى الذكاء الاصطناعي."
+  },
+  "sub": { "en": "4 myths · Honest answers", "ar": "4 خرافات · إجابات صادقة" },
+  "slides": [
+    {
+      "type": "statement",
+      "kicker": { "en": "// myth 01", "ar": "// خرافة 01" },
+      "text": {
+        "en": "“AI will fix messy data.” *Not really.* Clean the data first, or the AI repeats the mess.",
+        "ar": "«الذكاء الاصطناعي سيُصلح فوضى بياناتك.» *ليس تماماً.* نظّم بياناتك أولاً، وإلا فسيكرّر الفوضى نفسها."
+      }
+    },
+    {
+      "type": "statement",
+      "kicker": { "en": "// myth 02", "ar": "// خرافة 02" },
+      "text": {
+        "en": "“Every app needs a chatbot.” Often a good *search or FAQ* does the job.",
+        "ar": "«كل تطبيق يحتاج إلى روبوت محادثة.» غالباً يكفي *بحث جيد* أو صفحة أسئلة شائعة."
+      }
+    },
+    {
+      "type": "statement",
+      "kicker": { "en": "// myth 03", "ar": "// خرافة 03" },
+      "text": {
+        "en": "“AI is always right.” It can be wrong, so plan *who checks* the answers.",
+        "ar": "«الذكاء الاصطناعي لا يخطئ.» بل قد يخطئ، لذا حدّد *من يراجع* إجاباته."
+      }
+    },
+    {
+      "type": "statement",
+      "kicker": { "en": "// myth 04", "ar": "// خرافة 04" },
+      "text": {
+        "en": "“Use AI for everything.” If a *simple rule* works, use the rule.",
+        "ar": "«استخدم الذكاء الاصطناعي في كل شيء.» إن كانت *قاعدة بسيطة* تكفي، فاعتمدها."
+      }
+    },
+    {
+      "type": "statement",
+      "kicker": { "en": "// our honest take", "ar": "// رأينا بصراحة" },
+      "text": {
+        "en": "If you don’t need AI, *we’ll tell you.*",
+        "ar": "لا تحتاج إلى الذكاء الاصطناعي؟ *سنخبرك بذلك.*"
+      }
+    },
+    { "type": "cta" }
   ],
-},
+  "caption": { "en": "", "ar": "" },
+  "alt": { "en": "", "ar": "" }
+}
 ```
 
 ### Formula 4: It depends on…
@@ -658,7 +697,7 @@ Never put a price or a time on these slides unless it's your real, current numbe
 
 ### Formula 5: Before → after
 
-**Best for:** proof (SHOW) for Upgrades and case studies. **Examples:** a carousel version of `UP1`, `UP2` or `SW1`, and case studies (S8 in the strategy)
+**Best for:** proof (SHOW) for Upgrades and case studies. **Examples:** a carousel version of `UP1`, `UP2` or `SW1`, and case studies (S8 in the strategy). For a case study of a project you built with Claude Code, let Claude draft it (**From Claude Code** in the workspace, or `/crapto-post`) with a project showcase scene as the hero; it won't invent numbers or show client data, and you check it before posting ([how](02-content-strategy.md#case-study-posts))
 
 | Slide | Type | Content |
 |---|---|---|
@@ -671,7 +710,7 @@ Never put a price or a time on these slides unless it's your real, current numbe
 | 7 | `statement` | Kicker `// client` (`// رأي العميل`). `[add a real client quote]`. Only with permission; otherwise skip this slide |
 | 8 | `cta` | DM "START" / «ابدأ» |
 
-Slides 3 and 5 are `image` slides (see the slide limits above), for example `{ type: 'image', src: 'photos/before.png', title: t('The *before*', '*قبل* الترقية') }`. They render inside the normal dark slide frame, so the page numbers (for example `02 / 08`, with the hero as slide 1) stay correct. The same screenshot is used in both languages; only the title and caption change. No screenshots? Skip slides 3 and 5 and show the screens in a Reel (`UP1`, `UP2`) or a scene (`MO1`). Adding screenshots in the Instagram app (exported at 1080 × 1350) is only a fallback: the page numbers count the rendered slides only, so they will be wrong. The `upgrades` scene's gauge shows sample numbers, so the real result goes on slide 6 and in the caption, never "as shown in the animation".
+Slides 3 and 5 are `image` slides (see the slide limits above), for example `{ "type": "image", "src": "content/assets/<slug>/before.png", "title": { "en": "The *before*", "ar": "*قبل* الترقية" } }`. They render inside the normal dark slide frame, so the page numbers (for example `02 / 08`, with the hero as slide 1) stay correct. The same screenshot is used in both languages; only the title and caption change. No screenshots? Skip slides 3 and 5 and show the screens in a Reel (`UP1`, `UP2`) or a scene (`MO1`). Adding screenshots in the Instagram app (exported at 1080 × 1350) is only a fallback: the page numbers count the rendered slides only, so they will be wrong. The `upgrades` scene's gauge shows sample numbers, so the real result goes on slide 6 and in the caption, never "as shown in the animation".
 
 ### Formula 6: This or that
 

@@ -63,7 +63,7 @@ The call to action is the same in both: DM the keyword. It is **"START"** in Eng
 
 Instagram shows the **newest post at the top-left** of your profile grid. Every new post pushes the older ones one square to the right, and then down to the next row. So what you publish **first** ends up **bottom-right**, and what you publish **last** ends up **top-left**.
 
-Publish the pairs in order 1 → 9 (the `order` field in `../design/content.mjs`). Within each pair, publish the **English post first, then the Arabic one**. The Arabic post is newer, so on the grid it sits just **before** (left of) its English twin.
+Publish the pairs in order 1 → 9 (each post's `order` in `../content/posts/`, shown as the posting order in the workspace). Within each pair, publish the **English post first, then the Arabic one**. The Arabic post is newer, so on the grid it sits just **before** (left of) its English twin.
 
 | Upload | Post | | Upload | Post |
 |---|---|---|---|---|
@@ -110,7 +110,7 @@ How to read it:
 - Grid only: [`../exports/preview/grid.png`](../exports/preview/grid.png) (18 tiles, 6 rows)
 - Full profile mockup: [`../exports/preview/profile-mockup.png`](../exports/preview/profile-mockup.png)
 
-Both are built from the covers (`01-cover.png`) of every post in `../design/content.mjs`, newest first, by `npm run render`. Once you add later posts and re-render, they show those too and grow taller.
+Both are built from the covers (`01-cover.png`) of every post in `../content/posts/`, newest first, by `npm run render`. Once you add later posts and re-render, they show those too and grow taller.
 
 ![Launch grid preview](../exports/preview/grid.png)
 
@@ -161,6 +161,8 @@ Working on one post? These helpers write to `.preview/` in the repository root a
 - `npm run motion -- games --preview` makes contact sheets of 8 frames, one per language and format (add `--lang ar` or `--format feed` to narrow it down).
 - `npm run motion -- games --frame 5.5` saves one full-size frame at 5.5 seconds.
 - `npm run motion -- games --loopcheck` checks that the loop is seamless (the last frame flows back into frame 0).
+
+To redo the files of just one post in `../exports/`, add its slug: `npm run render -- games`, `npm run motion -- games`, `npm run check -- games`. The workspace (`npm run studio`, see [`../studio/README.md`](../studio/README.md)) does the same with its **Render** buttons.
 
 ---
 
@@ -912,7 +914,7 @@ The launch posts explain **what** Crapto Studio does. The next posts should **sh
 |---|---|---|
 | Rest of week 1, then week 2 onwards | Tell your own network, start the launch Reels, then the regular posting rhythm in both languages. Mix the content pillars and formats. | [02-content-strategy.md](02-content-strategy.md) (bilingual publishing, pillars, weekly rhythm, first 30 days) |
 | Any time you need an idea | Pick a post, Reel or story idea and adapt it, with English and Arabic hooks. | [04-idea-bank.md](04-idea-bank.md) (post ideas, Reel scripts, hook formulas) |
-| First real project you can show | Post it (case study, demo or before/after, with the client's permission) and swap it into your pins. | [01-profile-setup.md, pinned posts](01-profile-setup.md#10-pinned-posts) |
+| First real project you can show | Post it (case study, demo or before/after, with the client's permission) and swap it into your pins. Built it with Claude Code? Claude can draft the carousel ([case-study posts](02-content-strategy.md#case-study-posts)). | [01-profile-setup.md, pinned posts](01-profile-setup.md#10-pinned-posts) |
 | First real review | Add it to the Reviews highlight (Arabic label «آراء العملاء»). If you skipped that highlight at launch, create it now. Never write or invent one. Until then use `[add a real client quote]` as a placeholder only in drafts. | [01-profile-setup.md, story highlights](01-profile-setup.md#8-story-highlights) |
 | After 2 weeks | Open **Insights** and compare the 18 launch posts: saves, shares and profile visits, and English against Arabic. Also check which posts led to DMs (count those yourself, by keyword). Make more of what worked. | [02-content-strategy.md](02-content-strategy.md) (measuring what works) |
 
@@ -920,4 +922,4 @@ Good to know:
 
 - The launch pattern moves by one square with every new post (pinned posts stay where they are). That's normal. Don't hold back new content to protect it. Posting new content in English/Arabic pairs keeps twins next to each other.
 - You can re-share any launch post to your story later, for example when someone asks "What do you do?"
-- To change the text on a launch slide, edit `../design/content.mjs` (both languages), then run `npm run render` for the stills, `npm run motion` for the videos and `npm run check` to confirm all text is still readable (see [If the files aren't there yet](#if-the-files-arent-there-yet)). You generally can't replace the slides in a published post, so only do this before you post, or for future posts.
+- To change the text on a launch slide, open the post in the workspace (`npm run studio`) or edit its file in `../content/posts/` (both languages). Then render it again: the workspace's **Render** buttons, or `npm run render -- <slug>` for the stills, `npm run motion -- <slug>` for the videos and `npm run check -- <slug>` to confirm all text is still readable (see [If the files aren't there yet](#if-the-files-arent-there-yet)). You generally can't replace the slides in a published post, so only do this before you post, or for future posts.

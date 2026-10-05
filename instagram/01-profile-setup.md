@@ -11,7 +11,7 @@ The account speaks **two languages**. Every launch post is published twice: firs
 
 In the mockup:
 
-- The post count is the number of posts in [`../design/content.mjs`](../design/content.mjs) times two languages (9 × 2 = **18** at launch).
+- The post count is the number of posts in [`../content/posts/`](../content/posts/) (one file per post) times two languages (9 × 2 = **18** at launch).
 - The bio is the recommended bilingual bio from [section 4](#4-bio).
 - The highlight row shows the first 5 highlights with their English labels (see [section 8](#8-story-highlights) for the Arabic option).
 - The link line "🔗 your-project-form-link and 4 more" is a placeholder: your profile shows your own first link there, plus the other links from [section 6](#6-links-up-to-5).
@@ -42,7 +42,7 @@ How to post them, with captions and alt text in both languages, is in [`03-launc
 
 The profile picture and the logo on every post and video are made from your own logo files in [`../brand/logo/source/`](../brand/logo/source/). The profile picture shows the colour symbol only (the same symbol as [`Crapto Studio-09.png`](../brand/logo/source/Crapto%20Studio-09.png)). The build cuts it from your main logo file, [`Crapto Studio-08.png`](../brand/logo/source/Crapto%20Studio-08.png).
 
-**A file is missing?** Everything in `exports/` is generated. `npm run build` makes the logo crops and symbol parts (`npm run logo`), then every still (`npm run render`: profile pictures, highlight covers, post covers and slides, previews, brand board). `npm run motion` makes the hero videos and Reels (run it after `npm run build`, because the videos use the logo crops and parts); it is slow (about a minute per video, 36 videos). `npm run check` checks the text contrast on every hero cover (feed and Reel) and every text slide, in both languages. After a text change in `content.mjs`, run `npm run render` for the stills and `npm run motion` for the videos (the headline is part of each hero video).
+**A file is missing?** Everything in `exports/` is generated. `npm run build` makes the logo crops and symbol parts (`npm run logo`), then every still (`npm run render`: profile pictures, highlight covers, post covers and slides, previews, brand board). `npm run motion` makes the hero videos and Reels (run it after `npm run build`, because the videos use the logo crops and parts); it is slow (about a minute per video, 36 videos). `npm run check` checks the text contrast on every hero cover (feed and Reel) and every text slide, in both languages. After you change any text (a post, in the workspace or in `content/posts/<slug>.json`; or the bio or highlights in `design/content.mjs`), run `npm run render` for the stills and `npm run motion` for the videos (the headline is part of each hero video). The workspace (`npm run studio`, see [`../studio/README.md`](../studio/README.md)) has buttons that render one post at a time.
 
 ### Information to prepare
 
