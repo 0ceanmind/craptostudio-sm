@@ -558,7 +558,7 @@ The templates handle these for you (slide text goes through `rich()` in [`../des
 - Punctuation right after an accent stays attached to it: `.` `,` `!` `?` in English and `،` `؟` in Arabic.
 - Slide titles, paragraphs, card and step text and captions use `text-wrap: pretty`, so they don't end with a single word alone on the last line. The hero headline uses `text-wrap: balance`, so its lines come out at similar lengths.
 - In big display type on the slides (titles, the statement and the CTA headline), loose apostrophes are tucked in slightly, so "Let’s" and "Here’s" don't look gappy.
-- The bundled font files have no arrow character (→), so arrows in slide text are drawn as the Lucide `arrow-right` icon, flipped to point left on Arabic slides. Keep typing → in [`../design/content.mjs`](../design/content.mjs) as usual.
+- The bundled font files have no arrow character (→), so arrows in slide text are drawn as the Lucide `arrow-right` icon, flipped to point left on Arabic slides. Keep typing → in slide text (in the workspace or in the post's file in [`../content/posts/`](../content/posts/)) as usual.
 - On blue and light heroes, the accent underline is a separate bar under the accent word, set a little lower in Arabic so it clears the letters' tails and dots.
 
 ### 7.5 The wordmark is artwork, not a font
@@ -588,7 +588,7 @@ The "Crapto Studio" letters under the symbol are part of the logo artwork. Don't
 
 In the hero, the glows drift slowly and return within the loop. The theme applies to the hero (slide 1: the video and its cover). The static slides (cards, steps, statement, services, image, CTA) always use the dark theme, so every carousel reads the same after the first swipe.
 
-**Mixing themes on the grid.** An English post and its Arabic twin always share a theme, so on the grid each pair reads as a two-tile block. With three tiles per row, six pairs sit side by side in one row and three (Games, AI and Interactive) wrap from the end of one row to the start of the next. In posting order, dark pairs alternate with coloured (blue or light) pairs, so the colour steps diagonally down the grid instead of stacking in one column. The [grid preview](../exports/preview/grid.png) shows every post in [`../design/content.mjs`](../design/content.mjs), newest first (18 tiles, 6 rows at launch; it grows as you add posts):
+**Mixing themes on the grid.** An English post and its Arabic twin always share a theme, so on the grid each pair reads as a two-tile block. With three tiles per row, six pairs sit side by side in one row and three (Games, AI and Interactive) wrap from the end of one row to the start of the next. In posting order, dark pairs alternate with coloured (blue or light) pairs, so the colour steps diagonally down the grid instead of stacking in one column. The [grid preview](../exports/preview/grid.png) shows every post in [`../content/posts/`](../content/posts/), newest first (18 tiles, 6 rows at launch; it grows as you add posts):
 
 | | Left | Middle | Right |
 |---|---|---|---|
@@ -762,7 +762,7 @@ Why: the same answer as the English one in [3.4](#34-example-rewrites-bad--good)
 
 ### 9.3 Terminology (English ↔ Arabic)
 
-The Arabic in [`../design/content.mjs`](../design/content.mjs) is the reference. Use the same words in captions, DMs and new posts, so the account always sounds like one studio.
+The Arabic in the launch posts ([`../content/posts/`](../content/posts/)) and in the shared text in [`../design/content.mjs`](../design/content.mjs) (services, profile, highlights) is the reference. Use the same words in captions, DMs and new posts, so the account always sounds like one studio.
 
 **Brand lines and interface words**
 
@@ -911,7 +911,7 @@ The headline and sub-line sit still under the scene the whole time, so someone w
 | Part | File | What it does |
 |---|---|---|
 | Stage | [`../design/motion/stage.mjs`](../design/motion/stage.mjs) | Draws everything around the scene: the theme background with its two drifting glows and the grid, the header (symbol + CRAPTO STUDIO, tag), the headline and sub-line, and the footer (feed only). Loads GSAP with the silk ease, runs the glows' ambient loop and builds the 8 s timeline |
-| Scenes | [`../design/scenes/`](../design/scenes/) `<scene>.mjs` | One per post. Each exports `duration` (8 s), `copy` (its UI text in `en` and `ar`), `css(ctx)`, `html(ctx)` and `animate(tl, gsap, ctx)`. `ctx` gives the language, direction, format and theme |
+| Scenes | [`../design/scenes/`](../design/scenes/) `<scene>.mjs` | One per animation: the 9 service demos and the 4 project showcases. Several posts can share a scene. Each exports `meta` (its name and notes in the workspace), `duration` (8 s), `copy` (its default on-screen text in `en` and `ar`), `data` (screenshots, icon, code…), `css(ctx)`, `html(ctx)` and `animate(tl, gsap, ctx)`. `ctx` gives the language, direction, format and theme. A post can replace the default text and data with its own (`sceneCopy`, `sceneData`). Rules for writing one: [`../design/scenes/README.md`](../design/scenes/README.md) |
 | UI kit | [`../design/motion/ui.mjs`](../design/motion/ui.mjs) | Shared pieces: app windows with a title bar, cards, chat bubbles, chips, avatar, typing dots, a phone frame, spark petals, Lucide icons and the gooey filter. Theme-aware (white cards on light, Navy cards on dark and blue) and written with logical properties, so it mirrors for Arabic |
 | Renderer | [`../design/motion/render-video.mjs`](../design/motion/render-video.mjs) | Seeks the timeline frame by frame, screenshots each frame and encodes the video |
 
@@ -938,7 +938,18 @@ Check posts with long headlines on the Reel (`--frame … --format reel`) so the
 | 08 | Games | Dark | A 2D platformer in a Unity-style game window: a blob hero runs and jumps across brand-blue platforms collecting the logo's orange petals. An iris wipe restarts the run, the score rolls back, and a fresh run collects the petals again. |
 | 09 | Intro | Blue | The logo comes alive: the white symbol melts into gooey droplets that scatter and flow back together, the four orange petals spin back into place, and the eight services orbit the mark. |
 
-Names, ratings, prices, order numbers and speed figures inside the scenes are mock UI that illustrates the service. They are not results or client work: never quote them as facts in captions or replies. The text inside each animation lives in the `copy` block (`en` and `ar`) at the top of its scene file, not in `content.mjs`. The one exception is the Intro orbit, which reads the service names from the `services` list in `content.mjs`.
+Names, ratings, prices, order numbers and speed figures inside the scenes are mock UI that illustrates the service. They are not results or client work: never quote them as facts in captions or replies. Each animation's default text is the `copy` block (`en` and `ar`) at the top of its scene file. A post can change it for itself, without touching the scene: in the workspace, edit **Text in the animation** (saved in the post as `sceneCopy`). The one exception is the Intro orbit, which reads the service names from the `services` list in [`../design/content.mjs`](../design/content.mjs).
+
+**Project showcases.** Four more scenes show any project, using its own name, features, screenshots, code or tech stack from the post. Use them for case studies and project posts:
+
+| Scene | Use it for |
+|---|---|
+| `showcase-phone` | Mobile apps, with up to 3 portrait screenshots |
+| `showcase-browser` | Websites, web apps and dashboards, with up to 3 screenshots |
+| `showcase-code` | Libraries, APIs, backends, bots and AI pipelines: a short code snippet and its result |
+| `showcase-stack` | Anything else (games, systems, hardware): logo or icon, tech stack and feature cards |
+
+Without screenshots, the phone and browser scenes draw a clean placeholder screen in the brand colours. What each one needs: [`../studio/README.md`](../studio/README.md#animations-for-any-project).
 
 ### 10.5 Rendering and checking
 
@@ -951,8 +962,12 @@ npm run motion -- ai --preview 0,2.5,4,7.9         # contact sheet at chosen tim
 npm run motion -- ai --frame 5.5                   # one full-size frame → .preview/
 npm run motion -- ai --loopcheck                   # compares the end with frame 0: prints OK or NOT SEAMLESS
 npm run render                                     # the stills, including 01-cover.png (frame 0) for every post and language
+npm run render -- ai                               # one post's stills only (the grid preview and mockup need the full run)
 npm run check                                      # text contrast on every hero cover (feed + Reel) and text slide, both languages
+npm run check -- ai                                # one post
 ```
+
+The workspace (`npm run studio`) runs the same renders and checks from a post's **Files** panel, and plays the hero live while you edit.
 
 - **Outputs:** the feed video goes to `../exports/posts/NN-<slug>/<lang>/01-hero.mp4`; the Reel to `../exports/reels/NN-<slug>-<lang>.mp4`, with `NN-<slug>-<lang>-cover.jpg` (frame 0) for the Reel cover.
 - **Video format:** 30 fps (240 frames per loop), H.264 (High profile, yuv420p, fast start), no sound.
@@ -993,7 +1008,7 @@ Instagram carousels can mix video and images, so the video goes first and the PN
 | **image** | A screenshot or photo (PNG, JPG or WebP) in the dark slide frame, with an optional title and caption. `fit: 'contain'` (default) shows the whole image; `'cover'` fills the frame | Case studies, demos, before/after. Use it instead of adding screenshots in the Instagram app, so the slide numbers (e.g. "02 / 07") stay right |
 | **cta** | The last slide: the colour symbol, the headline "Got an idea? Let’s compile it." («لديك فكرة؟ لنبنِها معاً.‏»), one call to action (DM “START” or tap the link in bio; «ابدأ» in Arabic) and a single "Follow @craptostudio" pill («تابِع @craptostudio»). The footer reads "Save for later" with a bookmark icon. A post can set its own headline: the Support post uses "Stuck on a project? Let’s work it out." | Every carousel ends with one |
 
-Every slide has the same header (colour symbol, "CRAPTO STUDIO", slide counter such as "02 / 03") and footer (handle, and "Swipe" or "Save for later"). A post with `slides: []` (or no `slides` at all) is a single hero video or image, and its footer drops "Swipe".
+Every slide has the same header (colour symbol, "CRAPTO STUDIO", slide counter such as "02 / 03") and footer (handle, and "Swipe" or "Save for later"). A post with `slides: []` is a single hero video or image, and its footer drops "Swipe".
 
 ### 11.3 Exported files
 
@@ -1007,7 +1022,7 @@ Every slide has the same header (colour symbol, "CRAPTO STUDIO", slide counter s
 | Highlight covers: a white Lucide icon on the brand gradient, icons only so one set serves both languages, in this order: Start, Work, Games, Apps, AI, Software, Interactive, Upgrades, Support, Reviews | `../exports/highlights/01-start.png` … `../exports/highlights/10-reviews.png` | 1080 × 1920 |
 | Logo crops and symbol parts | [`../exports/logo/`](../exports/logo/), [`../exports/logo/parts/`](../exports/logo/parts/) | Trimmed PNGs |
 | Grid preview: every post's `01-cover.png`, newest first (18 tiles in 6 rows at launch) | [`../exports/preview/grid.png`](../exports/preview/grid.png) | 1080 px wide |
-| Profile mockup: header, bilingual bio, highlights and grid. Its post count follows `content.mjs`; its link line ("🔗 your-project-form-link and 4 more") is a placeholder | [`../exports/preview/profile-mockup.png`](../exports/preview/profile-mockup.png) | 430 px wide, at 2× |
+| Profile mockup: header, bilingual bio, highlights and grid. Its post count is the number of posts in `content/posts/` times two; its link line ("🔗 your-project-form-link and 4 more") is a placeholder | [`../exports/preview/profile-mockup.png`](../exports/preview/profile-mockup.png) | 430 px wide, at 2× |
 | Brand board: logo, both taglines, palette, the three typefaces, four covers (English and Arabic) and the highlights | [`../exports/brand/brand-board.png`](../exports/brand/brand-board.png) | 1600 × 1000, at 2× |
 
 `<lang>` is `en` or `ar`. The launch folders are numbered in posting order: `01-support`, `02-interactive`, `03-upgrades`, `04-software`, `05-ai`, `06-apps`, `07-start`, `08-games`, `09-intro`; publish `en/` and then `ar/` for each. The tag on each hero ("01 / Games" … "07 / Support") numbers the services, not the posting order. The grid preview and the profile mockup grow as you add posts.
