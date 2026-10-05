@@ -1,9 +1,10 @@
 // Support / mentoring: "You code. We guide."
 // A dark code editor (game_loop.py) with a bug: the while-loop never ends. The mentor never
-// touches the code: a comment bubble pops beside the bug and asks a guiding question. The
-// student's own caret (name tag "You") glides to the right line and types the fix, the wavy
-// underline melts away, the test card fills to "12 tests passed" and a "Hackathon ready"
-// badge pops. Frame 0 is the solved state (fix in place, tests green, mentor praising).
+// touches the code (no mentor cursor in the editor): a comment bubble, anchored to the buggy
+// line like a review comment, asks a guiding question. The student's own caret (name tag
+// "You") glides to the right line and types the fix, the wavy underline melts away, the test
+// card fills to "12 tests passed" and a "Hackathon ready" badge pops. Frame 0 is the solved
+// state (fix in place, tests green, mentor praising).
 // Loop: hold → rewind to the buggy state → question → student types the fix → pass → hold.
 //
 // Code is always LTR (even in Arabic); the composition mirrors around it: in Arabic the editor
@@ -23,16 +24,14 @@ const lineTop = (k) => PADT + (k - 1) * LH; // k is 1-based
 // Scene y of a line centre (editor top + border + bar + body offset).
 const lineMid = (k) => ED_TOP + 2 + 58 + lineTop(k) + LH / 2;
 
-// The mentor's pointer (a multiplayer cursor, never a caret): its tip rests by the student's
-// "You" tag (frame 0: "Nice, you found it!"), and points at the bug while the mentor asks.
-// Body coordinates, always LTR like the code. The animation offsets mirror these numbers.
-const PTR_REST = { x: 444, y: 306 };
-
 const petalPath = 'M20 2C29 10 37 23 37 35C37 46 29 52 20 52C11 52 3 46 3 35C3 23 11 10 20 2Z';
 const petalSvg = () => `<svg viewBox="0 0 40 54"><path d="${petalPath}" fill="url(#spet)"/><path d="M13 22C15 16 18 11 21 8C20 15 18 21 15 27Z" fill="#fff" opacity=".55"/></svg>`;
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-const words = (s) => s.split(' ').map((w) => `<span class="w">${esc(w)}</span>`).join(' ');
+// Word spans (Arabic is animated by whole words). Plus Jakarta Sans sets a Latin comma loose,
+// so it is pulled in slightly ("Nice," not "Nice ,").
+const words = (s) => s.split(' ')
+  .map((w) => `<span class="w">${esc(w).replace(/,$/, '<span class="pn">,</span>')}</span>`).join(' ');
 
 // Syntax-coloured tokens per line: [class, text]. Line 6 is the student's fix.
 const CODE = [
@@ -49,6 +48,8 @@ const FIX_COL = 8; // the fix starts after 8 spaces of indentation
 const FIX_LEN = 10; // "lives -= 1"
 const BUG_LINE = 2;
 const BUG_LEN = 15; // "while lives > 0"
+// The comment anchor starts just after "while lives > 0:" (16 columns).
+const LK_X0 = X0 + 16 * CW + 12;
 
 function codeRows() {
   return CODE.map((toks, i) => {
@@ -153,13 +154,13 @@ export default {
 .tab.on::after{content:'';position:absolute;inset-inline:10px;bottom:0;height:3px;border-radius:2px;background:var(--sparkg)}
 .tab.off{opacity:.7}
 .pres{margin-inline-start:auto;display:flex;align-items:center}
-.pres i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 0 3px #13233D}
+.pres i{position:relative;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 0 3px #13233D}
 .pres .pm{background:#fff}
 .pres .pm img{width:24px;display:block}
-.pres .pu{background:var(--sparkg);color:#0E1A2B;margin-inline-start:-8px}
+.pres .pu{background:var(--sparkg);color:#0E1A2B;margin-inline-start:-8px;z-index:1} /* fixed order: pulses never restack them */
 .eb{position:relative;height:${BODY_H}px;direction:ltr;overflow:hidden;background:linear-gradient(180deg,#0E1C34,#0A1527)}
 .row{position:absolute;left:0;right:0;height:${LH}px;line-height:${LH}px;white-space:pre;font:500 ${FS}px ${stack.mono};color:#E6EEF8}
-.row .no{position:absolute;left:0;width:52px;text-align:right;font-size:22px;color:rgba(147,169,198,.5)}
+.row .no{position:absolute;left:0;width:52px;text-align:right;font-size:22px;color:rgba(147,169,198,.6)}
 .row .cd{position:absolute;left:${X0}px}
 .row .k{color:#F28D19;font-weight:700}
 .row .f{color:#5AB4D9}
@@ -180,20 +181,17 @@ export default {
 .cur .cb{position:absolute;left:2px;top:0;width:3px;height:100%;border-radius:2px;background:#F4B310;box-shadow:0 0 10px rgba(244,179,16,.9)}
 .cur .fl{position:absolute;left:13px;top:-3px;height:38px;padding:0 13px;border-radius:11px 11px 11px 3px;background:var(--sparkg);color:#0E1A2B;
   font:800 22px ${ui};line-height:${r ? 35 : 38}px;white-space:nowrap;box-shadow:0 6px 16px rgba(236,108,28,.35)}
-/* mentor pointer */
-.mp{position:absolute;left:${PTR_REST.x - 3}px;top:${PTR_REST.y - 2}px;width:30px;height:38px;z-index:3}
-.mp .mpi{position:absolute;inset:0}
-.mp .pa{position:absolute;left:0;top:0;width:30px;height:38px;overflow:visible;filter:drop-shadow(0 6px 10px rgba(3,8,18,.55))}
-.mp .pa path{fill:url(#mpg);stroke:#fff;stroke-width:2.4;stroke-linejoin:round}
-.mp .ma{position:absolute;left:24px;top:22px;width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;
-  box-shadow:0 0 0 3px var(--sky),0 10px 18px rgba(3,8,18,.5)}
-.mp .ma img{width:25px;display:block}
-.mp .pr{position:absolute;left:-13px;top:-14px;width:32px;height:32px;border-radius:50%;border:3px solid var(--sky);opacity:0}
+/* review-comment anchor (EN: the bubble sits past the end of the line, so a dotted lead joins them) */
+.lk{position:absolute;left:${LK_X0}px;right:0;top:${lineTop(BUG_LINE) + LH / 2 - 2}px;height:4px;
+  background:repeating-linear-gradient(90deg,var(--sky) 0 9px,rgba(90,180,217,0) 9px 15px);border-radius:2px;
+  filter:drop-shadow(0 0 5px rgba(90,180,217,.75));clip-path:inset(-8px 0% -8px 100%)}
+.lkd{position:absolute;left:${LK_X0 - 7}px;top:${lineTop(BUG_LINE) + LH / 2 - 7}px;width:14px;height:14px;border-radius:50%;
+  background:var(--sky);box-shadow:0 0 0 4px rgba(90,180,217,.25),0 0 14px rgba(90,180,217,.9);transform:scale(0)}
 .shine{position:absolute;top:-30px;bottom:-30px;left:0;width:160px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(207,240,255,.16),rgba(255,255,255,0));transform:translateX(-260px) skewX(-18deg)}
 .fx{position:absolute;left:${X0 + (FIX_COL + FIX_LEN) * CW + 2}px;top:${lineTop(FIX_LINE) + LH / 2}px;width:0;height:0}
-.fx .mp{position:absolute;left:-7px;top:-10px;width:14px;height:20px;opacity:0}
-.fx .mp svg{width:100%;height:100%;display:block}
-.mm{position:absolute;right:16px;top:${PADT}px;width:72px;height:80px;padding:8px 6px;border-radius:8px;background:rgba(147,169,198,.07);box-shadow:inset 0 0 0 1px rgba(147,169,198,.12);opacity:.55}
+.fx .fp{position:absolute;left:-7px;top:-10px;width:14px;height:20px;opacity:0}
+.fx .fp svg{width:100%;height:100%;display:block}
+.mm{position:absolute;right:16px;top:${lineTop(3) + 6}px;width:72px;height:80px;padding:8px 6px;border-radius:8px;background:rgba(147,169,198,.07);box-shadow:inset 0 0 0 1px rgba(147,169,198,.12);opacity:.55}
 .mm i{position:absolute;height:5px;border-radius:3px;margin:8px 0 0 8px}
 
 /* mentor bubble */
@@ -214,7 +212,8 @@ export default {
 .mb .dots{display:flex;gap:8px;top:12px;opacity:0}
 .mb .dots i{width:12px;height:12px;border-radius:50%;background:#93A9C6}
 .mb .w{display:inline-block}
-.rx{position:absolute;inset-inline-end:-14px;bottom:-18px;width:54px;height:54px;border-radius:50%;background:var(--sparkg);color:#fff;display:grid;place-items:center;
+.mb .pn{margin-inline-start:-.07em}
+.rx{position:absolute;inset-inline-end:-8px;bottom:-30px;width:54px;height:54px;border-radius:50%;background:var(--sparkg);color:#fff;display:grid;place-items:center;
   box-shadow:0 10px 24px rgba(236,108,28,.45),0 0 0 4px #fff}
 
 /* tests card */
@@ -257,7 +256,6 @@ export default {
   html: ({ copy, rtl }) => `${gooFilter}
 <svg width="0" height="0" style="position:absolute"><defs>
 <linearGradient id="spet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4B310"/><stop offset=".55" stop-color="#F28D19"/><stop offset="1" stop-color="#EC6C1C"/></linearGradient>
-<linearGradient id="mpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5AB4D9"/><stop offset="1" stop-color="#376BB1"/></linearGradient>
 </defs></svg>
 <div class="sp">
 <div class="sp-halo"></div>
@@ -288,11 +286,9 @@ export default {
     ${codeRows()}
     <i class="gping"></i><i class="gdot"></i><i class="gbar"></i>
     ${squiggle()}
-    <div class="fx">${Array.from({ length: 6 }, () => `<i class="mp">${petalSvg()}</i>`).join('')}</div>
+    ${rtl ? '' : '<i class="lk"></i><i class="lkd"></i>'}
+    <div class="fx">${Array.from({ length: 6 }, () => `<i class="fp">${petalSvg()}</i>`).join('')}</div>
     <div class="cur"><i class="cb"></i><span class="fl">${copy.you}</span></div>
-    <div class="mp"><div class="mpi"><i class="pr"></i>
-      <svg class="pa" viewBox="0 0 30 38"><path d="M3 2 L3 30.5 L10.2 24 L15 34.6 L20.2 32.3 L15.6 22 L25.2 22 Z"/></svg>
-      <span class="ma"><img src="${symbolPng()}" alt=""></span></div></div>
     <div class="shine"></div>
   </div>
 </div></div>
@@ -339,13 +335,12 @@ export default {
     });
     tl.to('.fsp', { rotation: '+=360', duration: D, ease: 'none' }, 0);
     tl.to('.sp-halo', { scale: 1.06, opacity: 0.8, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
-    tl.to('.ed-w', { y: -8, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
-    tl.to('.mb-w', { y: 8, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
+    // The comment bubble floats with the editor, so its tail stays on the line it comments.
+    tl.to(['.ed-w', '.mb-w'], { y: -8, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     tl.to('.ts-w', { y: -7, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     tl.to('.bd-w', { y: 7, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
     tl.to('.tile.bulb', { y: -12, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
     tl.to('.tile.cap', { y: 12, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
-    tl.to('.mp .mpi', { y: -4, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
     tl.to('.tile.bulb .ti', { rotation: `+=${8 * dir}`, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     tl.to('.tile.cap .ti', { rotation: `-=${8 * dir}`, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     tl.to('.rays', { rotation: 60, duration: D, ease: 'none' }, 0); // 30° symmetry: two periods
@@ -358,6 +353,8 @@ export default {
     tl.to('.bd-in', { scale: 0.6, opacity: 0, rotation: -10 * dir, duration: 0.38, ease: 'power2.in' }, 0.9);
     tl.to('.mb', { scale: 0.9, opacity: 0, duration: 0.36, ease: 'power2.in' }, 0.95);
     tl.to('.mb .p .w', { opacity: 0, duration: 0.01 }, 1.35);
+    // The question's words wait hidden (their staggered fromTo only takes over at each start).
+    tl.to('.mb .q .w', { opacity: 0, y: 10, duration: 0.01 }, 1.35);
     tl.to('.rx', { scale: 0, duration: 0.01 }, 1.35);
     tl.to('.ts .lb', { opacity: 0, x: -12 * dir, duration: 0.3, ease: 'power2.in' }, 1.0);
     tl.to('.ring .ok', { scale: 0, duration: 0.28, ease: 'back.in(2)' }, 1.0);
@@ -383,18 +380,20 @@ export default {
     tl.fromTo('.sq path', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.55, ease: 'power2.out' }, 1.7);
     tl.fromTo('.gdot', { scale: 0 }, { scale: 1, duration: 0.4, ease: 'back.out(3)' }, 1.75);
 
-    // ---- The mentor points at the bug (a pointer, never a caret) and asks ----
-    // Pointer offsets from its resting tip (by the "You" tag) to the end of the squiggle.
-    const PB = { x: 300 - 444, y: 118 - 306 };
-    tl.to('.mp', { x: PB.x, duration: 0.55, ease: 'power2.inOut' }, 1.55);
-    tl.to('.mp', { y: PB.y, duration: 0.55, ease: 'power3.inOut' }, 1.55);
-    const click = (t) => {
-      tl.fromTo('.mp .mpi', { scale: 1 }, { scale: 0.86, transformOrigin: '3px 2px', duration: 0.1, ease: 'power2.out', repeat: 1, yoyo: true }, t);
-      tl.fromTo('.mp .pr', { scale: 0.4, opacity: 1 }, { scale: 2.1, opacity: 0, duration: 0.6, ease: 'power2.out' }, t + 0.04);
-    };
-    click(2.08);
+    // ---- The mentor comments on the line (a review comment, never an edit) and asks ----
     const ask = 2.15;
     tl.fromTo('.mb', { scale: 0.82, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.6)' }, ask);
+    tl.fromTo('.pres .pm', { scale: 1 }, { scale: 1.18, duration: 0.18, ease: 'power2.out', repeat: 1, yoyo: true }, ask + 0.1);
+    // EN: a dotted lead runs from the bubble's tail back to the line (stopping short of the
+    // student's tag while the caret sits there, then reaching the code once it moves on).
+    if (document.querySelector('.lk')) {
+      const lkW = document.querySelector('.lk').offsetWidth;
+      const park = 82; // clear of the "You" tag on this line
+      tl.fromTo('.lk', { clipPath: 'inset(-8px 0% -8px 100%)' }, { clipPath: `inset(-8px 0% -8px ${(park / lkW) * 100}%)`, duration: 0.45, ease: 'power2.out' }, ask + 0.2);
+      tl.fromTo('.lkd', { x: park, scale: 0 }, { x: park, scale: 1, duration: 0.35, ease: 'back.out(3)' }, ask + 0.55);
+      tl.to('.lk', { clipPath: 'inset(-8px 0% -8px 0%)', duration: 0.45, ease: 'power2.inOut' }, 3.42);
+      tl.to('.lkd', { x: 0, duration: 0.45, ease: 'power2.inOut' }, 3.42);
+    }
     tl.to(['.r1', '.r3', '.r4', '.r5', '.r7'], { opacity: 0.3, duration: 0.5, ease: 'power2.out' }, ask + 0.05);
     tl.to('.mm', { opacity: 0.2, duration: 0.5, ease: 'power2.out' }, ask + 0.05);
     tl.fromTo('.gping', { scale: 0.6, opacity: 1 }, { scale: 2.2, opacity: 0, duration: 0.7, ease: 'power2.out' }, ask);
@@ -417,6 +416,8 @@ export default {
     tl.to('.cur', { x: cx(8), y: cy(6), duration: 0.55 }, 3.38);
     tl.to('.band.act', { y: 0, duration: 0.55 }, 3.38);
     tl.fromTo('.gbar', { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: 'power2.out' }, 3.9);
+    // The student's presence avatar pulses while they type: they write the code.
+    tl.fromTo('.pres .pu', { scale: 1 }, { scale: 1.18, duration: 0.2, ease: sine, repeat: 3, yoyo: true }, 3.95);
     chars.forEach((c, j) => {
       const t = 3.96 + j * 0.08;
       tl.fromTo(c, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.09, ease: 'power2.out' }, t);
@@ -429,12 +430,16 @@ export default {
     tl.to('.sq', { opacity: 0, duration: 0.15 }, fix + 0.3);
     tl.to('.band.err', { opacity: 0, duration: 0.4 }, fix);
     tl.to('.gdot', { scale: 0, duration: 0.25, ease: 'back.in(2)' }, fix);
+    if (document.querySelector('.lk')) {
+      tl.to('.lkd', { scale: 0, duration: 0.25, ease: 'back.in(2)' }, fix);
+      tl.to('.lk', { clipPath: 'inset(-8px 0% -8px 100%)', duration: 0.45, ease: 'power2.in' }, fix + 0.05);
+    }
     tl.fromTo('.band.ok', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'power2.out' }, fix);
     tl.to('.band.ok', { opacity: 0, duration: 0.7, ease: 'power2.inOut' }, fix + 0.5);
     tl.fromTo('.shine', { x: -260 }, { x: 680, duration: 0.8, ease: 'power2.inOut' }, fix);
     tl.to(['.r1', '.r3', '.r4', '.r5', '.r7'], { opacity: 1, duration: 0.6, ease: 'power2.inOut' }, fix + 0.1);
     tl.to('.mm', { opacity: 0.55, duration: 0.6, ease: 'power2.inOut' }, fix + 0.1);
-    gsap.utils.toArray('.fx .mp').forEach((p, j) => {
+    gsap.utils.toArray('.fx .fp').forEach((p, j) => {
       const a = (-150 + j * 60) * Math.PI / 180;
       const rr = 34 + (j % 2) * 16;
       tl.fromTo(p, { x: 0, y: 0, scale: 0.5, opacity: 1, rotation: j * 60 + 90 },
@@ -459,17 +464,14 @@ export default {
 
     // ---- The mentor reacts ----
     const praise = 5.75;
-    // The pointer glides back to the student's "You" tag: "Nice, you found it!"
-    tl.to('.mp', { x: 0, duration: 0.6, ease: 'power3.inOut' }, praise - 0.2);
-    tl.to('.mp', { y: 0, duration: 0.6, ease: 'power2.inOut' }, praise - 0.2);
-    click(praise + 0.4);
-    tl.to('.mb .q .w', { opacity: 0, y: -10, duration: 0.18, stagger: 0.02, ease: 'power2.in' }, praise);
-    tl.to('.mb .q', { opacity: 0, duration: 0.01 }, praise + 0.32);
-    tl.to('.mb .tx', { height: oneLine, duration: 0.36, ease: 'power2.inOut' }, praise + 0.1);
-    tl.fromTo('.mb .p .w', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, ease: 'power2.out' }, praise + 0.34);
-    tl.fromTo('.mb .av', { scale: 1 }, { scale: 1.12, duration: 0.16, ease: 'power2.out', repeat: 1, yoyo: true }, praise + 0.34);
-    speak(praise + 0.34);
-    tl.fromTo('.rx', { scale: 0, rotation: -40 * dir }, { scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(2.6)' }, praise + 0.55);
+    // Question out, praise in: a quick hand-over, so the bubble never sits empty.
+    tl.to('.mb .q .w', { opacity: 0, y: -10, duration: 0.16, stagger: 0.015, ease: 'power2.in' }, praise);
+    tl.to('.mb .q', { opacity: 0, duration: 0.01 }, praise + 0.24);
+    tl.to('.mb .tx', { height: oneLine, duration: 0.34, ease: 'power2.inOut' }, praise + 0.06);
+    tl.fromTo('.mb .p .w', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, ease: 'power2.out' }, praise + 0.22);
+    tl.fromTo('.mb .av', { scale: 1 }, { scale: 1.12, duration: 0.16, ease: 'power2.out', repeat: 1, yoyo: true }, praise + 0.22);
+    speak(praise + 0.22);
+    tl.fromTo('.rx', { scale: 0, rotation: -40 * dir }, { scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(2.6)' }, praise + 0.45);
 
     // ---- Badge pops ----
     const pop = 6.35;

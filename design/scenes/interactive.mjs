@@ -88,7 +88,7 @@ export default {
 .dsp .tilt{position:relative;transform:perspective(2000px) rotateY(${-5 * s}deg) rotateX(3deg);box-shadow:0 50px 100px rgba(2,6,14,.6),0 0 0 1px rgba(90,180,217,.12)}
 .dsp .win-bar{background:linear-gradient(180deg,#172A47,#13233D)}
 .dsp .win-bar .t{font-family:${r ? stack.arabic : stack.mono}}
-.b3d{margin-inline-start:auto;display:flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;background:rgba(90,180,217,.14);color:var(--sky);font:700 20px ${stack.mono};direction:ltr}
+.b3d{${r ? 'margin-right' : 'margin-left'}:auto;display:flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;background:rgba(90,180,217,.14);color:var(--sky);font:700 20px ${stack.mono};direction:ltr}
 .sl{position:relative;width:${SW}px;height:${SH}px;overflow:hidden;background:#0A1830}
 .sl::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(${r ? 245 : 115}deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 38%)}
 .sbg{position:absolute;inset:0;background:radial-gradient(ellipse 52% 70% at ${r ? 100 - 32 : 32}% 52%,#22528D 0%,#163462 42%,#0C1B35 78%,#0A1628 100%)}
@@ -159,7 +159,7 @@ export default {
 .dots .act{position:absolute;top:-1px;inset-inline-start:-12px;width:36px;height:14px;border-radius:7px;background:var(--sparkg);box-shadow:0 0 14px rgba(242,141,25,.7);transform:translateX(${64 * s}px)}
 
 /* quiz card: pops out of the screen and flips */
-.qwrap{position:absolute;inset-inline-end:14px;top:458px;width:360px;height:228px;perspective:1200px}
+.qwrap{position:absolute;inset-inline-end:14px;top:458px;width:384px;height:228px;perspective:1200px}
 .qin{position:absolute;inset:0;transform-origin:50% 100%}
 .qtilt{position:absolute;inset:0;transform-style:preserve-3d;transform:perspective(1400px) rotateY(${-9 * s}deg) rotateX(5deg)}
 .flip{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(180deg)}
@@ -167,18 +167,21 @@ export default {
 .front{padding:20px 22px}
 .qtag{display:inline-flex;align-items:center;gap:8px;height:36px;padding-inline:12px 16px;border-radius:999px;background:rgba(242,141,25,.16);color:var(--amber);font-size:${r ? 20 : 20}px;font-weight:700}
 .qq{display:block;margin-top:${r ? 8 : 12}px;font-size:${r ? 29 : 31}px;line-height:${r ? 1.45 : 1.25};font-weight:800;white-space:nowrap}
-.opts{position:absolute;inset-inline:18px;bottom:20px;display:flex;gap:10px}
-.opt{position:relative;flex:1 1 0;min-width:0;height:66px;border-radius:18px;background:var(--soft);border:2px solid var(--card-line);display:flex;align-items:center;gap:${r ? 10 : 12}px;padding-inline:${r ? 14 : 16}px;font-size:${r ? 22 : 26}px;font-weight:${r ? 700 : 800};white-space:nowrap}
-.opt .rd{width:${r ? 22 : 24}px;height:${r ? 22 : 24}px;border-radius:50%;border:3px solid var(--ui-sub);flex:none}
+.opts{position:absolute;inset-inline:16px;bottom:20px;display:flex;gap:10px}
+.opt{position:relative;flex:1 1 0;min-width:0;height:66px;border-radius:18px;background:var(--soft);border:2px solid var(--card-line);display:flex;align-items:center;justify-content:space-between;gap:8px;padding-inline:16px 12px;font-size:${r ? 23 : 28}px;font-weight:${r ? 700 : 800};white-space:nowrap}
+.opt .rd{width:26px;height:26px;border-radius:50%;border:3px solid var(--ui-sub);flex:none}
 .opt .ohv{position:absolute;inset:-2px;border-radius:18px;border:3px solid var(--sky);box-shadow:0 0 18px rgba(90,180,217,.5);opacity:0}
-.opt .osel{position:absolute;inset:-2px;border-radius:18px;background:var(--sparkg);color:#0E1A2B;display:flex;align-items:center;gap:${r ? 10 : 12}px;padding-inline:${r ? 14 : 16}px;box-shadow:0 10px 26px rgba(242,141,25,.45)}
-.opt .osel .ok{width:${r ? 24 : 26}px;height:${r ? 24 : 26}px;border-radius:50%;background:#0E1A2B;color:var(--amber);display:grid;place-items:center;flex:none}
+.opt .osel{position:absolute;inset:-2px;border-radius:18px;background:var(--sparkg);color:#0E1A2B;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-inline:18px 14px;box-shadow:0 10px 26px rgba(242,141,25,.45)}
+.opt .osel .ok{width:26px;height:26px;border-radius:50%;background:#0E1A2B;color:var(--amber);display:grid;place-items:center;flex:none}
 .opt .oclip{position:absolute;inset:-2px;border-radius:18px;overflow:hidden}
-.opt .orip{position:absolute;inset-inline-start:calc(74% - 22px);top:calc(50% - 12px);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.55);opacity:0}
+.opt .orip{position:absolute;inset-inline-end:5px;top:calc(50% - 22px);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.55);opacity:0}
 .back{transform:rotateY(180deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:${r ? 2 : 6}px;
   background:radial-gradient(ellipse 80% 70% at 50% 18%,rgba(34,197,94,.20),rgba(34,197,94,0) 70%),linear-gradient(170deg,#1A3358,#13233D)}
 .back .clip{position:absolute;inset:0;border-radius:26px;overflow:hidden}
 .back .shine{position:absolute;top:-20%;bottom:-20%;inset-inline-start:-150px;width:100px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.2),rgba(255,255,255,0));transform:skewX(${-20 * s}deg)}
+.back .rays{position:absolute;left:50%;top:66px;width:330px;height:330px;margin:-165px 0 0 -165px;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(244,179,16,.30) 0deg 5deg,rgba(244,179,16,0) 9deg 30deg);-webkit-mask-image:radial-gradient(circle,transparent 13%,#000 22%,rgba(0,0,0,.55) 40%,transparent 64%)}
+.back .ck,.back .cr,.back .pts{position:relative;z-index:1}
 .back .gl{position:absolute;inset:-2px;border-radius:28px;box-shadow:0 0 0 3px rgba(34,197,94,.7),0 0 46px rgba(34,197,94,.45);opacity:.55}
 .ck{width:78px;height:78px;overflow:visible}
 .ck .cc{fill:#22C55E;filter:drop-shadow(0 0 12px rgba(34,197,94,.7))}
@@ -186,7 +189,7 @@ export default {
 .back .cr{font-size:${r ? 32 : 38}px;line-height:${r ? 1.4 : 1.15};font-weight:800;white-space:nowrap}
 .back .pts{display:inline-flex;align-items:center;gap:8px;height:40px;padding-inline:16px;border-radius:999px;background:var(--sparkg);color:#0E1A2B;font-size:${r ? 22 : 21}px;font-weight:800;white-space:nowrap}
 .back .pts bdi{direction:ltr;unicode-bidi:isolate;font-family:${stack.display}}
-.burst{position:absolute;left:180px;top:114px;width:0;height:0}
+.burst{position:absolute;left:192px;top:114px;width:0;height:0}
 .burst .cf{position:absolute;left:-13px;top:-17px;width:26px;height:34px;opacity:0;filter:drop-shadow(0 0 8px rgba(242,141,25,.65))}
 .burst .bd{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:var(--sky);opacity:0;box-shadow:0 0 12px rgba(90,180,217,.9)}
 .qflash{position:absolute;left:50%;top:50%;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;opacity:0;
@@ -222,7 +225,7 @@ export default {
 </defs></svg>
 <div class="net goo">
   <div class="n" style="width:150px;height:150px;inset-inline-start:748px;top:40px"></div>
-  <div class="n" style="width:92px;height:92px;inset-inline-start:796px;top:176px"></div>
+  <div class="n" style="width:92px;height:92px;inset-inline-start:788px;top:176px"></div>
   <div class="n" style="width:64px;height:64px;inset-inline-start:704px;top:24px"></div>
   <div class="n" style="width:160px;height:160px;inset-inline-start:0;top:520px"></div>
   <div class="n" style="width:96px;height:96px;inset-inline-start:130px;top:612px"></div>
@@ -257,12 +260,12 @@ export default {
     <span class="qtag">${ico('sparkles', { size: 20, stroke: 2.4 })}${copy.quiz}</span>
     <b class="qq">${copy.q}</b>
     <div class="opts">
-      <span class="opt"><i class="rd"></i>${copy.opts[0]}</span>
-      <span class="opt ok"><i class="rd"></i>${copy.opts[1]}<i class="ohv"></i><span class="osel"><i class="ok">${ico('check', { size: 18, stroke: 3.5 })}</i>${copy.opts[1]}</span><span class="oclip"><i class="orip"></i></span></span>
+      <span class="opt"><span class="ol">${copy.opts[0]}</span><i class="rd"></i></span>
+      <span class="opt ok"><span class="ol">${copy.opts[1]}</span><i class="rd"></i><i class="ohv"></i><span class="osel"><span class="ol">${copy.opts[1]}</span><i class="ok">${ico('check', { size: 18, stroke: 3.5 })}</i></span><span class="oclip"><i class="orip"></i></span></span>
     </div>
   </div>
   <div class="face back">
-    <i class="gl"></i><span class="clip"><i class="shine"></i></span>
+    <i class="gl"></i><span class="clip"><i class="rays"></i><i class="shine"></i></span>
     <svg class="ck" viewBox="0 0 80 80"><circle class="cc" cx="40" cy="40" r="36"/><path class="cp" d="M24 41.5 L35 52.5 L57 29.5"/></svg>
     <b class="cr">${copy.correct}</b>
     <span class="pts"><bdi>${copy.pts}</bdi>${copy.ptsLabel}</span>
@@ -287,7 +290,7 @@ export default {
     };
     const flipEl = q('.flip');
     flipEl.style.transform = 'none';
-    const OPT = at('.opt.ok');
+    const RD = at('.opt.ok .rd');
     flipEl.style.transform = '';
     const HOT = at('.h2 .core');
     // Floats are added back in so the taps land exactly.
@@ -296,10 +299,10 @@ export default {
     const T1 = 2.3; // tap the hotspot
     const T2 = 4.45; // tap the answer
     const P_HOT = { x: HOT.x, y: HOT.y + bob(T1, -6, D / 2) };
-    // Tap the answer near its end edge so the hand never hides the label.
-    const P_OPT = { x: OPT.x + OPT.w * 0.24 * S, y: OPT.y + 10 + bob(T2, 8, D / 4) };
-    // Rest just past the tapped spot, pulled in from the scene edge (Reels buttons sit there).
-    const P_REST = { x: OPT.x + OPT.w * 0.1 * S, y: OPT.y + 30 };
+    // Tap the answer's radio (at its end), so the hand never hides the label in either language.
+    const P_OPT = { x: RD.x, y: RD.y + bob(T2, 8, D / 4) };
+    // Rest just past the tapped spot, on the card's empty end corner.
+    const P_REST = { x: RD.x - 6 * S, y: RD.y + 12 };
     const BO = at('.burst'); // card centre: the success burst's origin
     gsap.set('.cur', { x: P_REST.x, y: P_REST.y });
     gsap.set('.qring', { z: -6 });
@@ -310,9 +313,10 @@ export default {
     // ---- Ambient loops (whole cycles) ----
     tl.fromTo('.cube', { '--a': `${-25 * S}deg` }, { '--a': `${335 * S}deg`, duration: D, ease: 'none' }, 0);
     gsap.utils.toArray('.net .n').forEach((n, i) => {
-      tl.to(n, { x: (i % 2 ? 16 : -14), y: (i % 3 ? -14 : 18), scale: 1 + (i % 3) * 0.07, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
+      tl.to(n, { x: (i % 2 ? 16 : -14) * S, y: (i % 3 ? -14 : 18), scale: 1 + (i % 3) * 0.07, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     });
     tl.to('.fsp', { rotation: '+=360', duration: D, ease: 'none' }, 0);
+    tl.fromTo('.back .rays', { rotation: 0 }, { rotation: 30 * S, duration: D, ease: 'none' }, 0); // 12 rays: a 30° turn is a whole cycle
     tl.to('.dsp', { y: -6, duration: D / 2, ease: sine, repeat: 1, yoyo: true }, 0);
     tl.to('.qwrap', { y: 8, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
     tl.to('.tile', { y: -12, duration: D / 4, ease: sine, repeat: 3, yoyo: true }, 0);
@@ -350,7 +354,7 @@ export default {
     tl.set('.osel', { opacity: 0 }, 1.5);
     tl.set('.ck .cp', { drawSVG: '0%' }, 1.5);
     tl.set(['.ck .cc', '.back .cr', '.back .pts'], { opacity: 0, scale: 0.5 }, 1.5);
-    tl.set('.back .gl', { opacity: 0 }, 1.5);
+    tl.set(['.back .gl', '.back .rays'], { opacity: 0 }, 1.5);
     tl.fromTo('.hint .chip', { scale: 1 }, { scale: 1.07, duration: 0.25, ease: 'power2.out', repeat: 1, yoyo: true }, 1.55);
     tl.fromTo('.hint .hi', { rotation: 0 }, { rotation: -14 * S, duration: 0.18, ease: sine, repeat: 3, yoyo: true }, 1.55);
 
@@ -378,7 +382,9 @@ export default {
 
     // ---- The quiz card rises out of the screen; the right answer is tapped ----
     tl.fromTo('.qin', { opacity: 0, y: 70, rotationX: -32, scale: 0.9 }, { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.75, ease: 'back.out(1.3)' }, T1 + 0.72);
-    tl.to('.cur', { motionPath: { path: [mid(P_HOT, P_OPT, 60 * S, -30), P_OPT], curviness: 1.1 }, duration: 1.15, ease: 'power2.inOut' }, T2 - 1.25);
+    // Drop onto the radio from above, so the hand never sweeps across the answer's label.
+    const ABOVE = { x: P_OPT.x + 4 * S, y: P_OPT.y - 120 };
+    tl.to('.cur', { motionPath: { path: [mid(P_HOT, ABOVE, 50 * S, -20), ABOVE, P_OPT], curviness: 1 }, duration: 1.2, ease: 'power2.inOut' }, T2 - 1.3);
     tl.fromTo('.ohv', { opacity: 0 }, { opacity: 1, duration: 0.2 }, T2 - 0.25);
     tap(T2);
     tl.fromTo('.orip', { scale: 0.3, opacity: 0.9 }, { scale: 5, opacity: 0, duration: 0.55, ease: 'power2.out' }, T2);
@@ -393,10 +399,12 @@ export default {
     tl.fromTo('.back .gl', { opacity: 0 }, { opacity: 1, duration: 0.25 }, TB);
     tl.to('.back .gl', { opacity: 0.55, duration: 0.9, ease: sine }, TB + 0.5);
     tl.fromTo('.back .shine', { x: 0 }, { x: 620 * S, duration: 0.9, ease: 'power2.inOut' }, TB + 0.3);
-    tl.fromTo('.ck .cc', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2.4)' }, TB);
-    tl.fromTo('.ck .cp', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.32, ease: 'power2.out' }, TB + 0.16);
-    tl.fromTo('.back .cr', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2)' }, TB + 0.05);
-    tl.fromTo('.back .pts', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2.6)' }, TB + 0.16);
+    // The back's content is already growing as it turns into view, so it never shows up empty.
+    tl.fromTo('.ck .cc', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2.4)' }, TB - 0.12);
+    tl.fromTo('.ck .cp', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.32, ease: 'power2.out' }, TB + 0.04);
+    tl.fromTo('.back .cr', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2)' }, TB - 0.08);
+    tl.fromTo('.back .pts', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: 'back.out(2.6)' }, TB + 0.06);
+    tl.fromTo('.back .rays', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: 'power3.out' }, TB - 0.05);
     // ...a warm flash blooms behind the card, and a shock ring goes out as the flip lands...
     tl.fromTo('.qring', { opacity: 0.95, scale: 1 }, { opacity: 0, scale: 1.22, duration: 0.7, ease: 'power2.out' }, TF + 0.66);
     tl.fromTo('.qflash', { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, TB - 0.04);

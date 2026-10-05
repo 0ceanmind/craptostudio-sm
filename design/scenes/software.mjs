@@ -125,9 +125,9 @@ export default {
 .sfw .spark{inset-inline-start:var(--x);top:var(--y);transform:rotate(var(--r)) scale(var(--k,1))}
 
 /* the old spreadsheet, peeking out behind the app */
-.sw-ghostf{position:absolute;inset-inline-start:2px;top:14px;width:520px;height:330px}
+.sw-ghostf{position:absolute;inset-inline-start:24px;top:22px;width:510px;height:326px}
 .sw-ghost{position:absolute;inset:0;border-radius:22px;background:#101E35;border:2px solid rgba(147,169,198,.22);opacity:.6;overflow:hidden;
-  transform:rotate(${-6 * s}deg);box-shadow:0 30px 60px rgba(2,6,14,.4)}
+  transform:rotate(${-4.5 * s}deg);box-shadow:0 30px 60px rgba(2,6,14,.4)}
 .sw-ghost .gb{position:absolute;inset-inline:0;top:0;height:38px;background:rgba(147,169,198,.10);border-bottom:2px solid rgba(147,169,198,.2);display:flex;align-items:center;gap:8px;padding-inline:16px}
 .sw-ghost .gb i{width:11px;height:11px;border-radius:50%;background:rgba(147,169,198,.4)}
 .sw-ghost .gh{position:absolute;inset-inline:0;top:38px;height:30px;display:flex;padding-inline-start:40px;background:rgba(147,169,198,.06);border-bottom:2px solid rgba(147,169,198,.18);font:700 20px ${mono};color:rgba(147,169,198,.75)}
@@ -146,7 +146,7 @@ export default {
 .sw-tslot{position:relative;flex:1;height:34px;margin-inline-start:8px}
 .t-sheet,.t-app{position:absolute;inset-inline-start:0;top:0;height:34px;display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:20px}
 .t-sheet{opacity:0;color:var(--ui-text)}
-.t-sheet .ico{color:#4ADE80}
+.t-sheet .ico{color:var(--sky)}
 .t-app{padding-inline:14px 18px;border-radius:999px;background:rgba(147,169,198,.09);color:var(--ui-text)}
 .t-app .ico{color:var(--ui-sub)}
 .sw-pslot{position:relative;width:190px;height:38px;flex:none}
@@ -177,6 +177,8 @@ export default {
 .sh-c .tri{position:absolute;top:0;inset-inline-start:0;border-top:13px solid var(--ember);border-inline-end:13px solid transparent}
 .sh-c .pz{position:absolute;inset:0;border:3px solid var(--ember);background:rgba(236,108,28,.18);box-shadow:inset 0 0 14px rgba(236,108,28,.5);opacity:0}
 .sh-tb .flip{transform:scaleX(-1)}
+${r ? `/* Arabic words (and their !! ؟) set in the Arabic face; numbers and codes stay mono */
+.sh-c span:not(.n),.tile .cv:not(.n){font-family:'Alexandria','Plus Jakarta Sans',sans-serif}` : ''}
 
 /* blueprint canvas + layout guides, shown only while the cells are in flight */
 .sw-bp{position:absolute;inset:0;opacity:0;
@@ -238,7 +240,7 @@ export default {
 .t-row .av{position:absolute;top:18px;inset-inline-start:14px;width:40px;height:40px;border-radius:50%}
 .av.a0{background:var(--brand)}
 .av.a1{background:var(--sparkg)}
-.av.a2{background:linear-gradient(135deg,#5AB4D9,#22457E)}
+.av.a2{background:linear-gradient(135deg,var(--sky),var(--cobalt))}
 .t-row .oid{position:absolute;top:11px;inset-inline-start:66px;font:700 21px ${mono};line-height:30px;color:var(--ui-text)}
 .t-row .ln{position:absolute;top:47px;inset-inline-start:66px;width:58px;height:9px;border-radius:5px;background:rgba(147,169,198,.22)}
 .t-row .pl{position:absolute;top:19px;inset-inline-end:12px;height:38px;padding-inline:13px;border-radius:999px;display:flex;align-items:center;white-space:nowrap;font:700 20px ${disp}}
@@ -267,7 +269,7 @@ export default {
 .sw-label .lb{display:inline-flex;align-items:center;gap:12px;padding:9px;border-radius:999px;opacity:0;
   background:rgba(19,35,61,.94);border:2px solid var(--card-line);box-shadow:0 30px 60px rgba(2,6,14,.55)}
 .sw-label .chip{font-size:${r ? 24 : 23}px;padding:11px 22px;gap:10px}
-.sw-label .chip .ico{color:#4ADE80}
+.sw-label .chip .ico{color:var(--sky)}
 .sw-label .chip.hot .ico{color:#0E1A2B}
 .sw-label .ar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--sky);background:rgba(90,180,217,.14)}
 .sw-toast{position:absolute;inset-inline-end:4px;top:600px;z-index:7}
@@ -354,8 +356,10 @@ export default {
         cv = `<span class="cv ${isNum(v) ? 'n' : ''} ${t.src[0] ? '' : 'hd'} ${f}">${val(v)}</span>`;
       }
       const fillH = t.k === 'bar' ? ` data-h="${(BARS[t.i] * TRACK_H).toFixed(1)}"` : '';
+      // a bar's glass cell matches its fill, so the bar can collapse straight into its Total cell
+      const csTop = t.k === 'bar' ? ` style="top:${(TRACK_H - BARS[t.i] * TRACK_H).toFixed(1)}px"` : '';
       return `<div class="${cls}" data-n="${n}"${fillH} data-l="${(t.s[0] / BW).toFixed(3)}" data-c="${JSON.stringify(mx(t.s))}" data-d="${JSON.stringify(mx(t.d))}" data-r="${t.r}" style="${box(t.d)};border-radius:${t.r}px">
-        <i class="cs"></i><i class="sk"></i>${cv}<div class="ct">${content(t)}</div></div>`;
+        <i class="cs"${csTop}></i><i class="sk"></i>${cv}<div class="ct">${content(t)}</div></div>`;
     }).join('');
 
     // selection + cursor keyframes, peak bubble, petals
@@ -380,8 +384,8 @@ export default {
     const last = selK[selK.length - 1];
     const lastC = curK[curK.length - 1];
 
-    const blobs = [[756, 2, 118], [846, 76, 56], [700, 22, 52], [862, 150, 38], [4, 556, 122], [100, 636, 74], [10, 468, 56], [168, 680, 40]];
-    const sparks = [[330, 14, 30, 0.9], [884, 318, 80, 1], [10, 300, -140, 0.9], [600, 704, 40, 0.8], [224, 24, -40, 0.7]];
+    const blobs = [[756, 4, 118], [826, 76, 56], [700, 22, 52], [848, 150, 38], [18, 556, 122], [100, 636, 74], [14, 468, 56], [168, 680, 40]];
+    const sparks = [[330, 14, 30, 0.9], [866, 318, 80, 1], [14, 300, -140, 0.9], [600, 688, 40, 0.8], [224, 24, -40, 0.7]];
     const ghostCells = [[52, 86, 60], [150, 86, 40], [250, 118, 70, 'e'], [52, 150, 50], [350, 150, 60], [150, 182, 70], [250, 214, 50, 'e'], [52, 246, 64], [350, 246, 40]];
 
     // blueprint guides: the dashboard's layout is drawn on the canvas while the sheet lifts off
@@ -467,25 +471,30 @@ export default {
 
     // ---- 0.9s: the dashboard dissolves back into spreadsheet cells ----
     const T = 0.9;
-    const back = (i, el) => ((tileN(el) * 7) % 21) * 0.012;
+    const back = (i, el) => ((tileN(el) * 7) % 21) * 0.008;
     tl.to('.sw-toast .tc', { opacity: 0, y: 26, scale: 0.94, duration: 0.4, ease: 'power2.in' }, T);
     tl.to('.sw-peak .pk', { opacity: 0, y: 12, scale: 0.7, duration: 0.3, ease: 'power2.in' }, T);
-    tl.to(nonBarCt, { opacity: 0, duration: 0.3, ease: 'power2.in' }, T + 0.02);
-    tl.to('.bf', { scaleY: 0, duration: 0.35, ease: 'power2.in', stagger: 0.02 }, T + 0.02);
+    tl.to(nonBarCt, { opacity: 0, duration: 0.28, ease: 'power2.in' }, T);
     // reset (while hidden) what the build animates back in
-    tl.set('.bf', { scaleY: 1, opacity: 0 }, T + 0.6);
     tl.set('.okp', { drawSVG: '0%' }, T + 0.6);
     tl.set('.od .st', { y: 0 }, T + 0.4);
     tl.set('.ring-p', { strokeDashoffset: RING }, T + 0.4);
     tl.set(['.t-kpi .kl', '.t-kpi .kb', '.t-row .pl'], { opacity: 0 }, T + 0.4);
     tl.to('.sw-ghost', { opacity: 0, duration: 0.5, ease: 'power2.in' }, T);
-    tl.to('.sw-tilt', { rotationY: 0, rotationX: 0, duration: 1, ease: 'power2.inOut' }, T + 0.1);
-    tl.to('.tile', { ...rect('data-c'), borderRadius: 0, duration: 0.7, ease: 'power3.inOut', stagger: back }, T + 0.2);
-    tl.to('.tile .sk', { opacity: 0, duration: 0.5, ease: 'power2.inOut', stagger: back }, T + 0.3);
-    tl.fromTo('.tile .cv', { opacity: 0 }, { opacity: 1, duration: 0.35, stagger: back }, T + 0.62);
+    tl.to('.sw-tilt', { rotationY: 0, rotationX: 0, duration: 0.9, ease: 'power2.inOut' }, T + 0.1);
+    // every panel turns to glass and shrinks back into the cell (or range) it came from:
+    // the forward transformation, played in reverse
+    const TB = T + 0.16;
+    tl.to('.tile .cs', { opacity: 1, duration: 0.24, ease: 'power1.out', stagger: back }, TB - 0.06);
+    tl.to('.bf', { opacity: 0, duration: 0.2, ease: 'power1.in' }, TB);
+    tl.to('.tile .sk', { opacity: 0, duration: 0.26, ease: 'power2.inOut', stagger: back }, TB);
+    tl.to('.tile', { ...rect('data-c'), borderRadius: 0, duration: 0.66, ease: 'power3.inOut', stagger: back }, TB);
+    tl.to('.t-bar .cs', { top: 0, duration: 0.66, ease: 'power3.inOut', stagger: back }, TB);
+    tl.to('.tile .cs', { opacity: 0, duration: 0.3, ease: 'power1.inOut', stagger: back }, TB + 0.5);
+    tl.fromTo('.tile .cv', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: back }, TB + 0.42);
     tl.set('.sh-c span', { opacity: 0 }, T + 0.3);
-    tl.fromTo('.sw-sheet', { opacity: 0 }, { opacity: 1, duration: 0.5 }, T + 0.35);
-    tl.to('.sh-c span', { opacity: 1, duration: 0.3, stagger: (i, el) => (+el.parentNode.dataset.r + +el.parentNode.dataset.c) * 0.025 }, T + 0.45);
+    tl.fromTo('.sw-sheet', { opacity: 0 }, { opacity: 1, duration: 0.45 }, T + 0.28);
+    tl.to('.sh-c span', { opacity: 1, duration: 0.3, stagger: (i, el) => (+el.parentNode.dataset.r + +el.parentNode.dataset.c) * 0.022 }, T + 0.42);
     tl.to('.t-app', { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' }, T + 0.15);
     tl.fromTo('.t-sheet', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45 }, T + 0.42);
     tl.to('.p-live', { opacity: 0, scale: 0.8, duration: 0.3, ease: 'power2.in' }, T + 0.15);
@@ -496,25 +505,28 @@ export default {
     const curK = JSON.parse(document.querySelector('.cur').dataset.k);
     const kr = (k) => ({ left: k[0], top: k[1], width: k[2], height: k[3] });
     const kc = (k) => ({ left: k[0], top: k[1] });
-    tl.fromTo('.sel', { opacity: 0, scale: 1.3, ...kr(selK[0]) }, { opacity: 1, scale: 1, ...kr(selK[0]), duration: 0.3, ease: 'power2.out' }, 1.7);
-    tl.fromTo('.cur', { opacity: 0, x: 40 * s, y: 40, ...kc(curK[0]) }, { opacity: 1, x: 0, y: 0, ...kc(curK[0]), duration: 0.45, ease: 'power2.out' }, 1.6);
-    tl.to('.sel', { ...kr(selK[1]), duration: 0.32, ease: 'power3.inOut' }, 1.95);
-    tl.to('.cur', { ...kc(curK[1]), duration: 0.32, ease: 'power3.inOut' }, 1.93);
+    tl.fromTo('.sel', { opacity: 0, scale: 1.3, ...kr(selK[0]) }, { opacity: 1, scale: 1, ...kr(selK[0]), duration: 0.3, ease: 'power2.out' }, 1.72);
+    tl.fromTo('.cur', { opacity: 0, x: 40 * s, y: 40, ...kc(curK[0]) }, { opacity: 1, x: 0, y: 0, ...kc(curK[0]), duration: 0.45, ease: 'power2.out' }, 1.62);
+    tl.to('.sel', { ...kr(selK[1]), duration: 0.3, ease: 'power3.inOut' }, 1.98);
+    tl.to('.cur', { ...kc(curK[1]), duration: 0.3, ease: 'power3.inOut' }, 1.96);
     tl.fromTo('.f-a .pz', { opacity: 0 }, { opacity: 1, duration: 0.14, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 2.22);
-    tl.fromTo('.p-err', { x: 0 }, { x: 5, duration: 0.05, yoyo: true, repeat: 5, ease: 'sine.inOut' }, 2.24);
-    tl.to('.sel', { ...kr(selK[2]), duration: 0.34, ease: 'power3.inOut' }, 2.4);
-    tl.to('.cur', { ...kc(curK[2]), duration: 0.34, ease: 'power3.inOut' }, 2.38);
-    tl.fromTo('.f-b .pz', { opacity: 0 }, { opacity: 1, duration: 0.14, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 2.66);
-    tl.to('.sel', { ...kr(selK[3]), duration: 0.38, ease: 'power3.inOut' }, 2.8);
-    tl.to('.cur', { ...kc(curK[3]), duration: 0.38, ease: 'power3.inOut' }, 2.8);
+    tl.to('.sel', { ...kr(selK[2]), duration: 0.32, ease: 'power3.inOut' }, 2.38);
+    tl.to('.cur', { ...kc(curK[2]), duration: 0.32, ease: 'power3.inOut' }, 2.36);
+    tl.fromTo('.f-b .pz', { opacity: 0 }, { opacity: 1, duration: 0.14, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 2.62);
+    // each error found bumps the "3 errors" badge (a soft pulse, not a jittery shake)
+    [2.24, 2.64].forEach((t) => tl.fromTo('.p-err', { scale: 1 }, { scale: 1.1, duration: 0.15, yoyo: true, repeat: 1, ease: 'sine.inOut' }, t));
+    // ...and finally grabs the whole Total column, held a beat before the beam takes it
+    tl.to('.sel', { ...kr(selK[3]), duration: 0.36, ease: 'power3.inOut' }, 2.7);
+    tl.to('.cur', { ...kc(curK[3]), duration: 0.36, ease: 'power3.inOut' }, 2.7);
 
     // ---- 3.15s: Spreadsheet -> System. Cells lift off the grid... ----
     const TF = 3.15;
     tl.set(['.sw-label .chip', '.sw-label .ar'], { opacity: 0 }, TF - 0.2);
     tl.fromTo('.sw-label .lb', { opacity: 0, y: 26, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: 'back.out(1.7)' }, TF - 0.12);
-    tl.fromTo(['.sw-label .chip', '.sw-label .ar'], { x: -22 * s }, { opacity: 1, x: 0, duration: 0.45, stagger: 0.12 }, TF - 0.05);
+    tl.fromTo(['.sw-label .chip', '.sw-label .ar'], { x: -22 * s }, { opacity: 1, x: 0, duration: 0.42, stagger: 0.09 }, TF - 0.11);
     tl.fromTo('.sw-label .ar svg', { x: -5 * s }, { x: 5 * s, duration: 0.3, yoyo: true, repeat: 5, ease: 'sine.inOut' }, TF + 0.3);
-    tl.to(['.sel', '.cur'], { opacity: 0, duration: 0.25, ease: 'power2.in' }, TF);
+    tl.to('.cur', { opacity: 0, duration: 0.25, ease: 'power2.in' }, TF);
+    tl.to('.sel', { opacity: 0, duration: 0.3, ease: 'power2.in' }, TF + 0.12);
     tl.fromTo('.sw-scan', { opacity: 0, x: ctx.rtl ? BWs : -180 }, { opacity: 1, x: ctx.rtl ? BWs - 140 : -40, duration: 0.12, ease: 'none' }, TF - 0.05);
     tl.to('.sw-scan', { x: ctx.rtl ? -180 : BWs, duration: 0.6, ease: 'power1.inOut' }, TF + 0.07);
     tl.to('.sw-scan', { opacity: 0, duration: 0.15, ease: 'none' }, TF + 0.55);
@@ -527,6 +539,8 @@ export default {
     tl.fromTo('.tile', { scale: 1, rotation: 0, y: 0 }, { scale: (i, el) => (isBig(el) ? 1.02 : 1.08), rotation: (i, el) => (isBig(el) ? 0 : (((i * 37) % 7) - 3) * 1.2), y: (i, el) => (isBig(el) ? -4 : -10), duration: 0.3, ease: 'power2.out', stagger: lift }, TF + 0.05);
     // ...while the blueprint of the new system is drawn underneath, following the beam
     tl.fromTo('.sw-bp', { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out' }, TF + 0.15);
+    // (rects start undrawn: a staggered fromTo only applies its from-state when it starts)
+    tl.set('.sw-guides .gd', { drawSVG: '0%' }, TF);
     tl.fromTo('.sw-guides', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, TF + 0.1);
     tl.fromTo('.sw-guides .gd', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.75, ease: 'power2.inOut', stagger: (i, el) => +el.dataset.l * 0.55 }, TF + 0.12);
 
