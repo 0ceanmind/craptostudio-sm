@@ -24,7 +24,10 @@ const port = process.env.STUDIO_PORT;
 
 // On Windows `claude` is a .cmd shim that needs a shell; quote arguments with spaces for it.
 const win = process.platform === 'win32';
-const run = (args) => spawnSync(bin, win ? args.map((a) => (/\s/.test(a) ? `"${a}"` : a)) : args, { encoding: 'utf8', shell: win });
+// Don't pass on the identity of a Claude Code session this script may be running inside.
+const env = { ...process.env };
+for (const k of ['CLAUDE_CODE_SESSION_ID', 'CLAUDECODE', 'CLAUDE_CODE_CHILD_SESSION', 'CLAUDE_PID']) delete env[k];
+const run = (args) => spawnSync(bin, win ? args.map((a) => (/\s/.test(a) ? `"${a}"` : a)) : args, { encoding: 'utf8', shell: win, env });
 const quote = (s) => (/^[\w./:@=-]+$/.test(s) ? s : `"${s}"`);
 const addArgs = ['mcp', 'add', '--scope', 'user', ...(port ? ['-e', `STUDIO_PORT=${port}`] : []), 'crapto-studio', '--', process.execPath, mcpScript];
 

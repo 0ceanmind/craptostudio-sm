@@ -14,13 +14,24 @@ export const claudeHome = () => process.env.CLAUDE_CONFIG_DIR || path.join(os.ho
 const runsDir = path.join(studioDir, 'runs');
 export const playbookFile = path.join(root, 'studio/claude/playbook.md');
 
+// When the studio itself was started from inside a Claude Code session (e.g. by Claude's Bash
+// tool), these variables identify that session. A child `claude` must not inherit them, or it
+// would write into the parent's conversation instead of starting its own.
+const SESSION_VARS = ['CLAUDE_CODE_SESSION_ID', 'CLAUDECODE', 'CLAUDE_CODE_CHILD_SESSION', 'CLAUDE_PID', 'CLAUDE_CODE_MESSAGING_SOCKET',
+  'CLAUDE_CODE_MESSAGING_TOKEN', 'CLAUDE_AFTER_LAST_COMPACT', 'CLAUDE_CODE_SESSION_ATTENDED', 'CLAUDE_CODE_DIAGNOSTICS_FILE', 'CLAUDE_CODE_REMOTE_SESSION_ID'];
+export function childEnv(extra = {}) {
+  const env = { ...process.env, ...extra };
+  for (const k of SESSION_VARS) delete env[k];
+  return env;
+}
+
 // ---------- Is Claude Code installed? ----------
 
 let cliInfo = null;
 export function claudeCli({ refresh = false } = {}) {
   if (cliInfo && !refresh) return cliInfo;
   const bin = process.env.CLAUDE_BIN || 'claude';
-  const r = spawnSync(bin, ['--version'], { encoding: 'utf8', shell: process.platform === 'win32', timeout: 15_000 });
+  const r = spawnSync(bin, ['--version'], { encoding: 'utf8', shell: process.platform === 'win32', timeout: 15_000, env: childEnv() });
   cliInfo = r.status === 0 ? { ok: true, bin, version: r.stdout.trim() } : { ok: false, bin, error: (r.error?.message || r.stderr || 'not found').trim() };
   return cliInfo;
 }
@@ -207,7 +218,7 @@ export function startRun({ cwd, sessionId = null, request = '', followUpOf = nul
   };
   const prompt = buildPrompt({ cwd: workdir, sessionId, request, followUp: followUpOf ? message : null, editSlug });
   const win = process.platform === 'win32'; // `claude` is a .cmd shim there: needs a shell, and quoting
-  const child = spawn(cli.bin, win ? args.map((a) => (/\s/.test(a) ? `"${a}"` : a)) : args, { cwd: workdir, shell: win, env: { ...process.env, CRAPTO_STUDIO_RUN: id }, windowsHide: true });
+  const child = spawn(cli.bin, win ? args.map((a) => (/\s/.test(a) ? `"${a}"` : a)) : args, { cwd: workdir, shell: win, env: childEnv({ CRAPTO_STUDIO_RUN: id }), windowsHide: true });
   run.child = child;
   runs.set(id, run);
   pushEvent(run, { kind: 'status', text: parent ? 'Continuing the conversation…' : editSlug ? `Asking Claude to edit “${editSlug}”…` : sessionId ? 'Opening your chat in Claude Code…' : 'Starting Claude Code in the project…' });
